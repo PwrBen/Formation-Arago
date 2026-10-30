@@ -1,0 +1,1120 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){var s=localStorage.getItem("arago-theme");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(s!=="light"&&p)){document.documentElement.setAttribute("data-theme","dark");}else{document.documentElement.setAttribute("data-theme","light");}})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuel de Cours Sécurité Incendie — Lycée François Arago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══ THÈME SOMBRE (dark — défaut) ══ */
+:root,
+[data-theme="dark"] {
+  --navy:   #120909; /* Teinte sombre rougeâtre */
+  --deep:   #1a0c0c;
+  --blue:   #6e1a1a; 
+  --accent: #d32f2f; /* Rouge BSPP */
+  --red:    #c0392b;
+  --white:  #fff4f4;
+  --gray:   #b59a9a;
+  --light:  #ead0d0;
+  --card:   #1c1010;
+  --border: rgba(211,47,47,0.25);
+
+  /* Tokens extra */
+  --nav-bg:         rgba(18,9,9,0.92);
+  --nav-bg-scroll:  rgba(18,9,9,0.97);
+  --hero-grid:      rgba(211,47,47,0.07);
+  --hero-glow:      rgba(211,47,47,0.18);
+  --module-hover:   #2a1414;
+  --article-hdr-bg: rgba(211,47,47,0.08);
+  --article-num-bg: rgba(211,47,47,0.15);
+  --article-num-bd: rgba(211,47,47,0.3);
+  --legal-bg:       rgba(211,47,47,0.07);
+  --warning-bg:     rgba(192,57,43,0.1);
+  --info-bg:        rgba(211,47,47,0.05);
+  --desc-card-bg:   rgba(211,47,47,0.06);
+  --chip-bg:        rgba(211,47,47,0.15);
+  --chip-red-bg:    rgba(192,57,43,0.1);
+  --chip-red-brd:   rgba(192,57,43,0.3);
+  --chip-red-txt:   #e74c3c;
+  --mission-hdr-bg: rgba(211,47,47,0.06);
+  --pfmp-num-clr:   rgba(211,47,47,0.2);
+  --pfmp-badge-bg:  rgba(211,47,47,0.15);
+  --conclusion-glow:rgba(211,47,47,0.1);
+  --engage-bg:      rgba(211,47,47,0.06);
+  --fiche-corner:   rgba(211,47,47,0.1);
+  --fiche-corner-h: rgba(211,47,47,0.2);
+  --fiche-hover-bd: rgba(211,47,47,0.5);
+  --tab-active:     var(--white);
+  --th-bg:          rgba(211,47,47,0.15);
+  --td-border:      rgba(255,255,255,0.04);
+  --td-hover:       rgba(255,255,255,0.02);
+  --row-odd-bg:     transparent;
+  --nav-link-brd:   rgba(255,255,255,0.04);
+  --hero-citation:  rgba(215,176,176,0.6);
+  --btn-ghost-brd:  rgba(255,255,255,0.2);
+  --deonto-brd-alt: rgba(255,255,255,0.04);
+  --pfmp-li-brd:    rgba(255,255,255,0.04);
+}
+
+/* ══ THÈME CLAIR ══ */
+[data-theme="light"] {
+  --navy:   #fcf8f8;
+  --deep:   #f5efef;
+  --blue:   #e8dede;
+  --accent: #c62828;
+  --red:    #b71c1c;
+  --white:  #1a1a1a;
+  --gray:   #7d6b6b;
+  --light:  #3b2929;
+  --card:   #ffffff;
+  --border: rgba(198,40,40,0.15);
+
+  --nav-bg:         rgba(252,248,248,0.94);
+  --nav-bg-scroll:  rgba(252,248,248,0.99);
+  --hero-grid:      rgba(198,40,40,0.05);
+  --hero-glow:      rgba(198,40,40,0.05);
+  --module-hover:   #fcf2f2;
+  --article-hdr-bg: rgba(198,40,40,0.04);
+  --article-num-bg: rgba(198,40,40,0.07);
+  --article-num-bd: rgba(198,40,40,0.2);
+  --legal-bg:       rgba(198,40,40,0.04);
+  --warning-bg:     rgba(183,28,28,0.06);
+  --info-bg:        rgba(198,40,40,0.03);
+  --desc-card-bg:   rgba(198,40,40,0.04);
+  --chip-bg:        rgba(198,40,40,0.07);
+  --chip-red-bg:    rgba(183,28,28,0.07);
+  --chip-red-brd:   rgba(183,28,28,0.25);
+  --chip-red-txt:   #b71c1c;
+  --mission-hdr-bg: rgba(198,40,40,0.04);
+  --pfmp-num-clr:   rgba(198,40,40,0.12);
+  --pfmp-badge-bg:  rgba(198,40,40,0.07);
+  --conclusion-glow:rgba(198,40,40,0.04);
+  --engage-bg:      rgba(198,40,40,0.04);
+  --fiche-corner:   rgba(198,40,40,0.06);
+  --fiche-corner-h: rgba(198,40,40,0.12);
+  --fiche-hover-bd: rgba(198,40,40,0.35);
+  --tab-active:     #1a1a1a;
+  --th-bg:          rgba(198,40,40,0.07);
+  --td-border:      rgba(0,0,0,0.06);
+  --td-hover:       rgba(0,0,0,0.03);
+  --row-odd-bg:     transparent;
+  --nav-link-brd:   rgba(0,0,0,0.06);
+  --hero-citation:  rgba(60,40,40,0.55);
+  --btn-ghost-brd:  rgba(198,40,40,0.25);
+  --deonto-brd-alt: rgba(0,0,0,0.06);
+  --pfmp-li-brd:    rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem; letter-spacing: 3px;
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a {
+  color: var(--gray); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 0 0.8rem;
+  height: 60px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--white); border-bottom-color: var(--accent); }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 2rem 4rem; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridSlide 20s linear infinite;
+}
+@keyframes gridSlide { from{transform:translateY(0)} to{transform:translateY(60px)} }
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.badge-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 16px; margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease both;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem,10vw,8rem); line-height: 0.9; letter-spacing: 4px;
+  color: var(--white);
+  animation: fadeUp 0.8s 0.1s ease both; position: relative; z-index: 1;
+}
+.hero h1 em { font-style: normal; -webkit-text-stroke: 1px var(--accent); color: transparent; }
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem; font-weight: 300; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--gray); margin-top: 1rem;
+  animation: fadeUp 0.8s 0.2s ease both; position: relative; z-index: 1;
+}
+.hero-line {
+  width: 120px; height: 2px;
+  background: linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin: 2rem auto; animation: fadeUp 0.8s 0.3s ease both; position: relative; z-index: 1;
+}
+.hero-desc {
+  max-width: 600px; color: var(--gray); font-size: 1rem;
+  animation: fadeUp 0.8s 0.4s ease both; position: relative; z-index: 1;
+}
+.hero-citation {
+  font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 1rem;
+  color: var(--hero-citation);
+  margin-top: 1.5rem; animation: fadeUp 0.8s 0.45s ease both; position: relative; z-index: 1;
+}
+.hero-cta {
+  margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.5s ease both; position: relative; z-index: 1;
+}
+.btn-primary {
+  background: var(--accent); color: #fff; text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 14px 32px;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s;
+}
+.btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
+.btn-ghost {
+  color: var(--white); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 13px 32px;
+  border: 1px solid var(--btn-ghost-brd);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--gray); font-size: 0.65rem; letter-spacing: 3px;
+  font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase;
+  animation: fadeUp 1s 1s ease both; z-index: 1;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* STATS BAR */
+.stats-bar {
+  position: relative; z-index: 1;
+  background: var(--card);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center; flex-wrap: wrap;
+  transition: background 0.3s;
+}
+.stat {
+  flex: 1; min-width: 180px; max-width: 240px;
+  padding: 2rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--accent); letter-spacing: 2px; }
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-top: 2px;
+}
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); display: flex; align-items: center; gap: 12px; margin-bottom: 0.75rem;
+}
+.section-tag::before { content:''; display:block; width:24px; height:1px; background:var(--accent); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem,5vw,4rem); letter-spacing: 3px; line-height: 1;
+  margin-bottom: 1rem; color: var(--white);
+}
+.section-desc { color: var(--gray); max-width: 560px; font-size: 0.95rem; }
+
+/* SOMMAIRE */
+#sommaire { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+.modules-grid {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+  gap: 1px; margin-top: 3rem; border: 1px solid var(--border);
+}
+.module-card {
+  background: var(--card); padding: 1.8rem;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: all 0.25s;
+  position: relative; overflow: hidden;
+  text-decoration: none; color: inherit; display: block;
+}
+.module-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  transform: scaleY(0); transition: transform 0.25s;
+}
+.module-card:hover { background: var(--module-hover); transform: translateX(4px); }
+.module-card:hover::before { transform: scaleY(1); }
+.module-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); margin-bottom: 0.5rem; }
+.module-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.4rem; color: var(--white); }
+.module-desc { font-size: 0.85rem; color: var(--gray); }
+
+/* CONTENT SECTION */
+.content-section { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.content-inner { max-width: 1100px; margin: 0 auto; }
+.content-layout { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; margin-top: 3rem; }
+.content-nav { position: sticky; top: 80px; align-self: start; }
+.content-nav-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray); padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border); margin-bottom: 1rem;
+}
+.content-nav a {
+  display: block; font-size: 0.85rem; color: var(--gray);
+  text-decoration: none; padding: 6px 0;
+  border-bottom: 1px solid var(--nav-link-brd); transition: color 0.2s;
+}
+.content-nav a:hover { color: var(--accent); }
+
+/* ARTICLE BLOCKS */
+.article-block {
+  margin-bottom: 3rem; background: var(--card);
+  border: 1px solid var(--border); overflow: hidden; scroll-margin-top: 80px;
+}
+.article-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.2rem 1.6rem;
+  background: var(--article-hdr-bg);
+  border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.article-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px; color: var(--accent); white-space: nowrap;
+  background: var(--article-num-bg); border: 1px solid var(--article-num-bd); padding: 3px 10px;
+}
+.article-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; flex: 1;
+  color: var(--white);
+}
+.article-toggle { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; }
+.article-block.open .article-toggle { transform: rotate(45deg); }
+.article-body { padding: 1.6rem; display: none; border-top: 1px solid var(--border); }
+.article-block.open .article-body { display: block; }
+.article-body p { margin-bottom: 1rem; font-size: 0.95rem; color: var(--light); }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body ul, .article-body ol { margin: 0.75rem 0 1rem 1.5rem; }
+.article-body li { font-size: 0.93rem; color: var(--light); margin-bottom: 0.4rem; }
+.article-body h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin: 1.5rem 0 0.5rem;
+}
+.article-body strong { color: var(--white); font-weight: 600; }
+
+/* LEGAL / WARNING / INFO BOXES */
+.legal-box, .warning-box, .info-box {
+  padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.legal-box {
+  background: var(--legal-bg); border-left: 3px solid var(--accent);
+}
+.legal-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); display: block; margin-bottom: 0.4rem;
+}
+.legal-box p { color: var(--light); font-style: italic; margin: 0; }
+.warning-box {
+  background: var(--warning-bg); border-left: 3px solid var(--red);
+}
+.warning-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); display: block; margin-bottom: 0.4rem;
+}
+.warning-box p { color: var(--light); margin: 0; }
+.info-box {
+  background: var(--info-bg); border: 1px solid var(--border);
+}
+.info-box p { color: var(--light); margin: 0; font-style: italic; }
+
+/* TABLE */
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th {
+  background: var(--th-bg);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); padding: 10px 14px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 10px 14px; border-bottom: 1px solid var(--td-border);
+  color: var(--light); vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--td-hover); }
+
+/* FICHES */
+#fiches { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.fiches-inner { max-width: 1100px; margin: 0 auto; }
+.fiches-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+.fiche-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 1.8rem; position: relative; overflow: hidden;
+  transition: all 0.25s; cursor: pointer;
+}
+.fiche-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg,transparent 50%, var(--fiche-corner) 50%);
+  transition: all 0.25s;
+}
+.fiche-card:hover { border-color: var(--fiche-hover-bd); transform: translateY(-3px); }
+.fiche-card:hover::after { width: 80px; height: 80px; background: linear-gradient(135deg,transparent 50%, var(--fiche-corner-h) 50%); }
+.fiche-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.fiche-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 0.5rem; color: var(--white);
+}
+.fiche-summary { font-size: 0.85rem; color: var(--gray); }
+
+/* FICHE DETAIL */
+.fiche-detail { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.fiche-detail-inner { max-width: 1100px; margin: 0 auto; }
+
+/* CONCLUSION */
+#conclusion {
+  padding: 6rem 2rem; border-top: 1px solid var(--border);
+  text-align: center; position: relative; overflow: hidden;
+}
+#conclusion::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, var(--conclusion-glow) 0%, transparent 70%);
+}
+.conclusion-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; text-align: left; }
+.principle {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start;
+}
+.principle-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); line-height: 1; flex-shrink: 0; }
+.principle-text { font-size: 0.85rem; color: var(--light); }
+.closing-quote {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem; font-weight: 300; letter-spacing: 1px;
+  color: var(--gray); border-top: 1px solid var(--border);
+  padding-top: 2rem; margin-top: 2rem; font-style: italic;
+}
+.engage-block {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 600; letter-spacing: 2px;
+  color: var(--accent); border: 1px solid var(--border);
+  padding: 1.5rem; margin-top: 2rem;
+  background: var(--engage-bg); text-align: left; line-height: 2;
+}
+
+/* FOOTER */
+footer {
+  background: var(--deep); border-top: 1px solid var(--border);
+  padding: 2rem; text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gray);
+  transition: background 0.3s;
+}
+footer strong { color: var(--white); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* TOGGLE SWITCH */
+#theme-toggle-wrap {
+  position: fixed; bottom: 24px; left: 24px; z-index: 3001;
+  display: flex; align-items: center; gap: 10px;
+}
+#theme-toggle {
+  flex-shrink: 0; width: 52px; height: 28px; border-radius: 14px; cursor: pointer;
+  display: flex; align-items: center; padding: 3px;
+  transition: background 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(128,128,128,0.3);
+  background: #3a1a1a;
+}
+#theme-toggle::after {
+  content: ''; display: block; width: 20px; height: 20px; border-radius: 50%;
+  background: #fff4f4; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  transform: translateX(24px);
+}
+[data-theme="light"] #theme-toggle { background: #e8dede; border-color: rgba(0,0,0,0.18); }
+[data-theme="light"] #theme-toggle::after { transform: translateX(0); background: #fff; }
+.toggle-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray); background: var(--card);
+  padding: 3px 8px; border-radius: 4px; border: 0.5px solid var(--border);
+  pointer-events: none; white-space: nowrap; transition: color 0.3s, background 0.3s;
+}
+
+@media (max-width: 768px) {
+  .content-layout { grid-template-columns: 1fr; }
+  .content-nav { display: none; }
+  .principles { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="theme-toggle-wrap">
+  <div id="theme-toggle" onclick="toggleTheme()" role="switch" aria-label="Basculer mode sombre/clair" title="Mode sombre / Mode clair"></div>
+  <span class="toggle-label" id="toggle-label">Mode sombre</span>
+</div>
+
+<nav>
+  <div class="nav-logo">ARAGO <span>SÉCURITÉ INCENDIE</span></div>
+  <ul class="nav-links">
+    <li><a href="#sommaire">Sommaire</a></li>
+    <li><a href="#cadre">Cadre Légal</a></li>
+    <li><a href="#feu">Le Feu</a></li>
+    <li><a href="#prevention">Prévention</a></li>
+    <li><a href="#alarme">Alarme / Alerte</a></li>
+    <li><a href="#evacuation">Évacuation</a></li>
+    <li><a href="#fiches">Fiches Mémo</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="badge-top">Lycée François Arago · Arago Sécurité Incendie</div>
+  <h1>LES ESSENTIELS<br><em>DE LA</em><br>SÉCURITÉ INCENDIE</h1>
+  <div class="hero-sub">Agents de Sécurité Incendie · SSIAP 1 / SSIAP 2</div>
+  <div class="hero-line"></div>
+  <div class="hero-desc">Ce manuel n’est pas un simple fascicule sur le feu. C’est mon guide opérationnel de prévention et d’intervention, conçu spécialement pour nous, les apprentis professionnels des métiers de la sécurité du Lycée Arago.</div>
+  <div class="hero-citation">« Ça c’est mon manuel, il y en a beaucoup comme celui-là, mais lui c’est le mien. Mon manuel c’est mon vrai copain... »</div>
+  <div class="hero-cta">
+    <a href="#sommaire" class="btn-primary">Accéder au Sommaire</a>
+    <a href="#fiches" class="btn-ghost">Fiches Mémo</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">Niveaux SSIAP</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Étapes d'Intervention (4A)</div></div>
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Modules de Formation</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Fiches Mémo Opérationnelles</div></div>
+</div>
+
+<!-- SOMMAIRE -->
+<div id="sommaire">
+  <div class="reveal">
+    <div class="section-tag">Sommaire</div>
+    <h2 class="section-title">MON MANUEL DE COURS <em style="-webkit-text-stroke: 1px var(--accent); color: transparent;">INCENDIE</em></h2>
+    <p class="section-desc">Mon objectif est clair : maîtriser les connaissances et les réflexes d’un agent de sécurité incendie (SSIAP 1), puis comprendre le rôle d’un chef d’équipe (SSIAP 2), pour réussir mes évaluations du Bac Pro et mon futur examen de qualification.</p>
+  </div>
+  <div class="modules-grid reveal">
+    <a href="#cadre" class="module-card">
+      <div class="module-num">MODULE 01</div>
+      <div class="module-name">Cadre Légal et Missions</div>
+      <div class="module-desc">Textes encadrant l'activité, acteurs de la sécurité, niveaux de qualification et responsabilité pénale.</div>
+    </a>
+    <a href="#feu" class="module-card">
+      <div class="module-num">MODULE 02</div>
+      <div class="module-name">Le Feu et ses Conséquences</div>
+      <div class="module-desc">Triangle du feu, classes de feux, propagation et fumées toxiques.</div>
+    </a>
+    <a href="#batiments" class="module-card">
+      <div class="module-num">MODULE 03</div>
+      <div class="module-name">Les Bâtiments et leur Comportement</div>
+      <div class="module-desc">Classification ERP, IGH, résistance et réaction au feu, dégagements.</div>
+    </a>
+    <a href="#reperer" class="module-card">
+      <div class="module-num">MODULE 04</div>
+      <div class="module-name">Me Repérer dans les Lieux</div>
+      <div class="module-desc">Plans d'évacuation, coupures d'énergies, installations techniques et locaux à risques.</div>
+    </a>
+    <a href="#prevention" class="module-card">
+      <div class="module-num">MODULE 05</div>
+      <div class="module-name">La Prévention</div>
+      <div class="module-desc">Contrôle des issues, permiss de feu, rondes et respect des consignes.</div>
+    </a>
+    <a href="#installations" class="module-card">
+      <div class="module-num">MODULE 06</div>
+      <div class="module-name">Installations Techniques</div>
+      <div class="module-desc">Système de Sécurité Incendie (SSI), DAS, levée de doute et équipements.</div>
+    </a>
+    <a href="#extinction" class="module-card">
+      <div class="module-num">MODULE 07</div>
+      <div class="module-name">Moyens d'Extinction</div>
+      <div class="module-desc">Extincteurs portatifs, RIA, et maintien en état des matériels.</div>
+    </a>
+    <a href="#alarme" class="module-card">
+      <div class="module-num">MODULE 08</div>
+      <div class="module-name">De l'Alarme à l'Alerte</div>
+      <div class="module-desc">Méthode des 4A (Analyser, Alerter, Agir, Accueillir).</div>
+    </a>
+    <a href="#evacuation" class="module-card">
+      <div class="module-num">MODULE 09</div>
+      <div class="module-name">Évacuation et Sauvetage</div>
+      <div class="module-desc">Guidage, secours à personne, espaces d'attente sécurisés (EAS) et sécurité personnelle.</div>
+    </a>
+    <a href="#surveiller" class="module-card">
+      <div class="module-num">MODULE 10</div>
+      <div class="module-name">Surveiller les Lieux</div>
+      <div class="module-desc">Méthode de ronde, contrôle des accès et vidéoprotection.</div>
+    </a>
+    <a href="#agir" class="module-card">
+      <div class="module-num">MODULE 11</div>
+      <div class="module-name">Agir en Professionnel</div>
+      <div class="module-desc">Gestion de tension, infractions, préservation des traces (Vidocq).</div>
+    </a>
+    <a href="#rendre-compte" class="module-card">
+      <div class="module-num">MODULE 12</div>
+      <div class="module-name">Rendre Compte / Équipe</div>
+      <div class="module-desc">Rapports, main courante, gestion de crise et rôle du chef de poste (SSIAP 2).</div>
+    </a>
+    <a href="#fiches" class="module-card" style="grid-column: 1 / -1;">
+      <div class="module-num">RÉFÉRENCE</div>
+      <div class="module-name">Fiches Mémo Opérationnelles</div>
+      <div class="module-desc">Les 4A, Message QQOQCP, Classes d'Extincteurs, Check-list de Ronde, Auto-positionnement.</div>
+    </a>
+  </div>
+</div>
+
+<!-- MODULE 1: Cadre Légal -->
+<section id="cadre" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 01</div>
+      <h2 class="section-title">CADRE LÉGAL ET MISSIONS</h2>
+      <p class="section-desc">En tant qu’élève des métiers de la sécurité au Lycée Arago, ma mission première est la protection des personnes et des biens. Or, le feu est l’un des risques les plus graves pour un site.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#missions-ssiap">Missions du SSIAP</a>
+        <a href="#textes-encadrement">Textes qui m'encadrent</a>
+        <a href="#acteurs-secu">Acteurs de la Sécurité</a>
+        <a href="#resp-penale-incendie">Responsabilité Pénale</a>
+      </div>
+      <div>
+        <div class="article-block" id="missions-ssiap">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RÔLES</span>
+            <span class="article-title">Pourquoi un service de sécurité incendie ?</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Dans un bâtiment qui accueille du public, personne n’est censé savoir quoi faire en cas de sinistre, sauf moi. Le service de sécurité incendie est le dispositif permanent qui assure trois missions :</p>
+            <ul>
+              <li><strong>Prévenir :</strong> repérer les anomalies, faire respecter les consignes, entretenir les moyens de secours.</li>
+              <li><strong>Protéger :</strong> alerter, évacuer, assister les personnes et intervenir sur un début d’incendie.</li>
+              <li><strong>Accueillir :</strong> recevoir les sapeurs-pompiers, les guider et leur transmettre les informations utiles.</li>
+            </ul>
+            <div class="warning-box">
+              <strong>Règle fondamentale</strong>
+              <p>Je ne suis pas un pompier. Mon rôle est d’agir vite et avec les moyens du site sur un début de sinistre, puis de passer le relais aux professionnels du secours en leur facilitant le travail.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="textes-encadrement">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">LOIS</span>
+            <span class="article-title">Les Textes qui m’encadrent</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>Le Code de la construction et de l’habitation (CCH) :</strong> Il définit les ERP et les IGH et pose le cadre général.</li>
+              <li><strong>Le règlement de sécurité contre l’incendie dans les ERP (arrêté du 25 juin 1980) :</strong> Il fixe les règles de construction, d’aménagement et d’exploitation des établissements recevant du public.</li>
+              <li><strong>Le règlement de sécurité des IGH (arrêté du 30 décembre 2011) :</strong> Il s’applique aux immeubles de grande hauteur.</li>
+              <li><strong>Le Code du travail (Art. R4227-1 et suivants) :</strong> Il impose la prévention incendie sur tous les lieux de travail : moyens d’extinction, consignes, évacuation, exercices.</li>
+              <li><strong>L’arrêté du 2 mai 2005 (modifié) :</strong> C’est mon texte professionnel. Il définit les missions, l’emploi et la qualification du personnel permanent des services de sécurité incendie en ERP et en IGH.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="acteurs-secu">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">ACTEURS</span>
+            <span class="article-title">Les Acteurs et Niveaux SSIAP</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p><strong>L’exploitant :</strong> Responsable de la sécurité. Met en place les moyens, rédige les consignes et tient le registre de sécurité.<br>
+            <strong>Le maire :</strong> Détient le pouvoir de police, autorise l’ouverture au public.<br>
+            <strong>La commission de sécurité :</strong> Visite l’établissement, rend un avis. Les pompiers (SDIS) y siègent.<br>
+            <strong>Moi :</strong> Je suis les yeux, les oreilles et les mains de l’exploitant sur le terrain.</p>
+            <h4>Les trois niveaux de qualification</h4>
+            <ul>
+              <li><strong>SSIAP 1 – Agent :</strong> Rondes, alerte, évacuation, intervention sur début de feu, exploitation du poste.</li>
+              <li><strong>SSIAP 2 – Chef d’équipe :</strong> Encadre l'équipe, gère le poste de sécurité en situation de crise et transmet les consignes.</li>
+              <li><strong>SSIAP 3 – Chef de service :</strong> Conçoit et pilote la sécurité incendie de l’établissement.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="resp-penale-incendie">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art 223-1 CP</span>
+            <span class="article-title">Ma Responsabilité Pénale</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Mise en danger délibérée de la personne d’autrui</strong>
+              <p>« Le fait d’exposer directement autrui à un risque immédiat de mort ou de blessures [...] par la violation manifestement délibérée d’une obligation particulière de prudence ou de sécurité imposée par la loi ou le règlement est puni d’un an d’emprisonnement et de 15 000 euros d’amende. »</p>
+            </div>
+            <p>Ce que cela signifie pour moi : Je ne dois jamais fermer les yeux sur une issue de secours verrouillée, un extincteur déplacé ou un système de sécurité en panne : signaler est mon premier réflexe.</p>
+            <p>La non-assistance à personne en péril (Art. 223-6) s’applique aussi à moi : si je ne peux pas intervenir sans danger, je dois au moins alerter.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 2: Le Feu -->
+<section id="feu" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 02</div>
+      <h2 class="section-title">LE FEU ET SES CONSÉQUENCES</h2>
+      <p class="section-desc">Pour combattre un ennemi, je dois d’abord le comprendre. Le feu n’est pas une fatalité : c’est une réaction chimique qui obéit à des règles précises.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#triangle-feu">Le Triangle du Feu</a>
+        <a href="#classes-feu">Classes de Feux</a>
+        <a href="#propagation-feu">Propagation</a>
+        <a href="#developpement-inc">Développement et Fumées</a>
+      </div>
+      <div>
+        <div class="article-block" id="triangle-feu">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">CHIMIE</span>
+            <span class="article-title">Le Triangle du Feu</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Le feu est une combustion : une réaction chimique qui dégage de la chaleur (exothermique) et de la lumière. Elle nécessite la réunion de trois éléments :</p>
+            <ul>
+              <li><strong>Combustible :</strong> ce qui brûle (bois, papier, gaz).</li>
+              <li><strong>Comburant :</strong> ce qui permet de brûler (l'oxygène de l'air).</li>
+              <li><strong>Énergie d'activation :</strong> ce qui déclenche (flamme, étincelle, chaleur).</li>
+            </ul>
+            <p>À ces trois éléments s’ajoute la réaction en chaîne, qui entretient le feu (Tétraèdre du feu).</p>
+            <div class="info-box">
+              <p>Règle fondamentale : Pour éteindre un feu, je supprime au moins un côté du triangle. Je refroidis (enlève chaleur), j'étouffe (enlève comburant), je sépare (enlève combustible) ou j'inhibe (interromps la réaction).</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="classes-feu">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">CLASSES</span>
+            <span class="article-title">Les Classes de Feux</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Classe</th><th>Combustible</th><th>Exemples</th></tr>
+                <tr><td><strong>A</strong></td><td>Solides (feux "secs", braises)</td><td>Bois, papier, carton, tissus, plastiques</td></tr>
+                <tr><td><strong>B</strong></td><td>Liquides ou solides liquéfiables</td><td>Essence, alcool, peinture, cire</td></tr>
+                <tr><td><strong>C</strong></td><td>Gaz</td><td>Butane, propane, gaz naturel</td></tr>
+                <tr><td><strong>D</strong></td><td>Métaux</td><td>Magnésium, aluminium en poudre, sodium</td></tr>
+                <tr><td><strong>F</strong></td><td>Huiles et graisses de cuisson</td><td>Friteuse, huile de cuisine</td></tr>
+                <tr><td><strong>L</strong></td><td>Lithium</td><td>Batteries et accumulateurs Lithium-Ion</td></tr>
+              </table>
+            </div>
+            <div class="warning-box">
+              <strong>Attention</strong>
+              <p>Il n’existe pas de classe « électrique ». Un feu d’origine électrique est un feu de classe A ou B qui est alimenté par l’électricité. Mon premier réflexe est de couper le courant avant d’agir.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="propagation-feu">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">PHYSIQUE</span>
+            <span class="article-title">Les Modes de Propagation</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>Par conduction :</strong> la chaleur se transmet à travers un matériau (poutre métallique, tuyau).</li>
+              <li><strong>Par convection :</strong> les gaz chauds montent et enflamment ce qui est au-dessus (cage d'escalier, gaine technique).</li>
+              <li><strong>Par rayonnement :</strong> la chaleur « traverse l'air » et enflamme un objet voisin.</li>
+              <li><strong>Par projection :</strong> des particules enflammées sont transportées et déclenchent un nouveau foyer.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="developpement-inc">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">ÉVOLUTION</span>
+            <span class="article-title">Développement & Fumées</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Le feu suit une évolution : éclosion, croissance, embrasement généralisé éclair (flash-over), feu pleinement développé, et décroissance.</p>
+            <div class="warning-box">
+              <strong>Explosion de fumées (Backdraft)</strong>
+              <p>Si un feu manque d'oxygène dans un local fermé et que j'ouvre la porte, l'air frais peut provoquer une explosion. Je ne dois jamais ouvrir une porte chaude ni une porte qui laisse passer de la fumée noire sans précaution.</p>
+            </div>
+            <h4>Les fumées : Mon Premier Ennemi</h4>
+            <p>Dans un incendie, la fumée tue avant les flammes. Elle est :</p>
+            <ul>
+              <li><strong>Toxique :</strong> monoxyde de carbone (CO), acide cyanhydrique.</li>
+              <li><strong>Opaque :</strong> je ne vois plus les sorties, je perds mes repères.</li>
+              <li><strong>Chaude :</strong> elle brûle les voies respiratoires.</li>
+              <li><strong>Montante :</strong> l'air respirable reste près du sol.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 6 & 8: Installations & Alerte (Merged for brevity but keeping core text) -->
+<section id="alarme" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Modules 06 & 08</div>
+      <h2 class="section-title">DE L'ALARME À L'ALERTE</h2>
+      <p class="section-desc">Le poste de sécurité est mon cockpit. Je dois interpréter, lever le doute, alerter, sécuriser et accueillir en suivant la méthode des 4 A.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#ssi-definition">Système Sécurité Incendie</a>
+        <a href="#methode-4a">La Méthode des 4 A</a>
+        <a href="#levee-doute">La Levée de Doute</a>
+        <a href="#alerte-pompiers">Alerter les Secours</a>
+      </div>
+      <div>
+        <div class="article-block" id="ssi-definition">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">TECHNIQUE</span>
+            <span class="article-title">Le Système de Sécurité Incendie (SSI)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Le SSI est l’ensemble des équipements qui détectent un début d’incendie, donnent l’alarme et mettent en sécurité le bâtiment.</p>
+            <ul>
+              <li><strong>SDI (système de détection incendie) :</strong> Détecteurs automatiques, déclencheurs manuels (DM).</li>
+              <li><strong>ECS (équipement de contrôle et de signalisation) :</strong> Le tableau au poste de sécurité (Veille, Alarme feu, Dérangement, Hors service).</li>
+              <li><strong>SMSI (système de mise en sécurité incendie) :</strong> CMSI, DAS (dispositifs actionnés de sécurité : portes coupe-feu, clapets, désenfumage, déverrouillage, ascenseurs).</li>
+            </ul>
+            <div class="warning-box">
+              <strong>Alarme vs Alerte</strong>
+              <p>L’alarme est le signal sonore et lumineux destiné aux occupants pour qu’ils évacuent. L’alerte est l'appel aux secours extérieurs (18 ou 112). L'alarme ne remplace pas l'alerte.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="methode-4a">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">CHRONOLOGIE</span>
+            <span class="article-title">Ma Chronologie : Les 4 A</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ol>
+              <li><strong>ANALYSER :</strong> j’interprète l’alarme et je lève le doute.</li>
+              <li><strong>ALERTER :</strong> je préviens les sapeurs-pompiers et je déclenche l’évacuation si nécessaire.</li>
+              <li><strong>AGIR :</strong> j’évacue, j’assiste, j’interviens sur le début d’incendie et je sécurise le site.</li>
+              <li><strong>ACCUEILLIR :</strong> je reçois les secours, je les guide et je leur transmets les informations.</li>
+            </ol>
+            <p>Règle fondamentale : Je ne saute aucune étape. Une alarme est toujours considérée comme vraie jusqu’à preuve du contraire.</p>
+          </div>
+        </div>
+        <div class="article-block" id="levee-doute">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">TERRAIN</span>
+            <span class="article-title">La Levée de Doute</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>C’est la vérification sur place de la réalité d’une alarme, dans le délai prévu par le système.</p>
+            <ul>
+              <li>Je préviens le PC de mon départ.</li>
+              <li>Je m’équipe (radio, lampe, clés, extincteur, plan).</li>
+              <li>Je pars en binôme si possible.</li>
+              <li>Je contrôle les portes avec le dos de la main avant d'ouvrir.</li>
+              <li>Je rends compte au PC immédiatement (Feu confirmé, doute persistant, cause bénigne).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="alerte-pompiers">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">MESSAGE</span>
+            <span class="article-title">Alerter les Sapeurs-Pompiers</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Dès que le feu est confirmé ou que le doute persiste, j'alerte (18/112) avec un message structuré :</p>
+            <ul>
+              <li><strong>Qui je suis :</strong> nom, fonction, numéro de rappel.</li>
+              <li><strong>Où :</strong> adresse précise, nom de l'établissement, niveau, local, accès.</li>
+              <li><strong>Quoi :</strong> nature du sinistre (fumées, flammes, produits en cause).</li>
+              <li><strong>Qui :</strong> nombre de victimes, personnes menacées, évacuation en cours.</li>
+              <li><strong>Ce qui a été fait :</strong> alarme, coupures, moyens utilisés.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHES MÉMO -->
+<section id="fiches">
+  <div class="fiches-inner">
+    <div class="reveal">
+      <div class="section-tag">Référence</div>
+      <h2 class="section-title">FICHES MÉMO OPÉRATIONNELLES</h2>
+      <p class="section-desc">Mes fiches de synthèse pour maîtriser les notions clés sur le terrain.</p>
+    </div>
+    <div class="fiches-grid reveal">
+      <div class="fiche-card" onclick="scrollToFiche('fiche-4a')">
+        <span class="fiche-icon">🔥</span>
+        <div class="fiche-title">La Chronologie des 4 A</div>
+        <div class="fiche-summary">Analyser, Alerter, Agir, Accueillir. Mon réflexe de base quand l'alarme sonne.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-qqoqcp')">
+        <span class="fiche-icon">📞</span>
+        <div class="fiche-title">Message d'Alerte & QQOQCP</div>
+        <div class="fiche-summary">Structure du message aux pompiers et rédaction de la main courante.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-extincteurs')">
+        <span class="fiche-icon">🧯</span>
+        <div class="fiche-title">Extincteurs & Classes</div>
+        <div class="fiche-summary">Eau pulvérisée, CO2, Poudre ABC. Quel extincteur pour quel feu.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-ronde')">
+        <span class="fiche-icon">📋</span>
+        <div class="fiche-title">Check-list de la Ronde</div>
+        <div class="fiche-summary">Issues, portes coupe-feu, RIA, SSI, comportements. Mon antisèche terrain.</div>
+      </div>
+    </div>
+
+    <!-- FICHE 4A -->
+    <div class="fiche-detail reveal" id="fiche-4a">
+      <div class="section-tag" style="margin-top: 3rem;">Fiche 13</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">LA CHRONOLOGIE D'UNE INTERVENTION (LES 4 A)</h3>
+      <div class="article-block open">
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Étape</th><th>Ce que je fais</th><th>Mon réflexe</th></tr>
+              <tr><td><strong>1. ANALYSER</strong></td><td>Lire l'ECS, consulter plan/caméras, acquitter, partir en levée de doute.</td><td>Toute alarme est vraie jusqu'à preuve du contraire.</td></tr>
+              <tr><td><strong>2. ALERTER</strong></td><td>Feu confirmé / doute persistant : alarme générale et appel 18/112.</td><td>Dans le doute, j'alerte.</td></tr>
+              <tr><td><strong>3. AGIR</strong></td><td>Évacuer, assister, intervenir avec le bon moyen, fermer portes, coupures.</td><td>Une vie vaut plus qu'un bien. Garder un chemin de repli.</td></tr>
+              <tr><td><strong>4. ACCUEILLIR</strong></td><td>Recevoir les secours, remettre plans/clés, obéir au COS.</td><td>Je suis le relais du commandant, pas son concurrent.</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE EXTINCTEURS -->
+    <div class="fiche-detail reveal" id="fiche-extincteurs">
+      <div class="section-tag">Fiche 15</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">EXTINCTEURS ET CLASSES DE FEUX</h3>
+      <div class="article-block open">
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Agent extincteur</th><th>A (solides)</th><th>B (liquides)</th><th>C (gaz)</th><th>D (métaux)</th><th>F (huiles)</th><th>Feu électrique</th></tr>
+              <tr><td>Eau pulvérisée</td><td>Oui</td><td>Non</td><td>Non</td><td>Non</td><td>Non</td><td>Non (sauf coupé)</td></tr>
+              <tr><td>CO2</td><td>Limité</td><td>Oui</td><td>Non</td><td>Non</td><td>Non</td><td>Oui</td></tr>
+              <tr><td>Poudre ABC</td><td>Oui</td><td>Oui</td><td>Oui</td><td>Non</td><td>Non</td><td>Oui</td></tr>
+              <tr><td>Mousse</td><td>Oui</td><td>Oui</td><td>Non</td><td>Non</td><td>Non</td><td>Non</td></tr>
+              <tr><td>Classe F (cuisine)</td><td>Non</td><td>Non</td><td>Non</td><td>Non</td><td>Oui</td><td>Non</td></tr>
+            </table>
+          </div>
+          <h4>Mes 5 rappels :</h4>
+          <ol>
+            <li>Je vise la base des flammes et je balaie.</li>
+            <li>Je garde mon dos vers la sortie et le vent dans le dos.</li>
+            <li>Je coupe la source avant d'éteindre quand c'est possible.</li>
+            <li>Jamais d'eau sur l'huile ou matériel électrique sous tension.</li>
+            <li>Si le feu résiste, j'évacue, ferme les portes et j'alerte.</li>
+          </ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="conclusion-inner">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;">Conclusion</div>
+      <h2 class="section-title">PRÊT POUR PROTÉGER</h2>
+      <p style="color:var(--gray);font-size:0.95rem;margin-top:1rem;">Au terme de ce manuel de Sécurité Incendie, je possède désormais la troisième pièce de mon armure professionnelle. Aujourd'hui, je sais comment empêcher qu'un feu ne devienne un drame.</p>
+    </div>
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-num">1</div>
+        <div class="principle-text"><strong>PRÉVENIR</strong> avant tout : le meilleur incendie est celui qui n’a jamais lieu.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">2</div>
+        <div class="principle-text"><strong>ANALYSER</strong> avec méthode : une alarme est vraie jusqu’à preuve du contraire.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">3</div>
+        <div class="principle-text"><strong>ALERTER</strong> avec précision : je suis la voix de mon site auprès des sapeurs-pompiers.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">4</div>
+        <div class="principle-text"><strong>AGIR</strong> en sécurité : j’évacue, j’assiste, j’interviens avec le bon moyen et je garde toujours un chemin de repli.</div>
+      </div>
+      <div class="principle" style="grid-column: 1 / -1;">
+        <div class="principle-num">5</div>
+        <div class="principle-text"><strong>ACCUEILLIR et RENDRE COMPTE</strong> : je guide les secours et je consigne chaque fait avec rigueur.</div>
+      </div>
+    </div>
+    <div class="engage-block reveal">
+      Fier de mon futur métier.<br>
+      Que j’exerce demain comme agent SSIAP, chef d’équipe, agent de sûreté, policier municipal ou sapeur-pompier, le public qui verra mon uniforme du Lycée François Arago saura qu’il peut compter sur moi.
+    </div>
+    <div style="margin-top:2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:rgba(181,138,138,0.6);letter-spacing:1px;" class="reveal">
+      Ça c'est mon manuel de sécurité incendie,<br>
+      Il y en a beaucoup comme celui-là, mais lui c'est le mien,<br>
+      <strong style="color:rgba(181,138,138,0.8);">Mon manuel c'est mon vrai copain.</strong><br><br>
+      Il est la protection de ceux qui sont dans le bâtiment.<br>
+      Je dois rester maître de mon stress, comme je reste maître de mes gestes.<br>
+      Sans moi, mon manuel n'est rien. Sans mon manuel, je ne peux pas protéger.<br>
+      Je dois être plus rapide que la fumée et plus vigilant que le feu.<br>
+      Et je le serai !
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Lycée François Arago</strong> · Les Essentiels de la Sécurité Incendie · Formation professionnelle · Tous droits réservés
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(r => observer.observe(r));
+
+  function toggleArticle(header) {
+    const block = header.closest('.article-block');
+    block.classList.toggle('open');
+    const body = block.querySelector('.article-body');
+    body.style.display = block.classList.contains('open') ? 'block' : 'none';
+  }
+
+  function scrollToFiche(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      nav.style.background = window.scrollY > 40 ? 'rgba(18,9,9,0.97)' : 'rgba(18,9,9,0.92)';
+    } else {
+      nav.style.background = window.scrollY > 40 ? 'rgba(252,248,248,0.99)' : 'rgba(252,248,248,0.94)';
+    }
+  });
+
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('arago-theme', next);
+    var lbl = document.getElementById('toggle-label');
+    if (lbl) lbl.textContent = next === 'dark' ? 'Mode sombre' : 'Mode clair';
+  }
+
+  (function() {
+    var lbl = document.getElementById('toggle-label');
+    if (lbl) {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      lbl.textContent = isDark ? 'Mode sombre' : 'Mode clair';
+    }
+  })();
+</script>
+</body>
+</html>

@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){var s=localStorage.getItem("arago-theme");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(s!=="light"&&p)){document.documentElement.setAttribute("data-theme","dark");}else{document.documentElement.setAttribute("data-theme","light");}})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Exercices Premiers Secours — Arago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   THÈME SOMBRE (dark = défaut) — TON JAUNE
+══════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --navy:   #1a1810; 
+  --deep:   #12100a;
+  --blue:   #4a4015; 
+  --accent: #f1c40f; /* Jaune */
+  --red:    #e67e22;
+  --white:  #fdfcf5;
+  --gray:   #b5b09a;
+  --light:  #eae6d0;
+  --card:   #1c1a12;
+  --border: rgba(241,196,15,0.25);
+  --touch:  48px;
+
+  --nav-bg:        rgba(26,24,16,0.97);
+  --nav-menu-bg:   rgba(26,24,16,0.98);
+  --hero-grid-clr: rgba(241,196,15,0.07);
+  --stat-bg:       #1c1a12;
+  --module-hover:  #2a2718;
+  --module-active: #2a2718;
+  --feedback-ok-bg:   rgba(39,174,96,0.12);
+  --feedback-ok-brd:  #27ae60;
+  --feedback-ok-txt:  #2ecc71;
+  --feedback-ko-bg:   rgba(192,57,43,0.12);
+  --feedback-ko-brd:  #c0392b;
+  --feedback-ko-txt:  #e74c3c;
+  --input-bg:      #12100a;
+  --order-bg:      rgba(255,255,255,0.02);
+  --order-brd:     rgba(255,255,255,0.06);
+  --assoc-bg:      rgba(255,255,255,0.02);
+  --assoc-brd:     rgba(255,255,255,0.06);
+  --redac-bg:      rgba(255,255,255,0.02);
+  --fact-bg:       rgba(255,255,255,0.02);
+  --tab-bg:        #1c1a12;
+  --toggle-bg:     rgba(241,196,15,0.15);
+  --link-color:    #b5b09a;
+  --score-correct: #27ae60;
+  --scenario-bg:   rgba(241,196,15,0.05);
+  --scenario-brd:  rgba(241,196,15,0.4);
+  --desc-bg:       rgba(241,196,15,0.04);
+  --desc-brd:      rgba(241,196,15,0.15);
+  --ai-gen-bg:     linear-gradient(135deg,rgba(241,196,15,0.2),rgba(241,196,15,0.08));
+  --shimmer-bg:    #1c1a12;
+  --footer-bg:     #12100a;
+}
+
+/* ══════════════════════════════════════
+   THÈME CLAIR 
+══════════════════════════════════════ */
+[data-theme="light"] {
+  --navy:   #fdfcf8;
+  --deep:   #f5f4ef;
+  --blue:   #e8e4de;
+  --accent: #d4ac0d;
+  --red:    #d35400;
+  --white:  #1a1a1a;
+  --gray:   #7d786b;
+  --light:  #3b3829;
+  --card:   #ffffff;
+  --border: rgba(212,172,13,0.15);
+
+  --nav-bg:        rgba(253,252,248,0.97);
+  --nav-menu-bg:   rgba(253,252,248,0.98);
+  --hero-grid-clr: rgba(212,172,13,0.05);
+  --stat-bg:       #ffffff;
+  --module-hover:  #fcfbf2;
+  --module-active: #fcfbf2;
+  --feedback-ok-bg:   rgba(46,110,58,0.08);
+  --feedback-ok-brd:  #2e6e3a;
+  --feedback-ok-txt:  #1a4a22;
+  --feedback-ko-bg:   rgba(138,48,32,0.08);
+  --feedback-ko-brd:  #8a3020;
+  --feedback-ko-txt:  #6b1e10;
+  --input-bg:      #f5f4ef;
+  --order-bg:      #fdfcf8;
+  --order-brd:     rgba(0,0,0,0.1);
+  --assoc-bg:      #fdfcf8;
+  --assoc-brd:     rgba(0,0,0,0.1);
+  --redac-bg:      #fdfcf8;
+  --fact-bg:       #fdfcf8;
+  --tab-bg:        #ffffff;
+  --toggle-bg:     rgba(212,172,13,0.06);
+  --link-color:    #7d786b;
+  --score-correct: #2e6e3a;
+  --scenario-bg:   rgba(212,172,13,0.04);
+  --scenario-brd:  rgba(212,172,13,0.25);
+  --desc-bg:       rgba(212,172,13,0.04);
+  --desc-brd:      rgba(212,172,13,0.15);
+  --ai-gen-bg:     linear-gradient(135deg,rgba(212,172,13,0.08),rgba(212,172,13,0.04));
+  --shimmer-bg:    #f5f4ef;
+  --footer-bg:     #f5f4ef;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1rem;
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem; letter-spacing: 3px;
+  color: var(--white);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-burger {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 8px; width: 40px; height: 40px;
+  align-items: center; justify-content: center;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: all 0.3s; transform-origin: center;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-menu {
+  position: fixed; top: 56px; left: 0; right: 0; z-index: 190;
+  background: var(--nav-menu-bg);
+  border-bottom: 1px solid var(--border);
+  transform: translateY(-110%);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(16px);
+}
+.nav-menu.open { transform: translateY(0); }
+.nav-menu a {
+  display: flex; align-items: center;
+  color: var(--gray); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(128,128,128,0.08);
+  transition: all 0.2s;
+  min-height: var(--touch);
+}
+.nav-menu a:hover, .nav-menu a:active { color: var(--white); background: var(--toggle-bg); }
+.nav-menu a.accent { color: var(--accent); }
+.nav-links-desktop { display: none; }
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 1.2rem 3rem;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid-clr) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-clr) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridSlide 20s linear infinite;
+}
+@keyframes gridSlide { from{transform:translateY(0)} to{transform:translateY(40px)} }
+.hero-glow {
+  position: absolute;
+  width: min(500px,100vw); height: min(500px,100vw);
+  background: radial-gradient(circle,rgba(241,196,15,0.18) 0%,transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+[data-theme="light"] .hero-glow {
+  background: radial-gradient(circle,rgba(212,172,13,0.06) 0%,transparent 70%);
+}
+.badge-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 14px; margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem,18vw,7rem);
+  line-height: 0.88; letter-spacing: 3px;
+  color: var(--white);
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero h1 em {
+  font-style: normal;
+  -webkit-text-stroke: 1px var(--accent);
+  color: transparent;
+}
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem; font-weight: 300;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray); margin-top: 0.8rem;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-line {
+  width: 80px; height: 2px;
+  background: linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin: 1.5rem auto;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-desc {
+  max-width: 320px; color: var(--gray);
+  font-size: 0.88rem;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+.hero-cta {
+  margin-top: 2rem;
+  display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+.btn-primary {
+  background: var(--accent); color: #000;
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 28px;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s; border: none; cursor: pointer;
+  min-height: var(--touch); display: inline-flex; align-items: center;
+}
+[data-theme="light"] .btn-primary { color: #fff; }
+.btn-ghost {
+  color: var(--white); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 13px 28px;
+  border: 1px solid var(--border);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s; background: none; cursor: pointer;
+  min-height: var(--touch); display: inline-flex; align-items: center;
+}
+.scroll-indicator {
+  position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--gray); font-size: 0.6rem; letter-spacing: 3px;
+  font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase;
+  animation: fadeUp 1s 1s ease both;
+}
+.scroll-line {
+  width: 1px; height: 30px;
+  background: linear-gradient(to bottom,var(--accent),transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* STATS BAR */
+.stats-bar {
+  position: relative; z-index: 1;
+  background: var(--stat-bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  transition: background 0.3s;
+}
+.stat {
+  padding: 1.2rem 0.5rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:nth-child(3), .stat:nth-child(6) { border-right: none; }
+.stat:nth-child(4), .stat:nth-child(5), .stat:nth-child(6) { border-top: 1px solid var(--border); }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem; color: var(--accent); letter-spacing: 2px;
+}
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); margin-top: 2px;
+}
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 0.6rem;
+}
+.section-tag::before { content:''; display:block; width:20px; height:1px; background:var(--accent); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem,8vw,3.5rem);
+  letter-spacing: 3px; line-height: 1;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+}
+.section-desc { color: var(--gray); font-size: 0.88rem; }
+
+/* MODULES GRID */
+#modules-nav { padding: 3.5rem 1rem; max-width: 1200px; margin: 0 auto; }
+.modules-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; margin-top: 2rem;
+  border: 1px solid var(--border);
+}
+.module-card {
+  background: var(--card);
+  padding: 1.2rem 1rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.2s;
+  min-height: 90px;
+  -webkit-tap-highlight-color: var(--toggle-bg);
+}
+.module-card:active { background: var(--module-active); }
+.module-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px;
+  color: var(--accent); margin-bottom: 0.3rem;
+}
+.module-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 0.2rem;
+  line-height: 1.2; color: var(--white);
+}
+.module-desc { font-size: 0.75rem; color: var(--gray); line-height: 1.3; }
+
+/* EXERCICES */
+#exercices { padding: 3rem 0.8rem; border-top: 1px solid var(--border); }
+.ex-inner { max-width: 700px; margin: 0 auto; }
+
+#ex-dashboard {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; margin: 1.5rem 0;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.dash-stat { background: var(--card); padding: 1rem; text-align: center; }
+.dash-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem; letter-spacing: 2px;
+}
+.dash-num.green { color: var(--score-correct); }
+.dash-num.red   { color: var(--red); }
+.dash-num.white { color: var(--white); }
+.dash-num.accent{ color: var(--accent); }
+.dash-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray); margin-top: 2px;
+}
+.dash-actions {
+  grid-column: 1/-1; background: var(--card);
+  display: flex; align-items: center; justify-content: center; padding: 0.8rem;
+}
+.reset-btn {
+  background: none; border: 1px solid var(--border); color: var(--gray);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+  padding: 10px 20px; cursor: pointer; transition: all 0.2s;
+  min-height: var(--touch); display: flex; align-items: center;
+}
+.reset-btn:active { border-color: var(--red); color: var(--red); }
+
+.theme-tabs-wrap { position: relative; margin-bottom: 1.5rem; }
+.theme-tabs {
+  display: flex; gap: 6px;
+  overflow-x: auto; overflow-y: hidden;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.theme-tabs::-webkit-scrollbar { display: none; }
+.ex-theme-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  background: var(--tab-bg); border: 1px solid var(--border); color: var(--gray);
+  padding: 10px 14px; cursor: pointer; transition: all 0.2s;
+  white-space: nowrap; flex-shrink: 0;
+  min-height: var(--touch); display: flex; align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.ex-theme-btn:active, .ex-theme-btn.active {
+  background: var(--toggle-bg);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+.theme-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem; letter-spacing: 3px;
+  margin-bottom: 0.2rem; color: var(--white);
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.theme-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gray); margin-bottom: 1.2rem;
+}
+.q-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  animation: fadeUp 0.35s ease both;
+  border-radius: 2px;
+}
+.q-card-header {
+  padding: 0.9rem 1rem;
+  background: var(--toggle-bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 0.7rem; align-items: flex-start;
+}
+.q-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px;
+  color: var(--accent);
+  background: var(--toggle-bg);
+  border: 1px solid var(--border);
+  padding: 3px 7px; white-space: nowrap; flex-shrink: 0;
+}
+.q-type {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gray); margin-top: 2px;
+}
+.q-text { font-size: 0.9rem; color: var(--light); line-height: 1.5; }
+.q-body { padding: 0.9rem 1rem; }
+.q-scenario {
+  background: var(--scenario-bg);
+  border-left: 2px solid var(--scenario-brd);
+  padding: 0.6rem 0.9rem; margin-bottom: 0.7rem;
+  font-size: 0.82rem; color: var(--gray); font-style: italic; line-height: 1.5;
+}
+
+.btn-opt {
+  display: block; width: 100%; text-align: left;
+  background: none; border: 1px solid var(--border);
+  color: var(--light);
+  font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+  padding: 0.85rem 1rem; margin: 0.4rem 0;
+  cursor: pointer; transition: background 0.15s,border-color 0.15s;
+  border-radius: 0; min-height: var(--touch); line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-opt:active:not([disabled]) { border-color: var(--accent); color: var(--white); background: var(--toggle-bg); }
+.btn-opt.correct { background: var(--feedback-ok-bg)!important; border-color: var(--feedback-ok-brd)!important; color: var(--feedback-ok-txt)!important; }
+.btn-opt.wrong   { background: var(--feedback-ko-bg)!important; border-color: var(--feedback-ko-brd)!important; color: var(--feedback-ko-txt)!important; }
+.btn-opt[disabled] { cursor: default; }
+
+.vf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.6rem 0; }
+.q-check-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--toggle-bg); border: 1px solid var(--border); color: var(--gray);
+  padding: 0; cursor: pointer; transition: all 0.2s;
+  min-height: var(--touch); display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-check-btn:active { border-color: var(--accent); color: var(--white); }
+.q-check-btn.sel-vrai { border-color: var(--feedback-ok-brd); color: var(--feedback-ok-txt); background: var(--feedback-ok-bg); }
+.q-check-btn.sel-faux { border-color: var(--feedback-ko-brd); color: var(--feedback-ko-txt); background: var(--feedback-ko-bg); }
+.q-check-btn.reveal-correct { border-color: var(--feedback-ok-brd)!important; color: var(--feedback-ok-txt)!important; }
+
+.q-feedback {
+  display: none; padding: 0.8rem 1rem; margin-top: 0.5rem;
+  font-size: 0.85rem; border-left: 3px solid; line-height: 1.5;
+}
+.q-feedback.show { display: block; }
+.q-feedback.ok   { border-color: var(--feedback-ok-brd); background: var(--feedback-ok-bg); color: var(--feedback-ok-txt); }
+.q-feedback.ko   { border-color: var(--feedback-ko-brd); background: var(--feedback-ko-bg); color: var(--feedback-ko-txt); }
+.q-feedback.info { border-color: var(--accent); background: var(--toggle-bg); color: var(--light); }
+
+.assoc-item {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin: 0.5rem 0; padding: 0.7rem;
+  background: var(--assoc-bg); border: 1px solid var(--assoc-brd);
+}
+.assoc-label { font-size: 0.85rem; color: var(--light); line-height: 1.4; }
+.assoc-select {
+  background: var(--input-bg); border: 1px solid var(--border);
+  color: var(--light); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; padding: 10px 12px; cursor: pointer; width: 100%;
+  min-height: var(--touch);
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a9ab5' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  padding-right: 36px;
+}
+[data-theme="light"] .assoc-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236e6b66' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+}
+.assoc-select.correct-sel { border-color: var(--feedback-ok-brd); color: var(--feedback-ok-txt); }
+.assoc-select.wrong-sel   { border-color: var(--feedback-ko-brd); color: var(--feedback-ko-txt); }
+
+.order-list { display: flex; flex-direction: column; gap: 5px; margin: 0.5rem 0; }
+.order-item {
+  display: flex; align-items: center; gap: 0;
+  background: var(--order-bg); border: 1px solid var(--order-brd);
+  font-size: 0.85rem; color: var(--light); transition: all 0.2s; overflow: hidden;
+}
+.order-item.correct { border-color: var(--feedback-ok-brd)!important; background: var(--feedback-ok-bg)!important; color: var(--feedback-ok-txt)!important; }
+.order-item.wrong   { border-color: var(--feedback-ko-brd)!important; background: var(--feedback-ko-bg)!important; }
+.order-text { flex: 1; padding: 10px 12px; line-height: 1.4; }
+.order-btns { display: flex; flex-direction: column; flex-shrink: 0; border-left: 1px solid var(--border); }
+.order-btn-up, .order-btn-dn {
+  background: none; border: none;
+  color: var(--gray); cursor: pointer;
+  width: 40px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.order-btn-up { border-bottom: 1px solid var(--border); }
+.order-btn-up:active, .order-btn-dn:active { background: var(--toggle-bg); color: var(--white); }
+.order-btn-up:disabled, .order-btn-dn:disabled { opacity: 0.2; cursor: default; }
+.order-item.dragging  { opacity: 0.4; }
+.order-item.drag-over { border-color: var(--accent); background: var(--toggle-bg); }
+
+.q-validate-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  background: var(--accent); color: #fff;
+  border: none; padding: 0 24px;
+  cursor: pointer; margin-top: 0.7rem;
+  clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition: background 0.2s;
+  min-height: var(--touch); display: flex; align-items: center; justify-content: center;
+  width: 100%;
+}
+[data-theme="light"] .q-validate-btn { color: #fff; }
+.q-validate-btn:active { filter: brightness(1.1); }
+.q-validate-btn:disabled { opacity: 0.5; cursor: default; }
+
+.fact-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px; background: var(--fact-bg); border: 1px solid var(--border);
+  margin: 0.35rem 0; cursor: pointer; transition: all 0.2s;
+  font-size: 0.87rem; color: var(--light); min-height: var(--touch);
+  -webkit-tap-highlight-color: transparent;
+}
+.fact-cb {
+  width: 22px; height: 22px; border: 1px solid var(--border);
+  background: transparent; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+}
+.fact-item.checked .fact-cb { background: var(--toggle-bg); border-color: var(--accent); color: var(--accent); }
+.fact-item.result-ok   { border-color: var(--feedback-ok-brd); background: var(--feedback-ok-bg); }
+.fact-item.result-ko   { border-color: var(--feedback-ko-brd); background: var(--feedback-ko-bg); }
+.fact-item.result-miss { border-color: rgba(180,120,0,0.5); background: rgba(180,120,0,0.06); }
+
+.redac-area {
+  width: 100%; min-height: 140px;
+  background: var(--redac-bg); border: 1px solid var(--border);
+  color: var(--light);
+  font-family: 'Barlow', sans-serif; font-size: 16px;
+  padding: 12px 14px; resize: vertical; transition: border-color 0.2s; line-height: 1.6;
+}
+.redac-area:focus { outline: none; border-color: var(--accent); }
+
+.desc-grid { display: flex; flex-direction: column; gap: 0; margin: 0.6rem 0; }
+.desc-block { display: flex; gap: 10px; margin-bottom: 0.8rem; align-items: flex-start; }
+.desc-letter { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); line-height: 1; width: 28px; flex-shrink: 0; padding-top: 8px; }
+.desc-block-content { flex: 1; min-width: 0; }
+.desc-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 5px; }
+.desc-static {
+  padding: 10px 12px;
+  background: var(--desc-bg); border: 1px solid var(--desc-brd);
+  font-size: 0.85rem; color: var(--gray); font-style: italic; line-height: 1.5;
+}
+
+.btn-ai-gen {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--ai-gen-bg);
+  border: 1px solid var(--accent); color: var(--white);
+  padding: 0 18px; cursor: pointer; transition: all 0.25s;
+  min-height: var(--touch);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  position: relative; overflow: hidden;
+}
+.btn-ai-gen:disabled { opacity: 0.5; cursor: default; }
+.btn-ai-gen #ai-btn-icon { color: var(--accent); font-size: 1rem; line-height: 1; }
+.btn-ai-gen.loading #ai-btn-icon { display: inline-block; animation: aiSpin 1.2s linear infinite; }
+@keyframes aiSpin { 0%{transform:rotate(0deg) scale(1)} 50%{transform:rotate(180deg) scale(1.3)} 100%{transform:rotate(360deg) scale(1)} }
+.ai-diff-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--tab-bg); border: 1px solid var(--border); color: var(--gray);
+  padding: 8px 10px; cursor: pointer; transition: all 0.2s; min-height: 36px;
+}
+.ai-diff-btn.active { border-color: var(--accent); color: var(--accent); background: var(--toggle-bg); }
+#ai-status {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); padding: 0.6rem 1rem;
+  background: var(--toggle-bg); border-left: 2px solid var(--accent);
+}
+#ai-status.error   { border-color: var(--red); color: var(--feedback-ko-txt); }
+#ai-status.success { border-color: var(--feedback-ok-brd); color: var(--feedback-ok-txt); }
+.ai-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--border);
+  padding: 2px 8px; margin-left: 8px; vertical-align: middle;
+  background: var(--toggle-bg);
+}
+.q-card-shimmer {
+  background: var(--shimmer-bg); border-left: 2px solid var(--border);
+  padding: 1.2rem; margin-bottom: 1rem;
+  animation: shimmerPulse 1.4s ease-in-out infinite;
+}
+@keyframes shimmerPulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
+.shimmer-line {
+  height: 10px; border-radius: 2px;
+  background: linear-gradient(90deg,var(--order-bg) 25%,var(--toggle-bg) 50%,var(--order-bg) 75%);
+  background-size: 400% 100%;
+  animation: shimmerSlide 1.4s infinite; margin-bottom: 8px;
+}
+@keyframes shimmerSlide { from{background-position:100% 0} to{background-position:-100% 0} }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s,transform 0.5s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* TOGGLE SWITCH */
+#theme-toggle-wrap {
+  position: fixed; bottom: 24px; left: 24px;
+  z-index: 3001;
+  display: flex; align-items: center; gap: 10px;
+}
+#theme-toggle {
+  flex-shrink: 0; width: 52px; height: 28px;
+  border-radius: 14px; cursor: pointer;
+  display: flex; align-items: center; padding: 3px;
+  transition: background 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(128,128,128,0.3);
+  background: #2a2718;
+}
+#theme-toggle::after {
+  content: ''; display: block;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fdfcf5;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  transform: translateX(24px);
+}
+[data-theme="light"] #theme-toggle {
+  background: #e8e4de;
+  border-color: rgba(0,0,0,0.18);
+}
+[data-theme="light"] #theme-toggle::after {
+  transform: translateX(0);
+  background: #fff;
+}
+.toggle-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray);
+  background: var(--card);
+  padding: 3px 8px; border-radius: 4px;
+  border: 0.5px solid var(--border);
+  pointer-events: none; white-space: nowrap;
+  transition: color 0.3s, background 0.3s;
+}
+
+@media (min-width: 768px) {
+  nav { height: 60px; padding: 0 2rem; }
+  .nav-burger { display: none; }
+  .nav-menu   { display: none; }
+  .nav-links-desktop {
+    display: flex; gap: 0; list-style: none;
+  }
+  .nav-links-desktop a {
+    color: var(--link-color); text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 0 1rem; height: 60px;
+    display: flex; align-items: center;
+    border-bottom: 2px solid transparent; transition: all 0.2s;
+  }
+  .nav-links-desktop a:hover { color: var(--white); border-bottom-color: var(--accent); }
+  .nav-links-desktop a.accent-link { color: var(--accent); }
+  .hero { padding: 80px 2rem 4rem; }
+  .hero h1 { font-size: clamp(4rem,10vw,9rem); }
+  .stats-bar { display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat { flex: 1; min-width: 150px; max-width: 220px; padding: 2rem; border-top: none!important; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 2.8rem; }
+  #modules-nav { padding: 5rem 2rem; }
+  .modules-grid { grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); }
+  .module-card { padding: 1.8rem; }
+  .module-card:hover { background: var(--module-hover); transform: translateX(4px); }
+  .module-name { font-size: 1.1rem; }
+  .module-desc { font-size: 0.85rem; }
+  #exercices { padding: 5rem 2rem; }
+  .ex-inner { max-width: 1100px; }
+  #ex-dashboard { display: flex; gap: 1rem; flex-wrap: wrap; padding: 1.5rem; }
+  .dash-stat { min-width: 100px; }
+  .dash-actions { grid-column: auto; }
+  .theme-tabs { flex-wrap: wrap; overflow: visible; mask-image: none; -webkit-mask-image: none; }
+  .ex-theme-btn { white-space: normal; min-height: auto; }
+  .btn-opt { padding: 0.7rem 1rem; }
+  .btn-opt:hover:not([disabled]) { border-color: var(--accent); color: var(--white); background: var(--toggle-bg); }
+  .vf-row { display: flex; gap: 0.6rem; }
+  .q-check-btn { min-height: auto; padding: 6px 16px; font-size: 0.7rem; }
+  .assoc-item { flex-direction: row; align-items: center; gap: 0.6rem; padding: 0; background: transparent; border: none; }
+  .assoc-label { font-size: 0.88rem; flex: 1; min-width: 200px; }
+  .assoc-select { width: auto; font-size: 0.85rem; min-height: auto; }
+  .order-btns { flex-direction: row; }
+  .order-btn-up { border-bottom: none; border-right: 1px solid var(--border); }
+  .order-btn-up, .order-btn-dn { width: 36px; height: 100%; min-height: 44px; }
+  .q-validate-btn { width: auto; display: inline-flex; }
+  .desc-grid { display: grid; grid-template-columns: 32px 1fr; gap: 8px 12px; }
+  .desc-block { display: contents; }
+  .desc-letter { font-size: 1.6rem; padding-top: 10px; }
+  .desc-block-content { display: contents; }
+  .redac-area { font-size: 0.88rem; }
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  footer { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
+}
+</style>
+</head>
+<body>
+
+<div id="theme-toggle-wrap">
+  <div id="theme-toggle" onclick="toggleTheme()" role="switch" aria-label="Basculer mode sombre/clair" title="Mode sombre / Mode clair"></div>
+  <span class="toggle-label" id="toggle-label">Mode sombre</span>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-logo">🛡 <span>ARAGO</span> EXERCICES SECOURS</div>
+  <button class="nav-burger" id="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links-desktop">
+    <li><a href="#modules-nav">Modules</a></li>
+    <li><a href="#exercices">Exercices</a></li>
+    <li><a href="javascript:void(0)" onclick="goToTheme(0)" class="accent-link">✦ Lancer</a></li>
+  </ul>
+</nav>
+
+<div class="nav-menu" id="nav-menu">
+  <a href="#modules-nav" onclick="closeMenu()">📋 Modules</a>
+  <a href="#exercices" onclick="closeMenu()">✦ Exercices</a>
+  <a href="javascript:void(0)" onclick="goToTheme(0);closeMenu()" class="accent">🎯 Lancer les exercices</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="badge-top">Lycée François Arago · Formation Premiers Secours</div>
+  <h1>MANUEL<br><em>D'EXERCICES</em><br>SECOURS</h1>
+  <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-top:0.6rem;animation:fadeUp 0.8s 0.15s ease both;">PSC / SST</p>
+  <p class="hero-sub">Apprentis professionnels des métiers de la sécurité</p>
+  <div class="hero-line"></div>
+  <p class="hero-desc">11 modules interactifs. Transformez vos connaissances en réflexes pour sauver des vies.</p>
+  <div class="hero-cta">
+    <a href="#exercices" class="btn-primary">Commencer</a>
+    <a href="#modules-nav" class="btn-ghost">Modules</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Défiler
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">11</div><div class="stat-label">Modules</div></div>
+  <div class="stat"><div class="stat-num">65+</div><div class="stat-label">Exercices</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Types</div></div>
+  <div class="stat"><div class="stat-num">2</div><div class="stat-label">Certifications</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Étapes (PEAS)</div></div>
+</div>
+
+<!-- MODULES NAV -->
+<section id="modules-nav" style="position:relative;z-index:1;border-top:1px solid var(--border);">
+  <div style="padding:3.5rem 1rem 3rem;max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-tag">Sommaire</div>
+      <h2 class="section-title">MODULES</h2>
+      <p class="section-desc">Appuyez sur un module pour aller directement aux exercices.</p>
+    </div>
+    <div class="modules-grid reveal">
+      <div class="module-card" onclick="goToTheme(0)"><div class="module-num">MOD. 01</div><div class="module-name">Cadre Légal</div><div class="module-desc">Obligation d'agir, état de nécessité</div></div>
+      <div class="module-card" onclick="goToTheme(1)"><div class="module-num">MOD. 02</div><div class="module-name">Alerte Populations</div><div class="module-desc">SAIP, FR-Alert, confinement</div></div>
+      <div class="module-card" onclick="goToTheme(2)"><div class="module-num">MOD. 03</div><div class="module-name">La Protection</div><div class="module-desc">Dégagement d'urgence, attaque</div></div>
+      <div class="module-card" onclick="goToTheme(3)"><div class="module-num">MOD. 04</div><div class="module-name">L'Alerte</div><div class="module-desc">Numéros, message structuré</div></div>
+      <div class="module-card" onclick="goToTheme(4)"><div class="module-num">MOD. 05</div><div class="module-name">Le Bilan d'Urgence</div><div class="module-desc">Chronologie P-E-A-S, priorités</div></div>
+      <div class="module-card" onclick="goToTheme(5)"><div class="module-num">MOD. 06</div><div class="module-name">Obstruction</div><div class="module-desc">Claques, manœuvres de Heimlich</div></div>
+      <div class="module-card" onclick="goToTheme(6)"><div class="module-num">MOD. 07</div><div class="module-name">Saignements</div><div class="module-desc">Compression manuelle, garrot</div></div>
+      <div class="module-card" onclick="goToTheme(7)"><div class="module-num">MOD. 08</div><div class="module-name">Plaies et Brûlures</div><div class="module-desc">Gravité, arrosage, traumatismes</div></div>
+      <div class="module-card" onclick="goToTheme(8)"><div class="module-num">MOD. 09</div><div class="module-name">Le Malaise</div><div class="module-desc">Infarctus, AVC, manœuvres</div></div>
+      <div class="module-card" onclick="goToTheme(9)"><div class="module-num">MOD. 10</div><div class="module-name">Perte de Connaissance</div><div class="module-desc">LVA, Position Latérale de Sécurité</div></div>
+      <div class="module-card" onclick="goToTheme(10)"><div class="module-num">MOD. 11</div><div class="module-name">Arrêt Cardiaque</div><div class="module-desc">RCP 30/2, utilisation du DAE</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCICES -->
+<section id="exercices" style="position:relative;z-index:1;">
+<div class="ex-inner">
+  <div class="reveal" style="padding:3rem 0 0">
+    <div class="section-tag">Entraînement</div>
+    <h2 class="section-title">EXERCICES<br><em style="-webkit-text-stroke:1px var(--accent);color:transparent">INTERACTIFS</em></h2>
+    <p class="section-desc">Sélectionnez un module et répondez aux exercices pour valider.</p>
+  </div>
+  <div id="ex-dashboard" class="reveal">
+    <div class="dash-stat"><div class="dash-num green" id="score-correct">0</div><div class="dash-label">Bonnes réponses</div></div>
+    <div class="dash-stat"><div class="dash-num red"   id="score-wrong">0</div><div class="dash-label">Erreurs</div></div>
+    <div class="dash-stat"><div class="dash-num white" id="score-total">0</div><div class="dash-label">Questions</div></div>
+    <div class="dash-stat"><div class="dash-num accent" id="score-pct">—</div><div class="dash-label">Score</div></div>
+    <div class="dash-actions"><button class="reset-btn" onclick="resetScore()">↺ Réinitialiser le score</button></div>
+  </div>
+  <div class="reveal">
+    <div class="theme-tabs-wrap">
+      <div class="theme-tabs" id="theme-tabs">
+        <button class="ex-theme-btn active" onclick="loadTheme(0,this)">Cadre Légal</button>
+        <button class="ex-theme-btn" onclick="loadTheme(1,this)">Alerte Populations</button>
+        <button class="ex-theme-btn" onclick="loadTheme(2,this)">La Protection</button>
+        <button class="ex-theme-btn" onclick="loadTheme(3,this)">L'Alerte</button>
+        <button class="ex-theme-btn" onclick="loadTheme(4,this)">Le Bilan d'Urgence</button>
+        <button class="ex-theme-btn" onclick="loadTheme(5,this)">Obstruction</button>
+        <button class="ex-theme-btn" onclick="loadTheme(6,this)">Saignements</button>
+        <button class="ex-theme-btn" onclick="loadTheme(7,this)">Plaies et Brûlures</button>
+        <button class="ex-theme-btn" onclick="loadTheme(8,this)">Le Malaise</button>
+        <button class="ex-theme-btn" onclick="loadTheme(9,this)">Perte de Connaissance</button>
+        <button class="ex-theme-btn" onclick="loadTheme(10,this)">Arrêt Cardiaque</button>
+      </div>
+    </div>
+  </div>
+  <div id="ai-panel" class="reveal" style="margin-bottom:1.2rem;">
+    <div id="ai-bar" style="display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;">
+      <button class="btn-ai-gen" id="ai-gen-btn" onclick="generateAIExercises()">
+        <span id="ai-btn-icon">✦</span>
+        <span id="ai-btn-label">Générer des exercices par IA</span>
+      </button>
+      <div id="ai-difficulty-wrap" style="display:flex;gap:4px;flex-wrap:wrap;">
+        <button class="ai-diff-btn active" data-diff="débutant"      onclick="setDiff(this)">Débutant</button>
+        <button class="ai-diff-btn"        data-diff="intermédiaire" onclick="setDiff(this)">Intermédiaire</button>
+        <button class="ai-diff-btn"        data-diff="avancé"        onclick="setDiff(this)">Avancé</button>
+      </div>
+    </div>
+    <div id="ai-status" style="display:none;margin-top:0.7rem;"></div>
+  </div>
+  <div id="quiz-container" class="reveal"></div>
+</div>
+</section>
+
+<footer style="background:var(--footer-bg);border-top:1px solid var(--border);padding:1.5rem 1rem;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray);position:relative;z-index:1;transition:background 0.3s;">
+  <span style="color:var(--accent)">Lycée François Arago</span> · Premiers Secours · Tous droits réservés<br>
+  <span style="display:block;margin-top:4px;opacity:0.5">Mon entraînement est le bouclier de mon action</span>
+</footer>
+
+<script>
+function toggleTheme(){
+  var html = document.documentElement;
+  var isDark = html.getAttribute("data-theme") === "dark";
+  var next = isDark ? "light" : "dark";
+  html.setAttribute("data-theme", next);
+  localStorage.setItem("arago-theme", next);
+  var lbl = document.getElementById("toggle-label");
+  if(lbl) lbl.textContent = next === "dark" ? "Mode sombre" : "Mode clair";
+}
+(function(){
+  var lbl = document.getElementById("toggle-label");
+  if(lbl){
+    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    lbl.textContent = isDark ? "Mode sombre" : "Mode clair";
+  }
+})();
+
+function toggleMenu(){
+  document.getElementById('nav-burger').classList.toggle('open');
+  document.getElementById('nav-menu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('nav-burger').classList.remove('open');
+  document.getElementById('nav-menu').classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('nav')&&!e.target.closest('.nav-menu')) closeMenu();
+});
+
+const THEMES=[
+  {
+    title: "Cadre Légal du Sauveteur",
+    questions: [
+      {
+        type: "order",
+        text: "Numérotez de 1 à 4 les acteurs de la chaîne des secours dans l’ordre chronologique de leur intervention :",
+        items: [
+          "Prise en charge hospitalière aux urgences.",
+          "Réception de l’appel par le centre de régulation (15 / 18 / 112).",
+          "Intervention du premier témoin ou de l’agent de sécurité (Protection et premiers gestes).",
+          "Arrivée sur place de l’ambulance des Sapeurs-Pompiers ou du SMUR."
+        ],
+        correct: [
+          "Intervention du premier témoin ou de l’agent de sécurité (Protection et premiers gestes).",
+          "Réception de l’appel par le centre de régulation (15 / 18 / 112).",
+          "Arrivée sur place de l’ambulance des Sapeurs-Pompiers ou du SMUR.",
+          "Prise en charge hospitalière aux urgences."
+        ],
+        explain: "Témoin -> Appel -> Ambulance -> Hôpital."
+      },
+      {
+        type: "vf",
+        text: "Si j’ai peur de mal faire un geste de secours, j’ai le droit de passer mon chemin sans rien faire.",
+        answer: false,
+        explain: "Faux — C’est le délit de non-assistance à personne en péril ; au minimum absolu, je dois alerter et sécuriser."
+      },
+      {
+        type: "vf",
+        text: "La non-assistance à personne en péril est un délit puni de 5 ans de prison et 75 000 € d’amende.",
+        answer: true,
+        explain: "Vrai — Art. 223-6 du Code Pénal."
+      },
+      {
+        type: "vf",
+        text: "La loi m’oblige à plonger dans une rivière en crue même si je ne sais pas nager.",
+        answer: false,
+        explain: "Faux — L’obligation s’applique « sans risque pour lui ou pour les tiers ». Si le danger est mortel pour moi, je provoque le secours en appelant le 15/112."
+      },
+      {
+        type: "vf",
+        text: "Si je casse une côte à une victime en lui faisant un massage cardiaque, je serai condamné pour violences.",
+        answer: false,
+        explain: "Faux — Vous agissez pour sauver une vie : l’absence d’intention de nuire et l’état de nécessité (Art. 122-7) vous protègent totalement."
+      },
+      {
+        type: "redac",
+        scenario: "Lors de votre ronde sur le parking d’un centre commercial en pleine canicule, vous apercevez une personne âgée inconsciente à l’intérieur d’un véhicule fermé à clé. Vous utilisez votre lampe torche tactique pour briser la vitre arrière afin d’ouvrir la portière et lui porter secours.",
+        text: "Quel article du Code Pénal vous obligeait à agir face à cette personne en péril ? Le propriétaire de la voiture menace de porter plainte contre vous pour dégradation de bien. Quel article du Code Pénal vous protège ? Justifiez en comparant le dommage causé et le danger évité.",
+        answer: "L’Article 223-6 du Code Pénal (obligation d’assister une personne en péril).\nL’Article 122-7 du Code Pénal (État de nécessité). Le fait de briser une vitre (dommage matériel mineur) était strictement nécessaire et proportionné pour sauver la vie d’une personne exposée à un danger de mort imminent.",
+        label: "Analyse Juridique (Article 223-6 et Article 122-7)"
+      },
+      {
+        type: "assoc",
+        text: "Reliez chaque équipement de l’agent à son utilité précise lors d’une intervention de secours :",
+        pairs: [
+          {item: "Montre", correct: "Relever l’heure exacte de la pose d’un garrot ou du début d’une perte de connaissance."},
+          {item: "Paire de gants (EPI)", correct: "Se protéger contre le contact direct avec le sang ou les sécrétions de la victime."},
+          {item: "Carnet et Stylo", correct: "Noter l’identité de la victime, ses traitements médicaux et les constantes pour les transmettre aux pompiers."}
+        ],
+        explain: "A3, B2, C1."
+      }
+    ]
+  },
+  {
+    title: "Alerte et Protection des Populations",
+    questions: [
+      {
+        type: "assoc",
+        text: "Reliez chaque signal sonore de sirène à sa signification officielle :",
+        pairs: [
+          {item: "3 cycles modulés de 1 min 41 s (séparés par 5 s de silence)", correct: "Signal National d’Alerte : danger majeur immédiat, je dois me mettre à l’abri."},
+          {item: "1 seul cycle de 1 min 41 s le 1er mercredi du mois à 12h00", correct: "Essai technique mensuel : aucune action requise."},
+          {item: "1 son continu (plat) de 30 secondes", correct: "Fin de l’alerte : le danger est terminé, je peux sortir de mon abri."}
+        ],
+        explain: "A2, B3, C1."
+      },
+      {
+        type: "vf",
+        text: "Dès que la sirène d’alerte retentit, le meilleur abri est ma voiture car elle me permet de fuir vite.",
+        answer: false,
+        explain: "Faux — Une voiture n’est pas étanche et bloque les routes pour les secours ; il faut s’abriter dans un bâtiment en dur."
+      },
+      {
+        type: "vf",
+        text: "Les parents doivent immédiatement courir à l’école pour récupérer leurs enfants en cas d’alerte chimique.",
+        answer: false,
+        explain: "Faux — Les enfants sont pris en charge via le PPMS de leur école ; aller les chercher expose tout le monde au danger."
+      },
+      {
+        type: "vf",
+        text: "Le système FR-Alert permet de recevoir la nature du danger directement par écrit sur son smartphone.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "vf",
+        text: "Pendant un confinement, je dois arrêter la ventilation (VMC) et la climatisation du bâtiment.",
+        answer: true,
+        explain: "Vrai — Pour éviter d’aspirer l’air contaminé de l’extérieur vers l’intérieur."
+      },
+      {
+        type: "qcm",
+        text: "Pourquoi est-il formellement interdit de passer des appels téléphoniques à ses proches pendant une alerte aux populations ?",
+        options: [
+          "Parce que les ondes téléphoniques attirent la foudre ou font exploser les gaz.",
+          "Pour éviter de saturer les antennes relais et laisser les lignes libres pour la coordination des secours d’urgence.",
+          "Pour économiser la batterie de son téléphone afin de pouvoir jouer pendant le confinement."
+        ],
+        answer: 1,
+        explain: "Pour éviter de saturer les antennes relais et laisser les lignes libres pour la coordination des secours d’urgence."
+      },
+      {
+        type: "redac",
+        scenario: "Nous sommes un mardi à 10h15. La sirène de la ville retentit (3 cycles d’1 min 41 s) et vos téléphones reçoivent une alerte FR-Alert signalant l’incendie d’un entrepôt de produits chimiques à 1 km du lycée. Un élève panique et veut sortir du lycée pour rentrer chez lui retrouver son petit frère qui est à l’école primaire.",
+        text: "Pourquoi s’agit-il d’une vraie alerte et non d’un exercice de sirène ? Quels arguments utilisez-vous pour empêcher cet élève de sortir ?",
+        answer: "Parce que nous sommes un mardi à 10h15 (l’essai a lieu uniquement le 1er mercredi du mois à 12h00), qu’il y a 3 cycles et que le message FR-Alert le confirme.\n« Reste à l’intérieur ! Dehors, l’air est toxique. Ton petit frère est déjà en sécurité dans son école grâce au plan PPMS mis en place par ses professeurs. Si tu sors maintenant, tu te mets en danger de mort et tu ne pourras pas l’aider. On ferme tout et on écoute la radio officielle. »",
+        label: "Analyse de Situation « Le PPMS au Lycée Arago »"
+      }
+    ]
+  },
+  {
+    title: "La Protection",
+    questions: [
+      {
+        type: "assoc",
+        text: "Reliez chaque action réalisée par l’agent au principe de protection correspondant :",
+        pairs: [
+          {item: "Placer de la rubalise et interdire aux élèves d’entrer dans une cour où des tuiles menacent de tomber du toit.", correct: "Isoler / Écarter le danger"},
+          {item: "Tirer par les chevilles un employé inconscient hors d’un local qui commence à s’embraser.", correct: "Soustraire la victime (Dégagement d’urgence)"},
+          {item: "Couper l’alimentation générale au tableau électrique alors qu’un technicien s’électrocute sur une machine.", correct: "Supprimer le danger"}
+        ],
+        explain: "A3, B1, C2."
+      },
+      {
+        type: "qcm",
+        text: "Je ne réalise un dégagement d’urgence que si la victime est incapable de se soustraire elle-même à un danger :",
+        options: [
+          "Hypothétique, lointain et contrôlable.",
+          "Réel, immédiat (ou vital) et non contrôlable.",
+          "Éventuel, sans gravité et modifiable."
+        ],
+        answer: 1,
+        explain: "Réel, immédiat (ou vital) et non contrôlable."
+      },
+      {
+        type: "vf",
+        text: "S’il y a une forte odeur de gaz dans un local, j’allume la lumière pour mieux voir la victime.",
+        answer: false,
+        explain: "Faux — Actionner un interrupteur crée une étincelle qui ferait exploser le gaz !"
+      },
+      {
+        type: "vf",
+        text: "Lors d’une attaque terroriste, je dois mettre mon téléphone en silencieux ET couper le vibreur.",
+        answer: true,
+        explain: "Vrai — Le bruit du vibreur sur une table ou dans une poche peut suffire à trahir votre cachette dans le silence."
+      },
+      {
+        type: "vf",
+        text: "Face à la Police qui intervient sur une attaque armée, je dois courir vers eux pour leur montrer où est le tireur.",
+        answer: false,
+        explain: "Faux — Ne jamais courir vers les forces d’intervention : rester immobile, calme, mains levées et ouvertes bien en évidence."
+      },
+      {
+        type: "vf",
+        text: "En période épidémique, je me lave les mains même si j’ai porté des gants pendant l’intervention.",
+        answer: true,
+        explain: "Vrai — Le retrait des gants peut entraîner une contamination résiduelle ; le lavage des mains reste obligatoire."
+      },
+      {
+        type: "redac",
+        scenario: "Vous êtes en PFMP dans une galerie marchande. Vous entendez des rafales d’armes automatiques à l’entrée Nord. Vous êtes à l’entrée Sud avec une dizaine de clients.",
+        text: "Quelle est la toute première option du triptyque que vous devez appliquer avec ces clients ? Si vous êtes coincé dans une réserve sans issue extérieure, détaillez 3 actions concrètes pour vous barricader et vous dissimuler efficacement.",
+        answer: "S’ÉCHAPPER (Fuir immédiatement par la sortie Sud en emmenant les clients loin de la zone de danger).\n1) Verrouiller la porte et bloquer l’accès avec des meubles/palettes lourdes ; 2) Éteindre toutes les lumières et couper le son/vibreur des téléphones ; 3) S’allonger au sol derrière un mur plein (loin de l’axe de la porte).",
+        label: "Analyse de Situation « Attaque Terroriste »"
+      }
+    ]
+  },
+  {
+    title: "L'Alerte aux Secours",
+    questions: [
+      {
+        type: "assoc",
+        text: "Indiquez quel numéro d’urgence est le plus adapté pour chaque cas :",
+        pairs: [
+          {item: "Un employé de 55 ans ressent une violente douleur dans la poitrine dans son bureau", correct: "15 (SAMU - urgence médicale pure et besoin d’avis médical)."},
+          {item: "Une voiture a percuté un arbre, le moteur fume et le conducteur est coincé à l’intérieur", correct: "18 (Sapeurs-Pompiers - accident routier, désincarcération et risque d’incendie)."},
+          {item: "Une victime sourde et muette est seule chez elle et fait une crise d’asthme", correct: "114 (Numéro d’urgence par SMS/visio pour personnes sourdes ou malentendantes)."},
+          {item: "Vous êtes en voyage en Espagne ou en Allemagne et vous êtes témoin d’un accident grave", correct: "112 (Numéro d’urgence européen unique)."}
+        ],
+        explain: "15=SAMU, 18=Pompiers, 114=SMS, 112=Europe."
+      },
+      {
+        type: "vf",
+        text: "Dès que j’ai donné l’adresse et l’état de la victime, je raccroche vite pour retourner auprès d’elle.",
+        answer: false,
+        explain: "Faux — Règle absolue : ne jamais raccrocher le premier !"
+      },
+      {
+        type: "vf",
+        text: "Si mon téléphone n’a plus de forfait ou est verrouillé par un code PIN que je ne connais pas, je peux quand même appeler le 112.",
+        answer: true,
+        explain: "Vrai — Les appels d’urgence passent outre le verrouillage et l’absence de forfait."
+      },
+      {
+        type: "vf",
+        text: "Si je suis seul face à une hémorragie, j’utilise le mode haut-parleur de mon téléphone pour alerter tout en appuyant sur la plaie.",
+        answer: true,
+        explain: "Vrai — Le mode mains libres/haut-parleur est le meilleur allié du sauveteur isolé."
+      },
+      {
+        type: "vf",
+        text: "Lorsque j’envoie un témoin appeler les secours, il n’a pas besoin de revenir me voir une fois l’appel passé.",
+        answer: false,
+        explain: "Faux — Il doit impérativement revenir confirmer que l’alerte est passée et transmettre les éventuelles consignes du médecin."
+      },
+      {
+        type: "qcm",
+        text: "En tant qu’agent de sûreté au Poste de Commandement (PCS), un de vos rondiers vous signale qu’il a appelé le SAMU pour un malaise grave au Bâtiment C, 3e étage. Quelles mesures logistiques devez-vous prendre immédiatement avant l’arrivée de l’ambulance ?",
+        options: [
+          "Fermer le portail principal pour éviter que des curieux n’entrent en même temps que le SAMU.",
+          "Déverrouiller les barrières d’accès pompiers, bloquer un ascenseur au rez-de-chaussée du Bâtiment C et envoyer un agent au portail pour guider l’équipe médicale.",
+          "Attendre que le SAMU sonne à l’interphone pour vérifier leur identité."
+        ],
+        answer: 1,
+        explain: "La 2e proposition : Déverrouiller les barrières d’accès pompiers, bloquer un ascenseur au rez-de-chaussée du Bâtiment C et envoyer un agent au portail pour guider l’équipe médicale."
+      },
+      {
+        type: "redac",
+        scenario: "Vous êtes l’agent de sécurité « Alpha 1 » (Tél : 06.00.00.00.00). Vous êtes au Lycée François Arago, 12 avenue de la République à Villeneuve-Saint-Georges, dans le gymnase (accès par le portail Sud). Une jeune fille de 16 ans a perdu connaissance après un choc mais elle respire normalement. Vous venez de la mettre en Position Latérale de Sécurité (PLS).",
+        text: "Rédigez mot pour mot le message que vous transmettez à l’opérateur du 15/112.",
+        answer: "Bonjour, je suis l’agent de sécurité du site, joignable au 06.00.00.00.00. Je vous appelle depuis le Lycée François Arago, situé au 12 avenue de la République à Villeneuve-Saint-Georges. Nous sommes dans le gymnase, accessible directement par le portail Sud. Une élève de 16 ans a fait une chute. Elle a perdu connaissance, elle ne répond pas mais elle respire normalement. Je viens de la placer en Position Latérale de Sécurité et je la surveille. Un collègue vous attend au portail Sud pour vous guider. J’attends vos instructions avant de raccrocher.",
+        label: "Rédaction d’un Script d’Alerte Complet"
+      }
+    ]
+  },
+  {
+    title: "Secourir : Le Bilan et la Chronologie",
+    questions: [
+      {
+        type: "order",
+        text: "Vous arrivez sur un accident où une seule victime présente trois problèmes simultanés : une fracture ouverte du tibia (sans saignement abondant), une plaie au bras qui saigne à gros jets et une brûlure à la main. Dans quel ordre devez-vous traiter ces lésions ?",
+        items: [
+          "La fracture ouverte du tibia",
+          "La plaie au bras qui saigne à gros jets",
+          "La brûlure à la main"
+        ],
+        correct: [
+          "La plaie au bras qui saigne à gros jets",
+          "La fracture ouverte du tibia",
+          "La brûlure à la main"
+        ],
+        explain: "1. Plaie au bras qui saigne à gros jets (Hémorragie abondante = danger de mort immédiat). 2. Fracture ouverte. 3. Brûlure."
+      },
+      {
+        type: "vf",
+        text: "Pour libérer les voies aériennes, je dois appuyer fortement sur la gorge (parties molles) sous le menton.",
+        answer: false,
+        explain: "Faux — Il faut placer les doigts sur la pointe osseuse du menton ; appuyer sur les parties molles du cou écraserait la trachée et boucherait la respiration !"
+      },
+      {
+        type: "vf",
+        text: "Pourquoi basculer la tête en arrière ? Pour décoller la langue du fond de la gorge et laisser passer l’air.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "vf",
+        text: "On ne parle jamais à une victime inconsciente car elle ne peut pas nous entendre.",
+        answer: false,
+        explain: "Faux — Il faut toujours continuer à lui parler calmement pour la rassurer, l’audition pouvant être conservée."
+      },
+      {
+        type: "vf",
+        text: "Protéger une victime contre le froid (la couvrir) fait partie intégrante des gestes de secours.",
+        answer: true,
+        explain: "Vrai — L’hypothermie aggrave l’état de choc et les hémorragies."
+      },
+      {
+        type: "assoc",
+        text: "Pour chaque constat fait lors de votre examen, indiquez la détresse identifiée :",
+        pairs: [
+          {item: "La victime ne répond pas, ne me serre pas la main, mais sa poitrine se soulève régulièrement après bascule de la tête", correct: "Perte de connaissance (Victime inconsciente qui respire)."},
+          {item: "La victime ne répond pas, ne réagit pas et sa poitrine reste totalement immobile pendant 10 secondes", correct: "Arrêt cardiaque (Victime inconsciente qui ne respire pas)."},
+          {item: "La victime a les yeux ouverts, me répond qu’elle a très mal dans la poitrine et transpire abondamment", correct: "Malaise (Victime consciente présentant des signes de détresse)."}
+        ],
+        explain: "Inconscient+respire=Perte de connaissance. Inconscient+ne respire pas=Arrêt cardiaque. Conscient+signes=Malaise."
+      },
+      {
+        type: "redac",
+        scenario: "Vous surveillez un employé conscient qui faisait un malaise. Vous avez déjà appelé le 15 qui vous a dit qu’une ambulance était en route. Soudain, l’employé ferme les yeux et s’affaisse : il ne répond plus à vos questions.",
+        text: "Quelle est la toute première vérification que vous devez refaire immédiatement ? Une fois le nouveau geste de secours effectué, que devez-vous faire vis-à-vis du SAMU (15) ?",
+        answer: "Reprendre immédiatement le bilan vital : l’allonger sur le dos, libérer ses voies aériennes (bascule de la tête en arrière) et vérifier sa respiration sur 10 secondes.\nRappeler immédiatement le 15 (SAMU) pour signaler l’aggravation de l’état de la victime (passage en perte de connaissance ou en arrêt cardiaque) afin qu’ils adaptent les moyens envoyés (envoi d’une équipe médicale SMUR en urgence absolue).",
+        label: "Mise en situation « L’Aggravation pendant la Surveillance »"
+      }
+    ]
+  },
+  {
+    title: "L'Obstruction (Étouffement)",
+    questions: [
+      {
+        type: "qcm",
+        text: "Un élève avale un morceau de pain de travers. Il devient tout rouge et tousse très fort en disant : « Ça coince ! ».",
+        options: [
+          "Obstruction Complète. Je lui donne 5 claques dans le dos.",
+          "Obstruction Partielle. Je ne lui tape surtout pas dans le dos ! Je l'installe assis et l'encourage à tousser.",
+          "Malaise vagal. Je l'allonge et je lui donne du sucre."
+        ],
+        answer: 1,
+        explain: "Obstruction Partielle. Action : Ne surtout pas lui taper dans le dos ! L’installer assis, l’encourager à tousser et appeler le 15."
+      },
+      {
+        type: "qcm",
+        text: "Un professeur mange un morceau de viande. Soudain, il se lève brusquement, porte les deux mains à son cou, ouvre la bouche mais aucun son ni aucune toux ne sort.",
+        options: [
+          "Obstruction Partielle. Je l'encourage à tousser.",
+          "Obstruction Complète. Je donne immédiatement 1 à 5 claques vigoureuses dans le dos.",
+          "Infarctus. Je le mets en position demi-assise."
+        ],
+        answer: 1,
+        explain: "Obstruction Complète. Action : Donner immédiatement de 1 à 5 claques vigoureuses dans le dos (puis 1 à 5 compressions abdominales si échec)."
+      },
+      {
+        type: "vf",
+        text: "Concernant un bébé de 6 mois qui s’étouffe totalement avec un petit objet : Je dois le tenir par les pieds la tête en bas et le secouer pour faire tomber l’objet.",
+        answer: false,
+        explain: "Faux — Interdit ! Risque de chute et de traumatisme crânien/cervical grave."
+      },
+      {
+        type: "vf",
+        text: "Pour les claques dans le dos d'un nourrisson, je le couche à plat ventre sur mon avant-bras, la tête plus basse que le corps.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "vf",
+        text: "Si les 5 claques échouent sur un nourrisson, je lui fais 5 compressions abdominales au-dessus du nombril.",
+        answer: false,
+        explain: "Faux — Jamais de compressions abdominales chez le nourrisson : on effectue 1 à 5 compressions thoraciques avec les 2 pouces."
+      },
+      {
+        type: "vf",
+        text: "Si l’objet sort dès la 2e claque dans le dos, je continue quand même les 3 claques restantes par sécurité.",
+        answer: false,
+        explain: "Faux — Dès que la désobstruction est obtenue, on stoppe immédiatement les gestes !"
+      },
+      {
+        type: "assoc",
+        text: "Reliez l’évolution de la situation à la conduite à tenir correspondante :",
+        pairs: [
+          {item: "Le morceau de pomme est expulsé à la 3e compression abdominale.", correct: "J’arrête immédiatement toute manœuvre, j’installe la victime au repos, je la rassure et j’appelle le 15 pour un avis médical."},
+          {item: "Malgré 3 cycles de claques et de compressions, la victime devient inconsciente et s’effondre.", correct: "J’accompagne sa chute au sol, j’alerte immédiatement le 15/112 et je débute un massage cardiaque (RCP)."}
+        ],
+        explain: "A2, B1."
+      }
+    ]
+  },
+  {
+    title: "Saignements Abondants",
+    questions: [
+      {
+        type: "assoc",
+        text: "Pour chaque situation, indiquez quel geste technique vous devez réaliser :",
+        pairs: [
+          {item: "Un cuisinier s’est coupé l’avant-bras avec un couteau (la lame n’est plus dans la plaie). Le sang coule abondamment", correct: "Compression manuelle directe (suivie de l’allongement de la victime)."},
+          {item: "Un ouvrier a un gros éclat de verre planté dans le mollet. Le sang jaillit autour du verre", correct: "Pose d’un garrot (5 cm à 7 cm au-dessus de la plaie, entre la plaie et le cœur)."},
+          {item: "Vous appuyez de toutes vos forces avec un linge sur une plaie à la cuisse, mais le sang continue de couler à flot", correct: "Pose d’un garrot au-dessus de la plaie, car la compression manuelle directe est inefficace."}
+        ],
+        explain: "Compression si possible, garrot si corps étranger ou compression inefficace."
+      },
+      {
+        type: "vf",
+        text: "Un garrot se pose toujours entre la plaie et l’extrémité des doigts (en dessous de la plaie).",
+        answer: false,
+        explain: "Faux — Toujours entre la plaie et le cœur, soit 5 cm à 7 cm au-dessus de la plaie !"
+      },
+      {
+        type: "vf",
+        text: "Toutes les 15 minutes, je dois desserrer le garrot pendant 30 secondes pour éviter que le bras ne meure.",
+        answer: false,
+        explain: "Faux — Interdiction absolue de desserrer ou retirer un garrot une fois posé !"
+      },
+      {
+        type: "vf",
+        text: "Je dois impérativement noter l’heure exacte de pose du garrot avec ma montre.",
+        answer: true,
+        explain: "Vrai — Information vitale pour les chirurgiens à l’hôpital."
+      },
+      {
+        type: "order",
+        text: "Numérotez de 1 à 5 les actions à réaliser face à une hémorragie simple au poignet :",
+        items: [
+          "Couvrir la victime et surveiller sa conscience jusqu’à l’arrivée des secours.",
+          "Constater l’absence de corps étranger et protéger sa main (gants).",
+          "Allonger la victime sur le dos tout en maintenant la pression.",
+          "Appuyer directement et fortement sur la plaie qui saigne.",
+          "Faire alerter ou alerter le 15 ou le 112 (avec haut-parleur ou après pansement compressif)."
+        ],
+        correct: [
+          "Constater l’absence de corps étranger et protéger sa main (gants).",
+          "Appuyer directement et fortement sur la plaie qui saigne.",
+          "Allonger la victime sur le dos tout en maintenant la pression.",
+          "Faire alerter ou alerter le 15 ou le 112 (avec haut-parleur ou après pansement compressif).",
+          "Couvrir la victime et surveiller sa conscience jusqu’à l’arrivée des secours."
+        ],
+        explain: "Constater/Protéger -> Appuyer -> Allonger -> Alerter -> Couvrir/Surveiller."
+      },
+      {
+        type: "redac",
+        scenario: "Lors d’une ronde, vous trouvez un employé assis par terre dans les toilettes. Il est très pâle et vient de vomir une grande quantité de sang rouge dans une corbeille.",
+        text: "Pouvez-vous faire une compression manuelle dans ce cas ? Que devez-vous faire de la corbeille contenant le sang vomi avant l’arrivée du SAMU ?",
+        answer: "Non, l’origine du saignement est interne (estomac/œsophage). Il faut mettre la victime au repos (position où elle se sent le mieux) et alerter immédiatement le 15.\nIl faut conserver les vomissements de sang pour les montrer aux secours médicalisés (cela leur permet d’évaluer la quantité et la nature du sang perdu).",
+        label: "Analyse de Situation « L’Hémorragie Interne Extériorisée »"
+      }
+    ]
+  },
+  {
+    title: "Traumatismes et Plaies",
+    questions: [
+      {
+        type: "assoc",
+        text: "Reliez chaque plaie grave à la position d’attente spécifique que vous devez faire adopter à la victime :",
+        pairs: [
+          {item: "Plaie par coup de couteau au thorax (poitrine)", correct: "Assise ou demi-assise pour faciliter les mouvements respiratoires."},
+          {item: "Plaie profonde à l’abdomen (ventre)", correct: "Allongée à plat dos, cuisses fléchies (jambes pliées) pour relâcher la sangle abdominale."},
+          {item: "Plaie par projection d’éclat métallique dans l’œil", correct: "Allongée à plat dos, tête immobilisée et les deux yeux fermés."}
+        ],
+        explain: "A2, B1, C3."
+      },
+      {
+        type: "vf",
+        text: "Face à une grosse cloque de brûlure, je dois la percer avec une aiguille propre pour évacuer le liquide.",
+        answer: false,
+        explain: "Faux — Ne jamais percer une cloque : elle protège le derme brûlé contre les microbes !"
+      },
+      {
+        type: "vf",
+        text: "Si le pull d’une victime a fondu et colle à sa brûlure, je dois l’arracher vite avant qu’il ne refroidisse.",
+        answer: false,
+        explain: "Faux — Ne jamais retirer un vêtement qui adhère à la peau brûlée ; on arrose par-dessus."
+      },
+      {
+        type: "vf",
+        text: "Une brûlure s’arrose immédiatement avec de l’eau tempérée (15 °C à 25 °C) qui ruisselle sans pression.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "assoc",
+        text: "Indiquez pour chaque lésion s’il s’agit d’une atteinte SIMPLE ou GRAVE :",
+        pairs: [
+          {item: "Une éraflure au genou après une chute (peu de sang, pas de déformation)", correct: "SIMPLE. Coupure superficielle loin des zones vitales."},
+          {item: "Une cloque de brûlure à l’eau bouillante qui recouvre tout l’avant-bras et la main", correct: "GRAVE. Dépasse la moitié de la paume ET touche des articulations."},
+          {item: "Une toute petite plaie de 1 cm au cou qui saigne très peu mais faite par un tournevis", correct: "GRAVE. Localisation vitale (cou) et mécanisme perforant (tournevis)."}
+        ],
+        explain: "Simple vs Grave."
+      },
+      {
+        type: "qcm",
+        text: "Un ouvrier est tombé d’un échafaudage de 3 mètres. Il est conscient, allongé sur le dos, et se plaint de douleurs dans la nuque. Quel geste technique dois-je réaliser immédiatement en attendant les pompiers ?",
+        options: [
+          "Le relever pour qu'il ne reste pas sur le sol froid.",
+          "Lui ordonner de ne pas bouger et réaliser un maintien de la tête à deux mains dans l’axe où elle se trouve.",
+          "Masser sa nuque pour soulager la douleur."
+        ],
+        answer: 1,
+        explain: "Lui ordonner de ne pas bouger et réaliser un maintien de la tête à deux mains dans l’axe où elle se trouve pour ne pas endommager la moelle épinière."
+      },
+      {
+        type: "redac",
+        scenario: "À 09h30 dans le laboratoire de chimie du lycée, un technicien a reçu une projection d’acide sur son bras gauche. Vous avez enfilé vos gants, l’avez conduit au point d’eau pour rincer abondamment son bras tout en retirant sa blouse souillée, et vous avez fait appeler le 15 en gardant le bidon d’acide à proximité.",
+        text: "Rédigez un compte rendu structuré (QQOQCP) de cette intervention.",
+        answer: "Le [Date] à 09h30, au laboratoire de chimie, le technicien M. X a été victime d’une brûlure chimique au bras gauche par projection d’acide. Équipé de mes EPI (gants), j’ai immédiatement procédé au rinçage abondant à l’eau courante du membre atteint tout en retirant sa blouse contaminée. J’ai fait alerter le SAMU (15) à 09h32 et j’ai conservé le bidon contenant l’étiquette du produit chimique pour le remettre à l’équipe médicale.",
+        label: "Compte Rendu d’Accident du Travail"
+      }
+    ]
+  },
+  {
+    title: "Le Malaise",
+    questions: [
+      {
+        type: "assoc",
+        text: "Reliez chaque symptôme observé à la pathologie grave suspectée :",
+        pairs: [
+          {item: "La victime a la bouche tordue d’un côté et n’arrive plus à soulever son bras droit.", correct: "Suspicion d’Accident Vasculaire Cérébral (AVC)"},
+          {item: "La victime ressent une violente douleur qui lui serre la poitrine et irradie dans la mâchoire et le bras gauche.", correct: "Suspicion d’Accident Cardiaque (Infarctus)"},
+          {item: "La victime tient des propos incohérents et n’arrive plus à articuler ses mots.", correct: "Suspicion d’Accident Vasculaire Cérébral (AVC)"}
+        ],
+        explain: "A2, B1, B3."
+      },
+      {
+        type: "vf",
+        text: "Si un visiteur a très mal à la tête lors d’un malaise, je lui donne un comprimé de paracétamol de mon sac.",
+        answer: false,
+        explain: "Faux — Interdiction absolue de donner un médicament de sa propre initiative sans avis du médecin du 15 !"
+      },
+      {
+        type: "vf",
+        text: "Si un asthmatique en crise me demande de sortir son inhalateur de sa poche et de l’aider à le prendre, j’en ai le droit.",
+        answer: true,
+        explain: "Vrai — On peut aider la victime à prendre son propre traitement habituel prescrit pour cette pathologie si elle le demande ou sur accord du 15."
+      },
+      {
+        type: "vf",
+        text: "Pour tous les malaises présentant un signe de gravité, je dois appeler le 15 (SAMU) pour avoir un avis médical.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "vf",
+        text: "Les manœuvres physiques (contracter les muscles des jambes/bras) servent à soigner un AVC.",
+        answer: false,
+        explain: "Faux — Les manœuvres physiques servent uniquement à prévenir un évanouissement bénin de type malaise vagal/baisse de tension lorsque la victime reconnaît les signes avant-coureurs."
+      },
+      {
+        type: "redac",
+        scenario: "Vous êtes auprès de M. Bernard (62 ans) dans la salle des professeurs. Depuis 10 minutes, il souffre d’une forte douleur qui lui écrase la poitrine. Il est pâle et couvert de sueur. Il vous dit qu’il a déjà fait un infarctus il y a 3 ans et qu’il prend un traitement pour le cœur tous les matins. Vous l’avez installé en position demi-assise.",
+        text: "Rédigez le bilan que vous donnez au médecin régulateur du SAMU (15).",
+        answer: "Docteur, je suis au Lycée Arago auprès de M. Bernard, âgé de 62 ans. Depuis 10 minutes, il présente une violente douleur constrictive dans la poitrine. Il est conscient, très pâle et en sueur. Il m’indique avoir déjà fait un infarctus il y a 3 ans et suivre un traitement cardiaque quotidien. Je l’ai mis au repos complet en position demi-assise et j’ai desserré son col. Quelles sont vos instructions ?",
+        label: "Transmission du Bilan au Médecin du 15"
+      }
+    ]
+  },
+  {
+    title: "Perte de Connaissance (PLS)",
+    questions: [
+      {
+        type: "order",
+        text: "Numérotez de 1 à 6 les gestes de mise en PLS dans l’ordre chronologique exact :",
+        items: [
+          "Ouvrir la bouche de la victime et ajuster la jambe du dessus à angle droit (90°).",
+          "Placer le bras du côté du sauveteur à angle droit (90°), coude plié, paume vers le haut.",
+          "Tirer sur le genou opposé pour faire rouler la victime vers soi jusqu’à ce que le genou touche le sol.",
+          "Retirer les lunettes de la victime et aligner ses jambes.",
+          "Dégager doucement sa main de sous la tête de la victime en maintenant son coude.",
+          "Placer le dos de la main opposée contre l’oreille côté sauveteur et relever le genou opposé."
+        ],
+        correct: [
+          "Retirer les lunettes de la victime et aligner ses jambes.",
+          "Placer le bras du côté du sauveteur à angle droit (90°), coude plié, paume vers le haut.",
+          "Placer le dos de la main opposée contre l’oreille côté sauveteur et relever le genou opposé.",
+          "Tirer sur le genou opposé pour faire rouler la victime vers soi jusqu’à ce que le genou touche le sol.",
+          "Dégager doucement sa main de sous la tête de la victime en maintenant son coude.",
+          "Ouvrir la bouche de la victime et ajuster la jambe du dessus à angle droit (90°)."
+        ],
+        explain: "Aligner -> Bras 90° -> Main contre oreille/Genou relevé -> Rouler -> Dégager main -> Bouche/Jambe ajustée."
+      },
+      {
+        type: "vf",
+        text: "Pendant une crise d’épilepsie (convulsions), je dois mettre un stylo ou mes doigts dans la bouche de la victime pour qu’elle n’avale pas sa langue.",
+        answer: false,
+        explain: "Faux — Interdiction absolue de mettre quoi que ce soit dans la bouche d’une personne qui convulse : on ne peut pas « avaler sa langue », mais vous risquez de vous faire sectionner les doigts ou de lui casser les dents et de l’étouffer !"
+      },
+      {
+        type: "vf",
+        text: "Une fois la victime installée en PLS, le plus dur est fait : je peux m’éloigner pour aller boire un café en attendant les pompiers.",
+        answer: false,
+        explain: "Faux — Une victime en PLS peut faire un arrêt cardiaque à tout moment : la surveillance continue de sa respiration est obligatoire chaque minute jusqu’à l’arrivée des secours !"
+      },
+      {
+        type: "vf",
+        text: "Une femme enceinte inconsciente qui respire doit être placée en PLS de préférence sur le côté gauche.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "vf",
+        text: "Si une victime en PLS s’arrête soudainement de respirer, je dois la remettre sur le dos et masser son cœur.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "qcm",
+        text: "Lors de la réalisation de la PLS, pourquoi est-il obligatoire d’ouvrir la bouche de la victime à la fin de la manœuvre ?",
+        options: [
+          "Pour vérifier si elle a des caries ou un appareil dentaire.",
+          "Pour faciliter l’écoulement des liquides (vomissements, sang, salive) vers le sol et éviter qu’ils n’aillent dans les poumons.",
+          "Pour lui donner un verre d’eau sucrée."
+        ],
+        answer: 1,
+        explain: "La 2e proposition : Pour faciliter l’écoulement des liquides (vomissements, sang, salive) vers le sol et éviter qu’ils n’aillent dans les poumons."
+      }
+    ]
+  },
+  {
+    title: "Arrêt Cardiaque & DAE",
+    questions: [
+      {
+        type: "vf",
+        text: "Une victime inconsciente qui ouvre la bouche toutes les 20 secondes de manière bruyante et saccadée comme un poisson hors de l’eau (« gasps ») respire : il faut la mettre en PLS.",
+        answer: false,
+        explain: "Faux — Les « gasps » sont des réflexes agoniques d’arrêt cardiaque, ce n’est pas une respiration ! Il faut masser immédiatement !"
+      },
+      {
+        type: "vf",
+        text: "Chaque minute perdue sans massage cardiaque fait chuter les chances de survie de la victime de 10 %.",
+        answer: true,
+        explain: "Vrai."
+      },
+      {
+        type: "vf",
+        text: "Si je suis dégoûté à l’idée de faire du bouche-à-bouche à un inconnu qui a vomi, j’ai le droit de faire uniquement les compressions thoraciques en continu.",
+        answer: true,
+        explain: "Vrai — Un massage cardiaque continu sans bouche-à-bouche reste extrêmement efficace pendant les premières minutes."
+      },
+      {
+        type: "vf",
+        text: "Dès que le défibrillateur a délivré un choc électrique, j’attends 2 minutes sans toucher la victime pour voir si elle se réveille.",
+        answer: false,
+        explain: "Faux — Il faut reprendre le massage cardiaque immédiatement après le choc sans attendre !"
+      },
+      {
+        type: "order",
+        text: "Numérotez de 1 à 5 les étapes d’utilisation du Défibrillateur Automatisé Externe :",
+        items: [
+          "S’écarter et interdire à quiconque de toucher la victime pendant l’analyse et la délivrance du choc.",
+          "Reprendre immédiatement les 30 compressions thoraciques dès que le choc est délivré.",
+          "Mettre l’appareil en marche et écouter les consignes vocales.",
+          "Coller les électrodes sur la peau nue (sous la clavicule droite et sous l’aisselle gauche).",
+          "Dénuder et sécher la poitrine de la victime."
+        ],
+        correct: [
+          "Mettre l’appareil en marche et écouter les consignes vocales.",
+          "Dénuder et sécher la poitrine de la victime.",
+          "Coller les électrodes sur la peau nue (sous la clavicule droite et sous l’aisselle gauche).",
+          "S’écarter et interdire à quiconque de toucher la victime pendant l’analyse et la délivrance du choc.",
+          "Reprendre immédiatement les 30 compressions thoraciques dès que le choc est délivré."
+        ],
+        explain: "Marche -> Dénuder -> Coller -> S'écarter -> Masser."
+      },
+      {
+        type: "assoc",
+        text: "Indiquez quelle action corrective vous devez réaliser avant de poser ou d’utiliser le DAE dans chacun de ces cas :",
+        pairs: [
+          {item: "Vous venez de sortir un nageur en arrêt cardiaque de la piscine : son torse ruisselle d’eau", correct: "Le tirer hors de la flaque d’eau et essuyer soigneusement sa poitrine avant de coller les électrodes."},
+          {item: "Un ouvrier est en arrêt cardiaque allongé sur une passerelle métallique en fer", correct: "Le déplacer sur un sol non conducteur ou glisser un isolant (couverture, veste) sous son corps."},
+          {item: "En dénudant le torse, vous voyez une cicatrice et une bosse dure sous la peau sous sa clavicule droite (pacemaker)", correct: "Coller l’électrode à environ 8 cm à côté ou en dessous du boîtier du pacemaker, jamais directement par-dessus."}
+        ],
+        explain: "Sécurité : Essuyer, Isoler du métal, Éviter pacemaker."
+      }
+    ]
+  }
+];
+
+let correct=0,wrong=0,total=0;
+const dragState={},factuelState={},activeQuestions={};
+let currentThemeIdx=0,currentDifficulty='débutant',aiGenerated=false;
+
+function resetScore(){correct=0;wrong=0;total=0;updateDash();}
+function updateDash(){
+  document.getElementById('score-correct').textContent=correct;
+  document.getElementById('score-wrong').textContent=wrong;
+  document.getElementById('score-total').textContent=total;
+  document.getElementById('score-pct').textContent=total?Math.round(correct/total*100)+'%':'—';
+}
+function recordResult(ok){if(ok)correct++;else wrong++;total++;updateDash();}
+
+function goToTheme(idx){
+  document.getElementById('exercices').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{const btns=document.querySelectorAll('.ex-theme-btn');loadTheme(idx,btns[idx]);},600);
+}
+function loadTheme(idx,btn){
+  document.querySelectorAll('.ex-theme-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentThemeIdx=idx; aiGenerated=false;
+  Object.keys(activeQuestions).forEach(k=>{if(k.startsWith(idx+'-'))delete activeQuestions[k];});
+  const lbl=document.getElementById('ai-btn-label');if(lbl)lbl.textContent='Générer des exercices par IA';
+  hideAIStatus&&hideAIStatus();
+  renderNormalTheme(THEMES[idx],idx);
+}
+
+function buildQ(q,i,themeIdx){
+  const wrap=document.createElement('div');wrap.className='q-card';wrap.style.animationDelay=i*0.05+'s';
+  const typeLabel={qcm:'QCM',vf:'VRAI / FAUX',assoc:'ASSOCIATION',phonetic:'ALPHABET',order:'ORDONNANCEMENT',factuel:'VRAI/FAUX MULTIPLE',desc:'EXERCICE DESC',redac:'RÉDACTION','radio-signal':'MESSAGE RADIO'}[q.type]||q.type.toUpperCase();
+  let html=`<div class="q-card-header"><span class="q-num">EX. ${String(i+1).padStart(2,'0')}</span><div style="flex:1"><div class="q-type">${typeLabel}</div><div class="q-text">${q.scenario?`<div class="q-scenario">📋 ${q.scenario}</div>`:''} ${q.text}</div></div></div><div class="q-body">`;
+  if(q.type==='qcm')html+=buildQCM(q,i);
+  else if(q.type==='vf')html+=buildVF(q,i);
+  else if(q.type==='assoc')html+=buildAssoc(q,i,themeIdx);
+  else if(q.type==='phonetic')html+=buildPhonetic();
+  else if(q.type==='order')html+=buildOrder(q,i,themeIdx);
+  else if(q.type==='factuel')html+=buildFactuel(q,i,themeIdx);
+  else if(q.type==='desc')html+=buildDESC(q,i);
+  else if(q.type==='redac')html+=buildRedac(q,i);
+  else if(q.type==='radio-signal')html+=buildRadioSignal(q,i);
+  html+='</div>';wrap.innerHTML=html;
+  if(q.type==='order')setTimeout(()=>setupOrderDrag(i,themeIdx,q),50);
+  if(q.type==='factuel')setTimeout(()=>setupFactuel(i,themeIdx),50);
+  return wrap;
+}
+
+function buildQCM(q,i){
+  return q.options.map((opt,oi)=>`<button class="btn-opt" onclick="answerQCM(this,${oi},${q.answer},'${esc(q.explain)}')">${opt}</button>`).join('')+`<div class="q-feedback"></div>`;
+}
+function answerQCM(btn,chosen,correct_idx,explain){
+  const btns=btn.closest('.q-body').querySelectorAll('.btn-opt');btns.forEach(b=>b.disabled=true);
+  const fb=btn.closest('.q-body').querySelector('.q-feedback');const ok=chosen===correct_idx;
+  btn.classList.add(ok?'correct':'wrong');if(!ok)btns[correct_idx].classList.add('correct');
+  showFB(fb,ok,ok?'✓ Correct ! '+explain:'✗ Incorrect. '+explain);recordResult(ok);
+}
+
+function buildVF(q,i){
+  return `<div class="vf-row"><button class="q-check-btn" onclick="answerVF(this,'vrai',${q.answer},'${esc(q.explain)}')">✓ VRAI</button><button class="q-check-btn" onclick="answerVF(this,'faux',${q.answer},'${esc(q.explain)}')">✗ FAUX</button></div><div class="q-feedback"></div>`;
+}
+function answerVF(btn,chosen,answer,explain){
+  const btns=btn.closest('.q-body').querySelectorAll('.q-check-btn');btns.forEach(b=>b.onclick=null);
+  const ok=(chosen==='vrai')===answer;btn.classList.add(ok?'sel-vrai':'sel-faux');
+  if(!ok){btns.forEach(b=>{const c=(b.textContent.includes('VRAI')&&answer===true)||(b.textContent.includes('FAUX')&&answer===false);if(c)b.classList.add('reveal-correct');});}
+  const fb=btn.closest('.q-body').querySelector('.q-feedback');
+  showFB(fb,ok,ok?'✓ Correct ! '+explain:'✗ Incorrect. '+explain);recordResult(ok);
+}
+
+function buildAssoc(q,i,themeIdx){
+  const allVals=shuffle(q.pairs.map(p=>p.correct));
+  return q.pairs.map((p,pi)=>`<div class="assoc-item"><span class="assoc-label">${p.item}</span><select class="assoc-select" id="asel-${themeIdx}-${i}-${pi}"><option value="">— choisir —</option>${allVals.map(v=>`<option value="${v}">${v}</option>`).join('')}</select></div>`).join('')+`<button class="q-validate-btn" onclick="validateAssoc(this,${i},${themeIdx})">Valider</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function validateAssoc(btn,qIdx,themeIdx){
+  btn.disabled=true;
+  const q=activeQuestions[`${themeIdx}-${qIdx}`]||(THEMES[themeIdx]&&THEMES[themeIdx].questions[qIdx]);
+  if(!q)return;let allOk=true;
+  q.pairs.forEach((p,pi)=>{const sel=document.getElementById(`asel-${themeIdx}-${qIdx}-${pi}`);if(sel){sel.disabled=true;if(sel.value===p.correct)sel.classList.add('correct-sel');else{sel.classList.add('wrong-sel');allOk=false;}}});
+  const fb=btn.closest('.q-body').querySelector('.q-feedback');
+  showFB(fb,allOk,allOk?'✓ Toutes les associations sont correctes ! '+q.explain:'✗ Certaines associations sont incorrectes. '+q.explain);recordResult(allOk);
+}
+
+function buildPhonetic(){
+  let html=`<div class="phonetic-grid">`;
+  for(const[l,w]of Object.entries(PHONETIC))html+=`<div class="phonetic-card" onclick="this.classList.toggle('flipped')"><span class="ph-letter">${l}</span><span class="ph-word">${w}</span></div>`;
+  return html+`</div><div style="margin-top:1rem;padding:0.8rem 1rem;background:var(--toggle-bg);border:1px solid var(--border);font-size:0.82rem;color:var(--gray)">💡 Cliquez sur chaque lettre pour mémoriser son code. Entraînez-vous à épeler : ARAGO = Alpha Romeo Alpha Golf Oscar</div>`;
+}
+
+function buildOrder(q,i,themeIdx){
+  const shuffled=shuffle([...q.items]);dragState[`${themeIdx}-${i}`]={items:shuffled,correct:q.correct,src:null};
+  let html=`<div class="order-list" id="olist-${themeIdx}-${i}">`;
+  shuffled.forEach((item,oi)=>{html+=`<div class="order-item" id="oi-${themeIdx}-${i}-${oi}" data-idx="${oi}"><span class="order-text">${item}</span><div class="order-btns"><button class="order-btn-up" onclick="moveOrderItem(${i},${themeIdx},${oi},-1)" title="Monter">▲</button><button class="order-btn-dn" onclick="moveOrderItem(${i},${themeIdx},${oi},+1)" title="Descendre">▼</button></div></div>`;});
+  return html+`</div><button class="q-validate-btn" onclick="checkOrder(${i},${themeIdx})">Vérifier l'ordre</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function moveOrderItem(i,themeIdx,oi,dir){const state=dragState[`${themeIdx}-${i}`];const ni=oi+dir;if(ni<0||ni>=state.items.length)return;const tmp=state.items[oi];state.items[oi]=state.items[ni];state.items[ni]=tmp;redrawOrderMobile(i,themeIdx);}
+function redrawOrderMobile(i,themeIdx){const state=dragState[`${themeIdx}-${i}`];const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;state.items.forEach((item,oi)=>{const el=list.querySelector(`[data-idx="${oi}"]`);if(el){const txt=el.querySelector('.order-text');if(txt)txt.textContent=item;}});}
+function setupOrderDrag(i,themeIdx,q){const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;const state=dragState[`${themeIdx}-${i}`];list.querySelectorAll('.order-item').forEach(item=>{item.addEventListener('dragstart',e=>{state.src=parseInt(e.currentTarget.dataset.idx);e.currentTarget.classList.add('dragging');});item.addEventListener('dragend',e=>e.currentTarget.classList.remove('dragging'));item.addEventListener('dragover',e=>{e.preventDefault();e.currentTarget.classList.add('drag-over');});item.addEventListener('dragleave',e=>e.currentTarget.classList.remove('drag-over'));item.addEventListener('drop',e=>{e.preventDefault();e.currentTarget.classList.remove('drag-over');const tgt=parseInt(e.currentTarget.dataset.idx);if(state.src===null||state.src===tgt)return;const tmp=state.items[state.src];state.items[state.src]=state.items[tgt];state.items[tgt]=tmp;redrawOrder(i,themeIdx);});item.setAttribute('draggable','true');});}
+function redrawOrder(i,themeIdx){const state=dragState[`${themeIdx}-${i}`];const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;state.items.forEach((item,oi)=>{const el=list.querySelector(`[data-idx="${oi}"]`);if(el){const txt=el.querySelector('.order-text')||el.querySelector('span:last-child');if(txt)txt.textContent=item;}});}
+function checkOrder(i,themeIdx){const state=dragState[`${themeIdx}-${i}`];const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;let allOk=true;state.items.forEach((item,oi)=>{const el=list.querySelector(`[data-idx="${oi}"]`);const ok=item===state.correct[oi];if(!ok)allOk=false;el.classList.add(ok?'correct':'wrong');el.setAttribute('draggable','false');el.style.cursor='default';});const btn=list.nextElementSibling;if(btn)btn.disabled=true;const fb=list.closest('.q-body').querySelector('.q-feedback');const q=activeQuestions[`${themeIdx}-${i}`]||(THEMES[themeIdx]&&THEMES[themeIdx].questions[i]);showFB(fb,allOk,allOk?'✓ Ordre parfait ! '+(q?q.explain:''):'✗ Ordre incorrect. '+(q?q.explain:'')+'<br><br>Ordre correct :<br>'+state.correct.map((c,ci)=>`${ci+1}. ${c}`).join('<br>'));recordResult(allOk);}
+
+function buildFactuel(q,i,themeIdx){
+  factuelState[`${themeIdx}-${i}`]={selected:new Set(),checked:false};
+  return q.items.map((item,fi)=>`<div class="fact-item" id="fi-${themeIdx}-${i}-${fi}" onclick="toggleFact(${i},${themeIdx},${fi})"><div class="fact-cb" id="fcb-${themeIdx}-${i}-${fi}"></div><span>${item.text}</span></div>`).join('')+`<button class="q-validate-btn" onclick="checkFactuel(${i},${themeIdx})">Valider</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function setupFactuel(i,themeIdx){}
+function toggleFact(i,themeIdx,fi){const state=factuelState[`${themeIdx}-${i}`];if(state.checked)return;const row=document.getElementById(`fi-${themeIdx}-${i}-${fi}`);const cb=document.getElementById(`fcb-${themeIdx}-${i}-${fi}`);if(state.selected.has(fi)){state.selected.delete(fi);row.classList.remove('checked');cb.textContent='';}else{state.selected.add(fi);row.classList.add('checked');cb.textContent='✓';}}
+function checkFactuel(i,themeIdx){const state=factuelState[`${themeIdx}-${i}`];if(state.checked)return;state.checked=true;const q=activeQuestions[`${themeIdx}-${i}`]||(THEMES[themeIdx]&&THEMES[themeIdx].questions[i]);let correct_cnt=0,total_items=q.items.length;q.items.forEach((item,fi)=>{const row=document.getElementById(`fi-${themeIdx}-${i}-${fi}`);row.onclick=null;const selected=state.selected.has(fi);if(item.correct&&selected){row.classList.add('result-ok');correct_cnt++;}else if(!item.correct&&!selected){correct_cnt++;}else if(item.correct&&!selected){row.classList.add('result-miss');}else{row.classList.add('result-ko');}});const allOk=correct_cnt===total_items;const fb=document.querySelector(`#fi-${themeIdx}-${i}-0`).closest('.q-body').querySelector('.q-feedback');showFB(fb,allOk,allOk?'✓ Parfait ! '+q.explain:'✗ '+q.explain+'<br><span style="font-size:0.8rem">🟢 Vert = correct · 🔴 Rouge = erreur · 🟡 Jaune = manqué</span>');recordResult(allOk);}
+
+function buildDESC(q,i){
+  return `<div class="desc-grid"><div class="desc-block"><div class="desc-letter">D</div><div class="desc-block-content"><div class="desc-lbl">Décrire — factuel</div><div class="desc-static">${q.desc_D}</div></div></div><div class="desc-block"><div class="desc-letter">E</div><div class="desc-block-content"><div class="desc-lbl">${q.desc_E_label}</div><textarea class="redac-area" id="desc-e-${i}" placeholder="Rédigez la partie E..." style="min-height:80px"></textarea></div></div><div class="desc-block"><div class="desc-letter">S</div><div class="desc-block-content"><div class="desc-lbl">Spécifier — proposition concrète</div><div class="desc-static">${q.desc_S}</div></div></div><div class="desc-block"><div class="desc-letter">C</div><div class="desc-block-content"><div class="desc-lbl">${q.desc_C_label}</div><textarea class="redac-area" id="desc-c-${i}" placeholder="Rédigez la partie C..." style="min-height:80px"></textarea></div></div></div><button class="q-validate-btn" onclick="showDESCAnswer(${i},'${esc(q.desc_E_ans)}','${esc(q.desc_C_ans)}','${esc(q.explain)}')">Voir les réponses</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function showDESCAnswer(i,eAns,cAns,explain){const fb=document.getElementById(`desc-e-${i}`).closest('.q-body').querySelector('.q-feedback');fb.className='q-feedback show info';fb.innerHTML=`<strong style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem">✓ Réponses attendues</strong><strong>E :</strong> ${eAns}<br><br><strong>C :</strong> ${cAns}`;}
+
+function buildRedac(q,i){return `<textarea class="redac-area" id="redac-${i}" placeholder="Rédigez votre ${q.label||'compte rendu'} ici..."></textarea><div style="margin-top:0.6rem"><button class="q-validate-btn" onclick="showRedacAnswer(${i},'${esc(q.answer)}','${esc(q.label||'Réponse modèle')}')">Voir la réponse modèle</button></div><div class="q-feedback" style="margin-top:0.6rem"></div>`;}
+function showRedacAnswer(i,answer,label){const fb=document.getElementById(`redac-${i}`).closest('.q-body').querySelector('.q-feedback');fb.className='q-feedback show info';fb.innerHTML=`<strong style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem">✓ ${label}</strong>${answer.replace(/\n/g,'<br>')}`;}
+
+function buildRadioSignal(q,i){
+  const fields=[{id:'appel',label:'Appel'},{id:'suis',label:'Je suis (position)'},{id:'vois',label:'Je vois (description)'},{id:'fais',label:'Je fais / Je demande'},{id:'final',label:'Final'}];
+  let html=`<div class="desc-grid">`;
+  fields.forEach(f=>{html+=`<div class="desc-block"><div class="desc-letter" style="font-size:1rem;padding-top:14px">${f.id==='appel'?'📡':f.id==='suis'?'📍':f.id==='vois'?'👁':f.id==='fais'?'⚡':'🔚'}</div><div class="desc-block-content"><div class="desc-lbl">${f.label}</div><textarea class="redac-area" id="radio-${i}-${f.id}" placeholder="..." style="min-height:56px"></textarea></div></div>`;});
+  return html+`</div><button class="q-validate-btn" onclick="showRadioAnswer(${i},'${esc(q.answer)}')">Voir le message modèle</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function showRadioAnswer(i,answer){const fb=document.getElementById(`radio-${i}-appel`).closest('.q-body').querySelector('.q-feedback');fb.className='q-feedback show info';fb.innerHTML=`<strong style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem">✓ Message radio modèle</strong>${answer.replace(/ — /g,'<br>')}`;}
+
+function showFB(el,ok,msg){el.className='q-feedback show '+(ok?'ok':'ko');el.innerHTML=msg;}
+function esc(s){return(s||'').replace(/'/g,'\\x27').replace(/"/g,'\\x22').replace(/\n/g,' ');}
+function shuffle(a){return[...a].sort(()=>Math.random()-0.5);}
+
+const THEME_CONTEXTS=[{name:"Cadre Légal"},{name:"Alerte Populations"},{name:"La Protection"},{name:"L'Alerte"},{name:"Le Bilan d'Urgence"},{name:"Obstruction"},{name:"Saignements"},{name:"Plaies et Brûlures"},{name:"Le Malaise"},{name:"Perte de Connaissance"},{name:"Arrêt Cardiaque"}];
+const QUESTION_BANKS=[
+  THEMES[0].questions, THEMES[1].questions, THEMES[2].questions, THEMES[3].questions,
+  THEMES[4].questions, THEMES[5].questions, THEMES[6].questions, THEMES[7].questions,
+  THEMES[8].questions, THEMES[9].questions, THEMES[10].questions
+];
+
+function setDiff(btn){document.querySelectorAll('.ai-diff-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentDifficulty=btn.dataset.diff;}
+function showAIStatus(msg,cls=''){const el=document.getElementById('ai-status');el.style.display='block';el.className=cls;el.textContent=msg;}
+function hideAIStatus(){document.getElementById('ai-status').style.display='none';}
+function showShimmer(){const c=document.getElementById('quiz-container');const lines=n=>Array(n).fill(0).map((_,i)=>`<div class="shimmer-line" style="width:${60+Math.random()*35}%;animation-delay:${i*0.1}s"></div>`).join('');c.innerHTML=Array(4).fill(0).map(()=>`<div class="q-card-shimmer">${lines(3)}<div class="shimmer-line" style="width:30%;height:32px;margin-top:12px"></div></div>`).join('');}
+
+function generateAIExercises(){
+  const btn=document.getElementById('ai-gen-btn');const lbl=document.getElementById('ai-btn-label');
+  btn.disabled=true;btn.classList.add('loading');lbl.textContent='Mélange en cours…';showShimmer();
+  setTimeout(()=>{
+    try{
+      const bank=QUESTION_BANKS[currentThemeIdx];
+      if(!bank||bank.length===0){const theme=THEMES[currentThemeIdx];const shuffled=shuffle(theme.questions).slice(0,Math.min(5,theme.questions.length));renderAIQuestions(shuffled,THEME_CONTEXTS[currentThemeIdx].name);showAIStatus(`✦ ${shuffled.length} exercices mélangés aléatoirement`,'success');}
+      else{
+        let pool=[...bank];
+        if(currentDifficulty==='débutant'){const vfs=pool.filter(q=>q.type==='vf');const rest=shuffle(pool.filter(q=>q.type!=='vf'));pool=[...shuffle(vfs),...rest];}
+        else if(currentDifficulty==='avancé'){const hard=pool.filter(q=>q.type==='assoc'||(q.type==='qcm'&&q.scenario));const rest=shuffle(pool.filter(q=>!(q.type==='assoc'||(q.type==='qcm'&&q.scenario))));pool=[...shuffle(hard),...rest];}
+        else pool=shuffle(pool);
+        const picked=pickBalanced(pool,5);renderAIQuestions(picked,THEME_CONTEXTS[currentThemeIdx].name);showAIStatus(`✦ ${picked.length} exercices générés — niveau ${currentDifficulty}`,'success');
+      }
+      lbl.textContent='Régénérer ↺';
+    }catch(e){console.error(e);showAIStatus('✗ Erreur lors de la génération','error');renderNormalTheme(THEMES[currentThemeIdx],currentThemeIdx);lbl.textContent='Générer des exercices par IA';}
+    finally{btn.disabled=false;btn.classList.remove('loading');}
+  },600);
+}
+function pickBalanced(pool,n){const types=['vf','qcm','assoc'];const picked=[];const used=new Set();for(const t of types){const idx=pool.findIndex((q,i)=>q.type===t&&!used.has(i));if(idx!==-1){picked.push(pool[idx]);used.add(idx);}}for(let i=0;i<pool.length&&picked.length<n;i++){if(!used.has(i)){picked.push(pool[i]);used.add(i);}}return picked.slice(0,n);}
+function renderAIQuestions(questions,themeName){const c=document.getElementById('quiz-container');questions.forEach((q,i)=>{activeQuestions[`${currentThemeIdx}-${i}`]=q;});c.innerHTML=`<div class="theme-title">${themeName} <span class="ai-badge">✦ IA</span></div><div class="theme-meta">${questions.length} exercice${questions.length>1?'s':''} générés aléatoirement — niveau ${currentDifficulty}</div>`;questions.forEach((q,i)=>{try{c.appendChild(buildQ(q,i,currentThemeIdx));}catch(e){console.warn('Skipping invalid question',i,e);}});}
+function renderNormalTheme(theme,idx){const c=document.getElementById('quiz-container');c.innerHTML=`<div class="theme-title">${theme.title}</div><div class="theme-meta">${theme.questions.length} exercice${theme.questions.length>1?'s':''} — répondez pour valider</div>`;theme.questions.forEach((q,i)=>c.appendChild(buildQ(q,i,idx)));}
+
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('main-nav');
+  if(nav)nav.style.background=window.scrollY>40?'var(--nav-menu-bg)':'var(--nav-bg)';
+},{passive:true});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  loadTheme(0,document.querySelector('.ex-theme-btn'));
+  const revEls=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*60);});},{threshold:0.05});
+  revEls.forEach(r=>obs.observe(r));
+});
+</script>
+</body>
+</html>

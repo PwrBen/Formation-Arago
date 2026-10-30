@@ -1,0 +1,1679 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){var s=localStorage.getItem("arago-theme");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(s!=="light"&&p)){document.documentElement.setAttribute("data-theme","dark");}else{document.documentElement.setAttribute("data-theme","light");}})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>Exercices Sécurité Incendie — Arago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══════════════════════════════════════
+   THÈME SOMBRE (dark = défaut) — TON ROUGE
+══════════════════════════════════════ */
+:root,
+[data-theme="dark"] {
+  --navy:   #120909; 
+  --deep:   #1a0c0c;
+  --blue:   #6e1a1a; 
+  --accent: #d32f2f; /* Rouge */
+  --red:    #c0392b;
+  --white:  #fff4f4;
+  --gray:   #b59a9a;
+  --light:  #ead0d0;
+  --card:   #1c1010;
+  --border: rgba(211,47,47,0.25);
+  --touch:  48px;
+
+  --nav-bg:        rgba(18,9,9,0.97);
+  --nav-menu-bg:   rgba(18,9,9,0.98);
+  --hero-grid-clr: rgba(211,47,47,0.07);
+  --stat-bg:       #1c1010;
+  --module-hover:  #2a1414;
+  --module-active: #2a1414;
+  --feedback-ok-bg:   rgba(39,174,96,0.12);
+  --feedback-ok-brd:  #27ae60;
+  --feedback-ok-txt:  #2ecc71;
+  --feedback-ko-bg:   rgba(192,57,43,0.12);
+  --feedback-ko-brd:  #c0392b;
+  --feedback-ko-txt:  #e74c3c;
+  --input-bg:      #1a0c0c;
+  --order-bg:      rgba(255,255,255,0.02);
+  --order-brd:     rgba(255,255,255,0.06);
+  --assoc-bg:      rgba(255,255,255,0.02);
+  --assoc-brd:     rgba(255,255,255,0.06);
+  --redac-bg:      rgba(255,255,255,0.02);
+  --fact-bg:       rgba(255,255,255,0.02);
+  --tab-bg:        #1c1010;
+  --toggle-bg:     rgba(211,47,47,0.15);
+  --link-color:    #b59a9a;
+  --score-correct: #27ae60;
+  --scenario-bg:   rgba(211,47,47,0.05);
+  --scenario-brd:  rgba(211,47,47,0.4);
+  --desc-bg:       rgba(211,47,47,0.04);
+  --desc-brd:      rgba(211,47,47,0.15);
+  --ai-gen-bg:     linear-gradient(135deg,rgba(211,47,47,0.2),rgba(211,47,47,0.08));
+  --shimmer-bg:    #1c1010;
+  --footer-bg:     #1a0c0c;
+}
+
+/* ══════════════════════════════════════
+   THÈME CLAIR 
+══════════════════════════════════════ */
+[data-theme="light"] {
+  --navy:   #fcf8f8;
+  --deep:   #f5efef;
+  --blue:   #e8dede;
+  --accent: #c62828;
+  --red:    #b71c1c;
+  --white:  #1a1a1a;
+  --gray:   #7d6b6b;
+  --light:  #3b2929;
+  --card:   #ffffff;
+  --border: rgba(198,40,40,0.15);
+
+  --nav-bg:        rgba(252,248,248,0.97);
+  --nav-menu-bg:   rgba(252,248,248,0.98);
+  --hero-grid-clr: rgba(198,40,40,0.05);
+  --stat-bg:       #ffffff;
+  --module-hover:  #fcf2f2;
+  --module-active: #fcf2f2;
+  --feedback-ok-bg:   rgba(46,110,58,0.08);
+  --feedback-ok-brd:  #2e6e3a;
+  --feedback-ok-txt:  #1a4a22;
+  --feedback-ko-bg:   rgba(138,48,32,0.08);
+  --feedback-ko-brd:  #8a3020;
+  --feedback-ko-txt:  #6b1e10;
+  --input-bg:      #f5efef;
+  --order-bg:      #fcf8f8;
+  --order-brd:     rgba(0,0,0,0.1);
+  --assoc-bg:      #fcf8f8;
+  --assoc-brd:     rgba(0,0,0,0.1);
+  --redac-bg:      #fcf8f8;
+  --fact-bg:       #fcf8f8;
+  --tab-bg:        #ffffff;
+  --toggle-bg:     rgba(198,40,40,0.06);
+  --link-color:    #7d6b6b;
+  --score-correct: #2e6e3a;
+  --scenario-bg:   rgba(198,40,40,0.04);
+  --scenario-brd:  rgba(198,40,40,0.25);
+  --desc-bg:       rgba(198,40,40,0.04);
+  --desc-brd:      rgba(198,40,40,0.15);
+  --ai-gen-bg:     linear-gradient(135deg,rgba(198,40,40,0.08),rgba(198,40,40,0.04));
+  --shimmer-bg:    #f5efef;
+  --footer-bg:     #f5efef;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  overscroll-behavior: none;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  height: 56px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 1rem;
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem; letter-spacing: 3px;
+  color: var(--white);
+  display: flex; align-items: center; gap: 8px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-burger {
+  display: flex; flex-direction: column; gap: 5px;
+  background: none; border: none; cursor: pointer;
+  padding: 8px; width: 40px; height: 40px;
+  align-items: center; justify-content: center;
+}
+.nav-burger span {
+  display: block; width: 22px; height: 2px;
+  background: var(--white); border-radius: 2px;
+  transition: all 0.3s; transform-origin: center;
+}
+.nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.nav-burger.open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+.nav-menu {
+  position: fixed; top: 56px; left: 0; right: 0; z-index: 190;
+  background: var(--nav-menu-bg);
+  border-bottom: 1px solid var(--border);
+  transform: translateY(-110%);
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(16px);
+}
+.nav-menu.open { transform: translateY(0); }
+.nav-menu a {
+  display: flex; align-items: center;
+  color: var(--gray); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  padding: 1rem 1.5rem;
+  border-bottom: 1px solid rgba(128,128,128,0.08);
+  transition: all 0.2s;
+  min-height: var(--touch);
+}
+.nav-menu a:hover, .nav-menu a:active { color: var(--white); background: var(--toggle-bg); }
+.nav-menu a.accent { color: var(--accent); }
+.nav-links-desktop { display: none; }
+
+/* HERO */
+.hero {
+  position: relative;
+  min-height: 100svh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center;
+  padding: 80px 1.2rem 3rem;
+  overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid-clr) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid-clr) 1px, transparent 1px);
+  background-size: 40px 40px;
+  animation: gridSlide 20s linear infinite;
+}
+@keyframes gridSlide { from{transform:translateY(0)} to{transform:translateY(40px)} }
+.hero-glow {
+  position: absolute;
+  width: min(500px,100vw); height: min(500px,100vw);
+  background: radial-gradient(circle,rgba(211,47,47,0.18) 0%,transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+[data-theme="light"] .hero-glow {
+  background: radial-gradient(circle,rgba(198,40,40,0.06) 0%,transparent 70%);
+}
+.badge-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 14px; margin-bottom: 1.5rem;
+  animation: fadeUp 0.8s ease both;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem,18vw,7rem);
+  line-height: 0.88; letter-spacing: 3px;
+  color: var(--white);
+  animation: fadeUp 0.8s 0.1s ease both;
+}
+.hero h1 em {
+  font-style: normal;
+  -webkit-text-stroke: 1px var(--accent);
+  color: transparent;
+}
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem; font-weight: 300;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray); margin-top: 0.8rem;
+  animation: fadeUp 0.8s 0.2s ease both;
+}
+.hero-line {
+  width: 80px; height: 2px;
+  background: linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin: 1.5rem auto;
+  animation: fadeUp 0.8s 0.3s ease both;
+}
+.hero-desc {
+  max-width: 320px; color: var(--gray);
+  font-size: 0.88rem;
+  animation: fadeUp 0.8s 0.4s ease both;
+}
+.hero-cta {
+  margin-top: 2rem;
+  display: flex; gap: 0.8rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.5s ease both;
+}
+.btn-primary {
+  background: var(--accent); color: #fff;
+  text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 14px 28px;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s; border: none; cursor: pointer;
+  min-height: var(--touch); display: inline-flex; align-items: center;
+}
+[data-theme="light"] .btn-primary { color: #fff; }
+.btn-ghost {
+  color: var(--white); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 13px 28px;
+  border: 1px solid var(--border);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s; background: none; cursor: pointer;
+  min-height: var(--touch); display: inline-flex; align-items: center;
+}
+.scroll-indicator {
+  position: absolute; bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 6px;
+  color: var(--gray); font-size: 0.6rem; letter-spacing: 3px;
+  font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase;
+  animation: fadeUp 1s 1s ease both;
+}
+.scroll-line {
+  width: 1px; height: 30px;
+  background: linear-gradient(to bottom,var(--accent),transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* STATS BAR */
+.stats-bar {
+  position: relative; z-index: 1;
+  background: var(--stat-bg);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  transition: background 0.3s;
+}
+.stat {
+  padding: 1.2rem 0.5rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:nth-child(3), .stat:nth-child(6) { border-right: none; }
+.stat:nth-child(4), .stat:nth-child(5), .stat:nth-child(6) { border-top: 1px solid var(--border); }
+.stat-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2rem; color: var(--accent); letter-spacing: 2px;
+}
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); margin-top: 2px;
+}
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent);
+  display: flex; align-items: center; gap: 10px;
+  margin-bottom: 0.6rem;
+}
+.section-tag::before { content:''; display:block; width:20px; height:1px; background:var(--accent); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2rem,8vw,3.5rem);
+  letter-spacing: 3px; line-height: 1;
+  margin-bottom: 0.8rem;
+  color: var(--white);
+}
+.section-desc { color: var(--gray); font-size: 0.88rem; }
+
+/* MODULES GRID */
+#modules-nav { padding: 3.5rem 1rem; max-width: 1200px; margin: 0 auto; }
+.modules-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 1px; margin-top: 2rem;
+  border: 1px solid var(--border);
+}
+.module-card {
+  background: var(--card);
+  padding: 1.2rem 1rem;
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: background 0.2s;
+  min-height: 90px;
+  -webkit-tap-highlight-color: var(--toggle-bg);
+}
+.module-card:active { background: var(--module-active); }
+.module-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px;
+  color: var(--accent); margin-bottom: 0.3rem;
+}
+.module-name {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.95rem; font-weight: 700;
+  letter-spacing: 0.5px; margin-bottom: 0.2rem;
+  line-height: 1.2; color: var(--white);
+}
+.module-desc { font-size: 0.75rem; color: var(--gray); line-height: 1.3; }
+
+/* EXERCICES */
+#exercices { padding: 3rem 0.8rem; border-top: 1px solid var(--border); }
+.ex-inner { max-width: 700px; margin: 0 auto; }
+
+#ex-dashboard {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 1px; margin: 1.5rem 0;
+  background: var(--border);
+  border: 1px solid var(--border);
+}
+.dash-stat { background: var(--card); padding: 1rem; text-align: center; }
+.dash-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 2.2rem; letter-spacing: 2px;
+}
+.dash-num.green { color: var(--score-correct); }
+.dash-num.red   { color: var(--red); }
+.dash-num.white { color: var(--white); }
+.dash-num.accent{ color: var(--accent); }
+.dash-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.58rem; letter-spacing: 2px;
+  text-transform: uppercase; color: var(--gray); margin-top: 2px;
+}
+.dash-actions {
+  grid-column: 1/-1; background: var(--card);
+  display: flex; align-items: center; justify-content: center; padding: 0.8rem;
+}
+.reset-btn {
+  background: none; border: 1px solid var(--border); color: var(--gray);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; letter-spacing: 2px; text-transform: uppercase;
+  padding: 10px 20px; cursor: pointer; transition: all 0.2s;
+  min-height: var(--touch); display: flex; align-items: center;
+}
+.reset-btn:active { border-color: var(--red); color: var(--red); }
+
+.theme-tabs-wrap { position: relative; margin-bottom: 1.5rem; }
+.theme-tabs {
+  display: flex; gap: 6px;
+  overflow-x: auto; overflow-y: hidden;
+  padding-bottom: 6px;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+  -webkit-mask-image: linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);
+}
+.theme-tabs::-webkit-scrollbar { display: none; }
+.ex-theme-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 2px; text-transform: uppercase;
+  background: var(--tab-bg); border: 1px solid var(--border); color: var(--gray);
+  padding: 10px 14px; cursor: pointer; transition: all 0.2s;
+  white-space: nowrap; flex-shrink: 0;
+  min-height: var(--touch); display: flex; align-items: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.ex-theme-btn:active, .ex-theme-btn.active {
+  background: var(--toggle-bg);
+  border-color: var(--accent);
+  color: var(--white);
+}
+
+.theme-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.6rem; letter-spacing: 3px;
+  margin-bottom: 0.2rem; color: var(--white);
+  padding-bottom: 0.5rem; border-bottom: 1px solid var(--border);
+}
+.theme-meta {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.62rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gray); margin-bottom: 1.2rem;
+}
+.q-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  margin-bottom: 0.8rem;
+  overflow: hidden;
+  animation: fadeUp 0.35s ease both;
+  border-radius: 2px;
+}
+.q-card-header {
+  padding: 0.9rem 1rem;
+  background: var(--toggle-bg);
+  border-bottom: 1px solid var(--border);
+  display: flex; gap: 0.7rem; align-items: flex-start;
+}
+.q-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px;
+  color: var(--accent);
+  background: var(--toggle-bg);
+  border: 1px solid var(--border);
+  padding: 3px 7px; white-space: nowrap; flex-shrink: 0;
+}
+.q-type {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem; letter-spacing: 3px;
+  text-transform: uppercase; color: var(--gray); margin-top: 2px;
+}
+.q-text { font-size: 0.9rem; color: var(--light); line-height: 1.5; }
+.q-body { padding: 0.9rem 1rem; }
+.q-scenario {
+  background: var(--scenario-bg);
+  border-left: 2px solid var(--scenario-brd);
+  padding: 0.6rem 0.9rem; margin-bottom: 0.7rem;
+  font-size: 0.82rem; color: var(--gray); font-style: italic; line-height: 1.5;
+}
+
+.btn-opt {
+  display: block; width: 100%; text-align: left;
+  background: none; border: 1px solid var(--border);
+  color: var(--light);
+  font-family: 'Barlow', sans-serif; font-size: 0.88rem;
+  padding: 0.85rem 1rem; margin: 0.4rem 0;
+  cursor: pointer; transition: background 0.15s,border-color 0.15s;
+  border-radius: 0; min-height: var(--touch); line-height: 1.4;
+  -webkit-tap-highlight-color: transparent;
+}
+.btn-opt:active:not([disabled]) { border-color: var(--accent); color: var(--white); background: var(--toggle-bg); }
+.btn-opt.correct { background: var(--feedback-ok-bg)!important; border-color: var(--feedback-ok-brd)!important; color: var(--feedback-ok-txt)!important; }
+.btn-opt.wrong   { background: var(--feedback-ko-bg)!important; border-color: var(--feedback-ko-brd)!important; color: var(--feedback-ko-txt)!important; }
+.btn-opt[disabled] { cursor: default; }
+
+.vf-row { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; margin: 0.6rem 0; }
+.q-check-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--toggle-bg); border: 1px solid var(--border); color: var(--gray);
+  padding: 0; cursor: pointer; transition: all 0.2s;
+  min-height: var(--touch); display: flex; align-items: center; justify-content: center;
+  -webkit-tap-highlight-color: transparent;
+}
+.q-check-btn:active { border-color: var(--accent); color: var(--white); }
+.q-check-btn.sel-vrai { border-color: var(--feedback-ok-brd); color: var(--feedback-ok-txt); background: var(--feedback-ok-bg); }
+.q-check-btn.sel-faux { border-color: var(--feedback-ko-brd); color: var(--feedback-ko-txt); background: var(--feedback-ko-bg); }
+.q-check-btn.reveal-correct { border-color: var(--feedback-ok-brd)!important; color: var(--feedback-ok-txt)!important; }
+
+.q-feedback {
+  display: none; padding: 0.8rem 1rem; margin-top: 0.5rem;
+  font-size: 0.85rem; border-left: 3px solid; line-height: 1.5;
+}
+.q-feedback.show { display: block; }
+.q-feedback.ok   { border-color: var(--feedback-ok-brd); background: var(--feedback-ok-bg); color: var(--feedback-ok-txt); }
+.q-feedback.ko   { border-color: var(--feedback-ko-brd); background: var(--feedback-ko-bg); color: var(--feedback-ko-txt); }
+.q-feedback.info { border-color: var(--accent); background: var(--toggle-bg); color: var(--light); }
+
+.assoc-item {
+  display: flex; flex-direction: column; gap: 0.4rem;
+  margin: 0.5rem 0; padding: 0.7rem;
+  background: var(--assoc-bg); border: 1px solid var(--assoc-brd);
+}
+.assoc-label { font-size: 0.85rem; color: var(--light); line-height: 1.4; }
+.assoc-select {
+  background: var(--input-bg); border: 1px solid var(--border);
+  color: var(--light); font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; padding: 10px 12px; cursor: pointer; width: 100%;
+  min-height: var(--touch);
+  -webkit-appearance: none; appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%238a9ab5' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right 12px center;
+  padding-right: 36px;
+}
+[data-theme="light"] .assoc-select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236e6b66' stroke-width='1.5' fill='none'/%3E%3C/svg%3E");
+}
+.assoc-select.correct-sel { border-color: var(--feedback-ok-brd); color: var(--feedback-ok-txt); }
+.assoc-select.wrong-sel   { border-color: var(--feedback-ko-brd); color: var(--feedback-ko-txt); }
+
+.order-list { display: flex; flex-direction: column; gap: 5px; margin: 0.5rem 0; }
+.order-item {
+  display: flex; align-items: center; gap: 0;
+  background: var(--order-bg); border: 1px solid var(--order-brd);
+  font-size: 0.85rem; color: var(--light); transition: all 0.2s; overflow: hidden;
+}
+.order-item.correct { border-color: var(--feedback-ok-brd)!important; background: var(--feedback-ok-bg)!important; color: var(--feedback-ok-txt)!important; }
+.order-item.wrong   { border-color: var(--feedback-ko-brd)!important; background: var(--feedback-ko-bg)!important; }
+.order-text { flex: 1; padding: 10px 12px; line-height: 1.4; }
+.order-btns { display: flex; flex-direction: column; flex-shrink: 0; border-left: 1px solid var(--border); }
+.order-btn-up, .order-btn-dn {
+  background: none; border: none;
+  color: var(--gray); cursor: pointer;
+  width: 40px; height: 28px;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 14px; transition: all 0.15s;
+  -webkit-tap-highlight-color: transparent;
+}
+.order-btn-up { border-bottom: 1px solid var(--border); }
+.order-btn-up:active, .order-btn-dn:active { background: var(--toggle-bg); color: var(--white); }
+.order-btn-up:disabled, .order-btn-dn:disabled { opacity: 0.2; cursor: default; }
+.order-item.dragging  { opacity: 0.4; }
+.order-item.drag-over { border-color: var(--accent); background: var(--toggle-bg); }
+
+.q-validate-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  background: var(--accent); color: #fff;
+  border: none; padding: 0 24px;
+  cursor: pointer; margin-top: 0.7rem;
+  clip-path: polygon(6px 0%,100% 0%,calc(100% - 6px) 100%,0% 100%);
+  transition: background 0.2s;
+  min-height: var(--touch); display: flex; align-items: center; justify-content: center;
+  width: 100%;
+}
+[data-theme="light"] .q-validate-btn { color: #fff; }
+.q-validate-btn:active { filter: brightness(1.1); }
+.q-validate-btn:disabled { opacity: 0.5; cursor: default; }
+
+.fact-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  padding: 12px; background: var(--fact-bg); border: 1px solid var(--border);
+  margin: 0.35rem 0; cursor: pointer; transition: all 0.2s;
+  font-size: 0.87rem; color: var(--light); min-height: var(--touch);
+  -webkit-tap-highlight-color: transparent;
+}
+.fact-cb {
+  width: 22px; height: 22px; border: 1px solid var(--border);
+  background: transparent; display: flex; align-items: center; justify-content: center;
+  font-size: 13px; flex-shrink: 0; margin-top: 1px; transition: all 0.2s;
+  font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+}
+.fact-item.checked .fact-cb { background: var(--toggle-bg); border-color: var(--accent); color: var(--accent); }
+.fact-item.result-ok   { border-color: var(--feedback-ok-brd); background: var(--feedback-ok-bg); }
+.fact-item.result-ko   { border-color: var(--feedback-ko-brd); background: var(--feedback-ko-bg); }
+.fact-item.result-miss { border-color: rgba(180,120,0,0.5); background: rgba(180,120,0,0.06); }
+
+.redac-area {
+  width: 100%; min-height: 140px;
+  background: var(--redac-bg); border: 1px solid var(--border);
+  color: var(--light);
+  font-family: 'Barlow', sans-serif; font-size: 16px;
+  padding: 12px 14px; resize: vertical; transition: border-color 0.2s; line-height: 1.6;
+}
+.redac-area:focus { outline: none; border-color: var(--accent); }
+
+.desc-grid { display: flex; flex-direction: column; gap: 0; margin: 0.6rem 0; }
+.desc-block { display: flex; gap: 10px; margin-bottom: 0.8rem; align-items: flex-start; }
+.desc-letter { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); line-height: 1; width: 28px; flex-shrink: 0; padding-top: 8px; }
+.desc-block-content { flex: 1; min-width: 0; }
+.desc-lbl { font-family: 'Barlow Condensed', sans-serif; font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase; color: var(--gray); margin-bottom: 5px; }
+.desc-static {
+  padding: 10px 12px;
+  background: var(--desc-bg); border: 1px solid var(--desc-brd);
+  font-size: 0.85rem; color: var(--gray); font-style: italic; line-height: 1.5;
+}
+
+.btn-ai-gen {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--ai-gen-bg);
+  border: 1px solid var(--accent); color: var(--white);
+  padding: 0 18px; cursor: pointer; transition: all 0.25s;
+  min-height: var(--touch);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  position: relative; overflow: hidden;
+}
+.btn-ai-gen:disabled { opacity: 0.5; cursor: default; }
+.btn-ai-gen #ai-btn-icon { color: var(--accent); font-size: 1rem; line-height: 1; }
+.btn-ai-gen.loading #ai-btn-icon { display: inline-block; animation: aiSpin 1.2s linear infinite; }
+@keyframes aiSpin { 0%{transform:rotate(0deg) scale(1)} 50%{transform:rotate(180deg) scale(1.3)} 100%{transform:rotate(360deg) scale(1)} }
+.ai-diff-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--tab-bg); border: 1px solid var(--border); color: var(--gray);
+  padding: 8px 10px; cursor: pointer; transition: all 0.2s; min-height: 36px;
+}
+.ai-diff-btn.active { border-color: var(--accent); color: var(--accent); background: var(--toggle-bg); }
+#ai-status {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--gray); padding: 0.6rem 1rem;
+  background: var(--toggle-bg); border-left: 2px solid var(--accent);
+}
+#ai-status.error   { border-color: var(--red); color: var(--feedback-ko-txt); }
+#ai-status.success { border-color: var(--feedback-ok-brd); color: var(--feedback-ok-txt); }
+.ai-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.55rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--border);
+  padding: 2px 8px; margin-left: 8px; vertical-align: middle;
+  background: var(--toggle-bg);
+}
+.q-card-shimmer {
+  background: var(--shimmer-bg); border-left: 2px solid var(--border);
+  padding: 1.2rem; margin-bottom: 1rem;
+  animation: shimmerPulse 1.4s ease-in-out infinite;
+}
+@keyframes shimmerPulse { 0%,100%{opacity:0.4} 50%{opacity:0.9} }
+.shimmer-line {
+  height: 10px; border-radius: 2px;
+  background: linear-gradient(90deg,var(--order-bg) 25%,var(--toggle-bg) 50%,var(--order-bg) 75%);
+  background-size: 400% 100%;
+  animation: shimmerSlide 1.4s infinite; margin-bottom: 8px;
+}
+@keyframes shimmerSlide { from{background-position:100% 0} to{background-position:-100% 0} }
+
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.5s,transform 0.5s; }
+.reveal.visible { opacity: 1; transform: none; }
+
+/* TOGGLE SWITCH */
+#theme-toggle-wrap {
+  position: fixed; bottom: 24px; left: 24px;
+  z-index: 3001;
+  display: flex; align-items: center; gap: 10px;
+}
+#theme-toggle {
+  flex-shrink: 0; width: 52px; height: 28px;
+  border-radius: 14px; cursor: pointer;
+  display: flex; align-items: center; padding: 3px;
+  transition: background 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(128,128,128,0.3);
+  background: #2a1414;
+}
+#theme-toggle::after {
+  content: ''; display: block;
+  width: 20px; height: 20px; border-radius: 50%;
+  background: #fdfcf5;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  transform: translateX(24px);
+}
+[data-theme="light"] #theme-toggle {
+  background: #e8dede;
+  border-color: rgba(0,0,0,0.18);
+}
+[data-theme="light"] #theme-toggle::after {
+  transform: translateX(0);
+  background: #fff;
+}
+.toggle-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray);
+  background: var(--card);
+  padding: 3px 8px; border-radius: 4px;
+  border: 0.5px solid var(--border);
+  pointer-events: none; white-space: nowrap;
+  transition: color 0.3s, background 0.3s;
+}
+
+@media (min-width: 768px) {
+  nav { height: 60px; padding: 0 2rem; }
+  .nav-burger { display: none; }
+  .nav-menu   { display: none; }
+  .nav-links-desktop {
+    display: flex; gap: 0; list-style: none;
+  }
+  .nav-links-desktop a {
+    color: var(--link-color); text-decoration: none;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    padding: 0 1rem; height: 60px;
+    display: flex; align-items: center;
+    border-bottom: 2px solid transparent; transition: all 0.2s;
+  }
+  .nav-links-desktop a:hover { color: var(--white); border-bottom-color: var(--accent); }
+  .nav-links-desktop a.accent-link { color: var(--accent); }
+  .hero { padding: 80px 2rem 4rem; }
+  .hero h1 { font-size: clamp(4rem,10vw,9rem); }
+  .stats-bar { display: flex; justify-content: center; flex-wrap: wrap; }
+  .stat { flex: 1; min-width: 150px; max-width: 220px; padding: 2rem; border-top: none!important; }
+  .stat:last-child { border-right: none; }
+  .stat-num { font-size: 2.8rem; }
+  #modules-nav { padding: 5rem 2rem; }
+  .modules-grid { grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); }
+  .module-card { padding: 1.8rem; }
+  .module-card:hover { background: var(--module-hover); transform: translateX(4px); }
+  .module-name { font-size: 1.1rem; }
+  .module-desc { font-size: 0.85rem; }
+  #exercices { padding: 5rem 2rem; }
+  .ex-inner { max-width: 1100px; }
+  #ex-dashboard { display: flex; gap: 1rem; flex-wrap: wrap; padding: 1.5rem; }
+  .dash-stat { min-width: 100px; }
+  .dash-actions { grid-column: auto; }
+  .theme-tabs { flex-wrap: wrap; overflow: visible; mask-image: none; -webkit-mask-image: none; }
+  .ex-theme-btn { white-space: normal; min-height: auto; }
+  .btn-opt { padding: 0.7rem 1rem; }
+  .btn-opt:hover:not([disabled]) { border-color: var(--accent); color: var(--white); background: var(--toggle-bg); }
+  .vf-row { display: flex; gap: 0.6rem; }
+  .q-check-btn { min-height: auto; padding: 6px 16px; font-size: 0.7rem; }
+  .assoc-item { flex-direction: row; align-items: center; gap: 0.6rem; padding: 0; background: transparent; border: none; }
+  .assoc-label { font-size: 0.88rem; flex: 1; min-width: 200px; }
+  .assoc-select { width: auto; font-size: 0.85rem; min-height: auto; }
+  .order-btns { flex-direction: row; }
+  .order-btn-up { border-bottom: none; border-right: 1px solid var(--border); }
+  .order-btn-up, .order-btn-dn { width: 36px; height: 100%; min-height: 44px; }
+  .q-validate-btn { width: auto; display: inline-flex; }
+  .desc-grid { display: grid; grid-template-columns: 32px 1fr; gap: 8px 12px; }
+  .desc-block { display: contents; }
+  .desc-letter { font-size: 1.6rem; padding-top: 10px; }
+  .desc-block-content { display: contents; }
+  .redac-area { font-size: 0.88rem; }
+}
+
+@supports (padding: env(safe-area-inset-bottom)) {
+  footer { padding-bottom: calc(1.5rem + env(safe-area-inset-bottom)); }
+}
+</style>
+</head>
+<body>
+
+<div id="theme-toggle-wrap">
+  <div id="theme-toggle" onclick="toggleTheme()" role="switch" aria-label="Basculer mode sombre/clair" title="Mode sombre / Mode clair"></div>
+  <span class="toggle-label" id="toggle-label">Mode sombre</span>
+</div>
+
+<nav id="main-nav">
+  <div class="nav-logo">🛡 <span>ARAGO</span> EXERCICES INCENDIE</div>
+  <button class="nav-burger" id="nav-burger" onclick="toggleMenu()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links-desktop">
+    <li><a href="#modules-nav">Modules</a></li>
+    <li><a href="#exercices">Exercices</a></li>
+    <li><a href="javascript:void(0)" onclick="goToTheme(0)" class="accent-link">✦ Lancer</a></li>
+  </ul>
+</nav>
+
+<div class="nav-menu" id="nav-menu">
+  <a href="#modules-nav" onclick="closeMenu()">📋 Modules</a>
+  <a href="#exercices" onclick="closeMenu()">✦ Exercices</a>
+  <a href="javascript:void(0)" onclick="goToTheme(0);closeMenu()" class="accent">🎯 Lancer les exercices</a>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="badge-top">Lycée François Arago · Formation Sécurité Incendie</div>
+  <h1>MANUEL<br><em>D'EXERCICES</em><br>INCENDIE</h1>
+  <p style="font-family:'Barlow Condensed',sans-serif;font-size:0.75rem;font-weight:400;letter-spacing:3px;text-transform:uppercase;color:var(--gray);margin-top:0.6rem;animation:fadeUp 0.8s 0.15s ease both;">SSIAP 1 / SSIAP 2</p>
+  <p class="hero-sub">Apprentis professionnels des métiers de la sécurité</p>
+  <div class="hero-line"></div>
+  <p class="hero-desc">12 modules interactifs. Transformez vos connaissances en réflexes de prévention et d'intervention.</p>
+  <div class="hero-cta">
+    <a href="#exercices" class="btn-primary">Commencer</a>
+    <a href="#modules-nav" class="btn-ghost">Modules</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    Défiler
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">12</div><div class="stat-label">Modules</div></div>
+  <div class="stat"><div class="stat-num">65+</div><div class="stat-label">Exercices</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Types</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">Niveaux SSIAP</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Étapes (4A)</div></div>
+</div>
+
+<!-- MODULES NAV -->
+<section id="modules-nav" style="position:relative;z-index:1;border-top:1px solid var(--border);">
+  <div style="padding:3.5rem 1rem 3rem;max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-tag">Sommaire</div>
+      <h2 class="section-title">MODULES</h2>
+      <p class="section-desc">Appuyez sur un module pour aller directement aux exercices.</p>
+    </div>
+    <div class="modules-grid reveal">
+      <div class="module-card" onclick="goToTheme(0)"><div class="module-num">MOD. 01</div><div class="module-name">Cadre Légal</div><div class="module-desc">Textes, acteurs, SSIAP</div></div>
+      <div class="module-card" onclick="goToTheme(1)"><div class="module-num">MOD. 02</div><div class="module-name">Le Feu</div><div class="module-desc">Chimie, classes, propagation</div></div>
+      <div class="module-card" onclick="goToTheme(2)"><div class="module-num">MOD. 03</div><div class="module-name">Les Bâtiments</div><div class="module-desc">ERP, IGH, résistance, dégagements</div></div>
+      <div class="module-card" onclick="goToTheme(3)"><div class="module-num">MOD. 04</div><div class="module-name">Repérage</div><div class="module-desc">Plans, coupures d'énergie</div></div>
+      <div class="module-card" onclick="goToTheme(4)"><div class="module-num">MOD. 05</div><div class="module-name">Prévention</div><div class="module-desc">Rondes, consignes, permis de feu</div></div>
+      <div class="module-card" onclick="goToTheme(5)"><div class="module-num">MOD. 06</div><div class="module-name">Installations Techniques</div><div class="module-desc">SSI, DAS, éclairage de sécurité</div></div>
+      <div class="module-card" onclick="goToTheme(6)"><div class="module-num">MOD. 07</div><div class="module-name">Moyens d'Extinction</div><div class="module-desc">Extincteurs, RIA, maintien en état</div></div>
+      <div class="module-card" onclick="goToTheme(7)"><div class="module-num">MOD. 08</div><div class="module-name">Alarme à Alerte</div><div class="module-desc">Les 4A, message d'alerte, accueil</div></div>
+      <div class="module-card" onclick="goToTheme(8)"><div class="module-num">MOD. 09</div><div class="module-name">Évacuation / Sauvetage</div><div class="module-desc">Principes, personnes à mobilité réduite</div></div>
+      <div class="module-card" onclick="goToTheme(9)"><div class="module-num">MOD. 10</div><div class="module-name">Surveillance</div><div class="module-desc">Rondes (incendie/sûreté), vidéoprotection</div></div>
+      <div class="module-card" onclick="goToTheme(10)"><div class="module-num">MOD. 11</div><div class="module-name">Agir en Professionnel</div><div class="module-desc">Tension, traces, délits</div></div>
+      <div class="module-card" onclick="goToTheme(11)"><div class="module-num">MOD. 12</div><div class="module-name">Rendre Compte / PC</div><div class="module-desc">QQOQCP, management (SSIAP 2)</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- EXERCICES -->
+<section id="exercices" style="position:relative;z-index:1;">
+<div class="ex-inner">
+  <div class="reveal" style="padding:3rem 0 0">
+    <div class="section-tag">Entraînement</div>
+    <h2 class="section-title">EXERCICES<br><em style="-webkit-text-stroke:1px var(--accent);color:transparent">INTERACTIFS</em></h2>
+    <p class="section-desc">Sélectionnez un module et répondez aux exercices pour valider.</p>
+  </div>
+  <div id="ex-dashboard" class="reveal">
+    <div class="dash-stat"><div class="dash-num green" id="score-correct">0</div><div class="dash-label">Bonnes réponses</div></div>
+    <div class="dash-stat"><div class="dash-num red"   id="score-wrong">0</div><div class="dash-label">Erreurs</div></div>
+    <div class="dash-stat"><div class="dash-num white" id="score-total">0</div><div class="dash-label">Questions</div></div>
+    <div class="dash-stat"><div class="dash-num accent" id="score-pct">—</div><div class="dash-label">Score</div></div>
+    <div class="dash-actions"><button class="reset-btn" onclick="resetScore()">↺ Réinitialiser le score</button></div>
+  </div>
+  <div class="reveal">
+    <div class="theme-tabs-wrap">
+      <div class="theme-tabs" id="theme-tabs">
+        <button class="ex-theme-btn active" onclick="loadTheme(0,this)">Cadre Légal</button>
+        <button class="ex-theme-btn" onclick="loadTheme(1,this)">Le Feu</button>
+        <button class="ex-theme-btn" onclick="loadTheme(2,this)">Bâtiments</button>
+        <button class="ex-theme-btn" onclick="loadTheme(3,this)">Repérage</button>
+        <button class="ex-theme-btn" onclick="loadTheme(4,this)">Prévention</button>
+        <button class="ex-theme-btn" onclick="loadTheme(5,this)">Installations</button>
+        <button class="ex-theme-btn" onclick="loadTheme(6,this)">Extinction</button>
+        <button class="ex-theme-btn" onclick="loadTheme(7,this)">De l'Alarme à l'Alerte</button>
+        <button class="ex-theme-btn" onclick="loadTheme(8,this)">Évacuation</button>
+        <button class="ex-theme-btn" onclick="loadTheme(9,this)">Surveillance</button>
+        <button class="ex-theme-btn" onclick="loadTheme(10,this)">Agir en Pro</button>
+        <button class="ex-theme-btn" onclick="loadTheme(11,this)">Rendre Compte</button>
+      </div>
+    </div>
+  </div>
+  <div id="ai-panel" class="reveal" style="margin-bottom:1.2rem;">
+    <div id="ai-bar" style="display:flex;align-items:center;gap:0.7rem;flex-wrap:wrap;">
+      <button class="btn-ai-gen" id="ai-gen-btn" onclick="generateAIExercises()">
+        <span id="ai-btn-icon">✦</span>
+        <span id="ai-btn-label">Générer des exercices par IA</span>
+      </button>
+      <div id="ai-difficulty-wrap" style="display:flex;gap:4px;flex-wrap:wrap;">
+        <button class="ai-diff-btn active" data-diff="débutant"      onclick="setDiff(this)">Débutant</button>
+        <button class="ai-diff-btn"        data-diff="intermédiaire" onclick="setDiff(this)">Intermédiaire</button>
+        <button class="ai-diff-btn"        data-diff="avancé"        onclick="setDiff(this)">Avancé</button>
+      </div>
+    </div>
+    <div id="ai-status" style="display:none;margin-top:0.7rem;"></div>
+  </div>
+  <div id="quiz-container" class="reveal"></div>
+</div>
+</section>
+
+<footer style="background:var(--footer-bg);border-top:1px solid var(--border);padding:1.5rem 1rem;text-align:center;font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:2px;text-transform:uppercase;color:var(--gray);position:relative;z-index:1;transition:background 0.3s;">
+  <span style="color:var(--accent)">Lycée François Arago</span> · Sécurité Incendie · Tous droits réservés<br>
+  <span style="display:block;margin-top:4px;opacity:0.5">Mon entraînement est le bouclier de mon action</span>
+</footer>
+
+<script>
+function toggleTheme(){
+  var html = document.documentElement;
+  var isDark = html.getAttribute("data-theme") === "dark";
+  var next = isDark ? "light" : "dark";
+  html.setAttribute("data-theme", next);
+  localStorage.setItem("arago-theme", next);
+  var lbl = document.getElementById("toggle-label");
+  if(lbl) lbl.textContent = next === "dark" ? "Mode sombre" : "Mode clair";
+}
+(function(){
+  var lbl = document.getElementById("toggle-label");
+  if(lbl){
+    var isDark = document.documentElement.getAttribute("data-theme") === "dark";
+    lbl.textContent = isDark ? "Mode sombre" : "Mode clair";
+  }
+})();
+
+function toggleMenu(){
+  document.getElementById('nav-burger').classList.toggle('open');
+  document.getElementById('nav-menu').classList.toggle('open');
+}
+function closeMenu(){
+  document.getElementById('nav-burger').classList.remove('open');
+  document.getElementById('nav-menu').classList.remove('open');
+}
+document.addEventListener('click',e=>{
+  if(!e.target.closest('nav')&&!e.target.closest('.nav-menu')) closeMenu();
+});
+
+const THEMES=[
+  {
+    title: "Cadre Légal et Missions",
+    questions: [
+      {
+        type: "assoc",
+        text: "Reliez chaque texte au domaine qu’il encadre :",
+        pairs: [
+          {item: "Arrêté du 25 juin 1980", correct: "Règlement de sécurité des établissements recevant du public."},
+          {item: "Arrêté du 30 décembre 2011", correct: "Règlement de sécurité des immeubles de grande hauteur."},
+          {item: "Code du travail (R4227-1 et suivants)", correct: "Prévention incendie sur les lieux de travail (consignes, exercices, extincteurs)."},
+          {item: "Arrêté du 2 mai 2005", correct: "Missions, emploi et qualification du personnel des services de sécurité incendie."}
+        ],
+        explain: "A4, B2, C3, D1."
+      },
+      {
+        type: "vf",
+        text: "Mon diplôme SSIAP est valable à vie, sans recyclage.",
+        answer: false,
+        explain: "Faux — Un recyclage tous les 3 ans est obligatoire."
+      },
+      {
+        type: "vf",
+        text: "C’est le maire qui décide de l’ouverture d’un ERP après avis de la commission de sécurité.",
+        answer: true,
+        explain: "Vrai — Le maire détient le pouvoir de police et autorise l’ouverture après avis de la commission de sécurité."
+      },
+      {
+        type: "vf",
+        text: "Si je ne peux pas éteindre un feu sans me mettre en danger, je n’ai aucune obligation.",
+        answer: false,
+        explain: "Faux — Je dois au minimum alerter les secours et prévenir le PC : Art. 223-6 (non-assistance)."
+      },
+      {
+        type: "assoc",
+        text: "Associez chaque acteur à son rôle :",
+        pairs: [
+          {item: "L’exploitant", correct: "Responsable de la sécurité de l’établissement et tenant du registre de sécurité."},
+          {item: "Le maire", correct: "Détient le pouvoir de police et autorise l’ouverture au public."},
+          {item: "La commission de sécurité", correct: "Rend un avis favorable ou défavorable après visite de l’établissement."},
+          {item: "L’agent SSIAP 1", correct: "Réalise les rondes, alerte, évacue et intervient sur un début d’incendie."}
+        ],
+        explain: "A2, B3, C1, D4."
+      },
+      {
+        type: "redac",
+        scenario: "Lors d’une ronde dans un centre commercial, vous constatez qu’une porte d’issue de secours est condamnée par une chaîne et un cadenas posé par un commerçant. Vous ne dites rien : « ce n’est pas mon magasin ».",
+        text: "Quelle infraction ce commerçant risque-t-il de commettre ? Et vous, quelle faute commettez-vous ? Quelle est la bonne réaction professionnelle ?",
+        answer: "Le commerçant s’expose à une poursuite pour mise en danger d’autrui (Art. 223-1) et à des sanctions du règlement de sécurité. Moi, je commets une faute de professionnalisme (et je peux engager ma responsabilité si un sinistre survient) en ne signalant pas l’anomalie.\nJe constate, je demande la levée immédiate de l’obstacle auprès du responsable du magasin, je préviens le PC Sécurité et ma hiérarchie, et je note l’anomalie sur la main courante. Si le commerçant refuse, mon responsable prévient l’exploitant.",
+        label: "Analyse Juridique (Article 223-1)"
+      }
+    ]
+  },
+  {
+    title: "Le Feu et ses Conséquences",
+    questions: [
+      {
+        type: "order",
+        text: "Reconstituez le Triangle du Feu et la composante qui l'entretient :",
+        items: ["Combustible", "Comburant", "Énergie d'activation", "Réaction en chaîne"],
+        correct: ["Combustible", "Comburant", "Énergie d'activation", "Réaction en chaîne"],
+        explain: "Ce qui brûle, ce qui permet de brûler, ce qui déclenche, et ce qui entretient (tétraèdre)."
+      },
+      {
+        type: "vf",
+        text: "La fumée est plus dangereuse que les flammes.",
+        answer: true,
+        explain: "Vrai — Les fumées sont toxiques, opaques et chaudes : elles tuent avant les flammes."
+      },
+      {
+        type: "vf",
+        text: "Un feu d’huile de friteuse est de classe A.",
+        answer: false,
+        explain: "Faux — Les huiles et graisses de cuisson sont de classe F."
+      },
+      {
+        type: "vf",
+        text: "Je peux ouvrir une porte chaude pour vérifier si le feu est derrière.",
+        answer: false,
+        explain: "Faux — Risque d’explosion de fumées (backdraft) : je ne dois jamais ouvrir une porte chaude."
+      },
+      {
+        type: "assoc",
+        text: "Reliez chaque situation à sa classe de feu :",
+        pairs: [
+          {item: "Un feu de poubelle remplie de cartons", correct: "Classe A"},
+          {item: "Une fuite de gaz enflammée", correct: "Classe C"},
+          {item: "Un feu de friteuse en cuisine", correct: "Classe F"},
+          {item: "Un feu d’essence renversée", correct: "Classe B"}
+        ],
+        explain: "A3, B2, C1, D4."
+      },
+      {
+        type: "assoc",
+        text: "Associez chaque phénomène à son mode de propagation :",
+        pairs: [
+          {item: "Un rideau s’enflamme à 2 mètres d’un radiateur en feu.", correct: "Rayonnement"},
+          {item: "Une poutre métallique chauffée enflamme un matériau au contact.", correct: "Conduction"},
+          {item: "Les gaz chauds montent dans la cage d’escalier et enflamment le palier.", correct: "Convection"},
+          {item: "Une braise soufflée par le vent met le feu à un entrepôt voisin.", correct: "Projection"}
+        ],
+        explain: "A4, B1, C2, D3."
+      },
+      {
+        type: "redac",
+        scenario: "Pendant une ronde de nuit dans un hôtel, vous sentez une odeur de plastique brûlé dans un couloir et vous voyez un filet de fumée sous la porte d’une chambre technique. La poignée est tiède.",
+        text: "Quel danger principal craignez-vous si vous ouvrez brutalement la porte ? Quelle est votre première action ?",
+        answer: "Une explosion de fumées (backdraft) ou un brusque appel d’air qui alimenterait le feu.\nJe n’ouvre pas la porte, je préviens immédiatement le PC Sécurité par radio, je déclenche la procédure d’alerte (18 / 112) et je prépare une intervention avec les moyens adaptés pendant que j’attends l’appui du binôme.",
+        label: "Mise en situation (L’odeur de brûlé)"
+      }
+    ]
+  },
+  {
+    title: "Les Bâtiments",
+    questions: [
+      {
+        type: "assoc",
+        text: "Associez chaque établissement à son type :",
+        pairs: [
+          {item: "Un centre commercial", correct: "Type M"},
+          {item: "Un restaurant", correct: "Type N"},
+          {item: "Un lycée", correct: "Type R"},
+          {item: "Un hôpital", correct: "Type U"}
+        ],
+        explain: "A3, B4, C1, D2."
+      },
+      {
+        type: "vf",
+        text: "Un ERP de 800 personnes est de 2ème catégorie.",
+        answer: true,
+        explain: "Vrai — De 701 à 1 500 personnes : 2ème catégorie."
+      },
+      {
+        type: "vf",
+        text: "Une unité de passage (UP) mesure 1,40 m.",
+        answer: false,
+        explain: "Faux — Une UP fait 0,60 m ; un dégagement de 1 UP fait 0,90 m."
+      },
+      {
+        type: "assoc",
+        text: "Associez chaque notion à sa définition :",
+        pairs: [
+          {item: "Réaction au feu", correct: "Capacité d’un matériau à s’enflammer et à alimenter le feu."},
+          {item: "Résistance au feu", correct: "Capacité d’un élément à conserver ses fonctions pendant un temps donné."},
+          {item: "Compartimentage", correct: "Division du bâtiment en volumes séparés pour limiter la propagation."},
+          {item: "Désenfumage", correct: "Évacuation des fumées pour garder des cheminements praticables."}
+        ],
+        explain: "A3, B1, C4, D2."
+      },
+      {
+        type: "qcm",
+        scenario: "Vous travaillez dans une galerie marchande qui accueille jusqu’à 2 000 personnes (public et personnel).",
+        text: "Quel est son type et sa catégorie ?",
+        options: ["Type R, 2ème catégorie", "Type M, 1ère catégorie", "Type N, 3ème catégorie"],
+        answer: 1,
+        explain: "Type M (magasins de vente / centres commerciaux), 1ère catégorie (plus de 1 500 personnes). Cela exige un service de sécurité permanent avec un PC."
+      }
+    ]
+  },
+  {
+    title: "Me Repérer dans les Lieux",
+    questions: [
+      {
+        type: "assoc",
+        text: "Reliez chaque installation à son utilité principale :",
+        pairs: [
+          {item: "Tableau général basse tension (TGBT)", correct: "Couper l’alimentation électrique générale."},
+          {item: "Vanne d’arrêt de gaz", correct: "Couper l’alimentation en gaz du bâtiment."},
+          {item: "Colonne sèche", correct: "Alimenter en eau les pompiers dans les étages."},
+          {item: "Poste de sécurité", correct: "Centraliser les alarmes et les informations de sécurité."}
+        ],
+        explain: "A3, B1, C4, D2."
+      },
+      {
+        type: "vf",
+        text: "Un plan d’évacuation affiché au public suffit à mon travail d’agent.",
+        answer: false,
+        explain: "Faux — Il me faut aussi le plan d’intervention, le plan de masse et les plans de zones."
+      },
+      {
+        type: "vf",
+        text: "Je peux découvrir les locaux techniques le jour d’un sinistre.",
+        answer: false,
+        explain: "Faux — Je dois les connaître avant : la reconnaissance du site fait partie de ma prise de poste."
+      },
+      {
+        type: "redac",
+        scenario: "À 2 h du matin, une alarme incendie se déclenche dans un entrepôt. À leur arrivée, les sapeurs-pompiers vous demandent : « Où est la coupure électrique générale ? Où sont stockés les produits dangereux ? »",
+        text: "Que devez-vous être capable de répondre sans hésiter ? Quels documents remettez-vous aux pompiers ?",
+        answer: "J’indique l’emplacement du TGBT et des coupures d’urgence, le local où sont stockés les produits dangereux et leurs risques, et je précise ce qui a été fait (alarme, évacuation, coupures déjà réalisées).\nJe remets le plan d’intervention, la liste des produits dangereux, le jeu de clés et, si besoin, j’accompagne la reconnaissance.",
+        label: "Mise en situation (La question des pompiers)"
+      }
+    ]
+  },
+  {
+    title: "La Prévention & Les Consignes",
+    questions: [
+      {
+        type: "assoc",
+        text: "Associez chaque consigne à son destinataire :",
+        pairs: [
+          {item: "Consignes générales", correct: "Le public (et le personnel)."},
+          {item: "Consignes particulières", correct: "Le personnel de l’établissement."},
+          {item: "Consignes de poste", correct: "L’agent de sécurité incendie."}
+        ],
+        explain: "Générales=public · Particulières=personnel · De poste=agent SSIAP"
+      },
+      {
+        type: "vf",
+        text: "Je peux caler une porte coupe-feu pour faciliter la circulation.",
+        answer: false,
+        explain: "Faux — Une porte coupe-feu doit rester fermée : calée, elle n’arrête plus la propagation."
+      },
+      {
+        type: "vf",
+        text: "Un permis de feu est nécessaire pour des travaux de soudure.",
+        answer: true,
+        explain: "Vrai — Requis pour tout travail par point chaud."
+      },
+      {
+        type: "order",
+        text: "Remettez dans l’ordre les cinq temps de la méthode « faire respecter » :",
+        items: [
+          "Demander la remise en conformité",
+          "Constater l’anomalie",
+          "Rendre compte et noter sur la main courante",
+          "Expliquer la règle et le risque",
+          "Vérifier la correction"
+        ],
+        correct: [
+          "Constater l’anomalie",
+          "Expliquer la règle et le risque",
+          "Demander la remise en conformité",
+          "Vérifier la correction",
+          "Rendre compte et noter sur la main courante"
+        ],
+        explain: "Constater → Expliquer → Demander → Vérifier → Rendre compte."
+      },
+      {
+        type: "redac",
+        scenario: "Un soudeur d’une entreprise extérieure commence des travaux dans un couloir sans vous présenter de permis de feu. Il vous répond : « C’est rapide, ça ne prend que dix minutes. »",
+        text: "Quelle est votre réaction immédiate ? Quels éléments doivent figurer sur le permis de feu ?",
+        answer: "Je lui demande d’arrêter immédiatement ses travaux (je n’attends pas la fin), je préviens le PC Sécurité et mon supérieur, et je contacte le référent de l’entreprise.\nLe lieu, la nature des travaux, la durée, les mesures de prévention (dégagement des combustibles, extincteur à portée, surveillance), les noms et signatures des responsables et la surveillance après travaux.",
+        label: "Mise en situation (Le permis de feu)"
+      }
+    ]
+  },
+  {
+    title: "Les Installations Techniques (SSI)",
+    questions: [
+      {
+        type: "assoc",
+        text: "Classez chaque action en Alarme ou Alerte :",
+        pairs: [
+          {item: "Faire retentir la sirène pour que les occupants évacuent", correct: "Alarme"},
+          {item: "Appeler le 18 pour signaler un incendie", correct: "Alerte"},
+          {item: "Donner l’adresse et la nature du sinistre aux pompiers", correct: "Alerte"}
+        ],
+        explain: "Alarme = en interne vers le public. Alerte = vers l'extérieur (pompiers)."
+      },
+      {
+        type: "vf",
+        text: "Une alarme qui sonne signifie que les pompiers sont automatiquement prévenus.",
+        answer: false,
+        explain: "Faux — L’alarme prévient les occupants : l’alerte aux pompiers est une action distincte que je dois réaliser."
+      },
+      {
+        type: "vf",
+        text: "Je peux désactiver un détecteur gênant sans l’accord de ma hiérarchie.",
+        answer: false,
+        explain: "Faux — Je ne neutralise jamais un détecteur sans accord et sans traçabilité."
+      },
+      {
+        type: "assoc",
+        text: "Associez chaque indication de l'ECS à sa signification :",
+        pairs: [
+          {item: "Veille", correct: "Fonctionnement normal."},
+          {item: "Alarme feu", correct: "Un détecteur ou déclencheur manuel a confirmé une détection de feu."},
+          {item: "Dérangement", correct: "Un défaut technique est détecté sur le système."},
+          {item: "Hors service", correct: "Une zone ou un équipement est volontairement mis à l’arrêt."}
+        ],
+        explain: "A1, B3, C2, D4."
+      }
+    ]
+  },
+  {
+    title: "Les Moyens d'Extinction",
+    questions: [
+      {
+        type: "assoc",
+        text: "Associez chaque extincteur à la classe de feu adaptée :",
+        pairs: [
+          {item: "Eau pulvérisée", correct: "Feux de classe A (solides)."},
+          {item: "CO₂", correct: "Feux de classe B (liquides), propre pour les équipements électriques."},
+          {item: "Poudre ABC", correct: "Feux de classes A, B et C."},
+          {item: "Extincteur classe F", correct: "Feux d’huiles de cuisson."}
+        ],
+        explain: "A3, B4, C2, D1."
+      },
+      {
+        type: "vf",
+        text: "Je vise le haut des flammes pour éteindre plus vite.",
+        answer: false,
+        explain: "Faux — Je vise la base des flammes."
+      },
+      {
+        type: "vf",
+        text: "Un feu d’huile s’éteint à l’eau.",
+        answer: false,
+        explain: "Faux — Jamais d’eau sur un feu d’huile : projection et propagation."
+      },
+      {
+        type: "vf",
+        text: "Un extincteur à moitié vidé peut être remis en place sans signalement.",
+        answer: false,
+        explain: "Faux — Je le signale : il n’est plus fiable et doit être rechargé."
+      },
+      {
+        type: "order",
+        text: "Remettez dans l’ordre les étapes d’utilisation d’un extincteur :",
+        items: [
+          "Retirer la goupille",
+          "Viser la base des flammes et balayer",
+          "Choisir l’appareil adapté à la classe de feu",
+          "Se placer dos au vent, dos tourné vers la sortie",
+          "Surveiller après extinction"
+        ],
+        correct: [
+          "Choisir l’appareil adapté à la classe de feu",
+          "Se placer dos au vent, dos tourné vers la sortie",
+          "Retirer la goupille",
+          "Viser la base des flammes et balayer",
+          "Surveiller après extinction"
+        ],
+        explain: "C, D, A, B, E."
+      },
+      {
+        type: "redac",
+        scenario: "Un feu de corbeille à papier se déclare dans un bureau, près d’une prise de courant. Vous disposez d’un extincteur à eau pulvérisée et d’un extincteur CO₂.",
+        text: "Quelle est la classe de feu ? Quel extincteur choisissez-vous en premier et pourquoi ? Quelle précaution prenez-vous vis-à-vis de la prise de courant ?",
+        answer: "Classe A (papier), avec un risque électrique à proximité. Je coupe le courant si possible puis j’utilise l’extincteur CO₂ (sans danger électrique) ou, une fois le courant coupé, l’eau pulvérisée pour refroidir et éviter la reprise.\nJe coupe l’alimentation de la prise (ou du circuit), je ne projette pas d’eau sur la prise sous tension et je préviens le PC Sécurité.",
+        label: "Analyse d'Intervention"
+      }
+    ]
+  },
+  {
+    title: "De l'Alarme à l'Alerte (Les 4A)",
+    questions: [
+      {
+        type: "order",
+        text: "Remettez dans l’ordre les quatre étapes de ma chronologie :",
+        items: [
+          "ACCUEILLIR les secours",
+          "ANALYSER l’alarme",
+          "AGIR (évacuer, intervenir, sécuriser)",
+          "ALERTER les pompiers"
+        ],
+        correct: [
+          "ANALYSER l’alarme",
+          "ALERTER les pompiers",
+          "AGIR (évacuer, intervenir, sécuriser)",
+          "ACCUEILLIR les secours"
+        ],
+        explain: "B, D, C, A."
+      },
+      {
+        type: "vf",
+        text: "Je peux ignorer une alarme venant d’un détecteur réputé capricieux.",
+        answer: false,
+        explain: "Faux — Toute alarme est considérée comme vraie jusqu’à preuve du contraire."
+      },
+      {
+        type: "vf",
+        text: "Une alerte de bonne foi qui s’avère fausse est une faute professionnelle.",
+        answer: false,
+        explain: "Faux — Une alerte de bonne foi n’est pas une faute ; seule la fausse alerte volontaire est une infraction."
+      },
+      {
+        type: "assoc",
+        text: "Associez chaque observation à la conclusion la plus probable :",
+        pairs: [
+          {item: "Déclencheur manuel actionné, cris dans le couloir", correct: "Un occupant a vu un danger : alarme générale immédiate."},
+          {item: "Détecteur de la cuisine, vapeur d’eau visible", correct: "Cause bénigne probable, à vérifier sur place avant de réarmer."},
+          {item: "Fumée noire sous une porte chaude", correct: "Feu probable avec risque d’explosion de fumées : ne pas ouvrir, alerter."}
+        ],
+        explain: "A4, B1, D3."
+      },
+      {
+        type: "redac",
+        scenario: "Seul au poste de sécurité d’un hôtel, vous recevez une alarme feu sur le niveau 3. La caméra du couloir montre de la fumée grise.",
+        text: "Quelles sont vos trois premières actions ? Comment accueillez-vous les pompiers ?",
+        answer: "(1) J’acquitte et je déclenche l’alarme générale (feu probable, nuit, hôtel : public endormi) ; (2) j’alerte le 18 / 112 avec le message structuré ; (3) je prépare l’évacuation (liste des chambres, clés, interphone) et j’appelle le renfort.\nÀ l’entrée, je les guide, je leur remets le plan et les clés (passe général), je précise la zone sinistrée, le nombre de personnes à évacuer et ce que j’ai déjà fait. J’obéis ensuite aux instructions du COS.",
+        label: "Mise en situation (L’alarme de 3 h du matin)"
+      }
+    ]
+  },
+  {
+    title: "Évacuation & Sauvetage",
+    questions: [
+      {
+        type: "vf",
+        text: "Je dois m’engager seul dans la fumée pour sauver une victime.",
+        answer: false,
+        explain: "Faux — Je ne m’engage jamais seul ; j’alerte et je suis en binôme."
+      },
+      {
+        type: "vf",
+        text: "Je peux utiliser l’ascenseur pour évacuer rapidement un PMR.",
+        answer: false,
+        explain: "Faux — Les ascenseurs sont proscrits pendant l’évacuation."
+      },
+      {
+        type: "assoc",
+        text: "Associez chaque personne à la meilleure conduite à tenir :",
+        pairs: [
+          {item: "Personne à mobilité réduite", correct: "Conduire à l’espace d’attente sécurisé (EAS) et prévenir les pompiers."},
+          {item: "Personne sourde", correct: "Utiliser des signaux visuels et le contact."},
+          {item: "Personne inconsciente exposée à la fumée", correct: "Dégager si la menace est vitale, puis alerter et pratiquer les gestes de secours."}
+        ],
+        explain: "A2, B1, C3."
+      },
+      {
+        type: "qcm",
+        scenario: "Un incendie se déclare dans un hôtel de nuit. Une personne en fauteuil roulant est bloquée dans sa chambre au deuxième étage, la porte étant verrouillée de l’intérieur par un dispositif défaillant. Vous brisez le panneau de la porte pour l’atteindre.",
+        text: "Quel article vous obligeait à intervenir ? Dans quelles limites ? Quel article vous protège pour les dégradations causées ?",
+        options: [
+          "Art. 223-1 (mise en danger) / Art. 122-5 (légitime défense)",
+          "Art. 223-6 (non-assistance à personne en péril) / Art. 122-7 (état de nécessité)",
+          "Art. 121-1 (responsabilité pénale) / Aucun article ne protège la dégradation"
+        ],
+        answer: 1,
+        explain: "L’Art. 223-6 m’obligeait à agir, dans la limite d’un risque raisonnable pour moi. L’Art. 122-7 (état de nécessité) : briser la porte était nécessaire et proportionné pour sauver une vie."
+      }
+    ]
+  },
+  {
+    title: "Surveiller les Lieux",
+    questions: [
+      {
+        type: "assoc",
+        text: "Associez chaque ronde à son objectif :",
+        pairs: [
+          {item: "Ronde aléatoire", correct: "Changer d’itinéraire et d’horaire pour ne pas être prévisible."},
+          {item: "Ronde de fermeture", correct: "Vérifier qu’il ne reste personne et que les accès sont sécurisés."},
+          {item: "Ronde régulière", correct: "Suivre un parcours défini avec points de passage."}
+        ],
+        explain: "B4, C1, D2."
+      },
+      {
+        type: "vf",
+        text: "Les images de vidéoprotection peuvent être conservées sans limite de durée.",
+        answer: false,
+        explain: "Faux — Un mois au maximum, sauf enquête."
+      },
+      {
+        type: "vf",
+        text: "Je peux visionner les caméras par simple curiosité.",
+        answer: false,
+        explain: "Faux — Chaque visionnage doit avoir un motif professionnel."
+      },
+      {
+        type: "redac",
+        scenario: "Un responsable de magasin demande à verrouiller une issue de secours avec un cadenas « pour éviter les vols », en précisant qu’il gardera la clé dans son bureau.",
+        text: "Que lui répondez-vous et sur quelle base ? Quelles solutions de sûreté compatibles proposez-vous ?",
+        answer: "Refus : une issue de secours ne doit jamais être condamnée, c’est une violation du règlement de sécurité et une mise en danger d’autrui (Art. 223-1). Je préviens ma hiérarchie et je note l’anomalie.\nJe propose des solutions conformes : barre antipanique avec alarme sonore locale, dispositif de contrôle d’accès avec déverrouillage automatique à l’alarme, surveillance vidéo de l’issue, ronde renforcée près de l’issue.",
+        label: "Analyse (Sûreté contre incendie)"
+      }
+    ]
+  },
+  {
+    title: "Agir en Professionnel (Tension, Délits, Traces)",
+    questions: [
+      {
+        type: "assoc",
+        text: "Associez chaque infraction à son article du Code Pénal :",
+        pairs: [
+          {item: "Incendie volontaire", correct: "Art. 322-6"},
+          {item: "Fausse alerte", correct: "Art. 322-14"},
+          {item: "Dégradation volontaire", correct: "Art. 322-1"},
+          {item: "Modification de l’état des lieux pour faire obstacle à la vérité", correct: "Art. 434-4"}
+        ],
+        explain: "A3, B4, C1, D2."
+      },
+      {
+        type: "vf",
+        text: "Après un incendie suspect, je nettoie la zone pour la remettre en état rapidement.",
+        answer: false,
+        explain: "Faux — Je préserve les traces (délit d'entrave, Art. 434-4 du Code Pénal)."
+      },
+      {
+        type: "vf",
+        text: "En cas de pollution, il suffit d’éteindre le feu sans se soucier des eaux d’extinction.",
+        answer: false,
+        explain: "Faux — Je protège l’environnement : j’obture les réseaux et j’alerte."
+      },
+      {
+        type: "order",
+        text: "Remettez dans l’ordre la méthode de gestion de la tension :",
+        items: [
+          "Proposer une solution",
+          "Écouter",
+          "Faire respecter",
+          "Reformuler",
+          "Expliquer la règle et le danger"
+        ],
+        correct: [
+          "Écouter",
+          "Reformuler",
+          "Expliquer la règle et le danger",
+          "Proposer une solution",
+          "Faire respecter"
+        ],
+        explain: "Écouter → Reformuler → Expliquer → Proposer → Faire respecter."
+      },
+      {
+        type: "redac",
+        scenario: "Dans un entrepôt, un feu a pris dans une benne, près d’une porte forcée. Vous avez éteint les flammes avec un extincteur. Les pompiers arrivent.",
+        text: "Comment préservez-vous les traces ? Quelles informations transmettez-vous aux enquêteurs et aux pompiers ?",
+        answer: "Je ne touche plus à rien, je délimite la zone, je note l’état de la porte forcée, la position de la benne et l’heure, et je demande aux pompiers d’éviter de déplacer les éléments si possible.\nJe précise que la porte était forcée avant l’incendie, l’heure de découverte, ce que j’ai utilisé (extincteur) et déplacé (le cas échéant), et les personnes présentes. Je préviens le 17.",
+        label: "Mise en situation (Le départ de feu suspect)"
+      }
+    ]
+  },
+  {
+    title: "Rendre Compte & PC (SSIAP 2)",
+    questions: [
+      {
+        type: "assoc",
+        text: "Associez chaque lettre du QQOQCP à ce qu’elle désigne :",
+        pairs: [
+          {item: "Quand ?", correct: "La date et l’heure précises."},
+          {item: "Où ?", correct: "Le lieu exact."},
+          {item: "Quoi ?", correct: "Les faits constatés."},
+          {item: "Comment ?", correct: "Les actions menées."}
+        ],
+        explain: "A2, B4, C1, D3."
+      },
+      {
+        type: "vf",
+        text: "La main courante ne sert à rien si rien ne s’est passé.",
+        answer: false,
+        explain: "Faux — « Rien à signaler » est une information : elle prouve que la ronde a eu lieu."
+      },
+      {
+        type: "vf",
+        text: "En situation de crise, le chef de poste part sur le terrain pour aider.",
+        answer: false,
+        explain: "Faux — Il reste au PC pour piloter, communiquer et accueillir les secours."
+      },
+      {
+        type: "redac",
+        scenario: "Voici une ligne de main courante : « Le client était vraiment pénible et il a fait n’importe quoi. J’ai fini par m’énerver. »",
+        text: "Pourquoi cette rédaction est-elle professionnellement insuffisante ? Réécrivez-la de façon factuelle pour un client qui a refusé d’évacuer un magasin lors d’une alarme.",
+        answer: "Elle est subjective (jugements, émotions), imprécise (pas d’heure, de lieu, de faits) et inutilisable comme preuve.\n« 15 h 10, niveau 1, magasin X : alarme générale déclenchée. Un client a refusé de quitter le magasin malgré trois demandes orales. J’ai expliqué le danger, l’ai accompagné vers la sortie à 15 h 14. Il a obtempéré. Aucune violence. Témoin : vendeuse Mme Y. »",
+        label: "Analyse d’une Main Courante"
+      }
+    ]
+  }
+];
+
+const PHONETIC={A:'Alpha',B:'Bravo',C:'Charlie',D:'Delta',E:'Echo',F:'Foxtrot',G:'Golf',H:'Hotel',I:'India',J:'Juliett',K:'Kilo',L:'Lima',M:'Mike',N:'November',O:'Oscar',P:'Papa',Q:'Quebec',R:'Romeo',S:'Sierra',T:'Tango',U:'Uniform',V:'Victor',W:'Whiskey',X:'X-ray',Y:'Yankee',Z:'Zulu'};
+
+let correct=0,wrong=0,total=0;
+const dragState={},factuelState={},activeQuestions={};
+let currentThemeIdx=0,currentDifficulty='débutant',aiGenerated=false;
+
+function resetScore(){correct=0;wrong=0;total=0;updateDash();}
+function updateDash(){
+  document.getElementById('score-correct').textContent=correct;
+  document.getElementById('score-wrong').textContent=wrong;
+  document.getElementById('score-total').textContent=total;
+  document.getElementById('score-pct').textContent=total?Math.round(correct/total*100)+'%':'—';
+}
+function recordResult(ok){if(ok)correct++;else wrong++;total++;updateDash();}
+
+function goToTheme(idx){
+  document.getElementById('exercices').scrollIntoView({behavior:'smooth'});
+  setTimeout(()=>{const btns=document.querySelectorAll('.ex-theme-btn');loadTheme(idx,btns[idx]);},600);
+}
+function loadTheme(idx,btn){
+  document.querySelectorAll('.ex-theme-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  currentThemeIdx=idx; aiGenerated=false;
+  Object.keys(activeQuestions).forEach(k=>{if(k.startsWith(idx+'-'))delete activeQuestions[k];});
+  const lbl=document.getElementById('ai-btn-label');if(lbl)lbl.textContent='Générer des exercices par IA';
+  hideAIStatus&&hideAIStatus();
+  renderNormalTheme(THEMES[idx],idx);
+}
+
+function buildQ(q,i,themeIdx){
+  const wrap=document.createElement('div');wrap.className='q-card';wrap.style.animationDelay=i*0.05+'s';
+  const typeLabel={qcm:'QCM',vf:'VRAI / FAUX',assoc:'ASSOCIATION',phonetic:'ALPHABET',order:'ORDONNANCEMENT',factuel:'VRAI/FAUX MULTIPLE',desc:'EXERCICE DESC',redac:'RÉDACTION','radio-signal':'MESSAGE RADIO'}[q.type]||q.type.toUpperCase();
+  let html=`<div class="q-card-header"><span class="q-num">EX. ${String(i+1).padStart(2,'0')}</span><div style="flex:1"><div class="q-type">${typeLabel}</div><div class="q-text">${q.scenario?`<div class="q-scenario">📋 ${q.scenario}</div>`:''} ${q.text}</div></div></div><div class="q-body">`;
+  if(q.type==='qcm')html+=buildQCM(q,i);
+  else if(q.type==='vf')html+=buildVF(q,i);
+  else if(q.type==='assoc')html+=buildAssoc(q,i,themeIdx);
+  else if(q.type==='phonetic')html+=buildPhonetic();
+  else if(q.type==='order')html+=buildOrder(q,i,themeIdx);
+  else if(q.type==='factuel')html+=buildFactuel(q,i,themeIdx);
+  else if(q.type==='desc')html+=buildDESC(q,i);
+  else if(q.type==='redac')html+=buildRedac(q,i);
+  else if(q.type==='radio-signal')html+=buildRadioSignal(q,i);
+  html+='</div>';wrap.innerHTML=html;
+  if(q.type==='order')setTimeout(()=>setupOrderDrag(i,themeIdx,q),50);
+  if(q.type==='factuel')setTimeout(()=>setupFactuel(i,themeIdx),50);
+  return wrap;
+}
+
+function buildQCM(q,i){
+  return q.options.map((opt,oi)=>`<button class="btn-opt" onclick="answerQCM(this,${oi},${q.answer},'${esc(q.explain)}')">${opt}</button>`).join('')+`<div class="q-feedback"></div>`;
+}
+function answerQCM(btn,chosen,correct_idx,explain){
+  const btns=btn.closest('.q-body').querySelectorAll('.btn-opt');btns.forEach(b=>b.disabled=true);
+  const fb=btn.closest('.q-body').querySelector('.q-feedback');const ok=chosen===correct_idx;
+  btn.classList.add(ok?'correct':'wrong');if(!ok)btns[correct_idx].classList.add('correct');
+  showFB(fb,ok,ok?'✓ Correct ! '+explain:'✗ Incorrect. '+explain);recordResult(ok);
+}
+
+function buildVF(q,i){
+  return `<div class="vf-row"><button class="q-check-btn" onclick="answerVF(this,'vrai',${q.answer},'${esc(q.explain)}')">✓ VRAI</button><button class="q-check-btn" onclick="answerVF(this,'faux',${q.answer},'${esc(q.explain)}')">✗ FAUX</button></div><div class="q-feedback"></div>`;
+}
+function answerVF(btn,chosen,answer,explain){
+  const btns=btn.closest('.q-body').querySelectorAll('.q-check-btn');btns.forEach(b=>b.onclick=null);
+  const ok=(chosen==='vrai')===answer;btn.classList.add(ok?'sel-vrai':'sel-faux');
+  if(!ok){btns.forEach(b=>{const c=(b.textContent.includes('VRAI')&&answer===true)||(b.textContent.includes('FAUX')&&answer===false);if(c)b.classList.add('reveal-correct');});}
+  const fb=btn.closest('.q-body').querySelector('.q-feedback');
+  showFB(fb,ok,ok?'✓ Correct ! '+explain:'✗ Incorrect. '+explain);recordResult(ok);
+}
+
+function buildAssoc(q,i,themeIdx){
+  const allVals=shuffle(q.pairs.map(p=>p.correct));
+  return q.pairs.map((p,pi)=>`<div class="assoc-item"><span class="assoc-label">${p.item}</span><select class="assoc-select" id="asel-${themeIdx}-${i}-${pi}"><option value="">— choisir —</option>${allVals.map(v=>`<option value="${v}">${v}</option>`).join('')}</select></div>`).join('')+`<button class="q-validate-btn" onclick="validateAssoc(this,${i},${themeIdx})">Valider</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function validateAssoc(btn,qIdx,themeIdx){
+  btn.disabled=true;
+  const q=activeQuestions[`${themeIdx}-${qIdx}`]||(THEMES[themeIdx]&&THEMES[themeIdx].questions[qIdx]);
+  if(!q)return;let allOk=true;
+  q.pairs.forEach((p,pi)=>{const sel=document.getElementById(`asel-${themeIdx}-${qIdx}-${pi}`);if(sel){sel.disabled=true;if(sel.value===p.correct)sel.classList.add('correct-sel');else{sel.classList.add('wrong-sel');allOk=false;}}});
+  const fb=btn.closest('.q-body').querySelector('.q-feedback');
+  showFB(fb,allOk,allOk?'✓ Toutes les associations sont correctes ! '+q.explain:'✗ Certaines associations sont incorrectes. '+q.explain);recordResult(allOk);
+}
+
+function buildPhonetic(){
+  let html=`<div class="phonetic-grid">`;
+  for(const[l,w]of Object.entries(PHONETIC))html+=`<div class="phonetic-card" onclick="this.classList.toggle('flipped')"><span class="ph-letter">${l}</span><span class="ph-word">${w}</span></div>`;
+  return html+`</div><div style="margin-top:1rem;padding:0.8rem 1rem;background:var(--toggle-bg);border:1px solid var(--border);font-size:0.82rem;color:var(--gray)">💡 Cliquez sur chaque lettre pour mémoriser son code. Entraînez-vous à épeler : ARAGO = Alpha Romeo Alpha Golf Oscar</div>`;
+}
+
+function buildOrder(q,i,themeIdx){
+  const shuffled=shuffle([...q.items]);dragState[`${themeIdx}-${i}`]={items:shuffled,correct:q.correct,src:null};
+  let html=`<div class="order-list" id="olist-${themeIdx}-${i}">`;
+  shuffled.forEach((item,oi)=>{html+=`<div class="order-item" id="oi-${themeIdx}-${i}-${oi}" data-idx="${oi}"><span class="order-text">${item}</span><div class="order-btns"><button class="order-btn-up" onclick="moveOrderItem(${i},${themeIdx},${oi},-1)" title="Monter">▲</button><button class="order-btn-dn" onclick="moveOrderItem(${i},${themeIdx},${oi},+1)" title="Descendre">▼</button></div></div>`;});
+  return html+`</div><button class="q-validate-btn" onclick="checkOrder(${i},${themeIdx})">Vérifier l'ordre</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function moveOrderItem(i,themeIdx,oi,dir){const state=dragState[`${themeIdx}-${i}`];const ni=oi+dir;if(ni<0||ni>=state.items.length)return;const tmp=state.items[oi];state.items[oi]=state.items[ni];state.items[ni]=tmp;redrawOrderMobile(i,themeIdx);}
+function redrawOrderMobile(i,themeIdx){const state=dragState[`${themeIdx}-${i}`];const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;state.items.forEach((item,oi)=>{const el=list.querySelector(`[data-idx="${oi}"]`);if(el){const txt=el.querySelector('.order-text');if(txt)txt.textContent=item;}});}
+function setupOrderDrag(i,themeIdx,q){const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;const state=dragState[`${themeIdx}-${i}`];list.querySelectorAll('.order-item').forEach(item=>{item.addEventListener('dragstart',e=>{state.src=parseInt(e.currentTarget.dataset.idx);e.currentTarget.classList.add('dragging');});item.addEventListener('dragend',e=>e.currentTarget.classList.remove('dragging'));item.addEventListener('dragover',e=>{e.preventDefault();e.currentTarget.classList.add('drag-over');});item.addEventListener('dragleave',e=>e.currentTarget.classList.remove('drag-over'));item.addEventListener('drop',e=>{e.preventDefault();e.currentTarget.classList.remove('drag-over');const tgt=parseInt(e.currentTarget.dataset.idx);if(state.src===null||state.src===tgt)return;const tmp=state.items[state.src];state.items[state.src]=state.items[tgt];state.items[tgt]=tmp;redrawOrder(i,themeIdx);});item.setAttribute('draggable','true');});}
+function redrawOrder(i,themeIdx){const state=dragState[`${themeIdx}-${i}`];const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;state.items.forEach((item,oi)=>{const el=list.querySelector(`[data-idx="${oi}"]`);if(el){const txt=el.querySelector('.order-text')||el.querySelector('span:last-child');if(txt)txt.textContent=item;}});}
+function checkOrder(i,themeIdx){const state=dragState[`${themeIdx}-${i}`];const list=document.getElementById(`olist-${themeIdx}-${i}`);if(!list)return;let allOk=true;state.items.forEach((item,oi)=>{const el=list.querySelector(`[data-idx="${oi}"]`);const ok=item===state.correct[oi];if(!ok)allOk=false;el.classList.add(ok?'correct':'wrong');el.setAttribute('draggable','false');el.style.cursor='default';});const btn=list.nextElementSibling;if(btn)btn.disabled=true;const fb=list.closest('.q-body').querySelector('.q-feedback');const q=activeQuestions[`${themeIdx}-${i}`]||(THEMES[themeIdx]&&THEMES[themeIdx].questions[i]);showFB(fb,allOk,allOk?'✓ Ordre parfait ! '+(q?q.explain:''):'✗ Ordre incorrect. '+(q?q.explain:'')+'<br><br>Ordre correct :<br>'+state.correct.map((c,ci)=>`${ci+1}. ${c}`).join('<br>'));recordResult(allOk);}
+
+function buildFactuel(q,i,themeIdx){
+  factuelState[`${themeIdx}-${i}`]={selected:new Set(),checked:false};
+  return q.items.map((item,fi)=>`<div class="fact-item" id="fi-${themeIdx}-${i}-${fi}" onclick="toggleFact(${i},${themeIdx},${fi})"><div class="fact-cb" id="fcb-${themeIdx}-${i}-${fi}"></div><span>${item.text}</span></div>`).join('')+`<button class="q-validate-btn" onclick="checkFactuel(${i},${themeIdx})">Valider</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function setupFactuel(i,themeIdx){}
+function toggleFact(i,themeIdx,fi){const state=factuelState[`${themeIdx}-${i}`];if(state.checked)return;const row=document.getElementById(`fi-${themeIdx}-${i}-${fi}`);const cb=document.getElementById(`fcb-${themeIdx}-${i}-${fi}`);if(state.selected.has(fi)){state.selected.delete(fi);row.classList.remove('checked');cb.textContent='';}else{state.selected.add(fi);row.classList.add('checked');cb.textContent='✓';}}
+function checkFactuel(i,themeIdx){const state=factuelState[`${themeIdx}-${i}`];if(state.checked)return;state.checked=true;const q=activeQuestions[`${themeIdx}-${i}`]||(THEMES[themeIdx]&&THEMES[themeIdx].questions[i]);let correct_cnt=0,total_items=q.items.length;q.items.forEach((item,fi)=>{const row=document.getElementById(`fi-${themeIdx}-${i}-${fi}`);row.onclick=null;const selected=state.selected.has(fi);if(item.correct&&selected){row.classList.add('result-ok');correct_cnt++;}else if(!item.correct&&!selected){correct_cnt++;}else if(item.correct&&!selected){row.classList.add('result-miss');}else{row.classList.add('result-ko');}});const allOk=correct_cnt===total_items;const fb=document.querySelector(`#fi-${themeIdx}-${i}-0`).closest('.q-body').querySelector('.q-feedback');showFB(fb,allOk,allOk?'✓ Parfait ! '+q.explain:'✗ '+q.explain+'<br><span style="font-size:0.8rem">🟢 Vert = correct · 🔴 Rouge = erreur · 🟡 Jaune = manqué</span>');recordResult(allOk);}
+
+function buildDESC(q,i){
+  return `<div class="desc-grid"><div class="desc-block"><div class="desc-letter">D</div><div class="desc-block-content"><div class="desc-lbl">Décrire — factuel</div><div class="desc-static">${q.desc_D}</div></div></div><div class="desc-block"><div class="desc-letter">E</div><div class="desc-block-content"><div class="desc-lbl">${q.desc_E_label}</div><textarea class="redac-area" id="desc-e-${i}" placeholder="Rédigez la partie E..." style="min-height:80px"></textarea></div></div><div class="desc-block"><div class="desc-letter">S</div><div class="desc-block-content"><div class="desc-lbl">Spécifier — proposition concrète</div><div class="desc-static">${q.desc_S}</div></div></div><div class="desc-block"><div class="desc-letter">C</div><div class="desc-block-content"><div class="desc-lbl">${q.desc_C_label}</div><textarea class="redac-area" id="desc-c-${i}" placeholder="Rédigez la partie C..." style="min-height:80px"></textarea></div></div></div><button class="q-validate-btn" onclick="showDESCAnswer(${i},'${esc(q.desc_E_ans)}','${esc(q.desc_C_ans)}','${esc(q.explain)}')">Voir les réponses</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function showDESCAnswer(i,eAns,cAns,explain){const fb=document.getElementById(`desc-e-${i}`).closest('.q-body').querySelector('.q-feedback');fb.className='q-feedback show info';fb.innerHTML=`<strong style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem">✓ Réponses attendues</strong><strong>E :</strong> ${eAns}<br><br><strong>C :</strong> ${cAns}`;}
+
+function buildRedac(q,i){return `<textarea class="redac-area" id="redac-${i}" placeholder="Rédigez votre ${q.label||'compte rendu'} ici..."></textarea><div style="margin-top:0.6rem"><button class="q-validate-btn" onclick="showRedacAnswer(${i},'${esc(q.answer)}','${esc(q.label||'Réponse modèle')}')">Voir la réponse modèle</button></div><div class="q-feedback" style="margin-top:0.6rem"></div>`;}
+function showRedacAnswer(i,answer,label){const fb=document.getElementById(`redac-${i}`).closest('.q-body').querySelector('.q-feedback');fb.className='q-feedback show info';fb.innerHTML=`<strong style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem">✓ ${label}</strong>${answer.replace(/\n/g,'<br>')}`;}
+
+function buildRadioSignal(q,i){
+  const fields=[{id:'appel',label:'Appel'},{id:'suis',label:'Je suis (position)'},{id:'vois',label:'Je vois (description)'},{id:'fais',label:'Je fais / Je demande'},{id:'final',label:'Final'}];
+  let html=`<div class="desc-grid">`;
+  fields.forEach(f=>{html+=`<div class="desc-block"><div class="desc-letter" style="font-size:1rem;padding-top:14px">${f.id==='appel'?'📡':f.id==='suis'?'📍':f.id==='vois'?'👁':f.id==='fais'?'⚡':'🔚'}</div><div class="desc-block-content"><div class="desc-lbl">${f.label}</div><textarea class="redac-area" id="radio-${i}-${f.id}" placeholder="..." style="min-height:56px"></textarea></div></div>`;});
+  return html+`</div><button class="q-validate-btn" onclick="showRadioAnswer(${i},'${esc(q.answer)}')">Voir le message modèle</button><div class="q-feedback" style="margin-top:0.6rem"></div>`;
+}
+function showRadioAnswer(i,answer){const fb=document.getElementById(`radio-${i}-appel`).closest('.q-body').querySelector('.q-feedback');fb.className='q-feedback show info';fb.innerHTML=`<strong style="font-family:'Barlow Condensed',sans-serif;font-size:0.65rem;letter-spacing:3px;text-transform:uppercase;color:var(--accent);display:block;margin-bottom:0.4rem">✓ Message radio modèle</strong>${answer.replace(/ — /g,'<br>')}`;}
+
+function showFB(el,ok,msg){el.className='q-feedback show '+(ok?'ok':'ko');el.innerHTML=msg;}
+function esc(s){return(s||'').replace(/'/g,'\\x27').replace(/"/g,'\\x22').replace(/\n/g,' ');}
+function shuffle(a){return[...a].sort(()=>Math.random()-0.5);}
+
+const THEME_CONTEXTS=[{name:"Cadre Légal"},{name:"Le Feu"},{name:"Les Bâtiments"},{name:"Repérage"},{name:"Prévention"},{name:"Installations"},{name:"Extinction"},{name:"De l'Alarme à l'Alerte"},{name:"Évacuation"},{name:"Surveillance"},{name:"Agir en Pro"},{name:"Rendre Compte"}];
+const QUESTION_BANKS=[
+  THEMES[0].questions, THEMES[1].questions, THEMES[2].questions, THEMES[3].questions,
+  THEMES[4].questions, THEMES[5].questions, THEMES[6].questions, THEMES[7].questions,
+  THEMES[8].questions, THEMES[9].questions, THEMES[10].questions, THEMES[11].questions
+];
+
+function setDiff(btn){document.querySelectorAll('.ai-diff-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');currentDifficulty=btn.dataset.diff;}
+function showAIStatus(msg,cls=''){const el=document.getElementById('ai-status');el.style.display='block';el.className=cls;el.textContent=msg;}
+function hideAIStatus(){document.getElementById('ai-status').style.display='none';}
+function showShimmer(){const c=document.getElementById('quiz-container');const lines=n=>Array(n).fill(0).map((_,i)=>`<div class="shimmer-line" style="width:${60+Math.random()*35}%;animation-delay:${i*0.1}s"></div>`).join('');c.innerHTML=Array(4).fill(0).map(()=>`<div class="q-card-shimmer">${lines(3)}<div class="shimmer-line" style="width:30%;height:32px;margin-top:12px"></div></div>`).join('');}
+
+function generateAIExercises(){
+  const btn=document.getElementById('ai-gen-btn');const lbl=document.getElementById('ai-btn-label');
+  btn.disabled=true;btn.classList.add('loading');lbl.textContent='Mélange en cours…';showShimmer();
+  setTimeout(()=>{
+    try{
+      const bank=QUESTION_BANKS[currentThemeIdx];
+      if(!bank||bank.length===0){const theme=THEMES[currentThemeIdx];const shuffled=shuffle(theme.questions).slice(0,Math.min(5,theme.questions.length));renderAIQuestions(shuffled,THEME_CONTEXTS[currentThemeIdx].name);showAIStatus(`✦ ${shuffled.length} exercices mélangés aléatoirement`,'success');}
+      else{
+        let pool=[...bank];
+        if(currentDifficulty==='débutant'){const vfs=pool.filter(q=>q.type==='vf');const rest=shuffle(pool.filter(q=>q.type!=='vf'));pool=[...shuffle(vfs),...rest];}
+        else if(currentDifficulty==='avancé'){const hard=pool.filter(q=>q.type==='assoc'||(q.type==='qcm'&&q.scenario));const rest=shuffle(pool.filter(q=>!(q.type==='assoc'||(q.type==='qcm'&&q.scenario))));pool=[...shuffle(hard),...rest];}
+        else pool=shuffle(pool);
+        const picked=pickBalanced(pool,5);renderAIQuestions(picked,THEME_CONTEXTS[currentThemeIdx].name);showAIStatus(`✦ ${picked.length} exercices générés — niveau ${currentDifficulty}`,'success');
+      }
+      lbl.textContent='Régénérer ↺';
+    }catch(e){console.error(e);showAIStatus('✗ Erreur lors de la génération','error');renderNormalTheme(THEMES[currentThemeIdx],currentThemeIdx);lbl.textContent='Générer des exercices par IA';}
+    finally{btn.disabled=false;btn.classList.remove('loading');}
+  },600);
+}
+function pickBalanced(pool,n){const types=['vf','qcm','assoc'];const picked=[];const used=new Set();for(const t of types){const idx=pool.findIndex((q,i)=>q.type===t&&!used.has(i));if(idx!==-1){picked.push(pool[idx]);used.add(idx);}}for(let i=0;i<pool.length&&picked.length<n;i++){if(!used.has(i)){picked.push(pool[i]);used.add(i);}}return picked.slice(0,n);}
+function renderAIQuestions(questions,themeName){const c=document.getElementById('quiz-container');questions.forEach((q,i)=>{activeQuestions[`${currentThemeIdx}-${i}`]=q;});c.innerHTML=`<div class="theme-title">${themeName} <span class="ai-badge">✦ IA</span></div><div class="theme-meta">${questions.length} exercice${questions.length>1?'s':''} générés aléatoirement — niveau ${currentDifficulty}</div>`;questions.forEach((q,i)=>{try{c.appendChild(buildQ(q,i,currentThemeIdx));}catch(e){console.warn('Skipping invalid question',i,e);}});}
+function renderNormalTheme(theme,idx){const c=document.getElementById('quiz-container');c.innerHTML=`<div class="theme-title">${theme.title}</div><div class="theme-meta">${theme.questions.length} exercice${theme.questions.length>1?'s':''} — répondez pour valider</div>`;theme.questions.forEach((q,i)=>c.appendChild(buildQ(q,i,idx)));}
+
+window.addEventListener('scroll',()=>{
+  const nav=document.getElementById('main-nav');
+  if(nav)nav.style.background=window.scrollY>40?'var(--nav-menu-bg)':'var(--nav-bg)';
+},{passive:true});
+
+window.addEventListener('DOMContentLoaded',()=>{
+  loadTheme(0,document.querySelector('.ex-theme-btn'));
+  const revEls=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver((entries)=>{entries.forEach((e,i)=>{if(e.isIntersecting)setTimeout(()=>e.target.classList.add('visible'),i*60);});},{threshold:0.05});
+  revEls.forEach(r=>obs.observe(r));
+});
+</script>
+</body>
+</html>

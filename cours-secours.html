@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){var s=localStorage.getItem("arago-theme");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(s!=="light"&&p)){document.documentElement.setAttribute("data-theme","dark");}else{document.documentElement.setAttribute("data-theme","light");}})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuel de Cours Premiers Secours — Lycée François Arago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══ THÈME SOMBRE (dark — défaut) — TON JAUNE ══ */
+:root,
+[data-theme="dark"] {
+  --navy:   #1a1810; 
+  --deep:   #12100a;
+  --blue:   #4a4015; 
+  --accent: #f1c40f; /* Jaune */
+  --red:    #e67e22;
+  --white:  #fdfcf5;
+  --gray:   #b5b09a;
+  --light:  #eae6d0;
+  --card:   #1c1a12;
+  --border: rgba(241,196,15,0.25);
+
+  --nav-bg:         rgba(26,24,16,0.92);
+  --nav-bg-scroll:  rgba(26,24,16,0.97);
+  --hero-grid:      rgba(241,196,15,0.07);
+  --hero-glow:      rgba(241,196,15,0.18);
+  --module-hover:   #2a2718;
+  --article-hdr-bg: rgba(241,196,15,0.08);
+  --article-num-bg: rgba(241,196,15,0.15);
+  --article-num-bd: rgba(241,196,15,0.3);
+  --legal-bg:       rgba(241,196,15,0.07);
+  --warning-bg:     rgba(230,126,34,0.1);
+  --info-bg:        rgba(241,196,15,0.05);
+  --desc-card-bg:   rgba(241,196,15,0.06);
+  --chip-bg:        rgba(241,196,15,0.15);
+  --chip-red-bg:    rgba(230,126,34,0.1);
+  --chip-red-brd:   rgba(230,126,34,0.3);
+  --chip-red-txt:   #e67e22;
+  --mission-hdr-bg: rgba(241,196,15,0.06);
+  --pfmp-num-clr:   rgba(241,196,15,0.2);
+  --pfmp-badge-bg:  rgba(241,196,15,0.15);
+  --conclusion-glow:rgba(241,196,15,0.1);
+  --engage-bg:      rgba(241,196,15,0.06);
+  --fiche-corner:   rgba(241,196,15,0.1);
+  --fiche-corner-h: rgba(241,196,15,0.2);
+  --fiche-hover-bd: rgba(241,196,15,0.5);
+  --tab-active:     var(--white);
+  --th-bg:          rgba(241,196,15,0.15);
+  --td-border:      rgba(255,255,255,0.04);
+  --td-hover:       rgba(255,255,255,0.02);
+  --row-odd-bg:     transparent;
+  --nav-link-brd:   rgba(255,255,255,0.04);
+  --hero-citation:  rgba(215,205,176,0.6);
+  --btn-ghost-brd:  rgba(255,255,255,0.2);
+}
+
+/* ══ THÈME CLAIR ══ */
+[data-theme="light"] {
+  --navy:   #fdfcf8;
+  --deep:   #f5f4ef;
+  --blue:   #e8e4de;
+  --accent: #d4ac0d;
+  --red:    #d35400;
+  --white:  #1a1a1a;
+  --gray:   #7d786b;
+  --light:  #3b3829;
+  --card:   #ffffff;
+  --border: rgba(212,172,13,0.15);
+
+  --nav-bg:         rgba(253,252,248,0.94);
+  --nav-bg-scroll:  rgba(253,252,248,0.99);
+  --hero-grid:      rgba(212,172,13,0.05);
+  --hero-glow:      rgba(212,172,13,0.05);
+  --module-hover:   #fcfbf2;
+  --article-hdr-bg: rgba(212,172,13,0.04);
+  --article-num-bg: rgba(212,172,13,0.07);
+  --article-num-bd: rgba(212,172,13,0.2);
+  --legal-bg:       rgba(212,172,13,0.04);
+  --warning-bg:     rgba(211,84,0,0.06);
+  --info-bg:        rgba(212,172,13,0.03);
+  --desc-card-bg:   rgba(212,172,13,0.04);
+  --chip-bg:        rgba(212,172,13,0.07);
+  --chip-red-bg:    rgba(211,84,0,0.07);
+  --chip-red-brd:   rgba(211,84,0,0.25);
+  --chip-red-txt:   #d35400;
+  --mission-hdr-bg: rgba(212,172,13,0.04);
+  --pfmp-num-clr:   rgba(212,172,13,0.12);
+  --pfmp-badge-bg:  rgba(212,172,13,0.07);
+  --conclusion-glow:rgba(212,172,13,0.04);
+  --engage-bg:      rgba(212,172,13,0.04);
+  --fiche-corner:   rgba(212,172,13,0.06);
+  --fiche-corner-h: rgba(212,172,13,0.12);
+  --fiche-hover-bd: rgba(212,172,13,0.35);
+  --tab-active:     #1a1a1a;
+  --th-bg:          rgba(212,172,13,0.07);
+  --td-border:      rgba(0,0,0,0.06);
+  --td-hover:       rgba(0,0,0,0.03);
+  --nav-link-brd:   rgba(0,0,0,0.06);
+  --hero-citation:  rgba(60,55,40,0.55);
+  --btn-ghost-brd:  rgba(212,172,13,0.25);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem; letter-spacing: 3px;
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a {
+  color: var(--gray); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 0 0.8rem;
+  height: 60px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--white); border-bottom-color: var(--accent); }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 2rem 4rem; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridSlide 20s linear infinite;
+}
+@keyframes gridSlide { from{transform:translateY(0)} to{transform:translateY(60px)} }
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.badge-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 16px; margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease both;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3.5rem,10vw,8rem); line-height: 0.9; letter-spacing: 4px;
+  color: var(--white);
+  animation: fadeUp 0.8s 0.1s ease both; position: relative; z-index: 1;
+}
+.hero h1 em { font-style: normal; -webkit-text-stroke: 1px var(--accent); color: transparent; }
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem; font-weight: 300; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--gray); margin-top: 1rem;
+  animation: fadeUp 0.8s 0.2s ease both; position: relative; z-index: 1;
+}
+.hero-line {
+  width: 120px; height: 2px;
+  background: linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin: 2rem auto; animation: fadeUp 0.8s 0.3s ease both; position: relative; z-index: 1;
+}
+.hero-desc {
+  max-width: 600px; color: var(--gray); font-size: 1rem;
+  animation: fadeUp 0.8s 0.4s ease both; position: relative; z-index: 1;
+}
+.hero-citation {
+  font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 1rem;
+  color: var(--hero-citation);
+  margin-top: 1.5rem; animation: fadeUp 0.8s 0.45s ease both; position: relative; z-index: 1;
+}
+.hero-cta {
+  margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.5s ease both; position: relative; z-index: 1;
+}
+.btn-primary {
+  background: var(--accent); color: #000; text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 14px 32px;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s;
+}
+.btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
+.btn-ghost {
+  color: var(--white); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 13px 32px;
+  border: 1px solid var(--btn-ghost-brd);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--gray); font-size: 0.65rem; letter-spacing: 3px;
+  font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase;
+  animation: fadeUp 1s 1s ease both; z-index: 1;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* STATS BAR */
+.stats-bar {
+  position: relative; z-index: 1;
+  background: var(--card);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center; flex-wrap: wrap;
+  transition: background 0.3s;
+}
+.stat {
+  flex: 1; min-width: 180px; max-width: 240px;
+  padding: 2rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--accent); letter-spacing: 2px; }
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-top: 2px;
+}
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); display: flex; align-items: center; gap: 12px; margin-bottom: 0.75rem;
+}
+.section-tag::before { content:''; display:block; width:24px; height:1px; background:var(--accent); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem,5vw,4rem); letter-spacing: 3px; line-height: 1;
+  margin-bottom: 1rem; color: var(--white);
+}
+.section-desc { color: var(--gray); max-width: 560px; font-size: 0.95rem; }
+
+/* SOMMAIRE */
+#sommaire { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+.modules-grid {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+  gap: 1px; margin-top: 3rem; border: 1px solid var(--border);
+}
+.module-card {
+  background: var(--card); padding: 1.8rem;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: all 0.25s;
+  position: relative; overflow: hidden;
+  text-decoration: none; color: inherit; display: block;
+}
+.module-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  transform: scaleY(0); transition: transform 0.25s;
+}
+.module-card:hover { background: var(--module-hover); transform: translateX(4px); }
+.module-card:hover::before { transform: scaleY(1); }
+.module-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); margin-bottom: 0.5rem; }
+.module-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.4rem; color: var(--white); }
+.module-desc { font-size: 0.85rem; color: var(--gray); }
+
+/* CONTENT SECTION */
+.content-section { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.content-inner { max-width: 1100px; margin: 0 auto; }
+.content-layout { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; margin-top: 3rem; }
+.content-nav { position: sticky; top: 80px; align-self: start; }
+.content-nav-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray); padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border); margin-bottom: 1rem;
+}
+.content-nav a {
+  display: block; font-size: 0.85rem; color: var(--gray);
+  text-decoration: none; padding: 6px 0;
+  border-bottom: 1px solid var(--nav-link-brd); transition: color 0.2s;
+}
+.content-nav a:hover { color: var(--accent); }
+
+/* ARTICLE BLOCKS */
+.article-block {
+  margin-bottom: 3rem; background: var(--card);
+  border: 1px solid var(--border); overflow: hidden; scroll-margin-top: 80px;
+}
+.article-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.2rem 1.6rem;
+  background: var(--article-hdr-bg);
+  border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.article-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px; color: var(--accent); white-space: nowrap;
+  background: var(--article-num-bg); border: 1px solid var(--article-num-bd); padding: 3px 10px;
+}
+.article-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; flex: 1;
+  color: var(--white);
+}
+.article-toggle { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; }
+.article-block.open .article-toggle { transform: rotate(45deg); }
+.article-body { padding: 1.6rem; display: none; border-top: 1px solid var(--border); }
+.article-block.open .article-body { display: block; }
+.article-body p { margin-bottom: 1rem; font-size: 0.95rem; color: var(--light); }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body ul, .article-body ol { margin: 0.75rem 0 1rem 1.5rem; }
+.article-body li { font-size: 0.93rem; color: var(--light); margin-bottom: 0.4rem; }
+.article-body h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin: 1.5rem 0 0.5rem;
+}
+.article-body strong { color: var(--white); font-weight: 600; }
+
+/* LEGAL / WARNING / INFO BOXES */
+.legal-box, .warning-box, .info-box {
+  padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.legal-box {
+  background: var(--legal-bg); border-left: 3px solid var(--accent);
+}
+.legal-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); display: block; margin-bottom: 0.4rem;
+}
+.legal-box p { color: var(--light); font-style: italic; margin: 0; }
+.warning-box {
+  background: var(--warning-bg); border-left: 3px solid var(--red);
+}
+.warning-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); display: block; margin-bottom: 0.4rem;
+}
+.warning-box p { color: var(--light); margin: 0; }
+.info-box {
+  background: var(--info-bg); border: 1px solid var(--border);
+}
+.info-box p { color: var(--light); margin: 0; font-style: italic; }
+
+/* TABLE */
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th {
+  background: var(--th-bg);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); padding: 10px 14px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 10px 14px; border-bottom: 1px solid var(--td-border);
+  color: var(--light); vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--td-hover); }
+
+/* FICHES */
+#fiches { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.fiches-inner { max-width: 1100px; margin: 0 auto; }
+.fiches-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+.fiche-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 1.8rem; position: relative; overflow: hidden;
+  transition: all 0.25s; cursor: pointer;
+}
+.fiche-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg,transparent 50%, var(--fiche-corner) 50%);
+  transition: all 0.25s;
+}
+.fiche-card:hover { border-color: var(--fiche-hover-bd); transform: translateY(-3px); }
+.fiche-card:hover::after { width: 80px; height: 80px; background: linear-gradient(135deg,transparent 50%, var(--fiche-corner-h) 50%); }
+.fiche-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.fiche-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 0.5rem; color: var(--white);
+}
+.fiche-summary { font-size: 0.85rem; color: var(--gray); }
+
+/* FICHE DETAIL */
+.fiche-detail { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.fiche-detail-inner { max-width: 1100px; margin: 0 auto; }
+
+/* CONCLUSION */
+#conclusion {
+  padding: 6rem 2rem; border-top: 1px solid var(--border);
+  text-align: center; position: relative; overflow: hidden;
+}
+#conclusion::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, var(--conclusion-glow) 0%, transparent 70%);
+}
+.conclusion-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; text-align: left; }
+.principle {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start;
+}
+.principle-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); line-height: 1; flex-shrink: 0; }
+.principle-text { font-size: 0.85rem; color: var(--light); }
+.closing-quote {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem; font-weight: 300; letter-spacing: 1px;
+  color: var(--gray); border-top: 1px solid var(--border);
+  padding-top: 2rem; margin-top: 2rem; font-style: italic;
+}
+.engage-block {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 600; letter-spacing: 2px;
+  color: var(--accent); border: 1px solid var(--border);
+  padding: 1.5rem; margin-top: 2rem;
+  background: var(--engage-bg); text-align: left; line-height: 2;
+}
+
+/* FOOTER */
+footer {
+  background: var(--deep); border-top: 1px solid var(--border);
+  padding: 2rem; text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gray);
+  transition: background 0.3s;
+}
+footer strong { color: var(--white); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* TOGGLE SWITCH */
+#theme-toggle-wrap {
+  position: fixed; bottom: 24px; left: 24px; z-index: 3001;
+  display: flex; align-items: center; gap: 10px;
+}
+#theme-toggle {
+  flex-shrink: 0; width: 52px; height: 28px; border-radius: 14px; cursor: pointer;
+  display: flex; align-items: center; padding: 3px;
+  transition: background 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(128,128,128,0.3);
+  background: #2a2512;
+}
+#theme-toggle::after {
+  content: ''; display: block; width: 20px; height: 20px; border-radius: 50%;
+  background: #fdfcf5; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  transform: translateX(24px);
+}
+[data-theme="light"] #theme-toggle { background: #e8e4de; border-color: rgba(0,0,0,0.18); }
+[data-theme="light"] #theme-toggle::after { transform: translateX(0); background: #fff; }
+.toggle-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray); background: var(--card);
+  padding: 3px 8px; border-radius: 4px; border: 0.5px solid var(--border);
+  pointer-events: none; white-space: nowrap; transition: color 0.3s, background 0.3s;
+}
+
+@media (max-width: 768px) {
+  .content-layout { grid-template-columns: 1fr; }
+  .content-nav { display: none; }
+  .principles { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+}
+</style>
+</head>
+<body>
+
+<div id="theme-toggle-wrap">
+  <div id="theme-toggle" onclick="toggleTheme()" role="switch" aria-label="Basculer mode sombre/clair" title="Mode sombre / Mode clair"></div>
+  <span class="toggle-label" id="toggle-label">Mode sombre</span>
+</div>
+
+<nav>
+  <div class="nav-logo">ARAGO <span>PREMIERS SECOURS</span></div>
+  <ul class="nav-links">
+    <li><a href="#sommaire">Sommaire</a></li>
+    <li><a href="#cadre">Cadre Légal</a></li>
+    <li><a href="#alerte">Alerte</a></li>
+    <li><a href="#protection">Protection</a></li>
+    <li><a href="#secourir">Secourir</a></li>
+    <li><a href="#fiches">Fiches Mémo</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="badge-top">Lycée François Arago · Arago Premiers Secours</div>
+  <h1>LES ESSENTIELS<br><em>DU PREMIER</em><br>SECOURS</h1>
+  <div class="hero-sub">Agents de Sécurité · PSC / SST</div>
+  <div class="hero-line"></div>
+  <div class="hero-desc">Ce manuel n’est pas un simple fascicule de secourisme. C’est mon guide opérationnel de sauvetage, conçu spécialement pour nous, les apprentis professionnels des métiers de la sécurité du Lycée Arago.</div>
+  <div class="hero-citation">« Ça c’est mon manuel, il y en a beaucoup comme celui-là, mais lui c’est le mien. Mon manuel c’est mon vrai copain... »</div>
+  <div class="hero-cta">
+    <a href="#sommaire" class="btn-primary">Accéder au Sommaire</a>
+    <a href="#fiches" class="btn-ghost">Fiches Mémo</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">Étapes d'Intervention (PEAS)</div></div>
+  <div class="stat"><div class="stat-num">11</div><div class="stat-label">Modules de Formation</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">Fiches Mémo Opérationnelles</div></div>
+</div>
+
+<!-- SOMMAIRE -->
+<div id="sommaire">
+  <div class="reveal">
+    <div class="section-tag">Sommaire</div>
+    <h2 class="section-title">MON MANUEL DE COURS <em style="-webkit-text-stroke: 1px var(--accent); color: transparent;">SECOURS</em></h2>
+    <p class="section-desc">Mon objectif est clair : maîtriser les gestes qui sauvent pour obtenir mes certifications (PSC et SST), obligatoires pour ma future carte professionnelle délivrée par le CNAPS, et devenir un premier maillon infaillible sur le terrain.</p>
+  </div>
+  <div class="modules-grid reveal">
+    <a href="#cadre" class="module-card">
+      <div class="module-num">MODULE 01</div>
+      <div class="module-name">Cadre Légal du Sauveteur</div>
+      <div class="module-desc">Obligation légale d'agir, état de nécessité et maillons de la chaîne de secours.</div>
+    </a>
+    <a href="#alerte" class="module-card">
+      <div class="module-num">MODULE 02</div>
+      <div class="module-name">Alerte aux Populations</div>
+      <div class="module-desc">Signal National d'Alerte, FR-Alert et règles de mise à l'abri.</div>
+    </a>
+    <a href="#protection" class="module-card">
+      <div class="module-num">MODULE 03</div>
+      <div class="module-name">La Protection</div>
+      <div class="module-desc">Dégagement d'urgence, attaque terroriste et suppression du danger.</div>
+    </a>
+    <a href="#alerte-secours" class="module-card">
+      <div class="module-num">MODULE 04</div>
+      <div class="module-name">L'Alerte aux Secours</div>
+      <div class="module-desc">Numéros d'urgence (15, 18, 112, 114) et message d'alerte structuré.</div>
+    </a>
+    <a href="#secourir" class="module-card">
+      <div class="module-num">MODULE 05</div>
+      <div class="module-name">Le Bilan d'Urgence</div>
+      <div class="module-desc">Chronologie P-E-A-S et ordre des priorités vitales.</div>
+    </a>
+    <a href="#etouffement" class="module-card">
+      <div class="module-num">MODULE 06</div>
+      <div class="module-name">Obstruction (Étouffement)</div>
+      <div class="module-desc">Claques dans le dos et manœuvres de Heimlich.</div>
+    </a>
+    <a href="#hemorragies" class="module-card">
+      <div class="module-num">MODULE 07</div>
+      <div class="module-name">Saignements Abondants</div>
+      <div class="module-desc">Compression manuelle, pansement compressif et pose de garrot.</div>
+    </a>
+    <a href="#traumatismes" class="module-card">
+      <div class="module-num">MODULE 08</div>
+      <div class="module-name">Traumatismes et Plaies</div>
+      <div class="module-desc">Gestion des plaies graves, brûlures chimiques et fractures.</div>
+    </a>
+    <a href="#malaise" class="module-card">
+      <div class="module-num">MODULE 09</div>
+      <div class="module-name">Le Malaise</div>
+      <div class="module-desc">Signes de l'AVC, infarctus et repos adapté de la victime.</div>
+    </a>
+    <a href="#pls" class="module-card">
+      <div class="module-num">MODULE 10</div>
+      <div class="module-name">Victime Inconsciente</div>
+      <div class="module-desc">Libération des voies aériennes (LVA) et mise en PLS.</div>
+    </a>
+    <a href="#rcp" class="module-card">
+      <div class="module-num">MODULE 11</div>
+      <div class="module-name">Arrêt Cardiaque & DAE</div>
+      <div class="module-desc">Réanimation cardio-pulmonaire (30/2) et pose du défibrillateur.</div>
+    </a>
+    <a href="#fiches" class="module-card" style="grid-column: 1 / -1;">
+      <div class="module-num">RÉFÉRENCE</div>
+      <div class="module-name">Fiches Mémo Opérationnelles</div>
+      <div class="module-desc">Trousse de secours, EPI, Compte Rendu QQOQCP et Tableau Récapitulatif.</div>
+    </a>
+  </div>
+</div>
+
+<!-- MODULE 1: Cadre Légal -->
+<section id="cadre" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 01</div>
+      <h2 class="section-title">CADRE LÉGAL DU SAUVETEUR</h2>
+      <p class="section-desc">En tant qu’élève des métiers de la sécurité au Lycée Arago, ma mission première est la protection des personnes et des biens. Or, la menace ne vient pas uniquement des malfaiteurs : l’accident, le malaise ou la détresse vitale peuvent frapper n’importe qui.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#chaine-secours">Chaîne des Secours</a>
+        <a href="#obligation-agir">Obligation Légale d'Agir</a>
+        <a href="#etat-necessite">L'État de Nécessité</a>
+      </div>
+      <div>
+        <div class="article-block" id="chaine-secours">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RÔLES</span>
+            <span class="article-title">La Chaîne des Secours</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>La chaîne des secours repose sur une complémentarité stricte dont je suis le tout premier maillon :</p>
+            <ul>
+              <li><strong>Le Témoin / L’Agent sur place (Moi) :</strong> Qui protège, examine, alerte et débute les gestes de secours.</li>
+              <li><strong>Les Services de Secours (15, 112, 114) :</strong> Qui réceptionnent l’alerte, conseillent et envoient les moyens adaptés.</li>
+              <li><strong>Les Équipes Secouristes et Médicales :</strong> Qui prennent le relais sur place et transportent la victime.</li>
+              <li><strong>L’Hôpital :</strong> Qui assure les soins définitifs.</li>
+            </ul>
+            <div class="warning-box">
+              <strong>Règle fondamentale</strong>
+              <p>Si le premier maillon (moi) ne fait rien, le reste de la chaîne arrive souvent trop tard. Dans un arrêt cardiaque ou une hémorragie massive, tout se joue dans les premières minutes.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="obligation-agir">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art 223-6 CP</span>
+            <span class="article-title">Mon Obligation Légale d'Agir</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Non-assistance à personne en péril</strong>
+              <p>« Sera puni des mêmes peines [5 ans d’emprisonnement et 75 000 euros d’amende] quiconque s’abstient volontairement de porter à une personne en péril l’assistance que, sans risque pour lui ou pour les tiers, il pouvait lui prêter soit par son action personnelle, soit en provoquant un secours. »</p>
+            </div>
+            <p>Analyse opérationnelle de l’article :</p>
+            <ul>
+              <li><strong>Une personne en péril :</strong> La victime subit un danger grave et imminent pour sa vie ou son intégrité physique.</li>
+              <li><strong>Sans risque pour lui ou pour les tiers :</strong> La loi ne m’oblige jamais à me mettre en danger. Mon obligation minimale absolue est alors de provoquer un secours (Alerter).</li>
+              <li><strong>Par son action personnelle :</strong> Comme je suis formé aux Premiers Secours (PSC / SST), j’ai la compétence technique pour réaliser les gestes en attendant les secours.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="etat-necessite">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art 122-7 CP</span>
+            <span class="article-title">Ma Protection Juridique : L'État de Nécessité</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Que se passe-t-il si, en sauvant quelqu’un, je brise la vitre d’une voiture en plein soleil pour sortir un nourrisson, ou je casse une côte en réalisant un massage cardiaque ?</p>
+            <div class="legal-box">
+              <strong>L'État de Nécessité (Article 122-7)</strong>
+              <p>Face à un danger actuel ou imminent (la mort de la victime), j’accomplis un acte nécessaire à la sauvegarde de sa vie.</p>
+            </div>
+            <p>Il n’y a aucune disproportion : une côte cassée ou une vitre brisée (mal mineur) ne pèse rien face à une vie humaine sauvée (bien suprême). Aucune poursuite pénale ne peut aboutir contre le sauveteur de bonne foi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 2: Alerte aux populations -->
+<section id="alerte" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 02</div>
+      <h2 class="section-title">ALERTE ET PROTECTION DES POPULATIONS</h2>
+      <p class="section-desc">En tant qu’agent de sécurité ou citoyen informé, je dois être capable de reconnaître les signaux officiels déclenchés par l’État lorsqu’une catastrophe majeure menace l’ensemble de la population.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#moyens-alerte">2 Moyens d'Alerte</a>
+        <a href="#conduite-abri">Mise à l'Abri</a>
+        <a href="#interdictions-absolues">4 Interdictions Absolues</a>
+      </div>
+      <div>
+        <div class="article-block" id="moyens-alerte">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">SIGNAUX</span>
+            <span class="article-title">Les 2 Moyens d’Alerte Officiels</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <h4>1. Le Signal National d’Alerte (Les Sirènes SAIP)</h4>
+            <ul>
+              <li><strong>Le Signal d’Alerte :</strong> 3 cycles successifs d’une durée de 1 minute et 41 secondes chacun, séparés par un silence de 5 secondes (son modulé).</li>
+              <li><strong>Le Signal de Fin d’Alerte :</strong> Son continu (plat) d’une durée de 30 secondes. Le danger est écarté.</li>
+              <li><strong>Essai mensuel :</strong> Tous les premiers mercredis du mois à midi (12h00), 1 seul cycle.</li>
+            </ul>
+            <h4>2. Le Système FR-Alert</h4>
+            <p>Notification envoyée instantanément avec une sonnerie stridente spécifique sur tous les téléphones de la zone, même en mode silencieux. Le message écrit indique la nature du risque et la conduite à tenir.</p>
+          </div>
+        </div>
+        <div class="article-block" id="conduite-abri">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RÉFLEXE</span>
+            <span class="article-title">La Règle de Mise à l’Abri (Confinement)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>Rejoindre un bâtiment en dur :</strong> Je quitte la rue, je ne reste jamais dans un véhicule.</li>
+              <li><strong>Fermer tout et calfeutrer :</strong> Fermer portes, fenêtres. Couper la VMC et la climatisation. Boucher les entrées d'air.</li>
+              <li><strong>S'informer :</strong> Écouter la radio du service public ou consulter FR-Alert.</li>
+              <li><strong>Appliquer les consignes :</strong> Pas de flamme, s'éloigner des vitres.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="interdictions-absolues">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RÈGLES</span>
+            <span class="article-title">Les 4 Interdictions Absolues</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ol>
+              <li><strong>NE PAS ALLER CHERCHER SES ENFANTS :</strong> Les écoles disposent d'un PPMS pour les protéger. Sortir expose au nuage toxique.</li>
+              <li><strong>NE PAS TÉLÉPHONER :</strong> Laisser les réseaux libres pour les secours (sauf urgence vitale).</li>
+              <li><strong>NE PAS PRENDRE SA VOITURE :</strong> Les routes doivent rester dégagées pour les véhicules d’intervention.</li>
+              <li><strong>NE PAS SORTIR AVANT LE SIGNAL DE FIN :</strong> Attendre le son continu de 30 secondes ou le message officiel de fin d'alerte.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 3: Protection -->
+<section id="protection" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 03</div>
+      <h2 class="section-title">LA PROTECTION</h2>
+      <p class="section-desc">Avant même de m’approcher d’une victime ou de la toucher, mon premier réflexe absolu est LA PROTECTION. C’est ce que l’on appelle en secourisme professionnel le Bilan Circonstanciel.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#methode-analyse">Identifier et Agir</a>
+        <a href="#degagement-urgence">Dégagement d'Urgence</a>
+        <a href="#cas-particuliers-pro">Cas Particuliers</a>
+      </div>
+      <div>
+        <div class="article-block" id="methode-analyse">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">MÉTHODE</span>
+            <span class="article-title">Identifier et Agir sur le Danger</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>En arrivant sur les lieux, je réalise un balayage visuel, auditif et olfactif à 360° (Fumée ? Odeur de gaz ? Câble électrique au sol ?).</p>
+            <p>Face à un danger identifié, j’applique la règle des 3 actions de protection (dans cet ordre de priorité) :</p>
+            <ul>
+              <li><strong>SUPPRIMER le danger :</strong> Couper le disjoncteur électrique, fermer le robinet de gaz, éteindre un tout début de feu, ramasser un objet tranchant au sol.</li>
+              <li><strong>ISOLER / ÉCARTER du danger :</strong> Baliser la zone, interdire l’accès au local et faire évacuer les témoins.</li>
+              <li><strong>SOUSTRAIRE la victime (Dégagement d'Urgence) :</strong> Uniquement en dernier recours !</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="degagement-urgence">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">URGENCE</span>
+            <span class="article-title">Le Dégagement d'Urgence</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Je dois effectuer un dégagement d’urgence si et seulement si 4 conditions cumulatives sont réunies :</p>
+            <ol>
+              <li><strong>Le danger est RÉEL</strong> (incendie, début d’inondation, voiture sur une voie ferrée).</li>
+              <li><strong>Le danger est IMMÉDIAT / VITAL</strong> (il va tuer la victime dans les secondes qui suivent).</li>
+              <li><strong>Le danger est NON CONTRÔLABLE</strong> (je ne peux pas le supprimer moi-même).</li>
+              <li><strong>La victime est INCAPABLE</strong> de se soustraire elle-même au danger.</li>
+            </ol>
+            <div class="info-box">
+              <p>Je choisis la technique en fonction de la configuration des lieux et de ma force physique. Je tire toujours la victime dans l’axe de son corps (tête-cou-tronc) vers un lieu sûr : traction par les chevilles, ou traction par les poignets.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="cas-particuliers-pro">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">TACTIQUE</span>
+            <span class="article-title">Attaque terroriste et autres dangers</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <h4>Devant une attaque terroriste</h4>
+            <p>J’applique le triptyque S’ÉCHAPPER – SE CACHER – ALERTER :</p>
+            <ul>
+              <li><strong>S’ÉCHAPPER :</strong> Si je peux fuir sans m’exposer et aider les autres à fuir, je le fais immédiatement.</li>
+              <li><strong>SE CACHER :</strong> Je me barricade dans un local (verrouiller la porte, pousser des meubles). J’éteins la lumière, je coupe impérativement la sonnerie ET le vibreur de mon téléphone, et je m’allonge au sol derrière un mur porteur.</li>
+              <li><strong>ALERTER :</strong> J’appelle le 17 ou le 112 sans crier. Je garde les mains levées, grandes ouvertes devant les forces d'intervention.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 4: L'alerte aux secours -->
+<section id="alerte-secours" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 04</div>
+      <h2 class="section-title">L'ALERTE AUX SECOURS</h2>
+      <p class="section-desc">En tant que premier maillon de la chaîne, alerter ou faire alerter rapidement est vital pour que la victime survive.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#numeros-urgence">Numéros d'Urgence</a>
+        <a href="#contenu-message">Contenu du Message</a>
+        <a href="#regles-fin-alerte">Règles de Fin d'Alerte</a>
+      </div>
+      <div>
+        <div class="article-block" id="numeros-urgence">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">APPELS</span>
+            <span class="article-title">Les Numéros d'Urgence</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Numéro</th><th>Service</th><th>Quand l'utiliser ?</th></tr>
+                <tr><td><strong>15</strong></td><td>SAMU</td><td>Urgence médicale pure (malaise, douleur, AVC, arrêt cardiaque).</td></tr>
+                <tr><td><strong>18</strong></td><td>POMPIERS</td><td>Secours aux personnes ET dangers matériels (accident, incendie).</td></tr>
+                <tr><td><strong>112</strong></td><td>URGENCE UE</td><td>Numéro européen, recommandé si hésitation entre 15 et 18.</td></tr>
+                <tr><td><strong>17</strong></td><td>POLICE / GEND.</td><td>Trouble à l'ordre public, agression, attaque terroriste.</td></tr>
+                <tr><td><strong>114</strong></td><td>SMS/VISIO</td><td>Urgence pour sourds et malentendants (ou appel silencieux).</td></tr>
+              </table>
+            </div>
+            <p>Sur un grand site privé, je préviens également mon PC Sécurité (PCS) par radio pour qu'il coordonne l'ouverture des accès.</p>
+          </div>
+        </div>
+        <div class="article-block" id="contenu-message">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">MESSAGE</span>
+            <span class="article-title">Le Contenu du Message d'Alerte</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>QUI JE SUIS et MON NUMÉRO :</strong> Pour que les secours puissent me rappeler.</li>
+              <li><strong>OÙ JE SUIS :</strong> Localisation ultra-précise (commune, rue, bâtiment, digicode, étage).</li>
+              <li><strong>QUOI :</strong> Nature du problème et risques éventuels (accident, malaise, chute).</li>
+              <li><strong>L'ÉTAT DE LA VICTIME :</strong> Sexe, âge approximatif, consciente ? respire ? saigne ?</li>
+              <li><strong>CE QUE JE FAIS :</strong> Les gestes déjà entrepris (PLS, garrot, massage cardiaque).</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="regles-fin-alerte">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RÈGLES</span>
+            <span class="article-title">Les 3 Règles d'Or de la Fin d'Alerte</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ol>
+              <li><strong>Répondre aux questions :</strong> J'écoute attentivement les consignes du médecin régulateur.</li>
+              <li><strong>NE JAMAIS RACCROCHER LE PREMIER :</strong> J'attends que l'opérateur me dise que je peux raccrocher.</li>
+              <li><strong>ORGANISER L'ACCUEIL :</strong> Si j'utilise un témoin, il doit revenir me confirmer l'appel (collationnement) puis aller guider les secours.</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 5: Secourir P-E-A-S -->
+<section id="secourir" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 05</div>
+      <h2 class="section-title">SECOURIR : LE BILAN</h2>
+      <p class="section-desc">Pour ne jamais me tromper sous l’effet du stress, je suis une hiérarchie médicale stricte : je traite toujours ce qui tue le plus vite en premier !</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#peas-chrono">La Chronologie P-E-A-S</a>
+        <a href="#ordre-priorites">L'Ordre des Priorités Vitales</a>
+      </div>
+      <div>
+        <div class="article-block" id="peas-chrono">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">CHRONOLOGIE</span>
+            <span class="article-title">La Chronologie P - E - A - S</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>P – PROTÉGER :</strong> Analyser la scène, supprimer/isoler le danger.</li>
+              <li><strong>E – EXAMINER :</strong> Observer et interroger la victime en quelques secondes pour identifier la détresse.</li>
+              <li><strong>A – ALERTER & SECOURIR (S) :</strong> Réaliser immédiatement le geste de secours adapté et transmettre l’alerte.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="ordre-priorites">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">EXAMEN</span>
+            <span class="article-title">Comment Examiner une Victime ?</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Question posée (si NON, suivante)</th><th>Si OUI conduite à tenir</th></tr>
+                <tr><td><strong>1. Saigne-t-elle abondamment ?</strong></td><td>Arrêter le saignement (compression / garrot)</td></tr>
+                <tr><td><strong>2. S’étouffe-t-elle ?</strong></td><td>Désobstruer (claques dans le dos / compressions)</td></tr>
+                <tr><td><strong>3. Répond-elle ? (Conscience)</strong></td><td>Victime consciente : examiner, repos et alerte 15</td></tr>
+                <tr><td><strong>4. Respire-t-elle ? (10 sec)</strong></td><td>Victime inconsciente qui respire : LVA, PLS et 15</td></tr>
+                <tr><td><strong>Aucune respiration : ARRÊT CARDIAQUE !</strong></td><td>Alerter le 15, réclamer le DAE et débuter RCP</td></tr>
+              </table>
+            </div>
+            <p>Une fois le geste de secours réalisé et l’alerte passée, ma mission n’est pas finie ! Je couvre la victime et je surveille en permanence jusqu’à la relève.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 6: Etouffement -->
+<section id="etouffement" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 06</div>
+      <h2 class="section-title">L'OBSTRUCTION (ÉTOUFFEMENT)</h2>
+      <p class="section-desc">L’obstruction des voies aériennes est l’empêchement brutal de l’air de passer. Sans oxygène, la victime meurt. Mon action doit être immédiate !</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#partielle-vs-complete">Partielle ou Complète ?</a>
+        <a href="#obstruction-partielle">Obstruction Partielle</a>
+        <a href="#obstruction-complete">Obstruction Complète</a>
+      </div>
+      <div>
+        <div class="article-block" id="partielle-vs-complete">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DIAGNOSTIC</span>
+            <span class="article-title">Reconnaître le Type d'Obstruction</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Critères d'observation</th><th>OBSTRUCTION PARTIELLE</th><th>OBSTRUCTION COMPLÈTE</th></tr>
+                <tr><td><strong>Peut-elle parler / crier ?</strong></td><td>OUI (avec difficulté)</td><td>NON (aucun son)</td></tr>
+                <tr><td><strong>Peut-elle tousser ?</strong></td><td>OUI (elle tousse vigoureusement)</td><td>NON (toux silencieuse)</td></tr>
+                <tr><td><strong>Peut-elle respirer ?</strong></td><td>OUI (bruit sifflant ou rauque)</td><td>NON (mains à la gorge, s'agite, bleuit)</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="obstruction-partielle">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">GESTES</span>
+            <span class="article-title">Conduite à Tenir : Partielle</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="warning-box">
+              <strong>INTERDICTION ABSOLUE</strong>
+              <p>De lui taper dans le dos ou de lui comprimer le ventre ! (Cela risquerait de déplacer l’objet et de transformer l’obstruction en complète).</p>
+            </div>
+            <ul>
+              <li>L'installer assise ou penchée en avant.</li>
+              <li>L'encourager à tousser fortement pour rejeter le corps étranger.</li>
+              <li>Appeler le 15 (SAMU) et surveiller attentivement.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="obstruction-complete">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">URGENCE</span>
+            <span class="article-title">Conduite à Tenir : Complète</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Urgence vitale. J'alterne de 1 à 5 CLAQUES DANS LE DOS, suivies de 1 à 5 COMPRESSIONS (Heimlich).</p>
+            <h4>A. Adulte et Enfant (> 1 an)</h4>
+            <ul>
+              <li><strong>Claques :</strong> Soutenir le thorax, pencher en avant, 1 à 5 claques avec le talon de la main entre les omoplates.</li>
+              <li><strong>Compressions (Heimlich) :</strong> Placer le poing au creux de l'estomac, tirer franchement vers l'arrière et vers le haut (mouvement en J).</li>
+            </ul>
+            <h4>B. Femme enceinte ou Personne obèse</h4>
+            <p>Remplacer les compressions abdominales par des COMPRESSIONS THORACIQUES (au milieu du sternum, vers l'arrière).</p>
+            <h4>C. Le Nourrisson (< 1 an)</h4>
+            <ul>
+              <li><strong>Claques :</strong> Couché à plat ventre sur l'avant-bras, tête basse, 1 à 5 claques entre les omoplates.</li>
+              <li><strong>Compressions :</strong> Couché sur le dos, tête basse, 1 à 5 compressions thoraciques avec 2 pouces au centre de la poitrine. (Jamais Heimlich !)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 7: Hémorragies -->
+<section id="hemorragies" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 07</div>
+      <h2 class="section-title">LES SAIGNEMENTS ABONDANTS</h2>
+      <p class="section-desc">Une hémorragie externe est une perte de sang prolongée qui imbibe rapidement un mouchoir. La détresse circulatoire peut mener très rapidement à la mort.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#compression-directe">Compression Directe</a>
+        <a href="#pose-garrot">La Pose du Garrot</a>
+        <a href="#cas-particuliers-hemo">Cas Particuliers</a>
+      </div>
+      <div>
+        <div class="article-block" id="compression-directe">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">GESTES</span>
+            <span class="article-title">La Compression Directe</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ol>
+              <li><strong>OBSERVER ET SE PROTÉGER :</strong> Vérifier l'absence de corps étranger. Enfiler les gants (EPI).</li>
+              <li><strong>APPUYER IMMÉDIATEMENT :</strong> Avec la main protégée ou un pansement, appuyer fortement et directement sur la plaie.</li>
+              <li><strong>ALLONGER LA VICTIME :</strong> Évite la chute en cas de malaise et aide le sang à irriguer le cerveau.</li>
+              <li><strong>ALERTER LE 15 / 112 :</strong> Soit par un témoin, soit via le haut-parleur.</li>
+            </ol>
+            <p><strong>Pansement compressif :</strong> Si je dois me libérer les mains, je pose un coussin hémostatique fixé par une bande large. Si le sang traverse, je reprends ma compression par-dessus ou je pose un garrot.</p>
+          </div>
+        </div>
+        <div class="article-block" id="pose-garrot">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">GARROT</span>
+            <span class="article-title">La Pose du Garrot</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Technique d'urgence absolue réservée aux membres si la compression directe est inefficace ou impossible (corps étranger, membre arraché).</p>
+            <ul>
+              <li><strong>Emplacement :</strong> ENTRE LA PLAIE ET LE CŒUR (5 à 7 cm au-dessus de la plaie), JAMAIS sur une articulation.</li>
+              <li><strong>Technique improvisée :</strong> Lien large (pas de ficelle) et barre rigide. Tourner jusqu'à l'arrêt complet du saignement.</li>
+            </ul>
+            <div class="warning-box">
+              <strong>Les 3 Règles d'Or du Garrot</strong>
+              <ul>
+                <li>Je note l'heure exacte de pose (sur le front ou le garrot).</li>
+                <li>Je ne desserre ni ne retire JAMAIS le garrot sans ordre médical.</li>
+                <li>Je vérifie régulièrement son efficacité si la victime est couverte.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="cas-particuliers-hemo">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">SPÉCIFIQUE</span>
+            <span class="article-title">Les 3 Cas Particuliers de Saignements</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <h4>1. Corps Étranger dans la plaie</h4>
+            <p>Interdiction absolue de le retirer (il fait bouchon) ou d'appuyer dessus. Je pose un garrot au-dessus, ou je laisse l'objet, allonge la victime et alerte.</p>
+            <h4>2. Saignement de NEZ</h4>
+            <p>L'installer ASSISE, tête penchée EN AVANT. Faire moucher, puis comprimer les narines 10 minutes. Si ça ne s'arrête pas : 15.</p>
+            <h4>3. Victime qui vomit/crache du sang</h4>
+            <p>Hémorragie interne grave. Installer au repos (allongée ou assise/demi-assise), alerter le 15, conserver le sang dans un récipient pour le médecin.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 8: Traumatismes -->
+<section id="traumatismes" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 08</div>
+      <h2 class="section-title">TRAUMATISMES ET PLAIES</h2>
+      <p class="section-desc">Plaies, brûlures, traumatismes des os et articulations. Le risque majeur est l'infection ou l'atteinte d'organes profonds et de la moelle épinière.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#plaies">Partie 1 : Les Plaies</a>
+        <a href="#brulures">Partie 2 : Les Brûlures</a>
+        <a href="#os-articulations">Partie 3 : Traumatismes (Os)</a>
+      </div>
+      <div>
+        <div class="article-block" id="plaies">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">PLAIES</span>
+            <span class="article-title">Partie 1 : Les Plaies</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Une plaie est GRAVE si : localisation sensible (cou, oeil, face, thorax, abdomen), mécanisme violent (arme, morsure, projectile), aspect étendu ou présence d'un corps étranger.</p>
+            <h4>Face à une PLAIE GRAVE :</h4>
+            <p>Ne jamais désinfecter, ne jamais retirer un corps étranger ! Installer en position d'attente :</p>
+            <ul>
+              <li>Thorax : Assise ou demi-assise.</li>
+              <li>Abdomen : Allongée, cuisses fléchies.</li>
+              <li>Œil : Allongée, yeux fermés, tête calée.</li>
+            </ul>
+            <h4>Face à une PLAIE SIMPLE :</h4>
+            <p>Nettoyer (eau, savon), protéger (pansement adhésif) et vérifier le vaccin contre le tétanos.</p>
+          </div>
+        </div>
+        <div class="article-block" id="brulures">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">BRÛLURES</span>
+            <span class="article-title">Partie 2 : Les Brûlures</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Brûlure GRAVE : cloque > moitié paume de la victime, destruction profonde, localisation sensible, chez un enfant/nourrisson, origine chimique/électrique.</p>
+            <p><strong>Conduite à tenir : Arroser.</strong> Dès la suppression de la cause, faire ruisseler de l'eau tempérée sans pression. Retirer les vêtements s'ils ne collent pas.</p>
+            <ul>
+              <li>Brûlure simple : Arroser jusqu'à disparition de la douleur. Ne jamais percer les cloques.</li>
+              <li>Brûlure grave : Alerter le 15, continuer l'arrosage.</li>
+            </ul>
+            <h4>Cas particuliers :</h4>
+            <ul>
+              <li><strong>Chimique :</strong> Rincer abondamment sous la douche, retirer vêtements contaminés. Conserver l'emballage.</li>
+              <li><strong>Électrique :</strong> Couper le courant, arroser, 15 systématiquement.</li>
+              <li><strong>Interne (ingestion) :</strong> Ne pas arroser, ne jamais faire vomir, ne pas faire boire. Assise, alerter le 15.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="os-articulations">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">SQUELETTE</span>
+            <span class="article-title">Partie 3 : Traumatismes (Os, Tête, Dos)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="warning-box">
+              <strong>NE PAS MOBILISER !</strong>
+              <p>Je ne déplace jamais la victime et je ne tente jamais de réaligner un membre tordu ou déformé !</p>
+            </div>
+            <h4>Traumatisme DOS, COU, TÊTE :</h4>
+            <p>Demander de ne pas bouger. Si possible, réaliser un MAINTIEN DE LA TÊTE à deux mains. Alerter le 15, surveiller.</p>
+            <h4>Traumatisme d'un MEMBRE :</h4>
+            <p>Laisser au sol pour les jambes. Pour les bras, demander à la victime de soutenir son bras blessé avec l'autre main contre sa poitrine.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 9: Malaise -->
+<section id="malaise" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 09</div>
+      <h2 class="section-title">LE MALAISE</h2>
+      <p class="section-desc">C’est l’intervention la plus fréquente. La victime est CONSCIENTE, mais elle ne se sent pas bien. Certains sont bénins, d'autres sont des urgences vitales absolues.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#signes-gravite">Signes de Gravité (Infarctus, AVC)</a>
+        <a href="#malaise-conduite">Conduite à Tenir</a>
+      </div>
+      <div>
+        <div class="article-block" id="signes-gravite">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">GRAVITÉ</span>
+            <span class="article-title">Reconnaître les Signes d'Alerte</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <h4>1. Accident Cardiaque (Infarctus) :</h4>
+            <p>Douleur dans la poitrine (étau, écrasement, brûlure), irradiant vers bras gauche, mâchoire ou estomac.</p>
+            <h4>2. Accident Vasculaire Cérébral (AVC) - VITE :</h4>
+            <ul>
+              <li><strong>V (Visage) :</strong> Paralysé, bouche déformée.</li>
+              <li><strong>I (Inertie) :</strong> Paralysie brutale d'un bras ou d'une jambe.</li>
+              <li><strong>T (Trouble) :</strong> De la parole (mots incompréhensibles).</li>
+              <li><strong>E (En urgence) :</strong> Alerter le 15, noter l'heure exacte.</li>
+            </ul>
+            <h4>Autres signes :</h4>
+            <p>Difficulté à respirer, douleur abdominale, sueurs, pâleur, malaise vagal.</p>
+          </div>
+        </div>
+        <div class="article-block" id="malaise-conduite">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RÉFLEXE</span>
+            <span class="article-title">Conduite à tenir en toute circonstance</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>Installer la victime en position d'attente :</strong> Allongée, ou assise (si difficultés respiratoires), ou dans la position où elle se sent le mieux.</li>
+              <li><strong>Se renseigner :</strong> Âge, durée du malaise, antécédents, traitements.</li>
+              <li><strong>Aider :</strong> À prendre son traitement prescrit ou du sucre (sur sa demande ou celle des secours). Aucun autre médicament.</li>
+              <li><strong>Alerter le 15 :</strong> Pour tout signe grave ou de doute, transmettre les infos recueillies. Protéger et surveiller.</li>
+            </ul>
+            <p><strong>Manœuvres physiques (Malaise vagal) :</strong> S'accroupir tête baissée, croiser les jambes et contracter les cuisses fortement en position allongée/debout.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 10: PLS -->
+<section id="pls" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 10</div>
+      <h2 class="section-title">VICTIME INCONSCIENTE QUI RESPIRE (PLS)</h2>
+      <p class="section-desc">Une personne a perdu connaissance lorsqu’elle ne répond à aucune sollicitation (inconsciente) MAIS qu’elle continue de respirer normalement.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#dangers-inconscience">Les Risques et LVA</a>
+        <a href="#technique-pls">La Technique de la PLS</a>
+        <a href="#cas-particuliers-pls">Cas Particuliers</a>
+      </div>
+      <div>
+        <div class="article-block" id="dangers-inconscience">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DANGERS</span>
+            <span class="article-title">Risques mortels et Examen Initial</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Deux risques mortels laissée sur le dos : L'obstruction par la langue relâchée, et l'étouffement par les liquides (fausse route des vomissements, sang).</p>
+            <h4>Examen (moins de 10s) :</h4>
+            <ol>
+              <li>Vérifier la conscience (« M’entendez-vous ? ») -> Aucune réponse.</li>
+              <li>Appeler à l'aide.</li>
+              <li><strong>Libérer les Voies Aériennes (LVA) :</strong> Desserer le col, 1 main sur le front, 2 doigts sous le menton, basculer la tête en arrière.</li>
+              <li>Apprécier la respiration (voir, écouter, sentir pendant 10s) -> Elle respire !</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article-block" id="technique-pls">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">GESTES</span>
+            <span class="article-title">La Position Latérale de Sécurité (PLS)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Si aucun traumatisme grave ne contre-indique la mobilisation, je la tourne sur le côté :</p>
+            <ul>
+              <li><strong>Temps 1 (Préparer) :</strong> Aligner les jambes. Placer le bras proche à 90° (chandelier). Plaquer le dos de l'autre main contre l'oreille côté sauveteur. Relever le genou opposé.</li>
+              <li><strong>Temps 2 (Retourner) :</strong> Tirer sur le genou (levier) pour faire rouler la victime vers soi d'un bloc, en accompagnant la tête, jusqu'à ce que le genou touche le sol.</li>
+              <li><strong>Temps 3 (Stabiliser) :</strong> Dégager la main de sous la tête. Ajuster la jambe du dessus à angle droit. Ouvrir la bouche.</li>
+            </ul>
+            <p><strong>Après :</strong> Alerter le 15, couvrir, et SURVEILLANCE PERMANENTE de la respiration.</p>
+          </div>
+        </div>
+        <div class="article-block" id="cas-particuliers-pls">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">SPÉCIFIQUE</span>
+            <span class="article-title">Les 4 Cas Particuliers</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <ul>
+              <li><strong>Le Nourrisson :</strong> Prendre dans les bras, coucher sur le côté/contre soi, tête inclinée vers le bas.</li>
+              <li><strong>La Femme Enceinte :</strong> PLS sur le CÔTÉ GAUCHE (pour éviter d'écraser la veine cave).</li>
+              <li><strong>Convulsions (Épilepsie) :</strong> Pendant la crise : écarter les objets dangereux, glisser un vêtement sous la tête, ne RIEN mettre dans la bouche. Après : vérifier respiration et mettre en PLS.</li>
+              <li><strong>Victime Traumatisée :</strong> Laisser sur le dos et maintenir LVA. MAIS si elle vomit ou si je dois l'abandonner pour alerter, je la mets impérativement en PLS.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODULE 11: RCP & DAE -->
+<section id="rcp" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 11</div>
+      <h2 class="section-title">ARRÊT CARDIAQUE (RCP & DAE)</h2>
+      <p class="section-desc">C’est l’urgence vitale absolue. Le sang et l’oxygène ne circulent plus vers le cerveau. Sans action immédiate, chaque minute diminue les chances de survie de 10%.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#identifier-acr">Identifier l'Arrêt Cardiaque</a>
+        <a href="#technique-rcp">La Technique de la RCP</a>
+        <a href="#utilisation-dae">L'Utilisation du DAE</a>
+      </div>
+      <div>
+        <div class="article-block" id="identifier-acr">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DIAGNOSTIC</span>
+            <span class="article-title">Identifier l'ACR et les 3 maillons</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>La victime est en arrêt cardiaque si : Elle est INCONSCIENTE, ET ELLE NE RESPIRE PAS (ou présente des GASPS : mouvements lents, bruyants, inefficaces).</p>
+            <h4>Les 3 Maillons de la Survie :</h4>
+            <ol>
+              <li><strong>ALERTER :</strong> le 15 ou 112 et réclamer un DAE.</li>
+              <li><strong>MASSER :</strong> Réanimation Cardio-Pulmonaire (RCP).</li>
+              <li><strong>DÉFIBRILLER :</strong> Poser le DAE dès qu'il est disponible.</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article-block" id="technique-rcp">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">GESTES</span>
+            <span class="article-title">La Technique de la RCP (30 / 2)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>J'installe la victime sur un plan dur. J'alterne les compressions thoraciques et les insufflations.</p>
+            <h4>Chez l'Adulte : (30 compressions / 2 insufflations)</h4>
+            <ul>
+              <li><strong>Compressions :</strong> Talon d'une main au centre de la poitrine (moitié inférieure du sternum), autre main par-dessus. Bras tendus, enfoncer de 5 à 6 cm, à une fréquence de 100-120/min.</li>
+              <li><strong>Insufflations :</strong> Pincer le nez, maintenir menton élevé, englober la bouche et souffler jusqu'à ce que la poitrine se soulève. (2 max). Si on ne peut/veut pas, faire uniquement les compressions en continu !</li>
+            </ul>
+            <h4>Chez l'Enfant et Nourrisson : (15 compressions / 2 insufflations)</h4>
+            <ul>
+              <li>Enfant : 1 main, 5 cm de profondeur (ou 2 mains si grand). 5 insufflations initiales.</li>
+              <li>Nourrisson : 2 pouces au centre du thorax, 4 cm de profondeur. 5 insufflations initiales.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="utilisation-dae">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DAE</span>
+            <span class="article-title">L'Utilisation du Défibrillateur</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>N'importe qui a le droit d'utiliser un DAE (100% sécurisé).</p>
+            <ol>
+              <li>Allumer le DAE et écouter les instructions vocales.</li>
+              <li>Dénuder complètement la poitrine de la victime.</li>
+              <li>Coller les 2 électrodes sur la peau nue (selon le schéma : sous clavicule droite et aisselle gauche).</li>
+              <li>Pendant l'analyse, s'écarter et dire : « Écartez-vous, ne touchez plus la victime ! ».</li>
+              <li>Si choc recommandé : Appuyer sur le bouton. REPRENDRE IMMÉDIATEMENT LE MASSAGE après.</li>
+              <li>Laisser le DAE allumé jusqu'aux secours.</li>
+            </ol>
+            <h4>Précautions :</h4>
+            <p>Victime mouillée : essuyer la poitrine. Surface métallique : déplacer ou isoler la victime. Poitrine velue : raser rapidement. Pacemaker : coller l'électrode à 8 cm du boîtier.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHES MÉMO -->
+<section id="fiches">
+  <div class="fiches-inner">
+    <div class="reveal">
+      <div class="section-tag">Référence</div>
+      <h2 class="section-title">FICHES MÉMO OPÉRATIONNELLES</h2>
+      <p class="section-desc">Mes fiches de synthèse pour maîtriser les notions clés sur le terrain.</p>
+    </div>
+    <div class="fiches-grid reveal">
+      <div class="fiche-card" onclick="scrollToFiche('fiche-trousse')">
+        <span class="fiche-icon">🎒</span>
+        <div class="fiche-title">Trousse de Secours & EPI</div>
+        <div class="fiche-summary">Matériel obligatoire et ce qui est strictement interdit (médicaments).</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-qqoqcp')">
+        <span class="fiche-icon">📞</span>
+        <div class="fiche-title">Compte Rendu (QQOQCP)</div>
+        <div class="fiche-summary">Structure type du Compte Rendu d'intervention de secours.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-recap')">
+        <span class="fiche-icon">⚡</span>
+        <div class="fiche-title">Tableau Récapitulatif Gestes Vitaux</div>
+        <div class="fiche-summary">Ultime antisèche pour les évaluations pratiques (Adulte / Enfant / Nourrisson).</div>
+      </div>
+    </div>
+
+    <!-- FICHE TROUSSE -->
+    <div class="fiche-detail reveal" id="fiche-trousse">
+      <div class="section-tag" style="margin-top: 3rem;">Fiche 12</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">LA TROUSSE DE SECOURS ET LES EPI</h3>
+      <div class="article-block open">
+        <div class="article-body" style="display:block;">
+          <p>Le contenu réglementaire d’une trousse de secours de site :</p>
+          <ul>
+            <li><strong>Hémorragies :</strong> Coussins Hémostatiques d'Urgence (CHU), Garrot tourniquet tactique, Feutre indélébile.</li>
+            <li><strong>Plaies :</strong> Compresses stériles, sérum physiologique, pansements adhésifs, bandes. Poche de froid.</li>
+            <li><strong>Couverture de survie :</strong> Face dorée extérieure (pour réchauffer), face argentée extérieure (pour rafraîchir en cas de coup de chaleur).</li>
+            <li><strong>Outillage :</strong> Paire de ciseaux à bouts ronds (Jesco). Sucre en morceaux emballés.</li>
+          </ul>
+          <div class="warning-box">
+            <strong>STRICTEMENT INTERDIT :</strong>
+            <p>AUCUN MÉDICAMENT (Doliprane, aspirine, pommade, collyre). Pas de coton hydrophile (les fibres collent aux plaies). Pas d'alcool ni d'éosine colorée (masque la plaie).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE QQOQCP -->
+    <div class="fiche-detail reveal" id="fiche-qqoqcp">
+      <div class="section-tag">Fiche 13</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">LE COMPTE RENDU D'INTERVENTION (QQOQCP)</h3>
+      <div class="article-block open">
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Étape</th><th>Ce que je dois écrire (Factuel !)</th></tr>
+              <tr><td><strong>QUAND ?</strong></td><td>Date et heures exactes (découverte, gestes clés, appel 15, arrivée/départ secours).</td></tr>
+              <tr><td><strong>OÙ ?</strong></td><td>Lieu précis sur le site (bâtiment, étage, devant quelle salle).</td></tr>
+              <tr><td><strong>QUI ?</strong></td><td>Identité victime (Nom, prénom, âge, statut), témoins, et matricule des pompiers/SAMU.</td></tr>
+              <tr><td><strong>QUOI & POURQUOI ?</strong></td><td>Circonstances factuelles, bilan d'urgence vitale (Consciente ? Respire ? Saigne ?). Pas de diagnostic médical.</td></tr>
+              <tr><td><strong>COMMENT ?</strong></td><td>Détail chronologique des gestes (Protection, PLS, garrot, RCP, DAE) et lieu d'évacuation de la victime.</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE RECAP -->
+    <div class="fiche-detail reveal" id="fiche-recap">
+      <div class="section-tag">Fiche 14</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">TABLEAU RÉCAPITULATIF DES GESTES VITAUX</h3>
+      <div class="article-block open">
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Situation de détresse</th><th>ADULTE (> puberté)</th><th>ENFANT (1 an à puberté)</th><th>NOURRISSON (< 1 an)</th></tr>
+              <tr><td><strong>Étouffement Complet</strong></td><td>1 à 5 Claques dans le dos puis 1 à 5 Compressions abdominales.</td><td>1 à 5 Claques dans le dos puis 1 à 5 Compressions abdominales.</td><td>1 à 5 Claques dans le dos (sur avant-bras) puis 1 à 5 Compressions thoraciques.</td></tr>
+              <tr><td><strong>Hémorragie Externe</strong></td><td>Compression manuelle directe (ou pansement compressif) → Allonger → Alerter 15/112 → Couvrir.</td><td>Idem Adulte.</td><td>Idem Adulte.</td></tr>
+              <tr><td><strong>Perte de Connaissance</strong></td><td>LVA (Bascule tête en arrière) → Vérifier respiration (10 s) → PLS → Alerter 15/112.</td><td>Idem Adulte.</td><td>LVA (Tête en position neutre) → Placer sur le côté.</td></tr>
+              <tr><td><strong>Arrêt Cardiaque</strong></td><td>RCP 30 compressions (2 mains, 5-6 cm) / 2 insufflations + DAE.</td><td>RCP 15 compressions (1 ou 2 mains, 5 cm) / 2 insufflations + DAE.</td><td>RCP 15 compressions (2 pouces, 4 cm) / 2 insufflations + DAE.</td></tr>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="conclusion-inner">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;">Conclusion</div>
+      <h2 class="section-title">PRÊT POUR SAUVER</h2>
+      <p style="color:var(--gray);font-size:0.95rem;margin-top:1rem;">Au terme de ce manuel de Premiers Secours, je possède désormais la deuxième moitié de mon armure professionnelle. Aujourd’hui, je sais comment arracher une vie à la mort.</p>
+    </div>
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-num">1</div>
+        <div class="principle-text"><strong>PROTÉGER</strong> avant tout : je ne deviens jamais une victime supplémentaire.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">2</div>
+        <div class="principle-text"><strong>EXAMINER</strong> avec méthode : 10 secondes d’observation calme dictent toute mon intervention.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">3</div>
+        <div class="principle-text"><strong>ALERTER</strong> avec précision : je suis les yeux et les mains du médecin du SAMU sur le terrain.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">4</div>
+        <div class="principle-text"><strong>AGIR</strong> sans hésiter : appuyer sur une artère, claquer un dos, tourner en PLS ou masser un cœur.</div>
+      </div>
+      <div class="principle" style="grid-column: 1 / -1;">
+        <div class="principle-num">5</div>
+        <div class="principle-text"><strong>SURVEILLER et DOCUMENTER</strong> : je ne lâche jamais ma victime avant la relève des secours, et je consigne chaque minute dans mon Compte Rendu.</div>
+      </div>
+    </div>
+    <div class="engage-block reveal">
+      Fier de mon futur métier.<br>
+      Que j’exerce demain en sécurité privée, en police municipale, en police nationale, en gendarmerie ou chez les sapeurs-pompiers, le public qui verra mon uniforme du Lycée François Arago saura qu’il peut compter sur moi.
+    </div>
+    <div style="margin-top:2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:rgba(181,176,154,0.6);letter-spacing:1px;" class="reveal">
+      Ça c'est mon manuel de secours,<br>
+      Il y en a beaucoup comme celui-là, mais lui c'est le mien,<br>
+      <strong style="color:rgba(181,176,154,0.8);">Mon manuel c'est mon vrai copain.</strong><br><br>
+      Il est la protection de ceux qui tombent.<br>
+      Je dois rester maître de mon stress, comme je reste maître de mes gestes.<br>
+      Sans moi, mon manuel n'est rien. Sans mon manuel, je ne peux pas sauver.<br>
+      Je dois être plus rapide que l’hémorragie et plus endurant que l’arrêt cardiaque.<br>
+      Et je le serai !
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Lycée François Arago</strong> · Les Essentiels du Premier Secours · Formation professionnelle · Tous droits réservés
+</footer>
+
+<script>
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(r => observer.observe(r));
+
+  function toggleArticle(header) {
+    const block = header.closest('.article-block');
+    block.classList.toggle('open');
+    const body = block.querySelector('.article-body');
+    body.style.display = block.classList.contains('open') ? 'block' : 'none';
+  }
+
+  function scrollToFiche(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      nav.style.background = window.scrollY > 40 ? 'rgba(26,24,16,0.97)' : 'rgba(26,24,16,0.92)';
+    } else {
+      nav.style.background = window.scrollY > 40 ? 'rgba(253,252,248,0.99)' : 'rgba(253,252,248,0.94)';
+    }
+  });
+
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('arago-theme', next);
+    var lbl = document.getElementById('toggle-label');
+    if (lbl) lbl.textContent = next === 'dark' ? 'Mode sombre' : 'Mode clair';
+  }
+
+  (function() {
+    var lbl = document.getElementById('toggle-label');
+    if (lbl) {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      lbl.textContent = isDark ? 'Mode sombre' : 'Mode clair';
+    }
+  })();
+</script>
+</body>
+</html>

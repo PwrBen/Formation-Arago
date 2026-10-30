@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){var s=localStorage.getItem("arago-theme");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(s!=="light"&&p)){document.documentElement.setAttribute("data-theme","dark");}else{document.documentElement.setAttribute("data-theme","light");}})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portail de Formation - Bac Pro MS - Lycée Arago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══ THÈME SOMBRE (dark — défaut) ══ */
+:root, [data-theme="dark"] {
+  --navy:   #0d1117;
+  --card:   #161b22;
+  --white:  #f0f6fc;
+  --gray:   #8b949e;
+  --light:  #c9d1d9;
+  --border: rgba(255,255,255,0.1);
+  --hero-grid: rgba(255,255,255,0.03);
+
+  /* Couleurs des 3 filières */
+  --color-surete:   #1e5bdc; /* Bleu Sûreté */
+  --color-incendie: #d32f2f; /* Rouge Incendie */
+  --color-secours:  #f1c40f; /* Jaune Secours */
+}
+
+/* ══ THÈME CLAIR ══ */
+[data-theme="light"] {
+  --navy:   #f6f8fa;
+  --card:   #ffffff;
+  --white:  #24292f;
+  --gray:   #57606a;
+  --light:  #24292f;
+  --border: rgba(0,0,0,0.1);
+  --hero-grid: rgba(0,0,0,0.03);
+
+  --color-surete:   #1e5bdc;
+  --color-incendie: #c62828;
+  --color-secours:  #d4ac0d;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  transition: background 0.3s, color 0.3s;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Texture de fond — uniquement mode sombre */
+[data-theme="dark"] body::before {
+  content: ''; position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* HEADER / HERO */
+header {
+  position: relative;
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  z-index: 1;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+  background: var(--card);
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(var(--hero-grid) 1px, transparent 1px), linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+.badge-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray); border: 1px solid var(--border);
+  padding: 4px 16px; margin-bottom: 1.5rem; display: inline-block;
+}
+h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(3rem, 8vw, 5rem); letter-spacing: 3px; line-height: 1;
+  color: var(--white); margin-bottom: 0.5rem;
+}
+.subtitle {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem; font-weight: 600; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray);
+}
+.motto {
+  font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 1rem;
+  color: var(--gray); margin-top: 1.5rem; letter-spacing: 1px;
+}
+
+/* CONTENEUR PRINCIPAL */
+.container {
+  max-width: 1200px; width: 100%; margin: 4rem auto; padding: 0 2rem;
+  position: relative; z-index: 1; flex: 1;
+}
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; }
+
+/* CARTES (CARDS) */
+.card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 2.5rem 2rem; position: relative; overflow: hidden;
+  display: flex; flex-direction: column; transition: transform 0.3s, border-color 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+
+/* Ligne de couleur sur le côté de chaque carte */
+.card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 4px;
+}
+.card.surete::before { background: var(--color-surete); }
+.card.incendie::before { background: var(--color-incendie); }
+.card.secours::before { background: var(--color-secours); }
+
+.card h2 {
+  font-family: 'Bebas Neue', sans-serif; font-size: 2.2rem; letter-spacing: 2px;
+  margin-bottom: 1rem; line-height: 1;
+}
+.card.surete h2 { color: var(--color-surete); }
+.card.incendie h2 { color: var(--color-incendie); }
+.card.secours h2 { color: var(--color-secours); }
+
+.card p { font-size: 0.95rem; color: var(--light); flex-grow: 1; margin-bottom: 2rem; }
+
+/* BOUTONS TACTIQUES BISEAUTÉS */
+.links { display: flex; gap: 1rem; }
+.btn {
+  flex: 1; text-align: center; text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.85rem; font-weight: 700;
+  letter-spacing: 3px; text-transform: uppercase; padding: 12px 0;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s; border: 1px solid transparent;
+}
+.btn-cours { color: #fff; }
+.btn-exo { background: transparent; color: var(--white); }
+
+/* Déclinaisons Boutons Sûreté */
+.card.surete .btn-cours { background: var(--color-surete); }
+.card.surete .btn-cours:hover { filter: brightness(1.2); }
+.card.surete .btn-exo { border-color: var(--color-surete); color: var(--color-surete); }
+.card.surete .btn-exo:hover { background: var(--color-surete); color: #fff; }
+
+/* Déclinaisons Boutons Incendie */
+.card.incendie .btn-cours { background: var(--color-incendie); }
+.card.incendie .btn-cours:hover { filter: brightness(1.2); }
+.card.incendie .btn-exo { border-color: var(--color-incendie); color: var(--color-incendie); }
+.card.incendie .btn-exo:hover { background: var(--color-incendie); color: #fff; }
+
+/* Déclinaisons Boutons Secours (Texte noir car fond jaune) */
+.card.secours .btn-cours { background: var(--color-secours); color: #000; }
+.card.secours .btn-cours:hover { filter: brightness(1.1); }
+.card.secours .btn-exo { border-color: var(--color-secours); color: var(--color-secours); }
+.card.secours .btn-exo:hover { background: var(--color-secours); color: #000; }
+
+/* BOUTON THÈME SOMBRE/CLAIR */
+#theme-toggle-wrap {
+  position: fixed; bottom: 24px; left: 24px; z-index: 3001;
+  display: flex; align-items: center; gap: 10px;
+}
+#theme-toggle {
+  flex-shrink: 0; width: 52px; height: 28px; border-radius: 14px; cursor: pointer;
+  display: flex; align-items: center; padding: 3px;
+  transition: background 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(128,128,128,0.3);
+  background: #161b22;
+}
+#theme-toggle::after {
+  content: ''; display: block; width: 20px; height: 20px; border-radius: 50%;
+  background: #f0f6fc; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  transform: translateX(24px);
+}
+[data-theme="light"] #theme-toggle { background: #e8e4de; border-color: rgba(0,0,0,0.18); }
+[data-theme="light"] #theme-toggle::after { transform: translateX(0); background: #fff; }
+.toggle-label {
+  font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 1.5px;
+  text-transform: uppercase; color: var(--gray); background: var(--card);
+  padding: 3px 8px; border-radius: 4px; border: 0.5px solid var(--border);
+  pointer-events: none; white-space: nowrap; transition: color 0.3s, background 0.3s;
+}
+
+footer {
+  text-align: center; padding: 2rem; border-top: 1px solid var(--border);
+  font-family: 'Barlow Condensed', sans-serif; font-size: 0.75rem;
+  letter-spacing: 3px; text-transform: uppercase; color: var(--gray);
+  background: var(--card); position: relative; z-index: 1;
+}
+</style>
+</head>
+<body>
+    
+    <!-- Switch Thème -->
+    <div id="theme-toggle-wrap">
+      <div id="theme-toggle" onclick="toggleTheme()" role="switch" aria-label="Basculer mode sombre/clair"></div>
+      <span class="toggle-label" id="toggle-label">Mode sombre</span>
+    </div>
+
+    <!-- En-tête -->
+    <header>
+        <div class="hero-grid"></div>
+        <div class="badge-top">Lycée François Arago</div>
+        <h1>PORTAIL DE FORMATION</h1>
+        <div class="subtitle">Bac Pro Métiers de la Sécurité</div>
+        <div class="motto">"Prévoir ou Subir"</div>
+    </header>
+
+    <!-- Contenu des cours -->
+    <div class="container">
+        <div class="grid">
+            <!-- Carte Sûreté -->
+            <div class="card surete">
+                <h2>Sûreté</h2>
+                <p>Cadre légal, palpation de sécurité, gestion des conflits, filtrage et rédaction de la main courante.</p>
+                <div class="links">
+                    <a href="cours-surete.html" target="_blank" rel="noopener noreferrer" class="btn btn-cours">Cours</a>
+                    <a href="exos-surete.html" target="_blank" rel="noopener noreferrer" class="btn btn-exo">Exercices</a>
+                </div>
+            </div>
+
+            <!-- Carte Incendie -->
+            <div class="card incendie">
+                <h2>Incendie</h2>
+                <p>Triangle du feu, Système de Sécurité Incendie (SSI), moyens d'extinction et procédures d'évacuation.</p>
+                <div class="links">
+                    <a href="cours-incendie.html" target="_blank" rel="noopener noreferrer" class="btn btn-cours">Cours</a>
+                    <a href="exos-incendie.html" target="_blank" rel="noopener noreferrer" class="btn btn-exo">Exercices</a>
+                </div>
+            </div>
+
+            <!-- Carte Secours -->
+            <div class="card secours">
+                <h2>Secours</h2>
+                <p>Intervention SST, protection, bilan vital, et maintien de l'intégrité physique de la victime.</p>
+                <div class="links">
+                    <a href="cours-secours.html" target="_blank" rel="noopener noreferrer" class="btn btn-cours">Cours</a>
+                    <a href="exos-secours.html" target="_blank" rel="noopener noreferrer" class="btn btn-exo">Exercices</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pied de page -->
+    <footer>
+        Lycée François Arago · Bac Pro Métiers de la Sécurité
+    </footer>
+
+    <!-- Script Thème -->
+    <script>
+      function toggleTheme() {
+        var html = document.documentElement;
+        var isDark = html.getAttribute('data-theme') === 'dark';
+        var next = isDark ? 'light' : 'dark';
+        html.setAttribute('data-theme', next);
+        localStorage.setItem('arago-theme', next);
+        var lbl = document.getElementById('toggle-label');
+        if (lbl) lbl.textContent = next === 'dark' ? 'Mode sombre' : 'Mode clair';
+      }
+      (function() {
+        var lbl = document.getElementById('toggle-label');
+        if (lbl) {
+          var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+          lbl.textContent = isDark ? 'Mode sombre' : 'Mode clair';
+        }
+      })();
+    </script>
+</body>
+</html>

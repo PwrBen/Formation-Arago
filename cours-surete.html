@@ -1,0 +1,2212 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<script>
+(function(){var s=localStorage.getItem("arago-theme");var p=window.matchMedia&&window.matchMedia("(prefers-color-scheme:dark)").matches;if(s==="dark"||(s!=="light"&&p)){document.documentElement.setAttribute("data-theme","dark");}else{document.documentElement.setAttribute("data-theme","light");}})();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manuel de Cours Sûreté — Lycée François Arago</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@300;400;600;700&family=Barlow:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ══ THÈME SOMBRE (dark — défaut) ══ */
+:root,
+[data-theme="dark"] {
+  --navy:   #0a0e1a;
+  --deep:   #0d1220;
+  --blue:   #1a3a6e;
+  --accent: #1e5bdc;
+  --red:    #c0392b;
+  --white:  #f0f4ff;
+  --gray:   #8a9ab5;
+  --light:  #d0daea;
+  --card:   #111827;
+  --border: rgba(30,91,220,0.25);
+
+  /* Tokens extra */
+  --nav-bg:         rgba(10,14,26,0.92);
+  --nav-bg-scroll:  rgba(10,14,26,0.97);
+  --hero-grid:      rgba(30,91,220,0.07);
+  --hero-glow:      rgba(30,91,220,0.18);
+  --module-hover:   #141d2f;
+  --article-hdr-bg: rgba(30,91,220,0.08);
+  --article-num-bg: rgba(30,91,220,0.15);
+  --article-num-bd: rgba(30,91,220,0.3);
+  --legal-bg:       rgba(30,91,220,0.07);
+  --warning-bg:     rgba(192,57,43,0.1);
+  --info-bg:        rgba(30,91,220,0.05);
+  --desc-card-bg:   rgba(30,91,220,0.06);
+  --chip-bg:        rgba(30,91,220,0.15);
+  --chip-red-bg:    rgba(192,57,43,0.1);
+  --chip-red-brd:   rgba(192,57,43,0.3);
+  --chip-red-txt:   #e74c3c;
+  --mission-hdr-bg: rgba(30,91,220,0.06);
+  --pfmp-num-clr:   rgba(30,91,220,0.2);
+  --pfmp-badge-bg:  rgba(30,91,220,0.15);
+  --conclusion-glow:rgba(30,91,220,0.1);
+  --engage-bg:      rgba(30,91,220,0.06);
+  --fiche-corner:   rgba(30,91,220,0.1);
+  --fiche-corner-h: rgba(30,91,220,0.2);
+  --fiche-hover-bd: rgba(30,91,220,0.5);
+  --tab-active:     var(--white);
+  --th-bg:          rgba(30,91,220,0.15);
+  --td-border:      rgba(255,255,255,0.04);
+  --td-hover:       rgba(255,255,255,0.02);
+  --row-odd-bg:     transparent;
+  --nav-link-brd:   rgba(255,255,255,0.04);
+  --hero-citation:  rgba(176,196,215,0.6);
+  --btn-ghost-brd:  rgba(255,255,255,0.2);
+  --deonto-brd-alt: rgba(255,255,255,0.04);
+  --pfmp-li-brd:    rgba(255,255,255,0.04);
+}
+
+/* ══ THÈME CLAIR — Papier & Encre ══ */
+[data-theme="light"] {
+  --navy:   #faf8f4;
+  --deep:   #f3f1ec;
+  --blue:   #e8e4de;
+  --accent: #1a1a1a;
+  --red:    #8a3020;
+  --white:  #1a1a1a;
+  --gray:   #6e6b66;
+  --light:  #2c2925;
+  --card:   #ffffff;
+  --border: rgba(0,0,0,0.12);
+
+  --nav-bg:         rgba(250,248,244,0.94);
+  --nav-bg-scroll:  rgba(250,248,244,0.99);
+  --hero-grid:      rgba(26,26,26,0.05);
+  --hero-glow:      rgba(26,26,26,0.05);
+  --module-hover:   #f3f1ec;
+  --article-hdr-bg: rgba(26,26,26,0.04);
+  --article-num-bg: rgba(26,26,26,0.07);
+  --article-num-bd: rgba(26,26,26,0.2);
+  --legal-bg:       rgba(26,26,26,0.04);
+  --warning-bg:     rgba(138,48,32,0.06);
+  --info-bg:        rgba(26,26,26,0.03);
+  --desc-card-bg:   rgba(26,26,26,0.04);
+  --chip-bg:        rgba(26,26,26,0.07);
+  --chip-red-bg:    rgba(138,48,32,0.07);
+  --chip-red-brd:   rgba(138,48,32,0.25);
+  --chip-red-txt:   #8a3020;
+  --mission-hdr-bg: rgba(26,26,26,0.04);
+  --pfmp-num-clr:   rgba(26,26,26,0.12);
+  --pfmp-badge-bg:  rgba(26,26,26,0.07);
+  --conclusion-glow:rgba(26,26,26,0.04);
+  --engage-bg:      rgba(26,26,26,0.04);
+  --fiche-corner:   rgba(26,26,26,0.06);
+  --fiche-corner-h: rgba(26,26,26,0.12);
+  --fiche-hover-bd: rgba(26,26,26,0.35);
+  --tab-active:     #1a1a1a;
+  --th-bg:          rgba(26,26,26,0.07);
+  --td-border:      rgba(0,0,0,0.06);
+  --td-hover:       rgba(0,0,0,0.03);
+  --row-odd-bg:     transparent;
+  --nav-link-brd:   rgba(0,0,0,0.06);
+  --hero-citation:  rgba(60,50,40,0.55);
+  --btn-ghost-brd:  rgba(26,26,26,0.25);
+  --deonto-brd-alt: rgba(0,0,0,0.06);
+  --pfmp-li-brd:    rgba(0,0,0,0.06);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--navy);
+  color: var(--white);
+  font-family: 'Barlow', sans-serif;
+  font-weight: 300;
+  line-height: 1.7;
+  overflow-x: hidden;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Noise texture — dark only */
+[data-theme="dark"] body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none; opacity: 0.4;
+}
+
+/* NAV */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+  padding: 0 2rem;
+  display: flex; align-items: center; justify-content: space-between;
+  height: 60px;
+  transition: background 0.3s;
+}
+.nav-logo {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.3rem; letter-spacing: 3px;
+  color: var(--white);
+  display: flex; align-items: center; gap: 10px;
+}
+.nav-logo span { color: var(--accent); }
+.nav-links { display: flex; gap: 0; list-style: none; }
+.nav-links a {
+  color: var(--gray); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 2px; text-transform: uppercase;
+  padding: 0 0.8rem;
+  height: 60px; display: flex; align-items: center;
+  border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.nav-links a:hover { color: var(--white); border-bottom-color: var(--accent); }
+
+/* HERO */
+.hero {
+  position: relative; min-height: 100vh;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 80px 2rem 4rem; overflow: hidden;
+}
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(var(--hero-grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--hero-grid) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: gridSlide 20s linear infinite;
+}
+@keyframes gridSlide { from{transform:translateY(0)} to{transform:translateY(60px)} }
+.hero-glow {
+  position: absolute; width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--hero-glow) 0%, transparent 70%);
+  top: 50%; left: 50%; transform: translate(-50%,-50%);
+  pointer-events: none;
+}
+.badge-top {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); border: 1px solid var(--accent);
+  padding: 4px 16px; margin-bottom: 2rem;
+  animation: fadeUp 0.8s ease both;
+  position: relative; z-index: 1;
+}
+.hero h1 {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(4rem,12vw,9rem); line-height: 0.9; letter-spacing: 4px;
+  color: var(--white);
+  animation: fadeUp 0.8s 0.1s ease both; position: relative; z-index: 1;
+}
+.hero h1 em { font-style: normal; -webkit-text-stroke: 1px var(--accent); color: transparent; }
+.hero-sub {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.2rem; font-weight: 300; letter-spacing: 6px; text-transform: uppercase;
+  color: var(--gray); margin-top: 1rem;
+  animation: fadeUp 0.8s 0.2s ease both; position: relative; z-index: 1;
+}
+.hero-line {
+  width: 120px; height: 2px;
+  background: linear-gradient(90deg,transparent,var(--accent),transparent);
+  margin: 2rem auto; animation: fadeUp 0.8s 0.3s ease both; position: relative; z-index: 1;
+}
+.hero-desc {
+  max-width: 560px; color: var(--gray); font-size: 1rem;
+  animation: fadeUp 0.8s 0.4s ease both; position: relative; z-index: 1;
+}
+.hero-citation {
+  font-family: 'Barlow Condensed', sans-serif; font-style: italic; font-size: 1rem;
+  color: var(--hero-citation);
+  margin-top: 1.5rem; animation: fadeUp 0.8s 0.45s ease both; position: relative; z-index: 1;
+}
+.hero-cta {
+  margin-top: 2.5rem; display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+  animation: fadeUp 0.8s 0.5s ease both; position: relative; z-index: 1;
+}
+.btn-primary {
+  background: var(--accent); color: #fff; text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 14px 32px;
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s;
+}
+.btn-primary:hover { filter: brightness(1.15); transform: translateY(-2px); }
+.btn-ghost {
+  color: var(--white); text-decoration: none;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.8rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  padding: 13px 32px;
+  border: 1px solid var(--btn-ghost-brd);
+  clip-path: polygon(8px 0%,100% 0%,calc(100% - 8px) 100%,0% 100%);
+  transition: all 0.2s;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+.scroll-indicator {
+  position: absolute; bottom: 2rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  color: var(--gray); font-size: 0.65rem; letter-spacing: 3px;
+  font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase;
+  animation: fadeUp 1s 1s ease both; z-index: 1;
+}
+.scroll-line {
+  width: 1px; height: 40px;
+  background: linear-gradient(to bottom, var(--accent), transparent);
+  animation: scrollPulse 2s ease-in-out infinite;
+}
+@keyframes scrollPulse { 0%,100%{opacity:0.3;transform:scaleY(0.8)} 50%{opacity:1;transform:scaleY(1)} }
+@keyframes fadeUp { from{opacity:0;transform:translateY(20px)} to{opacity:1;transform:translateY(0)} }
+
+/* STATS BAR */
+.stats-bar {
+  position: relative; z-index: 1;
+  background: var(--card);
+  border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; justify-content: center; flex-wrap: wrap;
+  transition: background 0.3s;
+}
+.stat {
+  flex: 1; min-width: 180px; max-width: 240px;
+  padding: 2rem; text-align: center;
+  border-right: 1px solid var(--border);
+}
+.stat:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--accent); letter-spacing: 2px; }
+.stat-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-top: 2px;
+}
+
+/* SECTIONS */
+section { position: relative; z-index: 1; }
+.section-tag {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--accent); display: flex; align-items: center; gap: 12px; margin-bottom: 0.75rem;
+}
+.section-tag::before { content:''; display:block; width:24px; height:1px; background:var(--accent); }
+.section-title {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: clamp(2.5rem,5vw,4rem); letter-spacing: 3px; line-height: 1;
+  margin-bottom: 1rem; color: var(--white);
+}
+.section-desc { color: var(--gray); max-width: 560px; font-size: 0.95rem; }
+
+/* SOMMAIRE */
+#sommaire { padding: 6rem 2rem; max-width: 1200px; margin: 0 auto; }
+.modules-grid {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(320px,1fr));
+  gap: 1px; margin-top: 3rem; border: 1px solid var(--border);
+}
+.module-card {
+  background: var(--card); padding: 1.8rem;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  cursor: pointer; transition: all 0.25s;
+  position: relative; overflow: hidden;
+  text-decoration: none; color: inherit; display: block;
+}
+.module-card::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 3px; background: var(--accent);
+  transform: scaleY(0); transition: transform 0.25s;
+}
+.module-card:hover { background: var(--module-hover); transform: translateX(4px); }
+.module-card:hover::before { transform: scaleY(1); }
+.module-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.75rem; letter-spacing: 3px; color: var(--accent); margin-bottom: 0.5rem; }
+.module-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1.1rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 0.4rem; color: var(--white); }
+.module-desc { font-size: 0.85rem; color: var(--gray); }
+
+/* CONTENT SECTION */
+.content-section { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.content-inner { max-width: 1100px; margin: 0 auto; }
+.content-layout { display: grid; grid-template-columns: 260px 1fr; gap: 3rem; margin-top: 3rem; }
+.content-nav { position: sticky; top: 80px; align-self: start; }
+.content-nav-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 4px; text-transform: uppercase;
+  color: var(--gray); padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border); margin-bottom: 1rem;
+}
+.content-nav a {
+  display: block; font-size: 0.85rem; color: var(--gray);
+  text-decoration: none; padding: 6px 0;
+  border-bottom: 1px solid var(--nav-link-brd); transition: color 0.2s;
+}
+.content-nav a:hover { color: var(--accent); }
+
+/* ARTICLE BLOCKS */
+.article-block {
+  margin-bottom: 3rem; background: var(--card);
+  border: 1px solid var(--border); overflow: hidden; scroll-margin-top: 80px;
+}
+.article-header {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.2rem 1.6rem;
+  background: var(--article-hdr-bg);
+  border-bottom: 1px solid var(--border); cursor: pointer;
+}
+.article-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px; color: var(--accent); white-space: nowrap;
+  background: var(--article-num-bg); border: 1px solid var(--article-num-bd); padding: 3px 10px;
+}
+.article-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; flex: 1;
+  color: var(--white);
+}
+.article-toggle { font-size: 1.2rem; color: var(--gray); transition: transform 0.3s; }
+.article-block.open .article-toggle { transform: rotate(45deg); }
+.article-body { padding: 1.6rem; display: none; border-top: 1px solid var(--border); }
+.article-block.open .article-body { display: block; }
+.article-body p { margin-bottom: 1rem; font-size: 0.95rem; color: var(--light); }
+.article-body p:last-child { margin-bottom: 0; }
+.article-body ul, .article-body ol { margin: 0.75rem 0 1rem 1.5rem; }
+.article-body li { font-size: 0.93rem; color: var(--light); margin-bottom: 0.4rem; }
+.article-body h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.85rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin: 1.5rem 0 0.5rem;
+}
+.article-body strong { color: var(--white); font-weight: 600; }
+
+/* LEGAL / WARNING / INFO BOXES */
+.legal-box {
+  background: var(--legal-bg); border-left: 3px solid var(--accent);
+  padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.legal-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); display: block; margin-bottom: 0.4rem;
+}
+.legal-box p { color: var(--light); font-style: italic; margin: 0; }
+.warning-box {
+  background: var(--warning-bg); border-left: 3px solid var(--red);
+  padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.warning-box strong {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--red); display: block; margin-bottom: 0.4rem;
+}
+.warning-box p { color: var(--light); margin: 0; }
+.info-box {
+  background: var(--info-bg); border: 1px solid var(--border);
+  padding: 1rem 1.2rem; margin: 1rem 0; font-size: 0.9rem;
+}
+.info-box p { color: var(--light); margin: 0; font-style: italic; }
+
+/* TABLE */
+.table-wrapper { overflow-x: auto; margin: 1rem 0; }
+table { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+th {
+  background: var(--th-bg);
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); padding: 10px 14px; text-align: left;
+  border-bottom: 1px solid var(--border);
+}
+td {
+  padding: 10px 14px; border-bottom: 1px solid var(--td-border);
+  color: var(--light); vertical-align: top;
+}
+tr:last-child td { border-bottom: none; }
+tr:hover td { background: var(--td-hover); }
+
+/* DESC METHOD */
+.desc-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+.desc-card {
+  background: var(--desc-card-bg); border: 1px solid var(--border);
+  border-left: 3px solid var(--accent); padding: 1rem 1.2rem;
+}
+.desc-letter { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; color: var(--accent); line-height: 1; }
+.desc-word {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 0.5rem;
+}
+.desc-text { font-size: 0.85rem; color: var(--light); }
+.desc-example { font-size: 0.82rem; color: var(--gray); font-style: italic; margin-top: 0.4rem; }
+
+/* FICHES */
+#fiches { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.fiches-inner { max-width: 1100px; margin: 0 auto; }
+.fiches-grid { display: grid; grid-template-columns: repeat(auto-fill,minmax(300px,1fr)); gap: 1.5rem; margin-top: 3rem; }
+.fiche-card {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 1.8rem; position: relative; overflow: hidden;
+  transition: all 0.25s; cursor: pointer;
+}
+.fiche-card::after {
+  content: ''; position: absolute; bottom: 0; right: 0;
+  width: 60px; height: 60px;
+  background: linear-gradient(135deg,transparent 50%, var(--fiche-corner) 50%);
+  transition: all 0.25s;
+}
+.fiche-card:hover { border-color: var(--fiche-hover-bd); transform: translateY(-3px); }
+.fiche-card:hover::after { width: 80px; height: 80px; background: linear-gradient(135deg,transparent 50%, var(--fiche-corner-h) 50%); }
+.fiche-icon { font-size: 1.8rem; margin-bottom: 1rem; display: block; }
+.fiche-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 0.5rem; color: var(--white);
+}
+.fiche-summary { font-size: 0.85rem; color: var(--gray); }
+
+/* FICHE DETAIL */
+.fiche-detail { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.fiche-detail-inner { max-width: 1100px; margin: 0 auto; }
+
+/* PFMP */
+#pfmp { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.pfmp-inner { max-width: 1100px; margin: 0 auto; }
+.pfmp-track {
+  display: grid; grid-template-columns: repeat(auto-fill,minmax(240px,1fr));
+  gap: 1px; margin-top: 3rem; border: 1px solid var(--border);
+}
+.pfmp-card {
+  background: var(--card); padding: 2rem;
+  border-right: 1px solid var(--border); position: relative;
+}
+.pfmp-num { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; color: var(--pfmp-num-clr); line-height: 1; margin-bottom: 0.5rem; }
+.pfmp-type {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  margin-bottom: 0.5rem; color: var(--white);
+}
+.pfmp-desc { font-size: 0.85rem; color: var(--gray); margin-bottom: 0.8rem; }
+.pfmp-badge {
+  display: inline-block;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.6rem; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--pfmp-badge-bg); border: 1px solid var(--border);
+  color: var(--accent); padding: 2px 8px; margin-top: 0.8rem;
+}
+.pfmp-missions { margin-top: 1rem; }
+.pfmp-missions h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); margin-bottom: 0.5rem;
+}
+.pfmp-missions ul { list-style: none; padding: 0; }
+.pfmp-missions li {
+  font-size: 0.78rem; color: var(--light); padding: 4px 0;
+  border-bottom: 1px solid var(--pfmp-li-brd);
+  display: flex; align-items: flex-start; gap: 6px;
+}
+.pfmp-missions li::before { content: '›'; color: var(--accent); flex-shrink: 0; }
+
+/* ARTICLES TABLE */
+#articles-table { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.articles-inner { max-width: 1100px; margin: 0 auto; }
+.articles-tabs { display: flex; flex-wrap: wrap; gap: 0; border-bottom: 1px solid var(--border); margin-top: 2.5rem; }
+.tab-btn {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--gray); background: none; border: none; cursor: pointer;
+  padding: 12px 20px; border-bottom: 2px solid transparent; transition: all 0.2s;
+}
+.tab-btn.active, .tab-btn:hover { color: var(--tab-active); border-bottom-color: var(--accent); }
+.tab-content { display: none; padding-top: 1.5rem; }
+.tab-content.active { display: block; }
+
+/* DEONTOLOGIE */
+#deontologie { padding: 5rem 2rem; border-top: 1px solid var(--border); }
+.deonto-inner { max-width: 900px; margin: 0 auto; }
+.deonto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 3rem; border: 1px solid var(--border); }
+.deonto-article {
+  background: var(--card); padding: 1.5rem;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--deonto-brd-alt);
+}
+.deonto-article-num { font-family: 'Bebas Neue', sans-serif; font-size: 0.7rem; letter-spacing: 3px; color: var(--accent); margin-bottom: 0.5rem; }
+.deonto-article-text { font-size: 0.88rem; color: var(--light); }
+
+/* CONCLUSION */
+#conclusion {
+  padding: 6rem 2rem; border-top: 1px solid var(--border);
+  text-align: center; position: relative; overflow: hidden;
+}
+#conclusion::before {
+  content: ''; position: absolute; inset: 0;
+  background: radial-gradient(ellipse at center, var(--conclusion-glow) 0%, transparent 70%);
+}
+.conclusion-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+.principles { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 3rem 0; text-align: left; }
+.principle {
+  background: var(--card); border: 1px solid var(--border);
+  padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start;
+}
+.principle-num { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; color: var(--accent); line-height: 1; flex-shrink: 0; }
+.principle-text { font-size: 0.85rem; color: var(--light); }
+.closing-quote {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.3rem; font-weight: 300; letter-spacing: 1px;
+  color: var(--gray); border-top: 1px solid var(--border);
+  padding-top: 2rem; margin-top: 2rem; font-style: italic;
+}
+.engage-block {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 1.05rem; font-weight: 600; letter-spacing: 2px;
+  color: var(--accent); border: 1px solid var(--border);
+  padding: 1.5rem; margin-top: 2rem;
+  background: var(--engage-bg); text-align: left; line-height: 2;
+}
+
+/* FOOTER */
+footer {
+  background: var(--deep); border-top: 1px solid var(--border);
+  padding: 2rem; text-align: center;
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.7rem; letter-spacing: 3px; text-transform: uppercase; color: var(--gray);
+  transition: background 0.3s;
+}
+footer strong { color: var(--white); }
+
+/* REVEAL */
+.reveal { opacity: 0; transform: translateY(20px); transition: all 0.6s ease; }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* MISSION BLOCKS */
+.mission-block { border: 1px solid var(--border); margin-bottom: 1.5rem; overflow: hidden; }
+.mission-header {
+  padding: 0.8rem 1.2rem; background: var(--mission-hdr-bg);
+  border-bottom: 1px solid var(--border); cursor: pointer;
+  display: flex; align-items: center; gap: 0.8rem;
+}
+.mission-header-title {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.9rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--white);
+}
+.mission-body { padding: 1.2rem 1.4rem; display: none; }
+.mission-block.open .mission-body { display: block; }
+.mission-block.open .article-toggle { transform: rotate(45deg); }
+.mission-body h4 {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.75rem; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+  color: var(--accent); margin: 1rem 0 0.4rem;
+}
+.mission-body ul { margin: 0 0 0.8rem 1.5rem; }
+.mission-body li { font-size: 0.88rem; color: var(--light); margin-bottom: 0.3rem; }
+.mission-body p { font-size: 0.9rem; color: var(--light); margin-bottom: 0.8rem; }
+.mission-body strong { color: var(--white); }
+
+/* ALPHA TABLE */
+.alpha-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 1px; border: 1px solid var(--border); margin: 1rem 0; }
+.alpha-cell {
+  background: var(--card); padding: 0.6rem 0.8rem;
+  border-right: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+.alpha-letter { font-family: 'Bebas Neue', sans-serif; font-size: 1.1rem; color: var(--accent); min-width: 18px; }
+.alpha-word { font-size: 0.82rem; color: var(--light); }
+
+/* CHIPS */
+.chip-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0.75rem 0; }
+.chip {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 0.65rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase;
+  background: var(--chip-bg); border: 1px solid var(--border); color: var(--accent); padding: 3px 10px;
+}
+.chip-red {
+  background: var(--chip-red-bg); border-color: var(--chip-red-brd); color: var(--chip-red-txt);
+}
+
+/* TOGGLE SWITCH */
+#theme-toggle-wrap {
+  position: fixed; bottom: 24px; left: 24px; z-index: 3001;
+  display: flex; align-items: center; gap: 10px;
+}
+#theme-toggle {
+  flex-shrink: 0; width: 52px; height: 28px; border-radius: 14px; cursor: pointer;
+  display: flex; align-items: center; padding: 3px;
+  transition: background 0.3s, border-color 0.3s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  border: 1px solid rgba(128,128,128,0.3);
+  background: #2a3a5a;
+}
+#theme-toggle::after {
+  content: ''; display: block; width: 20px; height: 20px; border-radius: 50%;
+  background: #f0f4ff; box-shadow: 0 1px 4px rgba(0,0,0,0.3);
+  transition: transform 0.28s cubic-bezier(0.34,1.56,0.64,1), background 0.3s;
+  transform: translateX(24px);
+}
+[data-theme="light"] #theme-toggle { background: #e8e4de; border-color: rgba(0,0,0,0.18); }
+[data-theme="light"] #theme-toggle::after { transform: translateX(0); background: #fff; }
+.toggle-label {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 11px; letter-spacing: 1.5px; text-transform: uppercase;
+  color: var(--gray); background: var(--card);
+  padding: 3px 8px; border-radius: 4px; border: 0.5px solid var(--border);
+  pointer-events: none; white-space: nowrap; transition: color 0.3s, background 0.3s;
+}
+
+@media (max-width: 768px) {
+  .content-layout { grid-template-columns: 1fr; }
+  .content-nav { display: none; }
+  .desc-grid { grid-template-columns: 1fr; }
+  .deonto-grid { grid-template-columns: 1fr; }
+  .principles { grid-template-columns: 1fr; }
+  .nav-links { display: none; }
+  .alpha-grid { grid-template-columns: repeat(2,1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+
+<div id="theme-toggle-wrap">
+  <div id="theme-toggle" onclick="toggleTheme()" role="switch" aria-label="Basculer mode sombre/clair" title="Mode sombre / Mode clair"></div>
+  <span class="toggle-label" id="toggle-label">Mode sombre</span>
+</div>
+
+<nav>
+  <div class="nav-logo">ARAGO <span>SÉCURITÉ</span></div>
+  <ul class="nav-links">
+    <li><a href="#sommaire">Sommaire</a></li>
+    <li><a href="#deontologie">Déontologie</a></li>
+    <li><a href="#communication">Communication</a></li>
+    <li><a href="#droit">Droit</a></li>
+    <li><a href="#pfmp">PFMP</a></li>
+    <li><a href="#fiches">Fiches Mémo</a></li>
+    <li><a href="#articles-table">Articles</a></li>
+    <li><a href="#conclusion">Conclusion</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-grid"></div>
+  <div class="hero-glow"></div>
+  <div class="badge-top">Lycée François Arago · Arago Sûreté</div>
+  <h1>LES ESSENTIELS<br><em>DE LA</em><br>SÛRETÉ</h1>
+  <div class="hero-sub">Agents de Sûreté · Promotion<br><br><em style="font-style:italic;color:var(--accent);">Prévoir ou Subir</em></div>
+  <div class="hero-line"></div>
+  <div class="hero-desc">Guide opérationnel conçu pour les apprentis agents de sûreté du Lycée Arago. Maîtriser les fondements du métier pour obtenir la carte professionnelle délivrée par le CNAPS.</div>
+  <div class="hero-citation">« Ça c'est mon manuel, il y en a beaucoup comme celui-là, mais lui c'est le mien. Mon manuel c'est mon vrai copain... »</div>
+  <div class="hero-cta">
+    <a href="#sommaire" class="btn-primary">Accéder au Sommaire</a>
+    <a href="#fiches" class="btn-ghost">Fiches Mémo</a>
+  </div>
+  <div class="scroll-indicator">
+    <div class="scroll-line"></div>
+    <span>Défiler</span>
+  </div>
+</div>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Codes de Déontologie</div></div>
+  <div class="stat"><div class="stat-num">30+</div><div class="stat-label">Articles de Loi</div></div>
+  <div class="stat"><div class="stat-num">7</div><div class="stat-label">Fiches Mémo</div></div>
+  <div class="stat"><div class="stat-num">4</div><div class="stat-label">PFMP Terrain</div></div>
+  <div class="stat"><div class="stat-num">3</div><div class="stat-label">Années de Formation</div></div>
+</div>
+
+<!-- SOMMAIRE -->
+<div id="sommaire">
+  <div class="reveal">
+    <div class="section-tag">Sommaire</div>
+    <h2 class="section-title">MON MANUEL DE COURS <em style="-webkit-text-stroke: 1px var(--accent); color: transparent;">SÛRETÉ</em></h2>
+    <p class="section-desc">Ce manuel n'est pas un simple livre de cours. C'est mon guide opérationnel, conçu spécialement pour nous, les apprentis agents de sûreté du <strong>Lycée Arago</strong>. Mon objectif est clair : maîtriser les fondements du métier pour obtenir ma carte professionnelle délivrée par le <strong>CNAPS</strong> et devenir un vrai professionnel du terrain.</p>
+  </div>
+  <div class="modules-grid reveal">
+    <a href="#deontologie" class="module-card">
+      <div class="module-num">MODULE 01</div>
+      <div class="module-name">Code de Déontologie</div>
+      <div class="module-desc">7 articles d'engagement professionnel. La conduite irréprochable comme première arme.</div>
+    </a>
+    <a href="#introduction" class="module-card">
+      <div class="module-num">MODULE 02</div>
+      <div class="module-name">Introduction & Métier</div>
+      <div class="module-desc">Conditions CNAPS, carte professionnelle, rôle de prévention et dissuasion.</div>
+    </a>
+    <a href="#communication" class="module-card">
+      <div class="module-num">MODULE 03</div>
+      <div class="module-name">Communication</div>
+      <div class="module-desc">Communication verbale (méthode DESC), radio, alphabet phonétique, chiffres, termes de procédure.</div>
+    </a>
+    <a href="#terrain" class="module-card">
+      <div class="module-num">MODULE 04</div>
+      <div class="module-name">Missions de Terrain</div>
+      <div class="module-desc">Lieu d'exercice, rondes, compte rendu QQOQCP, rassemblements (L613-3), secours à personne.</div>
+    </a>
+    <a href="#droit" class="module-card">
+      <div class="module-num">MODULE 05</div>
+      <div class="module-name">Droit & Responsabilités</div>
+      <div class="module-desc">Responsabilité civile et pénale, infraction, légitime défense, nécessité, menottes (803 / L1121-3 CPP).</div>
+    </a>
+    <a href="#pfmp" class="module-card">
+      <div class="module-num">MODULE 06</div>
+      <div class="module-name">PFMP</div>
+      <div class="module-desc">Sécurité Privée, Police Municipale, Police Nationale, ENP Draveil, Gendarmerie.</div>
+    </a>
+    <a href="#fiches" class="module-card">
+      <div class="module-num">MODULE 07</div>
+      <div class="module-name">Fiches Mémo</div>
+      <div class="module-desc">VIDOCQ, Périmètre, Vidéoprotection, Flagrance, Identité, GAV, Catégories d'armes.</div>
+    </a>
+    <a href="#articles-table" class="module-card">
+      <div class="module-num">RÉFÉRENCE</div>
+      <div class="module-name">Articles Cités</div>
+      <div class="module-desc">CSI, CPP (Actuel / Recodifié), Code Pénal, Code Civil, Code de la Route, Code de la Défense.</div>
+    </a>
+  </div>
+</div>
+
+<!-- DÉONTOLOGIE -->
+<section id="deontologie">
+  <div class="deonto-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 01</div>
+      <h2 class="section-title">CODE DE DÉONTOLOGIE</h2>
+      <p class="section-desc">Je viens d'entrer en formation d'agent de sûreté au sein du centre de formation <strong>Arago Sécurité</strong>. À ce titre, je m'engage :</p>
+    </div>
+    <div class="deonto-grid reveal">
+      <div class="deonto-article">
+        <div class="deonto-article-num">ARTICLE 1</div>
+        <div class="deonto-article-text">À apprendre, lire et relire mes cours quotidiennement afin de progresser avec rigueur dans mes apprentissages et ne subir aucun retard dans cette formation professionnelle exigeante.</div>
+      </div>
+      <div class="deonto-article">
+        <div class="deonto-article-num">ARTICLE 2</div>
+        <div class="deonto-article-text">À me présenter en classe chaque jour avec mon matériel scolaire : a minima une trousse comprenant des stylos (bleu et noir), un cahier ou un classeur et des feuilles, afin de pouvoir prendre des notes et réaliser les évaluations journalières dans des conditions optimales.</div>
+      </div>
+      <div class="deonto-article">
+        <div class="deonto-article-num">ARTICLE 3</div>
+        <div class="deonto-article-text">À porter ma tenue professionnelle les jours imposés, à l'entretenir avec soin et à remplacer tout élément abîmé ou devenu inadapté à ma morphologie.</div>
+      </div>
+      <div class="deonto-article">
+        <div class="deonto-article-num">ARTICLE 4</div>
+        <div class="deonto-article-text">À prendre soin du vestiaire mis à ma disposition. Je m'engage au nettoyage et à l'entretien régulier de mon placard ainsi que de la pièce dans son intégralité.</div>
+      </div>
+      <div class="deonto-article">
+        <div class="deonto-article-num">ARTICLE 5</div>
+        <div class="deonto-article-text">Considéré comme un professionnel des métiers de la sécurité dès mon premier jour de formation, je m'engage à appliquer strictly les codes de déontologie de la profession : Agent de sécurité privé, agent de police municipale, police nationale, gendarmerie, armée et sapeurs-pompiers.</div>
+      </div>
+      <div class="deonto-article">
+        <div class="deonto-article-num">ARTICLE 6</div>
+        <div class="deonto-article-text">À garder confidentielles les informations et/ou documents qui me seront fournis, y compris ce manuel.</div>
+      </div>
+      <div class="deonto-article" style="grid-column: 1 / -1;">
+        <div class="deonto-article-num">ARTICLE 7</div>
+        <div class="deonto-article-text">En cas de non-respect de ces articles, présents ou à venir, je m'engage à accepter toute sanction administrative ou disciplinaire qui me sera signifiée.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTRODUCTION -->
+<section id="introduction" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 02</div>
+      <h2 class="section-title">INTRODUCTION AU MÉTIER</h2>
+      <p class="section-desc">Le métier enseigné est celui d'<strong>agent de sûreté</strong>. Pour exercer, plusieurs conditions réglementaires doivent être réunies.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#intro-conditions">Conditions d'exercice</a>
+        <a href="#intro-role">Rôle de l'agent</a>
+        <a href="#intro-equipement">Équipement obligatoire</a>
+        <a href="#intro-equipe">Travail d'équipe</a>
+      </div>
+      <div>
+        <div class="article-block" id="intro-conditions">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">CNAPS</span>
+            <span class="article-title">Conditions d'exercice de la profession</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Pour exercer cette profession, plusieurs conditions réglementaires doivent être réunies :</p>
+            <ul>
+              <li>Détenir un diplôme attestant la maîtrise des compétences requises.</li>
+              <li>Avoir un casier judiciaire vierge.</li>
+              <li>Ne faire l'objet d'aucune mention incompatible dans le fichier <strong>TAJ</strong> (Traitement des Antécédents Judiciaires).</li>
+              <li>Être de nationalité française ou ressortissant d'un État membre de l'Union Européenne.</li>
+            </ul>
+            <div class="legal-box">
+              <strong>Carte Professionnelle CNAPS</strong>
+              <p>Si ces conditions sont remplies, le <strong>CNAPS</strong> (Conseil National des Activités Privées de Sécurité) pourra, à ma demande, me délivrer une <strong>carte professionnelle</strong>. Celle-ci est valable 5 ans et doit être renouvelée 6 mois avant sa date d'expiration. Cette carte dématérialisée, un simple numéro (sur un bout de papier reçu par la poste) que je dois donner à mon employeur, est indispensable pour travailler au sein d'une entreprise de sécurité privée.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="intro-role">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">MISSION</span>
+            <span class="article-title">Rôle de l'agent de sûreté</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Mon rôle en tant qu'agent de <strong>sûreté</strong> consiste à assurer la <strong>prévention</strong> et la <strong>dissuasion</strong> face aux actes de <strong>malveillance</strong>, et à <strong>intervenir</strong> si nécessaire.</p>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Terme</th><th>Définition</th></tr>
+                <tr><td><strong>Sûreté</strong></td><td>Ensemble des moyens humains et matériels mis en œuvre pour lutter contre les actes de malveillance.</td></tr>
+                <tr><td><strong>Prévention</strong></td><td>Ensemble des mesures visant à anticiper, éviter ou réduire la survenue d'actes malveillants.</td></tr>
+                <tr><td><strong>Dissuasion</strong></td><td>Action visant à décourager un adversaire ou un auteur potentiel de passer à l'acte.</td></tr>
+                <tr><td><strong>Malveillance</strong></td><td>Volonté délibérée de nuire, s'exprimant parfois par la violence ou la malignité (ruse).</td></tr>
+                <tr><td><strong>Intervention</strong></td><td>Action menée pour interrompre un acte de malveillance en cours d'exécution.</td></tr>
+              </table>
+            </div>
+            <p>Je dois également être capable, si une personne présente sur mon site d'exploitation se blesse, est victime d'un malaise ou d'une agression, de lui porter assistance en appliquant les gestes de secours appropriés, conformément au référentiel <strong>SST</strong> (Sauveteur Secouriste du Travail).</p>
+          </div>
+        </div>
+        <div class="article-block" id="intro-equipement">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">TERRAIN</span>
+            <span class="article-title">Équipement obligatoire</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Pour exécuter correctement les missions qui me sont confiées, je dois avoir sur moi en permanence :</p>
+            <ol>
+              <li><strong>Un carnet et un stylo</strong> (pour prendre des notes : consignes, heure, lieux, description d'une personne ou d'une situation…)</li>
+              <li><strong>Une montre</strong> (pour pouvoir noter l'heure exacte lors d'un incident)</li>
+              <li>Une lampe torche (inspection diverse)</li>
+              <li>Une paire de gants (intervention diverse, palpation et/ou secourisme)</li>
+            </ol>
+          </div>
+        </div>
+        <div class="article-block" id="intro-equipe">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">ÉQUIPE</span>
+            <span class="article-title">Travail d'équipe & Communication</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Fort heureusement, je n'agis pas seul : la sécurité est avant tout un <strong>travail d'équipe</strong> ! Je dois être capable de <strong>faire confiance</strong> à mes coéquipiers et de <strong>communiquer</strong> efficacement avec eux. Pour cela, je dois maîtriser une « <strong>ARME</strong> » essentielle : <strong>la communication</strong>.</p>
+            <ul>
+              <li><strong>Le langage verbal :</strong> pour expliquer, négocier, convaincre ou orienter une personne afin de désamorcer un conflit de manière non violente.</li>
+              <li><strong>Le langage non verbal :</strong> pour décoder les postures, anticiper un passage à l'acte ou détecter une tentative de manipulation.</li>
+              <li><strong>La procédure radio :</strong> pour transmettre des messages clairs, concis et précis à mon équipe.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMMUNICATION -->
+<section id="communication" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 03</div>
+      <h2 class="section-title">COMMUNICATION</h2>
+      <p class="section-desc">Verbale, non verbale, radio : maîtriser l'information pour agir efficacement.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#comm-verbale">Communication verbale</a>
+        <a href="#comm-desc">Méthode DESC</a>
+        <a href="#comm-radio">Communication radio</a>
+        <a href="#comm-alphabet">Alphabet radio</a>
+        <a href="#comm-chiffres">Chiffres radio</a>
+        <a href="#comm-termes">Termes de procédure</a>
+      </div>
+      <div>
+        <div class="article-block" id="comm-verbale">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">VERBAL</span>
+            <span class="article-title">La communication verbale</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Pour une interaction efficace, <strong>je dois impérativement respecter mon interlocuteur en restant calme, polie et courtois</strong>. L'usage du vouvoiement est obligatoire et la vulgarité proscrite (interdite).</p>
+            <div class="legal-box">
+              <strong>Formule de désamorçage</strong>
+              <p>Dans de nombreuses situations, l'emploi de la formulation suivante permet de désamorcer les tensions : <em>« Monsieur/Madame, vous avez certainement une bonne raison de… »</em></p>
+            </div>
+            <p>Si la situation ne s'apaise pas, il convient de faire preuve de fermeté, d'ajuster le ton de la voix si nécessaire et d'employer la méthode <strong>DESC</strong>.</p>
+          </div>
+        </div>
+        <div class="article-block" id="comm-desc">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DESC</span>
+            <span class="article-title">Méthode DESC — Gestion de conflit</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Exemple de gestion de conflit — Refus d'accès pour billet contrefait :</p>
+            <div class="desc-grid">
+              <div class="desc-card">
+                <div class="desc-letter">D</div>
+                <div class="desc-word">Décrire les faits (Objectivité)</div>
+                <div class="desc-text">Présenter la situation de manière factuelle, sans jugement.</div>
+                <div class="desc-example">« Monsieur, je viens de scanner votre billet et le terminal indique qu'il s'agit d'une contrefaçon. Ce titre d'accès n'est pas reconnu par le système officiel. »</div>
+              </div>
+              <div class="desc-card">
+                <div class="desc-letter">E</div>
+                <div class="desc-word">Exprimer les conséquences (Clarté)</div>
+                <div class="desc-text">Expliquer l'impact des faits sur la mission.</div>
+                <div class="desc-example">« Ma mission est de garantir la validité des accès. Je ne peux donc pas vous laisser entrer. Votre insistance bloque le passage et ralentit le flux des autres spectateurs. »</div>
+              </div>
+              <div class="desc-card">
+                <div class="desc-letter">S</div>
+                <div class="desc-word">Spécifier une solution (Action attendue)</div>
+                <div class="desc-text">Proposer une issue concrète.</div>
+                <div class="desc-example">« Je vous demande de libérer l'accès. Si vous souhaitez contester cette décision, je vous invite à vous rendre au guichet "Litiges" à l'extérieur. »</div>
+              </div>
+              <div class="desc-card">
+                <div class="desc-letter">C</div>
+                <div class="desc-word">Conclure (Conséquences finales)</div>
+                <div class="desc-text">Poser le cadre légal ou l'issue finale.</div>
+                <div class="desc-example">« Si vous vous écartez maintenant, la situation en reste là. En revanche, si vous persistez à bloquer l'accès, je serai contraint de solliciter les Officiers de Police Judiciaire présents sur site pour une interpellation. »</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="comm-radio">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">RADIO</span>
+            <span class="article-title">La communication radio</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Je dois maîtriser le matériel fourni : mise en service, réglage du canal ou de la fréquence et application des procédures réglementaires.</p>
+            <ul>
+              <li><strong>Règle n°1 :</strong> Jamais de nom patronymique sur les ondes (utilisation des indicatifs).</li>
+              <li><strong>Règle n°2 :</strong> L'émetteur qui engage la communication doit la clôturer.</li>
+              <li><strong>Règle n°3 :</strong> Ne jamais interrompre une communication en cours (sauf urgence absolue via la procédure spécifique).</li>
+            </ul>
+            <h4>Structure d'un message radio</h4>
+            <ol>
+              <li><strong>L'appel :</strong> [Indicatif du destinataire] de [Mon indicatif].</li>
+              <li><strong>Le message :</strong> Court, clair, précis.</li>
+              <li><strong>Le final :</strong> Pour rendre la parole (« Parlez ») ou clore l'échange (« Terminé »).</li>
+            </ol>
+            <h4>Structure d'un signalement</h4>
+            <ul>
+              <li><strong>Je suis :</strong> Identité (indicatif) et position précise (ex : "Parking B, allée 4").</li>
+              <li><strong>Je vois :</strong> Description factuelle (effraction, individu agressif, victime). Description précise des individus (du bas vers le haut chaussure, pantalon, veste, tête, signes distinctifs) ou des véhicules (marque, modèle, couleur, plaque) et direction de fuite.</li>
+              <li><strong>Je fais / Je demande :</strong> Actions entreprises et renforts ou secours nécessaires.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="comm-alphabet">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">OTAN</span>
+            <span class="article-title">L'alphabet radio (Phonétique OTAN)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="alpha-grid">
+              <div class="alpha-cell"><span class="alpha-letter">A</span><span class="alpha-word">Alpha</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">B</span><span class="alpha-word">Bravo</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">C</span><span class="alpha-word">Charlie</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">D</span><span class="alpha-word">Delta</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">E</span><span class="alpha-word">Echo</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">F</span><span class="alpha-word">Foxtrot</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">G</span><span class="alpha-word">Golf</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">H</span><span class="alpha-word">Hotel</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">I</span><span class="alpha-word">India</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">J</span><span class="alpha-word">Juliett</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">K</span><span class="alpha-word">Kilo</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">L</span><span class="alpha-word">Lima</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">M</span><span class="alpha-word">Mike</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">N</span><span class="alpha-word">November</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">O</span><span class="alpha-word">Oscar</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">P</span><span class="alpha-word">Papa</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">Q</span><span class="alpha-word">Quebec</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">R</span><span class="alpha-word">Romeo</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">S</span><span class="alpha-word">Sierra</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">T</span><span class="alpha-word">Tango</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">U</span><span class="alpha-word">Uniform</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">V</span><span class="alpha-word">Victor</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">W</span><span class="alpha-word">Whiskey</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">X</span><span class="alpha-word">X-ray</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">Y</span><span class="alpha-word">Yankee</span></div>
+              <div class="alpha-cell"><span class="alpha-letter">Z</span><span class="alpha-word">Zulu</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="comm-chiffres">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">CHIFFRES</span>
+            <span class="article-title">Les chiffres radio</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Chiffre</th><th>Code radio</th><th>Chiffre</th><th>Code radio</th></tr>
+                <tr><td><strong>0</strong></td><td>Zéro</td><td><strong>5</strong></td><td>3 et 2</td></tr>
+                <tr><td><strong>1</strong></td><td>Unité</td><td><strong>6</strong></td><td>2 fois 3</td></tr>
+                <tr><td><strong>2</strong></td><td>2 fois 1</td><td><strong>7</strong></td><td>4 et 3</td></tr>
+                <tr><td><strong>3</strong></td><td>2 et 1</td><td><strong>8</strong></td><td>2 fois 4</td></tr>
+                <tr><td><strong>4</strong></td><td>2 fois 2</td><td><strong>9</strong></td><td>5 et 4</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="comm-termes">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">PROCÉDURE</span>
+            <span class="article-title">Termes de procédure radio</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Terme</th><th>Signification</th></tr>
+                <tr><td><strong>APERÇU</strong></td><td>J'ai bien compris votre message. Je suis en mesure d'exécuter.</td></tr>
+                <tr><td><strong>ATTENDEZ</strong></td><td>Je stoppe ma transmission durant quelques secondes.</td></tr>
+                <tr><td><strong>ATTENDEZ TERMINÉ</strong></td><td>Attendez, je stoppe ma transmission pour plus de quelques secondes.</td></tr>
+                <tr><td><strong>COLLATIONNEZ</strong></td><td>Répétez-moi cette transmission en entier exactement comme vous l'avez reçue.</td></tr>
+                <tr><td><strong>CORRECT</strong></td><td>Ce que vous m'avez transmitted est correct.</td></tr>
+                <tr><td><strong>JE COLLATIONNE</strong></td><td>Ce qui suit est ma réponse à votre demande de collationnement.</td></tr>
+                <tr><td><strong>J'ÉPELLE</strong></td><td>J'épelle phonétiquement le mot avant.</td></tr>
+                <tr><td><strong>JE RÉPÈTE</strong></td><td>Je répète la transmission ou la partie indiquée.</td></tr>
+                <tr><td><strong>LE MOT AVANT</strong></td><td>Le mot du message auquel je me réfère est celui qui précède.</td></tr>
+                <tr><td><strong>LE MOT APRÈS</strong></td><td>Le mot du message auquel je me réfère est celui qui suit.</td></tr>
+                <tr><td><strong>PARLEZ</strong></td><td>Ceci est la fin de ma transmission pour vous. Je vous écoute, parlez.</td></tr>
+                <tr><td><strong>PRENEZ MESSAGE</strong></td><td>Prenez par écrit le message qui suit.</td></tr>
+                <tr><td><strong>REÇU</strong></td><td>J'ai bien reçu votre dernière transmission.</td></tr>
+                <tr><td><strong>RÉPÉTEZ</strong></td><td>Répétez… (la partie indiquée).</td></tr>
+                <tr><td><strong>SÉPARATION</strong></td><td>Indication de séparation entre le texte et les autres parties d'un message.</td></tr>
+                <tr><td><strong>TERMINÉ</strong></td><td>Ceci est la fin de ma transmission. Je n'ai plus rien à vous dire.</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MISSIONS DE TERRAIN -->
+<section id="terrain" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 04</div>
+      <h2 class="section-title">MISSIONS DE TERRAIN</h2>
+      <p class="section-desc">Lieu d'exercice, rondes, compte rendu, rassemblements, menace grave, secours à personne.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#lieu-exercice">Lieu d'exercice</a>
+        <a href="#ronde">Mission de ronde</a>
+        <a href="#compte-rendu">Le compte rendu</a>
+        <a href="#rassemblements">L613-3 Rassemblements</a>
+        <a href="#menace-grave">L613-2 Menace grave</a>
+        <a href="#secours">Secours à personne</a>
+        <a href="#malveillance">Actes de malveillance</a>
+      </div>
+      <div>
+        <div class="article-block" id="lieu-exercice">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. L613-1</span>
+            <span class="article-title">Le lieu d'exercice</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article L613-1 CSI</strong>
+              <p>Les agents de sûreté ne peuvent exercer leurs fonctions qu'à l'intérieur des bâtiments ou dans la limite des lieux dont ils ont la garde.</p>
+            </div>
+            <p>Dès mon arrivée sur site, je dois donc impérativement connaître les lieux parfaitement. Je dois identifier tous les accès, cheminements, ainsi que les points critiques :</p>
+            <ul>
+              <li><strong>Point dangereux :</strong> Lieu présentant un risque intrinsèque (ex : local produits chimiques, transformateur).</li>
+              <li><strong>Point sensible :</strong> Lieu convoité par les voleurs et les espions pour sa valeur ou ses données (ex : coffre-fort, serveur).</li>
+              <li><strong>Point vulnérable :</strong> Élément dont la destruction paralyserait l'activité du site (ex : centrale électrique).</li>
+            </ul>
+            <p>Pour être un agent performant, capable de prévenir et lutter contre la malveillance, je dois agir en véritable <strong>Vidocq</strong> (François Eugène de son prénom) et repérer tous les <strong>indices ou comportements suspects</strong> afin d'anticiper les risques et de neutraliser toute menace.</p>
+          </div>
+        </div>
+        <div class="article-block" id="ronde">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">SURVEILLANCE</span>
+            <span class="article-title">La mission de ronde</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>L'une de mes attributions principales sera d'effectuer des <strong>rondes de surveillance</strong>. C'est une mission qui consiste à parcourir un itinéraire déterminé à l'avance, en passant par des points de contrôle obligatoires (points de pointage).</p>
+            <div class="warning-box">
+              <strong>Aléatoire !</strong>
+              <p>Afin d'éviter d'être repéré ou prévisible pour un éventuel malfaiteur, les rondes ne sont jamais identiques et ne s'effectuent jamais à horaires fixes. On dit qu'elles doivent être <strong>aléatoires</strong>.</p>
+            </div>
+            <h4>5 objectifs majeurs</h4>
+            <ul>
+              <li><strong>Prévenir :</strong> Surveiller l'intégrité du site, s'assurer du strict respect des consignes de sécurité et vérifier que chaque élément est à sa place et en ordre.</li>
+              <li><strong>Dissuader :</strong> Décourager les malfaiteurs potentiels par une présence visible, régulière ou probable sur l'ensemble du secteur.</li>
+              <li><strong>Détecter :</strong> Constater toute anomalie de fonctionnement, identifier une tentative d'intrusion, un départ d'incendie ou un vol ou tout acte malveillant.</li>
+              <li><strong>Informer :</strong> Rendre compte à la hiérarchie via des comptes rendus écrits et/ou des rapports, alerter les secours d'urgence ou prévenir les forces de l'ordre (Police ou Gendarmerie) si la situation l'exige.</li>
+              <li><strong>Intervenir :</strong> Agir immédiatement pour juguler le danger (levée de doute), protéger les biens et les personnes, et prendre toutes les dispositions utiles pour sécuriser la zone.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="compte-rendu">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">QQOQCP</span>
+            <span class="article-title">Le compte rendu</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Le compte rendu est la relation sommaire (plus courte qu'un rapport) d'un fait, d'une mission ou d'une situation particulière.</p>
+            <p>En tant qu'agent, je l'utilise pour signaler à mon autorité supérieure :</p>
+            <ul>
+              <li>L'exécution d'une mission ou d'un service (ex : "Ronde effectuée sans anomalie").</li>
+              <li>Un fait de peu d'importance.</li>
+              <li>Un événement grave qui doit être connu sans délai (incendie, accident, interpellation), en attendant un rapport plus détaillé.</li>
+            </ul>
+            <h4>Les règles de rédaction</h4>
+            <ul>
+              <li><strong>BREF :</strong> Aller à l'essentiel sans phrases inutiles.</li>
+              <li><strong>FACTUEL :</strong> Je rapporte les faits tels que je les ai vus. Je ne dois jamais faire de suppositions, d'interprétations personnelles ou de propositions.</li>
+              <li><strong>SIGNÉ :</strong> Un compte rendu est toujours signé par son rédacteur.</li>
+            </ul>
+            <h4>Structure QQOQCP</h4>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Partie</th><th>Objectif</th><th>Questions à se poser</th></tr>
+                <tr><td><strong>Introduction</strong></td><td>Poser le cadre des faits.</td><td>Qui ? Quoi ? Quand ? Où ?</td></tr>
+                <tr><td><strong>Développement</strong></td><td>Préciser les causes, le déroulement et les conséquences.</td><td>Pourquoi ? Comment ?</td></tr>
+                <tr><td><strong>Conclusion</strong></td><td>Exposer les mesures prises immédiatement et plus tard.</td><td>Quelles actions ont été menées ?</td></tr>
+              </table>
+            </div>
+            <h4>L'emploi des temps : Parler du passé</h4>
+            <ul>
+              <li><strong>Le Passé Simple :</strong> Pour les actions brèves et soudaines (ex : « L'individu trébucha et tomba »).</li>
+              <li><strong>L'Imparfait :</strong> Pour décrire le décor et les actions qui duraient (ex : « La ronde se déroulait normalement quand… »).</li>
+              <li><strong>Le Plus-que-parfait :</strong> Pour les faits qui se sont passés avant l'action principale (ex : « L'individu avait déjà forcé la porte avant mon arrivée »).</li>
+              <li><strong>Le Passé Composé :</strong> Pour les décisions que j'ai prises et dont les effets durent encore (ex : « J'ai aussitôt alerté les secours »).</li>
+            </ul>
+            <div class="warning-box">
+              <strong>TRÈS IMPORTANT</strong>
+              <p>Un bon agent se reconnaît à la précision de ses écrits. Si mon CR est flou ou rempli de suppositions (<em>« je pense que… »</em>, <em>« il semblerait que… »</em>), il perd toute sa valeur juridique. Je dois absolument m'en tenir aux FAITS, rien qu'aux <strong>FAITS</strong>.</p>
+            </div>
+          </div>
+        </div>
+        <div class="article-block" id="rassemblements">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. L613-3</span>
+            <span class="article-title">Sécurisation des rassemblements</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Très rapidement durant ma formation, je vais être missionné dans le cadre de travaux pratiques pour effectuer des missions de filtrage et de contrôle d'accès lors d'événements sportifs, récréatifs ou culturels rassemblant <strong>plus de 300 spectateurs</strong>.</p>
+            <div class="legal-box">
+              <strong>Article L613-3 CSI</strong>
+              <p>I. - Pour l'accès aux enceintes dans lesquelles est organisée une manifestation sportive, récréative ou culturelle rassemblant plus de 300 spectateurs, les personnes physiques exerçant l'activité mentionnée au 1° de l'article L. 611-1 ainsi que celles, membres du service d'ordre affecté par l'organisateur à la sécurité de la manifestation sportive, récréative ou culturelle en application des dispositions de l'article L. 211-11, titulaires d'une qualification reconnue par l'État et agréées par le directeur du Conseil national des activités privées de sécurité, peuvent procéder, sous le contrôle d'un officier de police judiciaire et avec le consentement exprès des personnes, à des palpations de sécurité. Dans ce cas, la palpation doit être effectuée par une personne de même sexe que la personne qui en fait l'objet. Elles peuvent procéder à l'inspection visuelle des bagages et, avec le consentement de leur propriétaire, à leur fouille. II. - Pour faciliter et sécuriser l'accès aux lieux mentionnés au I du présent article, l'inspection des personnes peut être réalisée, avec leur consentement exprès, au moyen d'un dispositif d'imagerie utilisant des ondes millimétriques installé par le gestionnaire de l'enceinte à son initiative. La finalité de ce dispositif est de vérifier que les personnes ainsi examinées ne portent sur elles aucun objet interdit dans le lieu auquel elles souhaitent accéder. En cas de refus, la personne est soumise à un autre dispositif de contrôle dont elle a été préalablement informée par un moyen de publicité mis à disposition à l'entrée de la manifestation.</p>
+            </div>
+            <h4>Techniques maîtrisées</h4>
+            <ul>
+              <li><strong>L'inspection visuelle et la fouille des bagages :</strong> Je peux regarder à l'intérieur des sacs à main ou des bagages. Cependant, pour procéder à une fouille approfondie (déplacer les objets à l'intérieur), je dois obtenir l'accord exprès de la personne.</li>
+              <li><strong>La palpation de sécurité :</strong> Il s'agit d'une recherche extérieure, au-dessus des vêtements, d'objets dangereux ou interdits. Elle doit obligatoirement être effectuée par une personne de même sexe que l'administré et avec son accord exprès.</li>
+              <li><strong>La détection technique :</strong> Je peux utiliser un magnétomètre (raquette de détection ou portique) pour faciliter le contrôle.</li>
+            </ul>
+            <h4>Conditions de validité</h4>
+            <ul>
+              <li><strong>Agrément spécifique :</strong> L'agent doit posséder une carte professionnelle à jour.</li>
+              <li><strong>Consentement :</strong> Le refus de se soumettre au contrôle entraîne l'interdiction d'accès au site.</li>
+              <li><strong>Contrôle de l'autorité :</strong> Ces missions s'exercent sous le contrôle d'un Officier de Police Judiciaire (OPJ), qui doit être informé de l'opération.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="menace-grave">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. L613-2</span>
+            <span class="article-title">Sécurisation en cas de menace grave</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Je pourrais également être mis en situation d'apprentissage pratique dans le cadre de <strong>périmètres de protection</strong> instaurés en raison d'un risque élevé d'attentat (procédures type Vigipirate ou grands sommets).</p>
+            <div class="legal-box">
+              <strong>Article L613-2 CSI</strong>
+              <p>Les personnes physiques exerçant l'activité mentionnée au 1° de l'article L. 611-1 peuvent procéder à l'inspection visuelle des bagages et, avec le consentement de leur propriétaire, à leur fouille. Les personnes physiques exerçant l'activité mentionnée au 1° de l'article L. 611-1 peuvent, en cas de circonstances particulières liées à l'existence de menaces graves pour la sécurité publique ou lorsqu'un périmètre de protection a été institué en application de l'article L. 226-1, procéder, avec le consentement exprès des personnes, à des palpations de sécurité. Dans ce cas, la palpation de sécurité doit être faite par une personne de même sexe que la personne qui en fait l'objet. En l'absence d'arrêté instituant un périmètre de protection, ces circonstances particulières sont constatées par un arrêté du représentant de l'État dans le département ou, à Paris, du préfet de police, qui en fixe la durée et détermine les lieux ou catégories de lieux dans lesquels les contrôles peuvent être effectués. Cet arrêté est communiqué au procureur de la République.</p>
+            </div>
+            <h4>Ce qui change avec l'Art. L613-2</h4>
+            <p>Ici, ce n'est plus seulement le nombre de spectateurs qui compte, mais l'existence d'une <strong>menace grave pour la sécurité publique</strong>. Ces circonstances sont constatées par un <strong>arrêté préfectoral</strong> (représentant de l'État) qui fixe la durée et les lieux du contrôle.</p>
+            <h4>Piliers à retenir (L613-2 ou L613-3)</h4>
+            <ul>
+              <li><strong>Le Consentement :</strong> Je ne force jamais. Si la personne refuse, je lui interdis simplement l'accès au site.</li>
+              <li><strong>La Mixité :</strong> Femme pour femme, Homme pour homme (uniquement pour la palpation).</li>
+              <li><strong>La Finalité :</strong> Ma mission est de détecter les objets interdits (armes, bouteilles, fumigènes) pour garantir la sécurité de tous.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="secours">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">SST</span>
+            <span class="article-title">Le secours à personne</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Parmi mes attributions, les interventions que je dois maîtriser impérativement sont les missions de <strong>secours et d'assistance aux personnes</strong>. En tant qu'agent de sûreté, je suis très souvent le premier sur les lieux : je suis le premier maillon de la chaîne des secours. Je dois respecter une chronologie stricte :</p>
+            <ul>
+              <li><strong>Le Bilan Circonstanciel (La Protection) :</strong> Je dois immédiatement analyser la situation pour déterminer s'il existe un danger (électrique, gaz, incendie, etc.) et s'il est contrôlable. Je dois assurer ma propre sécurité en portant les EPI (Équipements de Protection Individuelle) adaptés (gants à usage unique, masque) et mettre en sécurité la victime en effectuant un dégagement d'urgence uniquement si un danger réel, immédiat et non contrôlable me l'impose.</li>
+              <li><strong>Le Bilan d'Urgence Vitale (L'Examen) :</strong> Je dois rapidement évaluer l'état des fonctions vitales de la victime pour déterminer la priorité des gestes à effectuer : neurologique (conscience), respiratoire, circulatoire (hémorragie externe).</li>
+              <li><strong>La Réalisation des Gestes de Secours :</strong> J'effectue les techniques de secourisme appropriées (compression, mise en Position Latérale de Sécurité, Réanimation Cardio-Pulmonaire avec usage du Défibrillateur, etc.) conformément au référentiel SST.</li>
+              <li><strong>L'Alerte (Le 15 ou le 112) :</strong> Je dois alerter ou faire alerter les secours médicalisés le plus tôt possible après avoir identifié le problème.</li>
+              <li><strong>L'accueil des secours :</strong> Je dois organiser l'accueil des secours extérieurs. Un agent ou un tiers doit être posté à l'entrée du site pour servir de guide et les accompagner sans délai jusqu'à la victime.</li>
+              <li><strong>La Surveillance :</strong> Je reste au chevet de la victime pour assurer une surveillance continue jusqu'à l'arrivée des secours spécialisés. Je dois être prêt à réévaluer son état et à adapter mes gestes si sa situation évolue.</li>
+            </ul>
+          </div>
+        </div>
+        <div class="article-block" id="malveillance">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">TACTIQUE</span>
+            <span class="article-title">Actes de malveillance & l'infraction</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Dans tous les cas, mon travail en tant qu'agent de sûreté est de lutter contre les actes de malveillance de toute nature. Un acte de malveillance est rarement le fruit du hasard ; il est généralement préparé avec minutie selon 4 étapes :</p>
+            <ol>
+              <li><strong>La préparation :</strong> Observation du site, repérage des failles, étude des horaires des rondes.</li>
+              <li><strong>L'approche :</strong> Le malfaiteur se rapproche de sa cible, franchit les premières limites (clôtures, parkings).</li>
+              <li><strong>L'action :</strong> Le passage à l'acte proprement dit (vol, dégradation, intrusion).</li>
+              <li><strong>La réalisation (ou profit) :</strong> La revente du matériel volé ou l'aboutissement du projet criminel.</li>
+            </ol>
+            <p>Notre mission principale est de <strong>dissuader</strong> le malfaiteur dès l'étape de préparation grâce à nos moyens humains et matériels (présence d'agents, filtrage, portiques, vidéoprotection, alarmes).</p>
+            <div class="legal-box">
+              <strong>Options tactiques lors de l'approche</strong>
+              <p><strong>La dissuasion active :</strong> Se montrer ou déclencher un signal (alarme, éclairage) pour faire fuir l'individu. À ce stade, rien d'illégal n'est forcément commis : c'est une victoire de la prévention.<br><br><strong>L'appréhension :</strong> Tenter d'appréhender le malfaiteur au moment du passage à l'action. Ici, l'infraction est caractérisée, ce qui permet une réponse réglementaire ou pénale.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DROIT -->
+<section id="droit" class="content-section">
+  <div class="content-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 05</div>
+      <h2 class="section-title">DROIT & RESPONSABILITÉS</h2>
+      <p class="section-desc">Responsabilité civile, pénale, infraction, légitime défense, nécessité, menottes.</p>
+    </div>
+    <div class="content-layout reveal">
+      <div class="content-nav">
+        <div class="content-nav-title">Dans ce module</div>
+        <a href="#interpeller">Interpeller / Appréhender</a>
+        <a href="#resp-civile">Responsabilité civile</a>
+        <a href="#resp-penale">Responsabilité pénale</a>
+        <a href="#infraction">Notion d'infraction</a>
+        <a href="#aggravantes">Circonstances aggravantes</a>
+        <a href="#arme">Définition d'une arme</a>
+        <a href="#auteur">Auteur, co-auteur, complice</a>
+        <a href="#tentative">La tentative</a>
+        <a href="#flagrance">La flagrance (53 / L3312-1 CPP)</a>
+        <a href="#apprehension">L'appréhension (73 / L1511-1 CPP)</a>
+        <a href="#ld-personnes">Légitime défense personnes</a>
+        <a href="#ld-biens">Légitime défense biens</a>
+        <a href="#ld-auto">Légitime défense automatique</a>
+        <a href="#necessite">État de nécessité</a>
+        <a href="#menottes">Menottes (803 / L1121-3 CPP)</a>
+      </div>
+      <div>
+
+        <div class="article-block" id="interpeller">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 73 / L1511-1</span>
+            <span class="article-title">Interpeller / Appréhender</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Lorsque je repère une infraction, il est impératif que je puisse en identifier la nature et appréhender l'auteur. L'objectif est double : qu'il soit puni par la loi (<strong>responsabilité pénale</strong>) et qu'il répare les préjudices causés (<strong>responsabilité civile</strong>). En clair : l'auteur doit assumer sa punition et payer pour les dégâts commis.</p>
+            <h4>Interpeller</h4>
+            <p>L'interpellation est l'action de s'adresser à quelqu'un de manière directe pour lui demander des comptes ou lui signifier un ordre (sommation). En droit pénal, c'est l'action de questionner un individu lors d'un contrôle. <strong>Attention :</strong> Pour moi, agent de sûreté, l'interpellation est purement verbale. L'interrogatoire officiel est réservé exclusivement aux forces de l'ordre. En droit civil, c'est une sommation faite à une personne d'exécuter une obligation.</p>
+            <h4>Appréhender</h4>
+            <p>Appréhender signifie « saisir quelqu'un, s'en rendre maître ». Pour moi, agent de sûreté, cela consiste à retenir l'individu par la force physique si nécessaire, le temps strictly requis pour sa remise aux forces de l'ordre (Article 73 CPP / L1511-1 CPP).</p>
+            <h4>Enchaînement opérationnel</h4>
+            <ol>
+              <li><strong>J'interpelle :</strong> Contact verbal. Je demande à l'auteur de s'expliquer, de s'arrêter ou de me suivre. C'est ici que j'utilise mes compétences en communication et gestion de conflit.</li>
+              <li><strong>J'appréhende :</strong> Si la discussion ne suffit pas et que l'individu tente de s'enfuir ou se montre menaçant, je peux employer la <strong>force nécessaire et proportionnée</strong> pour le maintenir sur place jusqu'à l'arrivée de la Police ou de la Gendarmerie.</li>
+            </ol>
+            <div class="warning-box">
+              <strong>Note importante</strong>
+              <p>Si j'appréhende quelqu'un sans pouvoir justifier d'un crime ou d'un délit flagrant, je risque d'être moi-même poursuivi pour "séquestration" ou "violences volontaires". <strong>Le discernement est donc ma meilleure protection.</strong></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="resp-civile">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 1240 CC</span>
+            <span class="article-title">La responsabilité civile</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 1240 du Code Civil</strong>
+              <p>Tout fait quelconque de l'homme, qui cause à autrui un dommage, oblige celui par la faute duquel il est arrivé à le réparer.</p>
+            </div>
+            <p>Son principe fondamental est simple : celui qui cause un dommage à autrui doit le compenser. C'est l'application de la célèbre maxime : « <strong>Qui casse, paye</strong> ».</p>
+            <h4>Les 3 conditions indispensables</h4>
+            <ol>
+              <li><strong>Une faute (ou un fait générateur) :</strong> Une erreur, une imprudence, une négligence ou même un acte involontaire.</li>
+              <li><strong>Un dommage (ou préjudice) :</strong> Une victime doit avoir subi une perte (matérielle, physique ou morale).</li>
+              <li><strong>Un lien de causalité :</strong> Il faut prouver que c'est précisément la faute commise qui a provoqué le dommage subi.</li>
+            </ol>
+            <h4>Les deux grands types</h4>
+            <ul>
+              <li><strong>La responsabilité contractuelle :</strong> Elle s'applique quand le dommage survient parce qu'une personne n'a pas respecté ses engagements dans un contrat.</li>
+              <li><strong>La responsabilité extracontractuelle (délictuelle) :</strong> Elle s'applique en dehors de tout contrat. C'est le cas général.</li>
+            </ul>
+            <h4>On ne répond pas que de ses propres actes</h4>
+            <ul>
+              <li><strong>Votre propre fait :</strong> Vos erreurs personnelles.</li>
+              <li><strong>Le fait d'autrui :</strong> Les parents sont responsables des dommages causés par leurs enfants mineurs ; les employeurs sont responsables des fautes de leurs employés.</li>
+              <li><strong>Le fait des choses ou des animaux :</strong> Si votre pot de fleurs tombe du balcon sur une voiture, ou si votre chien mord un passant, c'est vous qui réparez.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="article-block" id="resp-penale">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 121-1 CP</span>
+            <span class="article-title">La responsabilité pénale</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 121-1 du Code Pénal</strong>
+              <p>Nul n'est responsable pénalement que de son propre fait.</p>
+            </div>
+            <p>La responsabilité pénale est l'obligation pour une personne de répondre des infractions qu'elle a commises et de subir la peine prévue par la loi. Contrairement à la responsabilité civile (qui vise à réparer un dommage à une victime), la responsabilité pénale vise à <strong>punir un comportement qui trouble l'ordre public</strong>.</p>
+            <div class="info-box"><p>Synthèse pour l'agent : Si un malfaiteur casse une vitrine pour voler un bijou — <strong>Civil</strong> pour la vitre, <strong>Pénal</strong> pour la prison.</p></div>
+          </div>
+        </div>
+
+        <div class="article-block" id="infraction">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DROIT</span>
+            <span class="article-title">La notion d'infraction</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>L'infraction est définie comme une action (faire) ou une omission (ne pas faire) prévue et punie par la loi au moyen d'une sanction spécifique. Selon leur gravité, les infractions sont classées en trois catégories (la "tripartition") :</p>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Catégorie</th><th>Juridiction compétente</th><th>Sanction principale</th></tr>
+                <tr><td><strong>Contravention</strong></td><td>Tribunal de Police</td><td>Amendes (classées de 1 à 5)</td></tr>
+                <tr><td><strong>Délit</strong></td><td>Tribunal Correctionnel</td><td>Amende et prison (jusqu'à 10 ans)</td></tr>
+                <tr><td><strong>Crime</strong></td><td>Cour d'Assises</td><td>Amende et prison (> 10 ans)</td></tr>
+              </table>
+            </div>
+            <h4>Les 3 conditions de l'infraction</h4>
+            <ul>
+              <li><strong>L'élément légal :</strong> « Nul crime, nul délit ne peut être puni sans un texte de loi. » L'acte doit être écrit et sanctionné par un texte qui prévoit et sanctionne l'infraction commise.</li>
+              <li><strong>L'élément matériel :</strong> La preuve concrète que l'acte a été commis. Acte positif (commission — faire ce que la loi interdit) ou acte négatif (omission — ne pas faire ce que la loi ordonne, ex: non-assistance à personne en danger ou en péril).</li>
+              <li><strong>L'élément moral :</strong> L'intention de l'auteur. Pour qu'il y ait crime ou délit, l'auteur doit avoir agi de manière libre et consciente, avec la volonté de commettre l'acte interdit (pour une contravention, la volonté de l'auteur ne rentre pas en compte).</li>
+            </ul>
+            <div class="info-box"><p><em>« En sécurité privée, nous travaillons avec des faits. Sans preuve matérielle ou intention claire, la qualification d'infraction tombe. »</em></p></div>
+          </div>
+        </div>
+
+        <div class="article-block" id="aggravantes">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">DROIT</span>
+            <span class="article-title">Les circonstances aggravantes</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Une infraction peut, selon les faits, être considérée comme plus grave par la justice. On parle alors de <strong>circonstances aggravantes</strong>, entraînant des peines plus élevées.</p>
+            <h4>Principales circonstances aggravantes</h4>
+            <ul>
+              <li><strong>La vulnérabilité de la victime :</strong> L'âge (enfants, personnes âgées), l'état de santé (handicap, femmes enceintes).</li>
+              <li><strong>La qualité de la victime :</strong> S'en prendre à une personne investie d'une mission de service public ou d'autorité (policiers, gendarmes, pompiers, mais aussi parfois agents de sécurité dans l'exercice de leurs fonctions).</li>
+              <li><strong>Le lien entre l'auteur et la victime :</strong> Lien d'autorité (majeur envers mineur) ou de parenté (violences conjugales, familiales).</li>
+              <li><strong>Le lieu de commission :</strong> Transports de voyageurs (gares, trains, bus, métro), abords des établissements scolaires.</li>
+              <li><strong>Le mode opératoire :</strong> En réunion (agir à plusieurs) ou avec usage d'une arme.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="article-block" id="arme">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 132-75 CP</span>
+            <span class="article-title">Définition d'une arme</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Une arme n'est pas seulement un couteau, un pistolet ou un fusil d'assaut. Le moindre objet ramassé par terre pour frapper quelqu'un, même pour se défendre si on se sent dépassé par l'agresseur, sera considéré comme une arme au sens propre.</p>
+            <div class="legal-box">
+              <strong>Article 132-75 du Code Pénal</strong>
+              <p>Est une arme tout objet conçu pour tuer ou blesser. Tout autre objet susceptible de présenter un danger pour les personnes est assimilé à une arme dès lors qu'il est utilisé pour tuer, blesser ou menacer ou qu'il est destiné, par celui qui en est porteur, à tuer, blesser ou menacer. Est assimilé à une arme tout objet qui, présentant avec l'arme définie au premier alinéa une ressemblance de nature à créer une confusion, est utilisé pour menacer de tuer ou de blesser ou est destiné, par celui qui en est porteur, à menacer de tuer ou de blesser. L'utilisation d'un animal pour tuer, blesser ou menacer est assimilée à l'usage d'une arme.</p>
+            </div>
+            <h4>Les 4 types d'arme</h4>
+            <ul>
+              <li><strong>L'arme par nature :</strong> Objet fabriqué dans le seul but de blesser ou de tuer (couteau, pistolet, fusil, lance-roquette…).</li>
+              <li><strong>L'arme par destination :</strong> N'importe quel objet détourné de son usage principal pour menacer, blesser ou tuer (mis à part le couteau, c'est la catégorie la plus courante sur le terrain).</li>
+              <li><strong>L'arme par imitation :</strong> Objet qui ressemble tellement à une arme réelle qu'il crée une confusion et une peur immédiate (airsoft, pistolet à eau, nerf ou autre réplique).</li>
+              <li><strong>L'usage d'un animal :</strong> Généralement un chien, mais aussi serpent, rat, hyène…</li>
+            </ul>
+            <div class="warning-box">
+              <strong>À retenir pour le terrain</strong>
+              <p>En tant qu'agent de sûreté, si je dois me défendre, l'utilisation du moindre objet (extincteur, chaise, lampe torche) sera qualifié par le juge comme un usage d'<strong>arme par destination</strong>. Il en va de même pour l'agresseur.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="auteur">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 121-4/7 CP</span>
+            <span class="article-title">L'auteur, le co-auteur et le complice</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Une personne malveillante n'agit pas toujours seule. Je dois faire la distinction entre trois statuts juridiques :</p>
+            <ul>
+              <li><strong>L'auteur (Art. 121-4 CP) :</strong> La personne qui commet personnellement les faits incriminés. C'est celui qui réalise l'élément matériel de l'infraction.</li>
+              <li><strong>Le co-auteur :</strong> Celui qui participe directement à la commission de l'infraction aux côtés de l'auteur et accomplit personnellement tout ou partie des actes matériels.</li>
+              <li><strong>Le complice (Art. 121-7 CP) :</strong> Celui qui n'exécute pas l'acte lui-même, mais qui y participe de façon indirecte. Deux formes : par aide/assistance (faire le guet, fournir les clés) ou par instigation (donner des instructions, ordonner).</li>
+            </ul>
+            <div class="legal-box">
+              <strong>Règle d'or juridique (Art. 121-6 CP)</strong>
+              <p>Le complice est puni comme l'auteur. Il encourt les mêmes peines que s'il avait commis l'infraction lui-même.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="tentative">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 121-5 CP</span>
+            <span class="article-title">La tentative & le dilemme tactique</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Pour qu'une personne soit punissable, il n'est pas toujours nécessaire que l'infraction soit « consommée ». Si certains critères sont respectés, la <strong>simple tentative est juridiquement assimilée à l'infraction elle-même</strong> (tentative punissable).</p>
+            <h4>Conditions de la tentative punissable (Art. 121-5 CP)</h4>
+            <ul>
+              <li><strong>Le commencement d'exécution :</strong> L'auteur accomplit des actes concrets qui tendent directement à la commission de l'infraction (ex: escalader une clôture, forcer une serrure).</li>
+              <li><strong>L'absence de désistement volontaire :</strong> L'infraction n'a manqué son effet qu'en raison de circonstances indépendantes de sa volonté (alarme, présence d'un agent, lampe torche).</li>
+            </ul>
+            <div class="legal-box">
+              <strong>Le dilemme de l'agent : Dissuader ou Appréhender ?</strong>
+              <p><strong>L'action préventive :</strong> Si je me montre dès la phase d'approche, je provoque un désistement volontaire. L'individu repart libre sans sanction pénale, mais le site est sauvé.<br><br><strong>La recherche du "FLAG" :</strong> Si je souhaite mettre l'auteur à disposition des forces de l'ordre pour qu'il soit sanctionné, je dois attendre que la tentative soit caractérisée ou l'infraction consommée, sans jamais mettre en danger ma sécurité ou celle du public.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="flagrance">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">53 / L3312-1 CPP</span>
+            <span class="article-title">La notion de flagrance</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 53 CPP / L3312-1 CPP</strong>
+              <p>Est qualifié crime ou délit flagrant le crime ou le délit qui se commet actuellement, ou qui vient de se commettre. Il y a aussi crime ou délit flagrant lorsque, dans un temps très voisin de l'action, la personne soupçonnée est poursuivie par la clameur publique, ou est trouvée en possession d'objets, ou présente des traces ou indices, laissant penser qu'elle a participé au crime ou au délit.</p>
+            </div>
+            <h4>Les critères de flagrance</h4>
+            <ul>
+              <li><strong>L'actualité immédiate :</strong> L'infraction se commet actuellement ou vient de se commettre.</li>
+              <li><strong>Le temps voisin de l'action :</strong> Poursuite par la clameur publique (« au voleur ! »), possession d'objets suspects (outils, vol), ou traces/indices directs (sang, peinture).</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="article-block" id="apprehension">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">73 / L1511-1 CPP</span>
+            <span class="article-title">L'appréhension en flagrance</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Dans les cas de contraventions (infractions légères), mon action se limite au rappel des règles et à la méthode <strong>DESC</strong>. Dans les cas de crimes et délits punis d'emprisonnement, j'utilise l'Article 73 CPP / L1511-1 CPP.</p>
+            <div class="legal-box">
+              <strong>Article 73 CPP (Actuel)</strong>
+              <p>Dans les cas de crime flagrant ou de délit flagrant puni d'une peine d'emprisonnement, toute personne a qualité pour en appréhender l'auteur et le conduire devant l'officier de police judiciaire le plus proche.</p>
+            </div>
+            <div class="legal-box">
+              <strong>Article L1511-1 CPP (Recodification 2029)</strong>
+              <p>Dans les cas de crime flagrant ou de délit flagrant puni d'une peine d'emprisonnement, toute personne a qualité pour en appréhender l'auteur supposé et le conduire devant l'officier de police judiciaire le plus proche ou le retenir jusqu'à ce qu'il soit remis entre les mains de l'officier de police judiciaire qui en a été avisé dans le meilleur délai permis par les circonstances. Il ne peut être recouru à cette fin qu'à une contrainte nécessaire et proportionnée.</p>
+            </div>
+            <h4>Comparatif des évolutions (73 CPP vs L1511-1 CPP)</h4>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Critère</th><th>Art. 73 CPP (Actuel)</th><th>Art. L1511-1 CPP (2029)</th><th>Analyse</th></tr>
+                <tr><td><strong>Désignation</strong></td><td>« Auteur »</td><td>« Auteur supposé »</td><td>Consacre la présomption d'innocence.</td></tr>
+                <tr><td><strong>Remise</strong></td><td>Conduire devant l'OPJ</td><td>Conduire ou retenir sur place</td><td>Légalise le maintien sur place en attendant la police.</td></tr>
+                <tr><td><strong>Contrainte</strong></td><td>Non précisé dans le texte</td><td>Contrainte nécessaire et proportionnée</td><td>Encadre strictement l'usage de la force.</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="ld-personnes">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 122-5 al.1 CP</span>
+            <span class="article-title">La légitime défense des personnes</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <p>Invoquer la légitime défense signifie admettre avoir commis une violence volontaire, mais demander l'exonération de la peine. C'est à l'auteur de l'acte de la prouver.</p>
+            <div class="legal-box">
+              <strong>Article 122-5 al. 1 du Code Pénal</strong>
+              <p>N'est pas pénalement responsable la personne qui, devant une atteinte injustifiée envers elle-même ou autrui, accomplit, dans le même temps, un acte commandé par la nécessité de la légitime défense d'elle-même ou d'autrui, sauf s'il y a disproportion entre les moyens de défense employés et la gravité de l'atteinte.</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Terme juridique</th><th>Explication concrète</th></tr>
+                <tr><td><strong>N'est pas pénalement responsable</strong></td><td>Une violence a été commise, mais l'auteur ne sera pas puni.</td></tr>
+                <tr><td><strong>Atteinte injustifiée</strong></td><td>L'agression subie doit être INJUSTE.</td></tr>
+                <tr><td><strong>Envers elle-même ou autrui</strong></td><td>Protéger sa propre vie ou celle d'un tiers.</td></tr>
+                <tr><td><strong>Dans le même temps</strong></td><td>Immédiateté de la riposte (pas de vengeance ultérieure).</td></tr>
+                <tr><td><strong>Commandé par la nécessité</strong></td><td>La violence physique doit être la seule option possible.</td></tr>
+                <tr><td><strong>Sauf disproportion</strong></td><td>Moyens de défense proportionnés à la gravité de l'attaque. Dans des situations d'une gravité exceptionnelle (menace directe de mort), elle peut justifier le décès de l'agresseur.</td></tr>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="ld-biens">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 122-5 al.2 CP</span>
+            <span class="article-title">La légitime défense des biens</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 122-5 al. 2 du Code Pénal</strong>
+              <p>N'est pas pénalement responsable la personne qui, pour interrompre l'exécution d'un crime ou d'un délit contre un bien, accomplit un acte de défense, autre qu'un homicide volontaire, lorsque cet acte est strictement nécessaire au but poursuivi dès lors que les moyens employés sont proportionnés à la gravité de l'infraction.</p>
+            </div>
+            <div class="warning-box">
+              <strong>Point crucial</strong>
+              <p>On n'a JAMAIS le droit de tuer pour protéger un objet. Le décès de l'auteur n'est jamais justifiable pour un bien. La légitime défense des biens s'applique pour un crime ou délit (vol, dégradations "3D") et JAMAIS pour une simple contravention.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="ld-auto">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 122-6 CP</span>
+            <span class="article-title">La légitime défense automatique (présomption)</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 122-6 du Code Pénal</strong>
+              <p>Est présumé avoir agi en état de légitime défense celui qui accomplit l'acte :<br>1° Pour repousser, de nuit, l'entrée par effraction, violence ou ruse dans un lieu habité ;<br>2° Pour se défendre contre les auteurs de vols ou de pillages exécutés avec violence.</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Critère</th><th>Situation 1 (Alinéa 1)</th><th>Situation 2 (Alinéa 2)</th></tr>
+                <tr><td><strong>Objectif</strong></td><td>Repousser une intrusion</td><td>Se défendre contre un vol violent</td></tr>
+                <tr><td><strong>Lieu</strong></td><td>Lieu habité (domicile)</td><td>Tout lieu (public ou privé)</td></tr>
+                <tr><td><strong>Moment</strong></td><td>Obligatoirement de nuit</td><td>Jour ou nuit</td></tr>
+                <tr><td><strong>Condition clé</strong></td><td>Effraction, ruse ou violence</td><td>Violence exercée par l'auteur</td></tr>
+              </table>
+            </div>
+            <div class="warning-box">
+              <strong>Présomption simple</strong>
+              <p>Cette présomption reste "simple" : un juge peut la renverser si la riposte était manifestement disproportionnée. Une fois le danger écarté, la bascule immédiate en mode secours (SST) confirme l'absence d'intention de nuire.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-block" id="necessite">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">Art. 122-7 CP</span>
+            <span class="article-title">L'état de nécessité</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 122-7 du Code Pénal</strong>
+              <p>N'est pas pénalement responsable la personne qui, face à un danger actuel ou imminent qui menace elle-même, autrui ou un bien, accomplit un acte nécessaire à la sauvegarde de la personne ou du bien, sauf s'il y a disproportion entre les moyens employés et la gravité de la menace.</p>
+            </div>
+            <div class="table-wrapper">
+              <table>
+                <tr><th>Terme juridique</th><th>Explication concrète</th></tr>
+                <tr><td><strong>Danger actuel ou imminent</strong></td><td>Péril réel et immédiat. Si je n'agis pas tout de suite, le drame arrive.</td></tr>
+                <tr><td><strong>Acte nécessaire</strong></td><td>Mon action est l'unique solution (ex: défoncer une porte pour éteindre un feu, plaquer une personne qui veut sauter).</td></tr>
+                <tr><td><strong>Proportionnalité</strong></td><td>Le mal commis doit être nettement inférieur au mal évité.</td></tr>
+              </table>
+            </div>
+            <p>L'état de nécessité, c'est choisir le « <strong>moindre mal</strong> ». Mon rapport devra être ultra précis pour expliquer pourquoi j'ai dû enfreindre la loi pour éviter un drame.</p>
+          </div>
+        </div>
+
+        <div class="article-block" id="menottes">
+          <div class="article-header" onclick="toggleArticle(this)">
+            <span class="article-num">803 / L1121-3 CPP</span>
+            <span class="article-title">Menottes et moyens d'entrave</span>
+            <span class="article-toggle">+</span>
+          </div>
+          <div class="article-body">
+            <div class="legal-box">
+              <strong>Article 803 Al 1 / L1121-3 du CPP</strong>
+              <p>Nul ne peut être soumis au port des menottes ou des entraves que s'il est considéré soit comme dangereux pour autrui ou pour lui-même, soit comme susceptible de tenter de prendre la fuite.</p>
+            </div>
+            <div class="legal-box">
+              <strong>Respect de la dignité et de l'image (803 Al 2 / L1111-2 CPP)</strong>
+              <p>Toutes mesures utiles doivent être prises pour éviter qu'une personne menottée ou entravée soit photographiée ou filmée par des tiers (diffusion réprimée par l'art. 35 ter de la loi du 29 juillet 1881). L'agent doit isoler l'individu dans un local calme.</p>
+            </div>
+            <h4>Règles d'or</h4>
+            <ul>
+              <li><strong>Proportionnalité :</strong> Pas de menottes si l'individu est calme.</li>
+              <li><strong>Surveillance continue :</strong> L'interpellé est sous ma responsabilité entière.</li>
+              <li><strong>Vocabulaire :</strong> On dit : <em>« J'ai appréhendé l'individu et je l'ai entravé pour garantir sa sécurité et la mienne en attendant votre arrivée. »</em></li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PFMP -->
+<section id="pfmp">
+  <div class="pfmp-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 06</div>
+      <h2 class="section-title">PÉRIODES DE FORMATION EN MILIEU PROFESSIONNEL</h2>
+      <p class="section-desc">3 ans de formation, 4 univers de la sécurité. En PFMP, la démarche est celle d'un véritable apprentissage en autonomie surveillée.</p>
+    </div>
+    <div class="pfmp-track reveal">
+      <div class="pfmp-card">
+        <div class="pfmp-num">01</div>
+        <div class="pfmp-type">Sécurité Privée</div>
+        <div class="pfmp-desc">En centre commercial ou bâtiment privé. Application directe des cours, gestion du PCS (vidéoprotection, alarmes, radio), accès et rondes.</div>
+        <div class="pfmp-missions">
+          <h4>Missions opérationnelles</h4>
+          <ul>
+            <li>Vérification d'accès & gestion des badges (Droit de propriété)</li>
+            <li>Rondes avec incident (Art. 122-7 CP & Art. 1240 CC)</li>
+            <li>Vidéoprotection (Art. L251-2 CSI & RGPD / 30 jours max)</li>
+            <li>Filtrage véhicule (Art. L613-2 CSI)</li>
+            <li>Préservation des traces et indices (Art. 54 CPP / L3322-1 CPP)</li>
+            <li>Vol à l'étalage : du contrôle au règlement amiable (Art. 53, 73 CPP / L3312-1, L1511-1 CPP & DESC)</li>
+          </ul>
+        </div>
+        <div class="pfmp-badge">Centre commercial · Site privé</div>
+      </div>
+      <div class="pfmp-card">
+        <div class="pfmp-num">02</div>
+        <div class="pfmp-type">Police Municipale</div>
+        <div class="pfmp-desc">Sous l'autorité du Maire. Application du rôle d'APJA (Art. 21 CPP / L2224-1 CPP) et de l'Art. L511-1 du CSI.</div>
+        <div class="pfmp-missions">
+          <h4>Missions observées</h4>
+          <ul>
+            <li>Contrôle de stationnement : Zone Bleue (Art. R417-3)</li>
+            <li>Stationnement payant : Horodateur / FPS</li>
+            <li>Stationnement abusif > 7 jours (Art. R417-12)</li>
+            <li>Salubrité publique — dépôts sauvages (Art. R634-2 CP)</li>
+            <li>Marché — vente à la sauvette (Art. 446-1 CP)</li>
+            <li>Outrage à agent (Art. 433-5 CP & Art. 803 / L1121-3 CPP)</li>
+            <li>Relevé d'identité (Art. 78-6 CPP / L3222-3 CPP)</li>
+          </ul>
+        </div>
+        <div class="pfmp-badge">Sous l'autorité du Maire</div>
+      </div>
+      <div class="pfmp-card">
+        <div class="pfmp-num">03</div>
+        <div class="pfmp-type">Police Nationale</div>
+        <div class="pfmp-desc">Observateur en commissariat. Contrôle d'identité (Art. 78-2 CPP / L3322-1 CPP), enquête de flagrance, GAV (Art. 62-2 CPP / L3523-1 CPP).</div>
+        <div class="pfmp-missions">
+          <h4>Missions observées</h4>
+          <ul>
+            <li>Contrôle d'identité en périmètre de sécurité (Art. 78-2 CPP)</li>
+            <li>Palpation de sécurité (Art. R434-16 CSI & Art. 132-75 CP)</li>
+            <li>Intervention VIF (Art. 222-13 CP & Art. 62-2 CPP)</li>
+            <li>Remise à l'OPJ & enregistrement de procédure</li>
+          </ul>
+        </div>
+        <div class="pfmp-badge">Observateur · Commissariat</div>
+      </div>
+      <div class="pfmp-card">
+        <div class="pfmp-num">04</div>
+        <div class="pfmp-type">ENP Draveil & Gendarmerie</div>
+        <div class="pfmp-desc">École Nationale de Police de Draveil (formation Gardiens de la Paix / ADS) et 1 semaine de découverte Gendarmerie en Terminale.</div>
+        <div class="pfmp-missions">
+          <h4>Ce que j'observe</h4>
+          <ul>
+            <li>Déontologie policière & formation APJ/OPJ</li>
+            <li>GTPI — Gestes Techniques Professionnels d'Intervention</li>
+            <li>Usage de l'arme (Art. L435-1 CSI)</li>
+            <li>Menottage professionnel (Art. 803 / L1121-3 CPP)</li>
+            <li>Présentation des métiers de la Gendarmerie</li>
+          </ul>
+        </div>
+        <div class="pfmp-badge">Terminale · 1 semaine</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FICHES MÉMO -->
+<section id="fiches">
+  <div class="fiches-inner">
+    <div class="reveal">
+      <div class="section-tag">Module 07</div>
+      <h2 class="section-title">FICHES MÉMO</h2>
+      <p class="section-desc">7 fiches de synthèse opérationnelle pour maîtriser les notions clés sur le terrain. Cliquez sur une fiche pour accéder au contenu détaillé.</p>
+    </div>
+    <div class="fiches-grid reveal">
+      <div class="fiche-card" onclick="scrollToFiche('fiche-vidocq')">
+        <span class="fiche-icon">🔍</span>
+        <div class="fiche-title">La méthode VIDOCQ</div>
+        <div class="fiche-summary">L'art de l'observation pour anticiper la malveillance. Penser comme l'adversaire pour identifier les points faibles (Règle des 3P).</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-perimetre')">
+        <span class="fiche-icon">🚧</span>
+        <div class="fiche-title">Périmètre de sécurité - Gel des lieux</div>
+        <div class="fiche-summary">Art. 54 CPP / L3322-1 CPP et Art. 434-4 CP. Préserver les indices pour la manifestation de la vérité.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-video')">
+        <span class="fiche-icon">📹</span>
+        <div class="fiche-title">Vidéoprotection ou Vidéosurveillance ?</div>
+        <div class="fiche-summary">Une distinction précise selon le lieu (public CSU / privé PCS) et l'autorité qui commande (CNIL/CSI/RGPD).</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-flagrance')">
+        <span class="fiche-icon">⚡</span>
+        <div class="fiche-title">Flagrance - Appréhension - Menottage</div>
+        <div class="fiche-summary">Les trois frères : Art. 53 / L3312-1, Art. 73 / L1511-1 et Art. 803 / L1121-3 CPP. Sans flagrance, pas d'appréhension.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-identite')">
+        <span class="fiche-icon">🪪</span>
+        <div class="fiche-title">Contrôle, Relevé et Recueil d'identité</div>
+        <div class="fiche-summary">3 niveaux distincts selon la qualité (OPJ/APJ, APJA, Agent de sûreté). Art. 78-2 et 78-6 CPP / L3222-1 à 7 CPP.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-gav')">
+        <span class="fiche-icon">🔒</span>
+        <div class="fiche-title">La Garde à Vue (GAV)</div>
+        <div class="fiche-summary">Art. 62-2 CPP / L3523-1 CPP. Ce qui se passe après la remise à l'OPJ. Durée, droits (Art. 63-1 / L3521-5), lien avec le CR.</div>
+      </div>
+      <div class="fiche-card" onclick="scrollToFiche('fiche-armes')">
+        <span class="fiche-icon">🔫</span>
+        <div class="fiche-title">Les catégories d'armes</div>
+        <div class="fiche-summary">Art. R311-2 CSI & Art. L2331-1 Code de la Défense — 4 catégories (A, B, C, D). Acquérir, détenir, porter, transporter.</div>
+      </div>
+    </div>
+
+    <!-- FICHE VIDOCQ -->
+    <div class="fiche-detail reveal" id="fiche-vidocq">
+      <div class="section-tag" style="margin-top: 3rem;">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">LA MÉTHODE VIDOCQ</h3>
+      <p style="color:var(--gray);margin-bottom:2rem;">Pour être un bon agent de sûreté, je ne dois pas seulement "regarder", je dois <strong style="color:var(--white);">observer</strong>. La méthode Vidocq consiste à me mettre dans la peau d'un malveillant pour identifier les points faibles d'un site.</p>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">PRINCIPE</span>
+          <span class="article-title">Penser comme l'adversaire & Règle des 3P</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <p>La méthode repose sur une analyse critique du site. Je dois me poser une question simple : <strong>« Si je voulais entrer par effraction, voler ou dégrader, comment ferais-je ? »</strong></p>
+          <h4>Les 4 piliers de l'observation Vidocq</h4>
+          <ul>
+            <li><strong>L'Environnement :</strong> Zones d'ombre, buissons mal taillés, mobilier urbain permettant d'escalader.</li>
+            <li><strong>Les Accès (La Périphérie) :</strong> Porte coupe-feu mal fermée, fenêtre sans barreau, badge qui traîne, portail fragile.</li>
+            <li><strong>L'Humain (La Faille Sociale) :</strong> Laisser entrer quelqu'un sans badge par politesse, clés laissées sur les bureaux.</li>
+            <li><strong>La Technique :</strong> Angles morts des caméras, détecteurs masqués par du stock.</li>
+          </ul>
+          <h4>Règle des 3P (Prévision, Prévention, Protection)</h4>
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Observation (Point faible)</th><th>Moyen de défense proposé</th><th>Justification légale / Sécurité</th></tr>
+              <tr><td>Zone d'ombre derrière le bâtiment</td><td>Installation d'un éclairage à détection</td><td>Dissuasion et meilleure image en Vidéoprotection</td></tr>
+              <tr><td>Grillage découpé ou affaissé</td><td>Réparation immédiate et ronde renforcée</td><td>Prévention de l'intrusion (Art. 132-74 CP – escalade)</td></tr>
+              <tr><td>Badge non rendu par un ancien agent</td><td>Désactivation informatique du badge</td><td>Contrôle d'accès strict (Droit de propriété)</td></tr>
+            </table>
+          </div>
+          <div class="legal-box">
+            <strong>Mon engagement</strong>
+            <p>« Je suis les yeux du client. Ma vigilance est sa première ligne de défense. Si je vois la faille, le malveillant ne passera pas. » Une faille non signalée engage ma responsabilité en cas d'incident (Art. 121-1 CP).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE PÉRIMÈTRE -->
+    <div class="fiche-detail reveal" id="fiche-perimetre">
+      <div class="section-tag">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">PÉRIMÈTRE DE SÉCURITÉ — GEL DES LIEUX</h3>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">Art. 54 CPP / 434-4 CP</span>
+          <span class="article-title">Conservation des indices & Délit d'entrave</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <p>En tant qu'agent de sûreté, je suis généralement le premier arrivé sur les lieux. Ma mission prioritaire est de mettre en place un <strong>périmètre de sécurité</strong> pour geler la scène avant l'arrivée de l'OPJ.</p>
+          <div class="legal-box">
+            <strong>Article 54 CPP / L3322-1, 2 et 3 CPP</strong>
+            <p>En cas de crime flagrant, l'officier de police judiciaire qui en est avisé informe immédiatement le procureur de la République, se transporte sans délai sur le lieu du crime et procède à toutes constatations utiles. Il veille à la conservation des indices susceptibles de disparaître et de tout ce qui peut servir à la manifestation de la vérité.</p>
+          </div>
+          <div class="warning-box">
+            <strong>Article 434-4 CP — Délit d'entrave</strong>
+            <p>Est puni de 3 ans d'emprisonnement et de 45 000 € d'amende le fait de modifier l'état des lieux d'un crime ou d'un délit. Lorsque les faits sont commis par une personne appelée par ses fonctions à concourir à la manifestation de la vérité, la peine est portée à <strong>5 ans d'emprisonnement et 75 000 € d'amende</strong>.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE VIDÉO -->
+    <div class="fiche-detail reveal" id="fiche-video">
+      <div class="section-tag">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">VIDÉOPROTECTION OU VIDÉOSURVEILLANCE ?</h3>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">CSI / RGPD</span>
+          <span class="article-title">Tableau comparatif : Public vs Privé</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Critères</th><th>Vidéoprotection (Public / CSU)</th><th>Vidéosurveillance (Privé / PCS)</th></tr>
+              <tr><td><strong>Lieu filmé</strong></td><td>Rue, place, enceinte ouverte au public (stade, magasin)</td><td>Bureaux, couloirs internes, zones de fret</td></tr>
+              <tr><td><strong>Acteur principal</strong></td><td>Policier Municipal (APJA) sous l'autorité du Maire</td><td>Agent de Sûreté (Carte pro CNAPS) pour un client</td></tr>
+              <tr><td><strong>Cadre légal</strong></td><td>Art. L251-1 à L255-1 du CSI — arrêté préfectoral</td><td>RGPD et Code du Travail — registre RGPD entreprise</td></tr>
+              <tr><td><strong>Contrôle CNIL</strong></td><td>Masquage automatique de l'intérieur des habitations</td><td>Interdiction de filmer les postes de travail ou pauses</td></tr>
+              <tr><td><strong>Information</strong></td><td>Panneau avec logo caméra obligatoire à chaque entrée</td><td>Note d'information aux salariés et affichage obligatoire</td></tr>
+            </table>
+          </div>
+          <div class="warning-box">
+            <strong>Le Secret Professionnel</strong>
+            <p>Que ce soit au CSU ou au PCS, les images sont protégées. Diffuser une vidéo sur les réseaux sociaux constitue un délit passible de sanctions pénales.</p>
+          </div>
+          <div class="info-box"><p><em>« Je ne dois jamais dire à un jury d'examen que je fais de la 'vidéosurveillance' dans la rue. Le mot exact est Vidéoprotection. C'est un détail qui prouve que je maîtrise le Code de la Sécurité Intérieure (CSI). »</em></p></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE FLAGRANCE -->
+    <div class="fiche-detail reveal" id="fiche-flagrance">
+      <div class="section-tag">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">FLAGRANCE — APPRÉHENSION — MENOTTAGE</h3>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">Les 3 Frères CPP</span>
+          <span class="article-title">53 / L3312-1 · 73 / L1511-1 · 803 / L1121-3</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <p>Ces trois articles sont comme trois frères. On ne peut jamais sauter une étape : <strong>sans flagrance, pas d'appréhension ; sans risque lors de l'appréhension, pas de menottes.</strong></p>
+          <div class="legal-box">
+            <strong>1. Flagrance (Art. 53 CPP / L3312-1 CPP)</strong>
+            <p>Crime ou délit qui se commet actuellement, vient de se commettre, ou dans un temps très voisin (clameur publique, objets ou indices suspects).</p>
+          </div>
+          <div class="legal-box">
+            <strong>2. Appréhension (Art. 73 CPP / L1511-1 CPP)</strong>
+            <p>Qualité pour toute personne d'appréhender l'auteur d'un crime ou délit flagrant puni d'emprisonnement et le conduire devant l'OPJ (ou le retenir sur place).</p>
+          </div>
+          <div class="legal-box">
+            <strong>3. Menottage (Art. 803 CPP / L1121-3 CPP)</strong>
+            <p>Port des entraves uniquement si la personne est dangereuse pour autrui/elle-même ou susceptible de s'enfuir.</p>
+          </div>
+          <p>L'enquête de flagrance est contrôlée par le Procureur de la République (8 jours max, prolongation de 8 jours possible pour les peines ≥ 5 ans). En cas de menottage, obligation d'isoler l'individu des médias/photos (Art. 803 Al 2 / L1111-2 CPP).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE IDENTITÉ -->
+    <div class="fiche-detail reveal" id="fiche-identite">
+      <div class="section-tag">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">CONTRÔLE, RELEVÉ ET RECUEIL D'IDENTITÉ</h3>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">Art. 78-2 et 78-6 CPP</span>
+          <span class="article-title">Les 3 niveaux d'identification</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Terme juridique</th><th>Qui peut le faire ?</th><th>Explication concrète</th></tr>
+              <tr><td><strong>Contrôle d'identité (78-2 CPP / L3222-1 et 2)</strong></td><td>OPJ / APJ (Police Nat. / Gend.)</td><td>Obliger une personne à prouver son identité sous suspicion d'infraction ou prévention de trouble.</td></tr>
+              <tr><td><strong>Relevé d'identité (78-6 CPP / L3222-3 à 7)</strong></td><td>Police Municipale (APJA)</td><td>Demande de pièce d'identité suite au constat d'une contravention pour remplir le PV.</td></tr>
+              <tr><td><strong>Recueil d'identité</strong></td><td>Agent de Sûreté / PM</td><td>Demande orale (« Quel est votre nom ? »). Aucun pouvoir de contrainte sur les papiers.</td></tr>
+            </table>
+          </div>
+          <div class="warning-box">
+            <strong>Danger juridique</strong>
+            <p>En tant qu'Agent de Sûreté, je ne fais JAMAIS de contrôle d'identité. Je fais de la <strong>VÉRIFICATION D'ACCÈS</strong> (cadre du règlement intérieur). Forcer la présentation de papiers constitue un abus de pouvoir ou une immixtion dans une fonction publique.</p>
+          </div>
+          <div class="legal-box">
+            <strong>Vérification d'identité (Art. 78-3 CPP / L3222-4 CPP)</strong>
+            <p>Si la personne refuse de justifier de son identité lors d'un contrôle de police, elle peut être retenue par l'OPJ jusqu'à <strong>4 heures</strong> pour vérification (empreintes, photos).</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE GAV -->
+    <div class="fiche-detail reveal" id="fiche-gav">
+      <div class="section-tag">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">LA GARDE À VUE (GAV)</h3>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">Art. 62-2 CPP / L3523-1</span>
+          <span class="article-title">Procédure post-remise à l'OPJ</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <p>Après la remise de l'individu appréhendé (Art. 73 / L1511-1) à l'OPJ, ma responsabilité s'arrête. L'OPJ peut décider du placement en Garde à Vue.</p>
+          <h4>Objectifs & Durée de la GAV</h4>
+          <p>Permettre les investigations, la présentation au procureur, éviter la modification des preuves. Durée de base : 24h (prolongation à 48h par le Procureur, jusqu'à 96h/144h pour stups ou terrorisme).</p>
+          <h4>Droits de la personne (Art. 63-1 CPP / L3521-5 et L3524-2 CPP)</h4>
+          <ul>
+            <li>Connaître le motif du placement en GAV.</li>
+            <li>Prévenir un proche et son employeur.</li>
+            <li>Examen médical & assistance d'un avocat / interprète.</li>
+            <li>Droit de garder le silence ou faire des déclarations.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- FICHE ARMES -->
+    <div class="fiche-detail reveal" id="fiche-armes">
+      <div class="section-tag">Fiche Mémo</div>
+      <h3 style="font-family:'Bebas Neue';font-size:2.5rem;letter-spacing:3px;margin-bottom:1rem;">LES CATÉGORIES D'ARMES</h3>
+      <div class="article-block open">
+        <div class="article-header" onclick="toggleArticle(this)">
+          <span class="article-num">Art. R311-2 CSI / L2331-1 Code Défense</span>
+          <span class="article-title">Le classement des 4 catégories</span>
+          <span class="article-toggle">+</span>
+        </div>
+        <div class="article-body" style="display:block;">
+          <div class="table-wrapper">
+            <table>
+              <tr><th>Catégorie</th><th>Régime</th><th>Exemples</th><th>Justificatif</th></tr>
+              <tr><td><span class="chip chip-red">A</span></td><td><strong>INTERDICTION</strong></td><td>Fusils d'assault (rafale), matériels de guerre, grenades</td><td>Sauf exceptions militaires/musées</td></tr>
+              <tr><td><span class="chip">B</span></td><td><strong>AUTORISATION</strong></td><td>Pistolets, revolvers, semi-auto > 3 coups, Taser, aérosol > 100ml</td><td>Licence tir + avis fédération</td></tr>
+              <tr><td><span class="chip">C</span></td><td><strong>DÉCLARATION</strong></td><td>Fusils de chasse, semi-auto < 3 coups, lanceurs > 20 joules</td><td>Compte SIA + Permis de chasser / licence</td></tr>
+              <tr><td><span class="chip">D</span></td><td><strong>LIBRE (sous cond.)</strong></td><td>Armes blanches, bombes lacrymo < 100ml, air comprimé 2-20 joules</td><td>Majorité (18 ans révolus)</td></tr>
+            </table>
+          </div>
+          <h4>Vocabulaire de l'agent — 4 définitions clés</h4>
+          <ul>
+            <li><strong>Acquérir :</strong> Devenir propriétaire (achat, don, héritage).</li>
+            <li><strong>Détenir :</strong> Avoir l'arme chez soi en coffre-fort/sécurisé.</li>
+            <li><strong>Porter :</strong> Avoir l'arme sur soi dans l'espace public, immédiatement utilisable (interdit aux particuliers).</li>
+            <li><strong>Transporter :</strong> Déplacer l'arme non immédiatement utilisable (sous housse, verrou de pontet, munitions séparées).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ARTICLES TABLE -->
+<section id="articles-table">
+  <div class="articles-inner">
+    <div class="reveal">
+      <div class="section-tag">Référence légale</div>
+      <h2 class="section-title">LES ARTICLES CITÉS</h2>
+    </div>
+    <div class="articles-tabs reveal">
+      <button class="tab-btn active" onclick="switchTab(this,'tab-csi')">CSI</button>
+      <button class="tab-btn" onclick="switchTab(this,'tab-cpp-actuel')">CPP Actuel</button>
+      <button class="tab-btn" onclick="switchTab(this,'tab-cpp-2029')">CPP Recodifié (2029)</button>
+      <button class="tab-btn" onclick="switchTab(this,'tab-cp')">Code Pénal</button>
+      <button class="tab-btn" onclick="switchTab(this,'tab-civil')">Autres Codes</button>
+    </div>
+    <div id="tab-csi" class="tab-content active reveal">
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Article</th><th>Titre / Référence principale</th></tr>
+          <tr><td>L611-1</td><td>Agents de sécurité privée (référence dans L613-2/3)</td></tr>
+          <tr><td>L613-1</td><td>Limite des lieux d'exercice (gardiennage)</td></tr>
+          <tr><td>L613-2</td><td>Sécurisation en cas de menace grave ou périmètre de protection</td></tr>
+          <tr><td>L613-3</td><td>Sécurisation des rassemblements (> 300 spectateurs)</td></tr>
+          <tr><td>L211-11</td><td>Service d'ordre affecté par l'organisateur</td></tr>
+          <tr><td>L226-1</td><td>Périmètre de protection</td></tr>
+          <tr><td>L251-2</td><td>Vidéoprotection — finalités autorisées</td></tr>
+          <tr><td>L435-1</td><td>Usage des armes par la police nationale</td></tr>
+          <tr><td>L511-1</td><td>Missions de la Police Municipale</td></tr>
+          <tr><td>R311-2</td><td>Catégories d'armes</td></tr>
+          <tr><td>R434-16</td><td>Palpation de sécurité (police)</td></tr>
+        </table>
+      </div>
+    </div>
+    <div id="tab-cpp-actuel" class="tab-content reveal">
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Article</th><th>Titre / Référence principale</th></tr>
+          <tr><td>21 / 21-1 / 21-2</td><td>APJA — rôle, seconder les OPJ, rendre compte</td></tr>
+          <tr><td>53</td><td>Flagrance</td></tr>
+          <tr><td>54</td><td>Conservation des indices / Gel des lieux</td></tr>
+          <tr><td>62-2 / 63-1</td><td>Garde à Vue (GAV) et droits du gardé à vue</td></tr>
+          <tr><td>73</td><td>Appréhension en flagrance</td></tr>
+          <tr><td>78-2</td><td>Contrôle d'identité</td></tr>
+          <tr><td>78-3</td><td>Vérification d'identité</td></tr>
+          <tr><td>78-6</td><td>Relevé d'identité (Police Municipale)</td></tr>
+          <tr><td>803</td><td>Menottes, moyens d'entrave et respect de la dignité</td></tr>
+        </table>
+      </div>
+    </div>
+    <div id="tab-cpp-2029" class="tab-content reveal">
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Article</th><th>Titre / Référence principale</th></tr>
+          <tr><td>L3312-1</td><td>Cadre de la flagrance (crime/délit en cours ou récent)</td></tr>
+          <tr><td>L1511-1</td><td>Droit d'appréhender l'auteur supposé et le retenir sur place</td></tr>
+          <tr><td>L1121-3 / L1111-2</td><td>Encadrement du menottage et interdiction d'enregistrer/filmer</td></tr>
+          <tr><td>L3222-1 à L3222-7</td><td>Cadre légal du contrôle, relevé et vérification d'identité</td></tr>
+          <tr><td>L3523-1 / L3521-5</td><td>Objectifs de la GAV et droits de la personne</td></tr>
+          <tr><td>L2224-1 à L2224-3</td><td>Rôles et devoirs des APJA (Policiers Municipaux)</td></tr>
+          <tr><td>L3322-1 à L3322-3</td><td>Gel des lieux et conservation des indices</td></tr>
+        </table>
+      </div>
+    </div>
+    <div id="tab-cp" class="tab-content reveal">
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Article</th><th>Titre / Référence principale</th></tr>
+          <tr><td>121-1</td><td>Responsabilité pénale (propre fait)</td></tr>
+          <tr><td>121-4 / 121-5 / 121-6 / 121-7</td><td>Auteur, tentative, complice puni comme l'auteur, complicité</td></tr>
+          <tr><td>122-5</td><td>Légitime défense (personnes et biens)</td></tr>
+          <tr><td>122-6</td><td>Légitime défense automatique (présomption)</td></tr>
+          <tr><td>122-7</td><td>État de nécessité</td></tr>
+          <tr><td>132-75</td><td>Définition d'une arme</td></tr>
+          <tr><td>222-13</td><td>Violences volontaires (ex. VIF)</td></tr>
+          <tr><td>311-1</td><td>Le vol</td></tr>
+          <tr><td>433-5</td><td>Outrage à agent</td></tr>
+          <tr><td>434-4</td><td>Entrave à la manifestation de la vérité</td></tr>
+          <tr><td>446-1</td><td>Vente à la sauvette</td></tr>
+          <tr><td>R634-2</td><td>Dépôt sauvage d'ordures</td></tr>
+        </table>
+      </div>
+    </div>
+    <div id="tab-civil" class="tab-content reveal">
+      <div class="table-wrapper">
+        <table>
+          <tr><th>Code</th><th>Article</th><th>Titre / Référence principale</th></tr>
+          <tr><td>Code Civil</td><td>1240</td><td>Responsabilité civile — « qui casse, paye »</td></tr>
+          <tr><td>Code de la Route</td><td>R417-3</td><td>Stationnement Zone Bleue</td></tr>
+          <tr><td>Code de la Route</td><td>R417-12</td><td>Stationnement abusif (> 7 jours)</td></tr>
+          <tr><td>Code de la Défense</td><td>L2331-1</td><td>Catégories d'armes (référence croisée)</td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONCLUSION -->
+<section id="conclusion">
+  <div class="conclusion-inner">
+    <div class="reveal">
+      <div class="section-tag" style="justify-content:center;">Conclusion</div>
+      <h2 class="section-title">PRÊT POUR<br>LE SERVICE</h2>
+      <p style="color:var(--gray);font-size:0.95rem;margin-top:1rem;">Au terme de ce manuel, j'ai désormais entre les mains l'ensemble des connaissances, des procédures et des repères juridiques pour exercer mon futur métier avec <strong style="color:var(--accent);">DISCERNEMENT</strong>, <strong style="color:var(--accent);">COMPÉTENCE</strong> et <strong style="color:var(--accent);">RESPONSABILITÉ</strong>.</p>
+    </div>
+    <div class="principles reveal">
+      <div class="principle">
+        <div class="principle-num">1</div>
+        <div class="principle-text"><strong>Prévenir</strong> vaut mieux qu'intervenir.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">2</div>
+        <div class="principle-text"><strong>Dissuader</strong> par ma présence et mon professionnalisme est ma plus belle victoire.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">3</div>
+        <div class="principle-text"><strong>Intervenir</strong> uniquement quand c'est nécessaire, avec une force strictly proportionnée.</div>
+      </div>
+      <div class="principle">
+        <div class="principle-num">4</div>
+        <div class="principle-text"><strong>Documenter</strong> chaque fait avec précision : mon écriture est ma meilleure protection juridique.</div>
+      </div>
+      <div class="principle" style="grid-column: 1 / -1;">
+        <div class="principle-num">5</div>
+        <div class="principle-text"><strong>Travailler en équipe</strong> : la sûreté est une chaîne dont je suis un maillon essentiel, jamais isolé.</div>
+      </div>
+    </div>
+    <div class="engage-block reveal">
+      Sois fier de ce que tu apprends.<br>
+      Sois irréprochable dans ce que tu fais.<br>
+      Sois un agent de sûreté exemplaire.
+    </div>
+    <div class="closing-quote reveal">
+      « La sûreté n'est pas qu'un métier, c'est une vocation qui s'exerce avec rigueur, humilité et constance. »
+    </div>
+    <div style="margin-top:2rem;font-family:'Barlow Condensed',sans-serif;font-size:0.85rem;color:rgba(138,154,181,0.6);letter-spacing:1px;" class="reveal">
+      Ça c'est mon manuel,<br>
+      Il y en a beaucoup comme celui-là, mais lui c'est le mien,<br>
+      <strong style="color:rgba(138,154,181,0.8);">Mon manuel c'est mon vrai copain.</strong><br><br>
+      Il est ma protection. Je dois en rester maître, comme je dois rester maître de mon intervention.<br>
+      Sans moi, mon manuel n'est rien. Sans mon manuel, je ne suis rien.<br>
+      Je dois faire preuve de discernement. Je dois être plus perspicace que le malveillant qui essaie de me piéger.<br>
+      Je dois connaître la loi mieux que lui. Je dois l'appréhender avant qu'il ne s'échappe. Et je le ferai !<br>
+      Mon manuel et moi sommes les défenseurs du site.<br>
+      Nous sommes les maîtres de la déontologie. Nous sommes les garants de la sûreté.
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <strong>Lycée François Arago</strong> · Les Essentiels de la Sûreté · Formation professionnelle · Tous droits réservés
+</footer>
+
+<script>
+  // Reveal on scroll
+  const reveals = document.querySelectorAll('.reveal');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 60);
+      }
+    });
+  }, { threshold: 0.05 });
+  reveals.forEach(r => observer.observe(r));
+
+  // Toggle article accordion
+  function toggleArticle(header) {
+    const block = header.closest('.article-block');
+    block.classList.toggle('open');
+    const body = block.querySelector('.article-body');
+    body.style.display = block.classList.contains('open') ? 'block' : 'none';
+  }
+
+  // Scroll to fiche
+  function scrollToFiche(id) {
+    const el = document.getElementById(id);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
+
+  // Tab switching
+  function switchTab(btn, tabId) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.tab-content').forEach(t => t.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById(tabId).classList.add('active');
+  }
+
+  // Nav scroll
+  window.addEventListener('scroll', () => {
+    const nav = document.querySelector('nav');
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    if (isDark) {
+      nav.style.background = window.scrollY > 40 ? 'rgba(10,14,26,0.97)' : 'rgba(10,14,26,0.92)';
+    } else {
+      nav.style.background = window.scrollY > 40 ? 'rgba(250,248,244,0.99)' : 'rgba(250,248,244,0.94)';
+    }
+  });
+
+  // ── TOGGLE THÈME ──────────────────────────────────
+  function toggleTheme() {
+    var html = document.documentElement;
+    var isDark = html.getAttribute('data-theme') === 'dark';
+    var next = isDark ? 'light' : 'dark';
+    html.setAttribute('data-theme', next);
+    localStorage.setItem('arago-theme', next);
+    var lbl = document.getElementById('toggle-label');
+    if (lbl) lbl.textContent = next === 'dark' ? 'Mode sombre' : 'Mode clair';
+  }
+  // Init label
+  (function() {
+    var lbl = document.getElementById('toggle-label');
+    if (lbl) {
+      var isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      lbl.textContent = isDark ? 'Mode sombre' : 'Mode clair';
+    }
+  })();
+
+</script>
+</body>
+</html>
